@@ -17,7 +17,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: "./src/images/",
+        path: `${__dirname}/src/images`,
       },
       __key: "images",
     },
@@ -39,17 +39,7 @@ module.exports = {
         theme_color: "#653815",
         background_color: "#653815",
         display: "standalone",
-        icons: [{
-          "src": "./src/images/icons/android-chrome-192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        },
-        {
-          "src": "./src/images/icons/android-chrome-512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
-        }
-        ],
+        icon: "./src/images/icons/android-chrome-512x512.png"
       },
     },
     "gatsby-plugin-offline"

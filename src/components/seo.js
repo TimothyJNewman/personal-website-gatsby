@@ -2,9 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import appleTouchIcon from "../images/icons/apple-touch-icon.png";
+import icon32x32 from "../images/icons/favicon-32x32.png";
+import icon16x16 from "../images/icons/favicon-16x16.png";
+import safariPinnedTab from "../images/icons/safari-pinned-tab.svg";
+import favicon from "../images/icons/favicon.ico";
+import mstile70x70 from "../images/icons/mstile-70x70.png";
+import mstile144x144 from "../images/icons/mstile-144x144.png";
+import mstile150x150 from "../images/icons/mstile-150x150.png";
+import mstile310x150 from "../images/icons/mstile-310x150.png";
+import mstile310x310 from "../images/icons/mstile-310x310.png";
 
 const SEO = ({ seo = {} }) => {
-  const { strapiGlobal } = useStaticQuery(query);
+  const { strapiGlobal } = useStaticQuery(seoQuery);
   const { defaultSeo, siteName } = strapiGlobal;
 
   // Merge default and page-specific SEO values
@@ -71,7 +81,11 @@ const SEO = ({ seo = {} }) => {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "msapplication-TileColor", content: "#00a300" },
-      { name: "msapplication-config", content: "/images/icons/browserconfig.xml" },
+      { name: "msapplication-square70x70logo", content: mstile70x70 },
+      { name: "msapplication-square144x144logo", content: mstile144x144 },
+      { name: "msapplication-square150x150logo", content: mstile150x150 },
+      { name: "msapplication-wide310x150logo", content: mstile310x150 },
+      { name: "msapplication-square310x310logo", content: mstile310x310 },
       { name: "description", content: "Timothy Jabez Newman personal website" }
     )
 
@@ -96,28 +110,28 @@ const SEO = ({ seo = {} }) => {
         {
           rel: "apple-touch-icon",
           sizes: "180x180",
-          href: "../images/icons/apple-touch-icon.png"
+          href: appleTouchIcon
         },
         {
           rel: "icon",
           type: "image/png",
           sizes: "32x32",
-          href: "../images/icons/favicon-32x32.png"
+          href: icon32x32
         },
         {
           rel: "icon",
           type: "image/png",
           sizes: "16x16",
-          href: "../images/icons/favicon-16x16.png"
+          href: icon16x16
         },
         {
           rel: "mask-icon",
-          href: "../images/icons/safari-pinned-tab.svg",
+          href: safariPinnedTab,
           color: "#05997e"
         },
         {
           rel: "shortcut icon",
-          href: "../images/icons/favicon.ico"
+          href: favicon
         }
       ]}
       meta={metaTags}
@@ -141,7 +155,7 @@ SEO.defaultProps = {
   article: false,
 };
 
-const query = graphql`
+const seoQuery = graphql`
   query SEOquery {
     strapiGlobal {
       defaultSeo {
@@ -161,5 +175,5 @@ const query = graphql`
       }
       siteName
     }
-  }
-`;
+  }`
+  ;

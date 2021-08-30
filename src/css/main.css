@@ -466,7 +466,7 @@
     border-radius: var(--std-border-radius);
     width: inherit;
     background-position: center;
-    background-image: url(../Images/large_profilepicv3_81bd297485.jpg);
+    background-image: url(../images/large_profilepicv3_81bd297485.jpg);
     background-size: cover;
     padding: min(1em, 3vmin);
     padding-right: min(2em, 3vmin);

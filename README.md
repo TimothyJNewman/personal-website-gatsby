@@ -7,6 +7,8 @@
   Gatsby minimal starter
 </h1>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d13ecbae-36f6-49de-bf85-cc091e030adf/deploy-status)](https://app.netlify.com/sites/sleepy-haibt-7860db/deploys)
+
 ## 🚀 Quick start
 
 1.  **Create a Gatsby site.**

@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(query);
-  const { defaultSeo, siteName, favicon } = strapiGlobal;
+  const { defaultSeo, siteName } = strapiGlobal;
 
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
@@ -44,7 +44,7 @@ const SEO = ({ seo = {} }) => {
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-        fullSeo.shareImage.localFile.publicURL;
+        fullSeo.shareImage.media.localFile.publicURL;
       tags.push(
         {
           name: "image",
@@ -71,7 +71,7 @@ const SEO = ({ seo = {} }) => {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "msapplication-TileColor", content: "#00a300" },
-      { name: "msapplication-config", content: "/icons/browserconfig.xml" },
+      { name: "msapplication-config", content: "/images/icons/browserconfig.xml" },
       { name: "description", content: "Timothy Jabez Newman personal website" }
     )
 
@@ -87,10 +87,6 @@ const SEO = ({ seo = {} }) => {
       titleTemplate={`%s | ${siteName}`}
       link={[
         {
-          rel: "icon",
-          href: favicon.publicURL,
-        },
-        {
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css",
           integrity: "sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==",
@@ -100,28 +96,28 @@ const SEO = ({ seo = {} }) => {
         {
           rel: "apple-touch-icon",
           sizes: "180x180",
-          href: "/icons/apple-touch-icon.png"
+          href: "../images/icons/apple-touch-icon.png"
         },
         {
           rel: "icon",
           type: "image/png",
           sizes: "32x32",
-          href: "/icons/favicon-32x32.png"
+          href: "../images/icons/favicon-32x32.png"
         },
         {
           rel: "icon",
           type: "image/png",
           sizes: "16x16",
-          href: "/icons/favicon-16x16.png"
+          href: "../images/icons/favicon-16x16.png"
         },
         {
           rel: "mask-icon",
-          href: "/icons/safari-pinned-tab.svg",
+          href: "../images/icons/safari-pinned-tab.svg",
           color: "#05997e"
         },
         {
           rel: "shortcut icon",
-          href: "/icons/favicon.ico"
+          href: "../images/icons/favicon.ico"
         }
       ]}
       meta={metaTags}
@@ -146,14 +142,24 @@ SEO.defaultProps = {
 };
 
 const query = graphql`
-  query {
+  query SEOquery {
     strapiGlobal {
-      siteName
-      favicon {
-        localFile {
-          publicURL
+      defaultSeo {
+        metaDescription
+        metaTitle
+        shareImage {
+          alt
+          id
+          keywords
+          media {
+            localFile {
+              publicURL
+            }
+          }
+          preventIndexing
         }
       }
+      siteName
     }
   }
 `;

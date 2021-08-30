@@ -4,7 +4,9 @@ import MarkdownView from 'react-showdown';
 import { getFormattedDate, getFormattedLink } from "../util/CommonUtils";
 import Card from '../components/card';
 import Layout from '../components/layout';
+import LayoutSingleColumn from "../components/layout-single-column";
 import "../css/main.css";
+import "../css/markdown.css";
 
 const IndexPage = () => {
 
@@ -12,8 +14,7 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <div className="app-content-wrapper">
-        <div className="content">
+      <LayoutSingleColumn>
           <div className="medium-col content-text">
             <div className="blog-intro">
               <div className="intro-container">
@@ -96,8 +97,7 @@ const IndexPage = () => {
               }
             </div>
           </div>
-        </div>
-      </div>
+      </LayoutSingleColumn>
     </Layout>
   );
 };

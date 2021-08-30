@@ -1,0 +1,16 @@
+.app-content-wrapper {
+    background-color: var(--primarycolour-l5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primarycolour-d6);
+  }
+  
+  .content {
+    min-height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 1em 0.5em;
+    width: min(740px, calc(100% - 1em));
+  }

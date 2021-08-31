@@ -15,11 +15,12 @@ const TagList = ({ pageContext, data }) => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <CoverImage title={`Tag: ${queryTag}`} desc={` | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.edges.length : 0} | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.length : 0}`} />
-        <div className="medium-col content-text">
-          <h2 className="blog-postlist-title">Recent Projects</h2>
-          {data.allStrapiProjectpost.edges.length > 0
-            ? (
+        <CoverImage title={`Tag: ${queryTag}`} desc={` | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.edges.length : 0} | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.edges.length : 0}`} />
+        <br />
+        {data.allStrapiProjectpost.edges.length > 0
+          ? (
+            <div className="medium-col content-text">
+              <h2 className="blog-postlist-title">Recent Projects</h2>
               <div className="card-container">
                 {data.allStrapiProjectpost.edges.map((posts) => (
                   <Link to={getFormattedLink('/project/', posts.node.slug)} key={posts.node.id}>
@@ -35,19 +36,19 @@ const TagList = ({ pageContext, data }) => {
                   </Link>
                 ))}
               </div>
-            )
-            : <p className="error-message">No projects found</p>}
-          <p className="card-readmore">
-            <Link to="/project">
-              Explore all projects
-              <i className="fa fa-arrow-right" />
-            </Link>
-          </p>
-        </div>
-        <div className="medium-col content-text">
-          <h2 className="blog-postlist-title">Recent Blog Posts</h2>
-          {data.allStrapiBlogpost.edges.length > 0
-            ? (
+              <p className="card-readmore">
+                <Link to="/project">
+                  Explore all projects&nbsp;
+                  <i className="fa fa-arrow-right" />
+                </Link>
+              </p>
+            </div>
+          )
+          : ''}
+        {data.allStrapiBlogpost.edges.length > 0
+          ? (
+            <div className="medium-col content-text">
+              <h2 className="blog-postlist-title">Recent Blog Posts</h2>
               <div className="card-container">
                 {data.allStrapiBlogpost.edges.map((posts) => (
                   <Link to={getFormattedLink('/blog/', posts.node.slug)} key={posts.node.id}>
@@ -62,15 +63,15 @@ const TagList = ({ pageContext, data }) => {
                   </Link>
                 ))}
               </div>
-            )
-            : <p className="error-message">No blog posts found</p>}
-          <p className="card-readmore">
-            <Link to="/blog">
-              Read all blog posts
-              <i className="fa fa-arrow-right" />
-            </Link>
-          </p>
-        </div>
+              <p className="card-readmore">
+                <Link to="/blog">
+                  Read all blog posts&nbsp;
+                  <i className="fa fa-arrow-right" />
+                </Link>
+              </p>
+            </div>
+          )
+          : ''}
         <div className="medium-col content-text">
           <h2 className="blog-postlist-title">All Tags</h2>
           <div className="card-tag-container-tagpage">

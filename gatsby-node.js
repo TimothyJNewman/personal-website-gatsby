@@ -109,20 +109,22 @@ exports.createPages = ({ actions, graphql }) => {
     const getTags = makeRequest(graphql, `
     {
       allStrapiTag {
-        nodes {
-          Tag
+        edges {
+          node {
+            Tag
+          }
         }
       }
     }
     `)
     .then(result => {
       // Create pages for each article.
-      result.data.allStrapiTag.nodes.forEach(({ Tag }) => {
+      result.data.allStrapiTag.edges.forEach(({ node }) => {
         createPage({
-          path: `/tag/${Tag}`,
+          path: `/tag/${node.Tag}`,
           component: path.resolve(`src/templates/tag-list.js`),
           context: {
-            queryTag: Tag,
+            queryTag: node.Tag,
           },
         })
       })
@@ -132,5 +134,6 @@ exports.createPages = ({ actions, graphql }) => {
   return Promise.all([
     getBlogsAndBlogsList,
     getProjectsAndProjectsList,
+    getTags
   ])
 };

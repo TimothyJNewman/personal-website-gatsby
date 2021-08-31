@@ -9,26 +9,28 @@ import Layout from '../components/layout'
 import LayoutSingleColumn from '../components/layout-single-column'
 import Card from '../components/card'
 
-const TagList = ({  pageContext, data }) => {
+const TagList = ({ pageContext, data }) => {
 
+  const { queryTag } = pageContext
+  
   return (
     <Layout>
       <LayoutSingleColumn>
-        <CoverImage title={"Tag: " + pageContext.queryTag} desc={` | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.nodes.length : 0} | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.nodes.length : 0}`} />
+        <CoverImage title={"Tag: " + queryTag} desc={` | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.edges.length : 0} | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.length : 0}`} />
         <div className="medium-col content-text">
           <h2 className="blog-postlist-title">Recent Projects</h2>
-          {data.allStrapiProjectpost.nodes.length > 0
+          {data.allStrapiProjectpost.edges.length > 0
             ? <div className="card-container">
-              {data.allStrapiProjectpost.nodes.map(posts => (
-                <Link to={getFormattedLink("/projects/", posts.slug)} key={posts.id}>
+              {data.allStrapiProjectpost.edges.map(posts => (
+                <Link to={getFormattedLink("/project/", posts.node.slug)} key={posts.node.id}>
                   <Card
-                    img={posts.CoverImage ? posts.CoverImage.url : ""}
-                    title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    img={posts.node.CoverImage ? posts.node.CoverImage.url : ""}
+                    title={posts.node.title}
+                    date={getFormattedDate(posts.node.published_at)}
+                    description={posts.node.summary}
+                    tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
+                    tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
+                    tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
                   />
                 </Link>
               ))}
@@ -41,17 +43,17 @@ const TagList = ({  pageContext, data }) => {
         </div>
         <div className="medium-col content-text">
           <h2 className="blog-postlist-title">Recent Blog Posts</h2>
-          {data.allStrapiBlogpost.nodes.length > 0
+          {data.allStrapiBlogpost.edges.length > 0
             ? <div className="card-container">
-              {data.allStrapiBlogpost.nodes.map(posts => (
-                <Link to={getFormattedLink("/blog/", posts.slug)} key={posts.id}>
+              {data.allStrapiBlogpost.edges.map(posts => (
+                <Link to={getFormattedLink("/blog/", posts.node.slug)} key={posts.node.id}>
                   <Card
                     title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
+                    date={getFormattedDate(posts.node.published_at)}
                     description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
+                    tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
+                    tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
                   />
                 </Link>
               ))}
@@ -65,9 +67,9 @@ const TagList = ({  pageContext, data }) => {
         <div className="medium-col content-text">
           <h2 className="blog-postlist-title">All Tags</h2>
           <div className="card-tag-container-tagpage">
-            {data.allStrapiTag.nodes
-              ? data.allStrapiTag.nodes.map(elem => (
-                <Link to={"/tag/" + elem.Tag} key={elem.Tag} className="card-tag-link">{elem.Tag}</Link>
+            {data.allStrapiTag.edges
+              ? data.allStrapiTag.edges.map(elem => (
+                <Link to={"/tag/" + elem.node.Tag} key={elem.node.Tag} className="card-tag-link">{elem.node.Tag}</Link>
               ))
               : <p className="error-message">No tags found</p>
             }
@@ -80,26 +82,28 @@ const TagList = ({  pageContext, data }) => {
 
 export default TagList;
 
-  // TODO work on querying images
+// TODO work on querying images
 export const query = graphql`
-  query tagListQuery($queryTag: String!) {
+  query TagList($queryTag: String!) {
     allStrapiBlogpost(
       sort: {fields: published_at, order: DESC}
       filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}}
     ) {
-      nodes {
-        id
-        slug
-        coverimage {
-          localFile {
-            publicURL
+      edges {
+        node {
+          id
+          slug
+          coverimage {
+            localFile {
+              publicURL
+            }
           }
-        }
-        title
-        published_at
-        summary
-        tags {
-          Tag
+          title
+          published_at
+          summary
+          tags {
+            Tag
+          }
         }
       }
     }
@@ -107,25 +111,29 @@ export const query = graphql`
       sort: {fields: published_at, order: DESC}
       filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}}
     ) {
-      nodes {
-        id
-        slug
-        coverimage {
-          localFile {
-            publicURL
+      edges{
+        node {
+          id
+          slug
+          coverimage {
+            localFile {
+              publicURL
+            }
           }
-        }
-        title
-        summary
-        published_at
-        tags {
-          Tag
+          title
+          summary
+          published_at
+          tags {
+            Tag
+          }
         }
       }
     }
     allStrapiTag {
-      nodes {
-        Tag
+      edges {
+        node {
+          Tag
+        }
       }
     }
   }

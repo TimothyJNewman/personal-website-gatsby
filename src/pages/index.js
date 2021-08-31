@@ -5,7 +5,6 @@ import { getFormattedDate, getFormattedLink } from "../util/CommonUtils";
 import Card from '../components/card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from "../components/layout-single-column";
-import "../css/main.css";
 import "../css/markdown.css";
 
 const IndexPage = () => {
@@ -44,9 +43,9 @@ const IndexPage = () => {
             <div className="card-container">
               {data.allStrapiProjectpost.nodes
                 ? data.allStrapiProjectpost.nodes.map(posts => (
-                  <Link to={getFormattedLink("/projects/", posts.slug)} key={posts.id}>
+                  <Link to={getFormattedLink("/project/", posts.slug)} key={posts.id}>
                     <Card
-                      img={posts.coverimage ? posts.coverimage.formats.medium.url : ""}
+                      img={posts.coverimage ? posts.coverimage.url : ""}
                       title={posts.title}
                       date={getFormattedDate(posts.published_at)}
                       description={posts.summary}
@@ -60,7 +59,7 @@ const IndexPage = () => {
               }
             </div>
             <p className="card-readmore">
-              <Link to="/projects">Explore all projects <i className="fa fa-arrow-right"></i></Link>
+              <Link to="/project">Explore all projects <i className="fa fa-arrow-right"></i></Link>
             </p>
           </div>
           <div className="medium-col content-text">
@@ -114,6 +113,7 @@ const query = graphql`
         id
         image
         link
+        name
       }
     }
     allStrapiProjectpost(limit: 4, sort: {fields: published_at, order: DESC}) {
@@ -121,11 +121,7 @@ const query = graphql`
         id
         title
         coverimage {
-          formats {
-            medium {
-              url
-            }
-          }
+          url
         }
         published_at
         slug
@@ -152,4 +148,4 @@ const query = graphql`
         Tag
       }
     }
-  }`
+  }`;

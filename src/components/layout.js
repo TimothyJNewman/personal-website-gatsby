@@ -7,6 +7,7 @@ import { StaticQuery, graphql } from "gatsby";
 import Seo from "../components/seo"
 import Header from "../components/header"
 import Footer from "../components/footer"
+import "../css/index.css";
 
 const Layout = ({ children, seo }) => {
   return (

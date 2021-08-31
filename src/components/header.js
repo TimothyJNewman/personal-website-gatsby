@@ -43,7 +43,7 @@ const Header = () => {
             />
             <ButtonHeader
               textValue="Projects"
-              linkValue="/projects"
+              linkValue="/project"
             />
             <ButtonHeader
               textValue="Photos"
@@ -66,7 +66,7 @@ const Header = () => {
         <i className="fa fa-angle-double-right nav-icon"></i>
         Blog
       </Link>
-      <Link className="nav-link" to="/projects">
+      <Link className="nav-link" to="/project">
         <i className="fa fa-angle-double-right nav-icon"></i>
         Projects
       </Link>

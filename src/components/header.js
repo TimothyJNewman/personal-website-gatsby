@@ -1,9 +1,9 @@
-import "../css/header.css";
-import React, { useState } from "react";
-import ButtonHeader from '../components/header-button';
-import SmoothCollapse from "react-smooth-collapse";
-import { Link } from "gatsby";
-import logo from "../images/logo.svg";
+import '../css/header.css';
+import React, { useState } from 'react';
+import SmoothCollapse from 'react-smooth-collapse';
+import { Link } from 'gatsby';
+import ButtonHeader from './header-button';
+import logo from '../images/logo.svg';
 
 const Header = () => {
   const [menuExpanded, toggleMenuExpansion] = useState(false);
@@ -11,11 +11,13 @@ const Header = () => {
     <div className="header-dropdownmenu-container">
       <header className="header">
         <div className="header-wrapper large-col">
-          <a href="/" >
+          <a href="/">
             <div className="title-and-subtitle">
-              <div className="header-logo-container"><img className="header-logo" src={logo} alt="logo"></img></div>
+              <div className="header-logo-container"><img className="header-logo" src={logo} alt="logo" /></div>
               <h1 className="title">
-                Timothy<span className="title-middlename"> Jabez </span><span className="title-surname"> Newman </span>
+                Timothy
+                <span className="title-middlename"> Jabez </span>
+                <span className="title-surname"> Newman </span>
               </h1>
               <h2 className="subtitle">Personal Website</h2>
             </div>
@@ -23,10 +25,12 @@ const Header = () => {
           <button
             className="dropdown-burger"
             aria-label="Toggle Menu"
+            type="button"
             onClick={() => {
               toggleMenuExpansion(!menuExpanded);
             }}
-          ><i className={`fa dropdown-burger-symbol ${!menuExpanded ? "fa-bars" : "fa-times"}`}></i>
+          >
+            <i className={`fa dropdown-burger-symbol ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
           </button>
           <div className="nav-header">
             <ButtonHeader
@@ -57,31 +61,31 @@ const Header = () => {
         </div>
       </header>
       <SmoothCollapse expanded={menuExpanded} className="nav-dropdown-container medium-col">
-      <div className="nav-dropdown">
-      <Link className="nav-link" to="/about">
-        <i className="fa fa-angle-double-right nav-icon"></i>
-        About
-      </Link>
-      <Link className="nav-link" to="/blog">
-        <i className="fa fa-angle-double-right nav-icon"></i>
-        Blog
-      </Link>
-      <Link className="nav-link" to="/project">
-        <i className="fa fa-angle-double-right nav-icon"></i>
-        Projects
-      </Link>
-      <Link className="nav-link" to="/photos">
-        <i className="fa fa-angle-double-right nav-icon"></i>
-        Photos
-      </Link>
-      <Link className="nav-link" to="/contact">
-        <i className="fa fa-angle-double-right nav-icon"></i>
-        Contact
-      </Link>
-    </div>
+        <div className="nav-dropdown">
+          <Link className="nav-link" to="/about">
+            <i className="fa fa-angle-double-right nav-icon" />
+            About
+          </Link>
+          <Link className="nav-link" to="/blog">
+            <i className="fa fa-angle-double-right nav-icon" />
+            Blog
+          </Link>
+          <Link className="nav-link" to="/project">
+            <i className="fa fa-angle-double-right nav-icon" />
+            Projects
+          </Link>
+          <Link className="nav-link" to="/photos">
+            <i className="fa fa-angle-double-right nav-icon" />
+            Photos
+          </Link>
+          <Link className="nav-link" to="/contact">
+            <i className="fa fa-angle-double-right nav-icon" />
+            Contact
+          </Link>
+        </div>
       </SmoothCollapse>
     </div>
   );
-}
+};
 
 export default Header;

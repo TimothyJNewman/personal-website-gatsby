@@ -3,12 +3,10 @@
 */
 
 const getFormattedDate = (dateString) => {
-  var options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(dateString).toLocaleDateString([], options);
-}
+};
 
-const getFormattedLink = (hostname, path) => {
-  return hostname + path;
-}
+const getFormattedLink = (hostname, path) => hostname + path;
 
 export { getFormattedDate, getFormattedLink };

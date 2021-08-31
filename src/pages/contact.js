@@ -71,7 +71,7 @@ class Contact extends React.Component {
       isSocialMediaLoaded: false,
       error: null,
     };
-  }
+  };
 
   handleInputChange = ({ target: { name, value } }) => {
     if (name !== "email") {

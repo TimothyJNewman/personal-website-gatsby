@@ -1,4 +1,4 @@
-import { getFormattedDate, getFormattedLink, getNewCurrentArticleStart, getNavPageNumbers } from "./common-utils"
+import { getFormattedDate, getFormattedLink} from "./common-utils"
 
 describe("Testing getFormattedDate", () => {
   test("Example 1", () => {

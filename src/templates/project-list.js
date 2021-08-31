@@ -11,9 +11,18 @@ import Card from '../components/card'
 
 const ProjectList = ({ pageContext, data }) => {
 
-  const { currentPage, numPages, limit } = pageContext
-  const prevPage = currentPage - 1 === 1 ? "/project/" : "/project/page/"+(currentPage - 1).toString()
-  const nextPage = "/project/page/"+(currentPage + 1).toString()
+  const { currentPage, numPages } = pageContext
+  const prevPage =
+    currentPage === 2
+      ? "/project/"
+      : currentPage === 1
+        ? "/project/"
+        : "/project/page/" + (currentPage - 1).toString()
+  const nextPage =
+    currentPage === numPages
+      ? "/project/"
+      : "/project/page/" + (currentPage + 1).toString()
+
 
   return (
     <Layout>
@@ -39,18 +48,31 @@ const ProjectList = ({ pageContext, data }) => {
             }
           </div>
           <div className="posts-navigation-container">
-            <button className="posts-navigation-button"><Link to={prevPage}><i className="fa fa-arrow-circle-left"></i> Prev</Link></button>
-            {() => {
+            <Link to={prevPage} className="posts-navigation-button">
+                <i className="fa fa-arrow-circle-left"></i> Prev
+            </Link>
+            {(() => {
               const items = [];
-              for (var i = 1; i <= Math.ceil(numPages / limit); i++) {
-                items.push(
-                  <button className="posts-navigation-button" key={i}>
-                    <Link to={"/project/page/"+i}>{i}</Link>
-                  </button>
-                )
+              for (var i = 1; i <= numPages; i++) {
+                if (i === 1) {
+                  items.push(
+                    <Link to={"/project/"} className="posts-navigation-button" key={i}>
+                      {i}
+                    </Link>
+                  )
+                } else {
+                  items.push(
+                    <Link to={"/project/page/" + i} className="posts-navigation-button" key={i}>
+                        {i}
+                    </Link>
+                  )
+                }
               }
-            }}
-            <button className="posts-navigation-button"><Link to={nextPage}>Next <i className="fa fa-arrow-circle-right"></i></Link></button>
+              return items;
+            })()}
+            <Link to={nextPage} className="posts-navigation-button">
+                Next <i className="fa fa-arrow-circle-right"></i>
+            </Link>
           </div>
         </div>
       </LayoutSingleColumn>

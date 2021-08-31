@@ -6,6 +6,7 @@
 
 .markdown-text {
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .markdown-text h2, h3, h4, h5 {

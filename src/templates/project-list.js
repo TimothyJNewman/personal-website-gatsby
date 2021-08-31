@@ -14,10 +14,11 @@ const ProjectList = ({ pageContext, data }) => {
   let prevPage;
   if (currentPage === 2) prevPage = '/project/';
   else if (currentPage === 1) prevPage = '/project/';
-  else prevPage = `/project/page/${(currentPage - 1).toString()}`;
-  const nextPage = currentPage === numPages
-    ? `/project/page/${numPages.toString()}`
-    : `/project/page/${(currentPage + 1).toString()}`;
+  else prevPage = `/project/page/${currentPage - 1}`;
+  let nextPage;
+  if (currentPage === 1) nextPage = '/project';
+  else if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
+  else nextPage = `/project/page/${currentPage + 1}`;
 
   return (
     <Layout>

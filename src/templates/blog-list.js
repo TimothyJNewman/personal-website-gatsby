@@ -13,12 +13,13 @@ import Card from '../components/card';
 const BlogList = ({ pageContext, data }) => {
   const { currentPage, numPages } = pageContext;
   let prevPage;
-  if (currentPage === 2) prevPage = '/blog/';
-  else if (currentPage === 1) prevPage = '/blog/';
-  else prevPage = `/blog/page/${(currentPage - 1).toString()}`;
-  const nextPage = currentPage === numPages
-    ? `/blog/page/${numPages}`
-    : `/blog/page/${(currentPage + 1)}`;
+  if (currentPage === 2) prevPage = '/blog';
+  else if (currentPage === 1) prevPage = '/blog';
+  else prevPage = `/blog/page/${currentPage - 1}`;
+  let nextPage;
+  if (currentPage === 1) nextPage = '/blog';
+  else if (currentPage === numPages) nextPage = `/blog/page/${numPages}`;
+  else nextPage = `/blog/page/${currentPage + 1}`;
 
   return (
     <Layout>

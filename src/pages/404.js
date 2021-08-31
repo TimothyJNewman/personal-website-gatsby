@@ -26,7 +26,7 @@ const NotFoundPage = (props) => {
                 &nbsp;is not available.
               </>
             )}
-          &nbsp;Please
+          &nbsp;Please&nbsp;
           <Link to="/">click here</Link>
           &nbsp;to return to the home page.
         </p>

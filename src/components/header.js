@@ -15,7 +15,7 @@ const Header = () => {
             <div className="title-and-subtitle">
               <div className="header-logo-container"><img className="header-logo" src={logo} alt="logo"></img></div>
               <h1 className="title">
-                Timothy Jabez <span className="title-surname"> Newman </span>
+                Timothy<span className="title-middlename"> Jabez </span><span className="title-surname"> Newman </span>
               </h1>
               <h2 className="subtitle">Personal Website</h2>
             </div>

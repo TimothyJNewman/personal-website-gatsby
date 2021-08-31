@@ -21,7 +21,7 @@ const BlogList = ({ pageContext, data }) => {
         : "/blog/page/" + (currentPage - 1).toString()
   const nextPage =
     currentPage === numPages
-      ? "/blog/"
+      ? "/blog/page/" + numPages.toString()
       : "/blog/page/" + (currentPage + 1).toString()
 
   return (

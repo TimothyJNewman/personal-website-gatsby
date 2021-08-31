@@ -20,7 +20,7 @@ const ProjectList = ({ pageContext, data }) => {
         : "/project/page/" + (currentPage - 1).toString()
   const nextPage =
     currentPage === numPages
-      ? "/project/"
+      ? "/project/page/" + numPages.toString()
       : "/project/page/" + (currentPage + 1).toString()
 
 

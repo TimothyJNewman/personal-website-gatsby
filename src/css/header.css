@@ -121,7 +121,7 @@
   }
   
   @media only screen and (max-width: 400px) {
-    .title-surname {
+    .title-middlename {
       display: none;
     }
     .dropdown-burger {

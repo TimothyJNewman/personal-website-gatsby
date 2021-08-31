@@ -1,4 +1,4 @@
-import { sanitize, sanitizeKeepUnicode, isEmail } from "./StringValidator"
+import { sanitize, sanitizeKeepUnicode, isEmail } from "./string-validator"
 
 describe("Testing sanitize", () => {
   test("Example 1", () => {

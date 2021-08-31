@@ -4,7 +4,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import CoverImage from '../components/cover-image'
-import { getFormattedDate, getFormattedLink } from '../util/CommonUtils'
+import { getFormattedDate, getFormattedLink } from '../util/common-utils'
 import Layout from '../components/layout'
 import LayoutSingleColumn from '../components/layout-single-column'
 import Card from '../components/card'

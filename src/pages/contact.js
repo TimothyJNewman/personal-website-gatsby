@@ -3,7 +3,7 @@
 */
 import React from "react";
 import { graphql, StaticQuery } from 'gatsby';
-import { isEmail, sanitizeKeepUnicode } from "../util/StringValidator";
+import { isEmail, sanitizeKeepUnicode } from "../util/string-validator";
 import CoverImage from '../components/cover-image';
 import Layout from "../components/layout";
 import LayoutSingleColumn from "../components/layout-single-column";

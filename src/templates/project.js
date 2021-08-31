@@ -1,27 +1,32 @@
 /*
 * Individual project post
 */
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import React from 'react';
+import { Link, graphql } from 'gatsby';
 import MarkdownView from 'react-showdown';
-import Layout from '../components/layout'
-import LayoutSingleColumn from '../components/layout-single-column'
-import CoverImage from '../components/cover-image'
-import { getFormattedDate } from '../util/CommonUtils'
+import Layout from '../components/layout';
+import LayoutSingleColumn from '../components/layout-single-column';
+import CoverImage from '../components/cover-image';
+import { getFormattedDate } from '../util/common-utils';
 
 const ProjectTemplate = ({ data }) => (
   <Layout>
     <LayoutSingleColumn>
       <div className="medium-col">
         {data.strapiProjectpost.coverimage
-          ? <CoverImage src={data.strapiProjectpost.coverimage.url} title={data.strapiProjectpost.title} />
+          ? (
+            <CoverImage
+              src={data.strapiProjectpost.coverimage.url}
+              title={data.strapiProjectpost.title}
+            />
+          )
           : <CoverImage title={data.strapiProjectpost.title} />}
         <div className="content-wrapper content-text">
           <div className="article-date-and-tags">
             <p className="article-date">{getFormattedDate(data.strapiProjectpost.published_at)}</p>
             <div className="card-tag-container-tagpage">
-              {data.strapiProjectpost.tags.map(elem => (
-                <Link className="card-tag-link" to={"/tag/" + elem.Tag} key={elem.Tag}>{elem.Tag}</Link>
+              {data.strapiProjectpost.tags.map((elem) => (
+                <Link className="card-tag-link" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
               ))}
             </div>
           </div>
@@ -33,14 +38,17 @@ const ProjectTemplate = ({ data }) => (
           </div>
         </div>
         <p className="card-readmore">
-          <Link to="/project">Explore all projects <i className="fa fa-arrow-right"></i></Link>
+          <Link to="/project">
+            Explore all projects&nbsp;
+            <i className="fa fa-arrow-right" />
+          </Link>
         </p>
       </div>
     </LayoutSingleColumn>
   </Layout>
-)
+);
 
-export default ProjectTemplate
+export default ProjectTemplate;
 
 export const query = graphql`
   query ProjectTemplate ($slug: String!){

@@ -2,27 +2,27 @@
 * Blogs list
 * Adapted from https://nickymeuleman.netlify.app/blog/gatsby-pagination
 */
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import CoverImage from '../components/cover-image'
-import { getFormattedDate, getFormattedLink } from '../util/CommonUtils'
-import Layout from '../components/layout'
-import LayoutSingleColumn from '../components/layout-single-column'
-import Card from '../components/card'
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import CoverImage from '../components/cover-image';
+import { getFormattedDate, getFormattedLink } from '../util/common-utils';
+import Layout from '../components/layout';
+import LayoutSingleColumn from '../components/layout-single-column';
+import Card from '../components/card';
 
 const BlogList = ({ pageContext, data }) => {
-
-  const { currentPage, numPages } = pageContext
-  const prevPage =
-    currentPage === 2
-      ? "/blog/"
-      : currentPage === 1
-        ? "/blog/"
-        : "/blog/page/" + (currentPage - 1).toString()
-  const nextPage =
-    currentPage === numPages
-      ? "/blog/page/" + numPages.toString()
-      : "/blog/page/" + (currentPage + 1).toString()
+  const { currentPage, numPages } = pageContext;
+  let prevPage;
+  if (currentPage === 2) {
+    prevPage = '/blog/';
+  } else if (currentPage === 1) {
+    prevPage = '/blog/';
+  } else {
+    prevPage = `/blog/page/${(currentPage - 1).toString()}`;
+  }
+  const nextPage = currentPage === numPages
+    ? `/blog/page/${numPages}`
+    : `/blog/page/${(currentPage + 1)}`;
 
   return (
     <Layout>
@@ -32,8 +32,8 @@ const BlogList = ({ pageContext, data }) => {
           <br />
           <div className="card-container content-text">
             {data.allStrapiBlogpost.edges.length > 0
-              ? data.allStrapiBlogpost.edges.map(posts => (
-                <Link to={getFormattedLink("/blog/", posts.node.slug)} key={posts.node.id}>
+              ? data.allStrapiBlogpost.edges.map((posts) => (
+                <Link to={getFormattedLink('/blog/', posts.node.slug)} key={posts.node.id}>
                   <Card
                     title={posts.node.title}
                     date={getFormattedDate(posts.node.published_at)}
@@ -44,41 +44,42 @@ const BlogList = ({ pageContext, data }) => {
                   />
                 </Link>
               ))
-              : <p className="error-message">No blog posts found</p>
-            }
+              : <p className="error-message">No blog posts found</p>}
           </div>
           <div className="posts-navigation-container">
             <Link to={prevPage} className="posts-navigation-button">
-              <i className="fa fa-arrow-circle-left"></i> Prev
+              <i className="fa fa-arrow-circle-left" />
+              &nbsp;Prev
             </Link>
             {(() => {
               const items = [];
-              for (var i = 1; i <= numPages; i++) {
+              for (let i = 1; i <= numPages; i++) {
                 if (i === 1) {
                   items.push(
-                    <Link to={"/blog/"} className="posts-navigation-button" key={i}>
+                    <Link to="/blog/" className="posts-navigation-button" key={i}>
                       {i}
-                    </Link>
-                  )
+                    </Link>,
+                  );
                 } else {
                   items.push(
-                    <Link to={"/blog/page/" + i} className="posts-navigation-button" key={i}>
+                    <Link to={`/blog/page/${i}`} className="posts-navigation-button" key={i}>
                       {i}
-                    </Link>
-                  )
+                    </Link>,
+                  );
                 }
               }
               return items;
             })()}
             <Link to={nextPage} className="posts-navigation-button">
-              Next <i className="fa fa-arrow-circle-right"></i>
+              Next&nbsp;
+              <i className="fa fa-arrow-circle-right" />
             </Link>
           </div>
         </div>
       </LayoutSingleColumn>
     </Layout>
-  )
-}
+  );
+};
 
 export default BlogList;
 

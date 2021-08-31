@@ -54,6 +54,7 @@
   
   a, a:hover, a:focus, a:active {
     text-decoration: none;
+    color:inherit;
   }
   
   .bg-color-secondary {
@@ -237,7 +238,7 @@
     margin: 1em 1em 0em 1em;
   }
   
-  .posts-navigation-button {
+  .posts-navigation-button, .posts-navigation-button:active {
     padding: 0.4em 0.8em;
     display: inline;
     color: var(--primarycolour-l5);
@@ -249,7 +250,7 @@
     font-size: 0.8em;
   }
   
-  .posts-navigation-button:hover {
+  .posts-navigation-button:hover, .posts-navigation-button:focus {
     color: var(--primarycolour-d4);
     background-color: var(--secondarycolouroverlay);
   }

@@ -31,16 +31,16 @@ const BlogList = ({ pageContext, data }) => {
           <div className="card-container content-text">
             {data.allStrapiBlogpost.edges.length > 0
               ? data.allStrapiBlogpost.edges.map((posts) => (
-                <Link to={getFormattedLink('/blog/', posts.node.slug)} key={posts.node.id}>
-                  <Card
-                    title={posts.node.title}
-                    date={getFormattedDate(posts.node.published_at)}
-                    description={posts.node.summary}
-                    tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                    tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                    tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                  />
-                </Link>
+                <Card
+                  title={posts.node.title}
+                  date={getFormattedDate(posts.node.published_at)}
+                  link={getFormattedLink('/blog/', posts.node.slug)}
+                  description={posts.node.summary}
+                  tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
+                  tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
+                  tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
+                  key={posts.node.id}
+                />
               ))
               : <p className="error-message">No blog posts found</p>}
           </div>

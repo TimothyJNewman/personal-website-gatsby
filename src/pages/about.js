@@ -27,14 +27,7 @@ const About = () => {
     <Layout seo={seo}>
       <LayoutSingleColumn>
         <div className="medium-col">
-          {data.strapiAboutpagecontent.coverimage
-            ? (
-              <CoverImage
-                src={data.strapiAboutpagecontent.coverimage.formats.medium.url}
-                title={data.strapiAboutpagecontent.title}
-              />
-            )
-            : <CoverImage title={data.strapiAboutpagecontent.title} />}
+          <CoverImage title={data.strapiAboutpagecontent.title} />
           <div className="content-wrapper content-text">
             <div className="markdown-text">
               <MarkdownView

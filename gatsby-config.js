@@ -36,6 +36,10 @@ module.exports = {
         collectionTypes: ['projectpost', 'blogpost', 'gallery', 'tag', 'socialMedia'],
         singleTypes: ['welcomenote', 'aboutpagecontent', 'global'],
         queryLimit: 1000,
+        loginData: {
+          identifier: process.env.API_USERNAME,
+          password: process.env.API_PWD,
+        },
       },
     },
     {

@@ -30,18 +30,18 @@ const ProjectList = ({ pageContext, data }) => {
           <div className="card-container content-text">
             {data.allStrapiProjectpost.edges.length > 0
               ? data.allStrapiProjectpost.edges.map((posts) => (
-                <Link to={getFormattedLink('/project/', posts.node.slug)} key={posts.node.id}>
-                  <Card
-                    title={posts.node.title}
-                    img={posts.node.coverimage.localFile}
-                    alt={posts.node.coverimage.alternativeText}
-                    date={getFormattedDate(posts.node.published_at)}
-                    description={posts.node.summary}
-                    tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                    tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                    tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                  />
-                </Link>
+                <Card
+                  title={posts.node.title}
+                  img={posts.node.coverimage.localFile}
+                  alt={posts.node.coverimage.alternativeText}
+                  date={getFormattedDate(posts.node.published_at)}
+                  link={getFormattedLink('/project/', posts.node.slug)}
+                  description={posts.node.summary}
+                  tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
+                  tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
+                  tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
+                  key={posts.node.id}
+                />
               ))
               : <p className="error-message">No projects</p>}
           </div>

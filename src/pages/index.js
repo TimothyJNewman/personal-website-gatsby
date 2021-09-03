@@ -97,18 +97,18 @@ const IndexPage = () => {
           <div className="card-container">
             {data.allStrapiProjectpost.nodes
               ? data.allStrapiProjectpost.nodes.map((posts) => (
-                <Link to={getFormattedLink('/project/', posts.slug)} key={posts.id}>
-                  <Card
-                    img={posts.coverimage ? posts.coverimage.localFile : ''}
-                    alt={posts.coverimage.alternativeText}
-                    title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  />
-                </Link>
+                <Card
+                  img={posts.coverimage ? posts.coverimage.localFile : ''}
+                  alt={posts.coverimage.alternativeText}
+                  title={posts.title}
+                  date={getFormattedDate(posts.published_at)}
+                  link={getFormattedLink('/project/', posts.slug)}
+                  description={posts.summary}
+                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                  key={posts.id}
+                />
               ))
               : <p className="error-message">No projects found</p>}
           </div>
@@ -124,16 +124,16 @@ const IndexPage = () => {
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
               ? data.allStrapiBlogpost.nodes.map((posts) => (
-                <Link to={getFormattedLink('/blog/', posts.slug)} key={posts.id}>
-                  <Card
-                    title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  />
-                </Link>
+                <Card
+                  title={posts.title}
+                  date={getFormattedDate(posts.published_at)}
+                  link={getFormattedLink('/blog/', posts.slug)}
+                  description={posts.summary}
+                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                  key={posts.id}
+                />
               ))
               : <p className="error-message">No blog posts found</p>}
           </div>

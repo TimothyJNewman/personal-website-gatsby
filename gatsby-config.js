@@ -14,7 +14,6 @@ module.exports = {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          layout: 'fullWidth',
           placeholder: 'tracedSVG',
           tracedSVGOptions: { color: '#653815', background: '#fbf3ed', turdSize: 10 },
         },
@@ -51,6 +50,6 @@ module.exports = {
         icon: './src/images/icons/android-chrome-512x512.png',
       },
     },
-    //'gatsby-plugin-offline',
+    'gatsby-plugin-offline',
   ],
 };

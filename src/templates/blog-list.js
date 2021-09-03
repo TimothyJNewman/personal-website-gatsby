@@ -96,7 +96,7 @@ export const query = graphql`
           coverimage {
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
             alternativeText

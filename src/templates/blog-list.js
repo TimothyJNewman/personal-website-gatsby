@@ -11,6 +11,7 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
 
 const BlogList = ({ pageContext, data }) => {
+  // variables for page navigation
   const { currentPage, numPages } = pageContext;
   let prevPage;
   if (currentPage === 2) prevPage = '/blog';
@@ -93,13 +94,33 @@ export const query = graphql`
           title
           slug
           coverimage {
-            url
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            alternativeText
           }
           content
           summary
           published_at
           tags {
             Tag
+          }
+          seo {
+            isArticle
+            metaDescription
+            metaTitle
+            keywords
+            shareImage {
+              alt
+              preventIndexing
+              media {
+                localFile {
+                  publicURL
+                }
+              }
+            }
           }
         }
       }

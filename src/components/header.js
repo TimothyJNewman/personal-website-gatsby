@@ -11,7 +11,7 @@ const Header = () => {
     <div className="header-dropdownmenu-container">
       <header className="header">
         <div className="header-wrapper large-col">
-          <a href="/">
+          <Link to="/">
             <div className="title-and-subtitle">
               <div className="header-logo-container"><img className="header-logo" src={logo} alt="logo" /></div>
               <h1 className="title">
@@ -21,7 +21,7 @@ const Header = () => {
               </h1>
               <h2 className="subtitle">Personal Website</h2>
             </div>
-          </a>
+          </Link>
           <button
             className="dropdown-burger"
             aria-label="Toggle Menu"

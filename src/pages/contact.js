@@ -143,7 +143,9 @@ class Contact extends React.Component {
                   render={data =>
                     <div className="social-media-icon-container">
                       {data.allStrapiSocialmedia.nodes.map(media => (
-                        <a href={media.link} key={media.id}><img src={media.image} alt={media.name} /></a>
+                        <a href={media.link} key={media.id}>
+                          <img src={media.image} alt={media.name} />
+                        </a>
                       ))}
                     </div>
                   }

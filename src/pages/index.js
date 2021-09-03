@@ -25,7 +25,12 @@ const query = graphql`
         id
         title
         coverimage {
-          url
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          alternativeText
         }
         published_at
         slug
@@ -94,7 +99,8 @@ const IndexPage = () => {
               ? data.allStrapiProjectpost.nodes.map((posts) => (
                 <Link to={getFormattedLink('/project/', posts.slug)} key={posts.id}>
                   <Card
-                    img={posts.coverimage ? posts.coverimage.url : ''}
+                    img={posts.coverimage ? posts.coverimage.localFile : ''}
+                    alt={posts.coverimage.alternativeText}
                     title={posts.title}
                     date={getFormattedDate(posts.published_at)}
                     description={posts.summary}

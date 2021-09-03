@@ -1,7 +1,13 @@
 import React from 'react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import '../css/cover-image.css';
 
-const CoverImage = ({ title, desc, src }) => (
+const CoverImage = ({
+  title,
+  desc,
+  img,
+  alt = '',
+}) => (
   <div className="cover-image-container">
     <div className="cover-image-title-container">
       <h2 className="cover-image-title">{title}</h2>
@@ -9,9 +15,9 @@ const CoverImage = ({ title, desc, src }) => (
         ? <p className="cover-image-desc">{desc}</p>
         : ''}
     </div>
-    {src
-      ? <img className="cover-image" src={src} alt="" />
-      : <img className="cover-image" alt="" />}
+    {img
+      ? <GatsbyImage className="cover-image" image={getImage(img)} alt={alt} />
+      : ''}
   </div>
 );
 

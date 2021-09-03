@@ -11,11 +11,20 @@ import Card from '../components/card';
 
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;
-
+  const seo = {
+    metaTitle: queryTag,
+    isArticle: false,
+  };
   return (
-    <Layout>
+    <Layout seo={seo}>
       <LayoutSingleColumn>
-        <CoverImage title={`Tag: ${queryTag}`} desc={` | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.edges.length : 0} | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.edges.length : 0}`} />
+        <CoverImage
+          title={`Tag: ${queryTag}`}
+          desc={`
+           | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.edges.length : 0}
+           | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.edges.length : 0}
+           `}
+        />
         <br />
         {data.allStrapiProjectpost.edges.length > 0
           ? (

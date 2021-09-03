@@ -1,9 +1,11 @@
 import '../css/card.css';
 import React from 'react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 
 const Card = ({
   img,
+  alt = '',
   title,
   date,
   description,
@@ -13,7 +15,7 @@ const Card = ({
 }) => (
   <>
     <div className="card">
-      {img !== undefined && <img className="card-image" src={img} alt="" />}
+      {img !== undefined && <GatsbyImage className="card-image" image={getImage(img)} alt={alt} />}
       <div className="card-contents">
         <div>
           <h3 className="card-heading">{title}</h3>

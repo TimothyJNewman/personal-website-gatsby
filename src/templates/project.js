@@ -16,7 +16,8 @@ const ProjectTemplate = ({ data }) => (
         {data.strapiProjectpost.coverimage
           ? (
             <CoverImage
-              src={data.strapiProjectpost.coverimage.url}
+              img={data.strapiProjectpost.coverimage.localFile}
+              alt={data.strapiProjectpost.coverimage.alternativeText}
               title={data.strapiProjectpost.title}
             />
           )
@@ -54,8 +55,13 @@ export const query = graphql`
   query ProjectTemplate ($slug: String!){
     strapiProjectpost( slug: {eq: $slug }) {
         id
-        coverimage{
-          url
+        coverimage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          alternativeText
         }
         title
         content

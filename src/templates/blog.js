@@ -16,7 +16,8 @@ const BlogTemplate = ({ data }) => (
         {data.strapiBlogpost.coverimage
           ? (
             <CoverImage
-              src={data.strapiBlogpost.coverimage.url}
+              img={data.strapiBlogpost.coverimage.localFile}
+              alt={data.strapiBlogpost.coverimage.alternativeText}
               title={data.strapiBlogpost.title}
             />
           )
@@ -54,8 +55,13 @@ export const query = graphql`
   query BlogTemplate ($slug: String!){
     strapiBlogpost( slug: {eq: $slug }) {
         id
-        coverimage{
-          url
+        coverimage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          alternativeText
         }
         title
         content

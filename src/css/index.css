@@ -473,7 +473,7 @@ input[type=text].red-underline:focus, textarea.red-underline:focus {
 
 .form-submit-container {
   display: flex;
-  margin-top: 5px;
+  margin-top: 0.5em;
   justify-content: flex-end;
 }
 
@@ -485,7 +485,6 @@ input[type=text].red-underline:focus, textarea.red-underline:focus {
   max-width: 150px;
   border-radius: var(--std-border-radius);
   border: 0;
-  margin-left: 15px;
   padding: 6px 15px 6px 15px;
   color: var(--primarycolour-l5);
   background-color: var(--primarycolour-d1);

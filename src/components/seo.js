@@ -16,26 +16,26 @@ import mstile310x310 from '../images/icons/mstile-310x310.png';
 const seoQuery = graphql`
   query SEOquery {
     strapiGlobal {
+      siteName
       defaultSeo {
+        isArticle
         metaDescription
         metaTitle
+        keywords
         shareImage {
           alt
-          id
-          keywords
+          preventIndexing
           media {
             localFile {
               publicURL
             }
           }
-          preventIndexing
         }
       }
-      siteName
     }
   }`;
 
-const SEO = ({ seo = {} }) => {
+const SEO = ({ seo }) => {
   const { strapiGlobal } = useStaticQuery(seoQuery);
   const { defaultSeo, siteName } = strapiGlobal;
 
@@ -73,6 +73,14 @@ const SEO = ({ seo = {} }) => {
         },
       );
     }
+    if (fullSeo.keywords) {
+      tags.push(
+        {
+          name: 'keywords',
+          content: fullSeo.keywords,
+        },
+      );
+    }
     if (fullSeo.shareImage) {
       const imageUrl = (process.env.GATSBY_ROOT_URL || 'http://localhost:8000')
         + fullSeo.shareImage.media.localFile.publicURL;
@@ -91,7 +99,7 @@ const SEO = ({ seo = {} }) => {
         },
       );
     }
-    if (fullSeo.article) {
+    if (fullSeo.isArticle) {
       tags.push({
         property: 'og:type',
         content: 'article',
@@ -99,15 +107,12 @@ const SEO = ({ seo = {} }) => {
     }
     tags.push(
       { name: 'twitter:card', content: 'summary_large_image' },
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'msapplication-TileColor', content: '#00a300' },
       { name: 'msapplication-square70x70logo', content: mstile70x70 },
       { name: 'msapplication-square144x144logo', content: mstile144x144 },
       { name: 'msapplication-square150x150logo', content: mstile150x150 },
       { name: 'msapplication-wide310x150logo', content: mstile310x150 },
       { name: 'msapplication-square310x310logo', content: mstile310x310 },
-      { name: 'description', content: 'Timothy Jabez Newman personal website' },
     );
 
     return tags;
@@ -162,16 +167,19 @@ const SEO = ({ seo = {} }) => {
 
 export default SEO;
 
+/* eslint-disable react/no-unused-prop-types, react/forbid-prop-types */
 SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  article: PropTypes.bool,
+  metaTitle: PropTypes.string,
+  metaDescription: PropTypes.string,
+  shareImage: PropTypes.object,
+  keywords: PropTypes.string,
+  isArticle: PropTypes.bool,
 };
 
 SEO.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  article: false,
+  metaTitle: null,
+  metaDescription: null,
+  shareImage: null,
+  keywords: null,
+  isArticle: false,
 };

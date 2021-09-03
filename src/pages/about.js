@@ -6,19 +6,25 @@ import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 
 const aboutPageQuery = graphql`
-  query {
+  query aboutPage {
     strapiAboutpagecontent {
       title
       content
+      seo {
+        metaTitle
+        metaDescription
+        isArticle
+      }
     }
   }
 `;
 
 const About = () => {
   const data = useStaticQuery(aboutPageQuery);
-
+  // eslint-disable-next-line prefer-destructuring
+  const seo = data.strapiAboutpagecontent.seo;
   return (
-    <Layout>
+    <Layout seo={seo}>
       <LayoutSingleColumn>
         <div className="medium-col">
           {data.strapiAboutpagecontent.coverimage

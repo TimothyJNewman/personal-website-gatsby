@@ -9,4 +9,7 @@ const getFormattedDate = (dateString) => {
 
 const getFormattedLink = (hostname, path) => hostname + path;
 
-export { getFormattedDate, getFormattedLink };
+export {
+  getFormattedDate,
+  getFormattedLink,
+};

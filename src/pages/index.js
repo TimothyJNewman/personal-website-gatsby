@@ -68,20 +68,6 @@ const query = graphql`
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
-  // function to handle share button click
-  const webShareHandler = async () => {
-    try {
-      const shareData = {
-        title: data.strapiGlobal.defaultSeo.metaTitle,
-        text: data.strapiGlobal.defaultSeo.metaDescription,
-        url: process.env.GATSBY_ROOT_URL,
-      };
-      await navigator.share(shareData);
-    } finally {
-      await navigator.share({ url: process.env.GATSBY_ROOT_URL });
-    }
-  };
-
   return (
     <Layout>
       <LayoutSingleColumn>
@@ -115,7 +101,6 @@ const IndexPage = () => {
           <br />
           <div className="blog-postlist-title-share-button">
             <h2 className="blog-postlist-title">Recent Projects</h2>
-            {navigator.share && <div><input className="article-share-button" type="button" value="Share this Website!" onClick={webShareHandler} /></div>}
           </div>
           <div className="card-container">
             {data.allStrapiProjectpost.nodes

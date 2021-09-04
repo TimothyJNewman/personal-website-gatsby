@@ -23,7 +23,6 @@ const seoQuery = graphql`
         metaTitle
         keywords
         shareImage {
-          alt
           preventIndexing
           media {
             localFile {

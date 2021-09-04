@@ -9,6 +9,7 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
+import '../css/card.css';
 
 const BlogList = ({ pageContext, data }) => {
   // variables for page navigation
@@ -113,7 +114,6 @@ export const query = graphql`
             metaTitle
             keywords
             shareImage {
-              alt
               preventIndexing
               media {
                 localFile {

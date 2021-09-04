@@ -193,33 +193,34 @@ a, a:hover, a:focus, a:active {
   padding: 5px 0px;
 }
 
+.article-date-share-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 0 5px 0;
+}
+
+.article-share-button, .article-share-button:active {
+  color: var(--primarycolour-d2);
+  padding: 0;
+  border: 0;
+  background: linear-gradient(var(--secondarycolour-l0), var(--secondarycolour-l0)), linear-gradient(var(--secondarycolour-l0), var(--secondarycolour-l0));
+  background-size: 100% 0.15em, 0 1em;
+  background-position: 0% 100%, 0% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms, color 400ms;
+}
+
+.article-share-button:hover, .article-share-button:focus {
+  background-size: 0 0.1em, 100% 1.6em;
+  color: var(--primarycolour-l5);
+}
+
 .article-date {
+  margin: 0;
   font-size: 0.9em;
   font-style: italic;
-  margin-bottom: 10px;
-  margin-top: 5px;
   color: var(--dategrey);
-}
-
-.card-tag-container-tagpage {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.card-tag-link {
-  border-radius: var(--std-border-radius);
-  padding: 3px 10px 6px 10px;
-  color: var(--primarycolour-l6);
-  background-color: var(--primarycolour-d1);
-  font-size: 1em;
-  display: inline;
-  margin: 0.1em 0.1em;
-  line-height: initial;
-}
-
-.card-tag-link:hover, .card-tag-link:focus {
-  background-color: var(--primarycolour-l4);
-  color: var(--primarycolour-d4);
 }
 
 /*
@@ -321,6 +322,12 @@ a, a:hover, a:focus, a:active {
 .profile-pic {
   border-radius: inherit;
   width: 100%;
+}
+
+.blog-postlist-title-share-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .blog-postlist-title {
@@ -482,6 +489,7 @@ input[type=text].red-underline:focus, textarea.red-underline:focus {
 }
 
 .form-inputs input[type=button] {
+  margin-left: 1em;
   max-width: 150px;
   border-radius: var(--std-border-radius);
   border: 0;

@@ -5,8 +5,7 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import Layout from '../components/layout';
 import '../css/markdown.css';
 
-const NotFoundPage = (props) => {
-  const { location } = props;
+const NotFoundPage = ({ location }) => {
   const { pathname } = location;
 
   return (

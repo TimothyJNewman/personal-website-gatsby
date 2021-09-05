@@ -10,7 +10,7 @@ import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
 
 const BlogTemplate = ({ data }) => (
-  <Layout>
+  <Layout seo={data.strapiBlogpost.seo}>
     <LayoutSingleColumn>
       <div className="medium-col">
         {data.strapiBlogpost.coverimage
@@ -29,6 +29,7 @@ const BlogTemplate = ({ data }) => (
                 Published:&nbsp;
                 {getFormattedDate(data.strapiBlogpost.published_at)}
               </p>
+              <div className="article-share-button">Watch this space!</div>
             </div>
             <div className="card-tag-container-tagpage">
               {data.strapiBlogpost.tags.map((elem) => (

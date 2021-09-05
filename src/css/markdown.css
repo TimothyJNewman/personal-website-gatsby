@@ -1,15 +1,11 @@
-/* 
-  *
-  *markdown formatting
-  *
-  */
+/* Markdown formatting */
 
 .markdown-text {
   line-height: 1.6;
   overflow-wrap: break-word;
 }
 
-.markdown-text h2, h3, h4, h5 {
+.markdown-text h2, h3, h4 {
   margin-top: 0.6em;
   margin-bottom: 0.4em;
 }

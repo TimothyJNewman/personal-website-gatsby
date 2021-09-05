@@ -1,4 +1,6 @@
-import '../css/header.css';
+/*
+* Header
+*/
 import React, { useState } from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';

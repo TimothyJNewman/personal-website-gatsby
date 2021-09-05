@@ -9,7 +9,6 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
-import '../css/card.css';
 
 const BlogList = ({ pageContext, data }) => {
   // variables for page navigation
@@ -23,8 +22,13 @@ const BlogList = ({ pageContext, data }) => {
   else if (currentPage === numPages) nextPage = `/blog/page/${numPages}`;
   else nextPage = `/blog/page/${currentPage + 1}`;
 
+  const seo = {
+    metaTitle: 'Blog Page',
+    isArticle: false,
+  };
+
   return (
-    <Layout>
+    <Layout seo={seo}>
       <LayoutSingleColumn>
         <div className="medium-col">
           <CoverImage title="Recent Blog Posts" />

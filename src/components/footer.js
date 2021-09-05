@@ -1,6 +1,8 @@
+/*
+* Footer
+*/
 import React from 'react';
 import { Link } from 'gatsby';
-import '../css/footer.css';
 
 const Footer = () => (
   <footer className="footer">

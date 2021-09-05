@@ -21,10 +21,8 @@ const aboutPageQuery = graphql`
 
 const About = () => {
   const data = useStaticQuery(aboutPageQuery);
-  // eslint-disable-next-line prefer-destructuring
-  const seo = data.strapiAboutpagecontent.seo;
   return (
-    <Layout seo={seo}>
+    <Layout seo={data.strapiAboutpagecontent.seo}>
       <LayoutSingleColumn>
         <div className="medium-col">
           <CoverImage title={data.strapiAboutpagecontent.title} />

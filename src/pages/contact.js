@@ -126,9 +126,12 @@ class Contact extends React.Component {
         <span className="error-message">{this.state.modifiedDataValidMessage[field].errorMessage}</span>
       )
     };
-
+    const seo = {
+      metaTitle: 'Contact Page',
+      isArticle: false,
+    };
     return (
-      <Layout>
+      <Layout seo={seo}>
         <LayoutSingleColumn>
           <CoverImage title="Contact Me!" />
           <br />

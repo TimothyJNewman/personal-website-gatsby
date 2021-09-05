@@ -7,9 +7,12 @@ import '../css/markdown.css';
 
 const NotFoundPage = ({ location }) => {
   const { pathname } = location;
-
+  const seo = {
+    metaTitle: '404 Page',
+    isArticle: false,
+  };
   return (
-    <Layout>
+    <Layout seo={seo}>
       <LayoutSingleColumn>
         <CoverImage title="You've reached a dead end!" />
         <h2>404 Error</h2>

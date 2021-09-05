@@ -8,7 +8,6 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
-import '../css/card.css';
 
 const ProjectList = ({ pageContext, data }) => {
   // variables for page navigation
@@ -22,8 +21,13 @@ const ProjectList = ({ pageContext, data }) => {
   else if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
   else nextPage = `/project/page/${currentPage + 1}`;
 
+  const seo = {
+    metaTitle: 'Project Page',
+    isArticle: false,
+  };
+
   return (
-    <Layout>
+    <Layout seo={seo}>
       <LayoutSingleColumn>
         <div className="medium-col">
           <CoverImage title="Recent Projects" />

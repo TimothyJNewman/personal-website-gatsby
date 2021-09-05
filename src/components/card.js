@@ -1,4 +1,3 @@
-import '../css/card.css';
 import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';

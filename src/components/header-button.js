@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import '../css/header-button.css';
 
 const ButtonHeader = ({ textValue, linkValue }) => (
   <Link to={linkValue}>

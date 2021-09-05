@@ -5,7 +5,6 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Card from '../components/card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
-import '../css/card.css';
 import '../css/markdown.css';
 
 const query = graphql`  
@@ -58,12 +57,6 @@ const query = graphql`
         Tag
       }
     }
-    strapiGlobal {
-      defaultSeo {
-        metaTitle
-        metaDescription
-      }
-    }
   }`;
 
 const IndexPage = () => {
@@ -101,6 +94,7 @@ const IndexPage = () => {
           <br />
           <div className="blog-postlist-title-share-button">
             <h2 className="blog-postlist-title">Recent Projects</h2>
+            <div className="article-share-button">Watch this space!</div>
           </div>
           <div className="card-container">
             {data.allStrapiProjectpost.nodes

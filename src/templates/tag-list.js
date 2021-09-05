@@ -8,7 +8,6 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
-import '../css/card.css';
 
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;

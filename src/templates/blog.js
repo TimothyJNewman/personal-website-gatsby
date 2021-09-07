@@ -29,7 +29,8 @@ const BlogTemplate = ({ data }) => (
                 Published:&nbsp;
                 {getFormattedDate(data.strapiBlogpost.published_at)}
               </p>
-              <div className="article-share-button">Watch this space!</div>
+              {/* TODO Add share button here */}
+              <div className="article-share-button" />
             </div>
             <div className="card-tag-container-tagpage">
               {data.strapiBlogpost.tags.map((elem) => (

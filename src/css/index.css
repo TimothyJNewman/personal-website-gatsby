@@ -97,15 +97,15 @@ a, a:hover, a:focus, a:active {
 /* Loader spinner */
 
 .spinner {
-  width: 2.5em;
+  width: 2.0em;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 .spinner>div {
-  width: 0.7em;
-  height: 0.7em;
+  width: 0.5em;
+  height: 0.5em;
   background-color: var(--primarycolour-d4);
   border-radius: 100%;
   display: inline-block;

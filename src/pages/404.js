@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import CoverImage from '../components/cover-image';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Layout from '../components/layout';
-import '../css/markdown.css';
 
 const NotFoundPage = ({ location }) => {
   const { pathname } = location;

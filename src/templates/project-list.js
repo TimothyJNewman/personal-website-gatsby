@@ -17,8 +17,7 @@ const ProjectList = ({ pageContext, data }) => {
   else if (currentPage === 1) prevPage = '/project/';
   else prevPage = `/project/page/${currentPage - 1}`;
   let nextPage;
-  if (currentPage === 1) nextPage = '/project';
-  else if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
+  if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
   else nextPage = `/project/page/${currentPage + 1}`;
 
   const seo = {

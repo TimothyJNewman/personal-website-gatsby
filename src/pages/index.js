@@ -5,7 +5,6 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Card from '../components/card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
-import '../css/markdown.css';
 
 const query = graphql`  
   query HomeQuery {
@@ -94,7 +93,8 @@ const IndexPage = () => {
           <br />
           <div className="blog-postlist-title-share-button">
             <h2 className="blog-postlist-title">Recent Projects</h2>
-            <div className="article-share-button">Watch this space!</div>
+            {/* TODO Add share button here */}
+            <div className="article-share-button" />
           </div>
           <div className="card-container">
             {data.allStrapiProjectpost.nodes

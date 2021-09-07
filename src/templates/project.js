@@ -29,7 +29,8 @@ const ProjectTemplate = ({ data }) => (
                 Published:&nbsp;
                 {getFormattedDate(data.strapiProjectpost.published_at)}
               </p>
-              <div className="article-share-button">Watch this space!</div>
+              {/* TODO Add share button here */}
+              <div className="article-share-button" />
             </div>
             <div className="card-tag-container-tagpage">
               {data.strapiProjectpost.tags.map((elem) => (

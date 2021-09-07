@@ -20,6 +20,7 @@ const checkStatus = resp => {
     throw resp;
   });
 };
+
 const headers = {
   'Content-Type': 'application/json',
 };
@@ -135,80 +136,88 @@ class Contact extends React.Component {
         <LayoutSingleColumn>
           <CoverImage title="Contact Me!" />
           <br />
-          <div className="medium-col content-text">
-            <div className="contact-container">
-              <div className="contact-left">
-                <div className="markdown-text">
-                  <h2>I would love to hear from you! </h2>Please fill up the contact form or contact me via the social media icons below. <br /><br />
-                </div>
-                <StaticQuery
-                  query={query}
-                  render={data =>
-                    <div className="social-media-icon-container">
-                      {data.allStrapiSocialmedia.nodes.map(media => (
-                        <a href={media.link} key={media.id}>
-                          <img src={media.image} alt={media.name} />
-                        </a>
-                      ))}
-                    </div>
-                  }
-                />
+          <div className="contact-container medium-col content-text">
+            <div className="contact-left">
+              <div className="markdown-text">
+                <h2>I would love to hear from you! </h2>Please fill up the contact form or contact me via the social media icons below. <br /><br />
               </div>
-              <div className="contact-right">
-                <div className="contact-form-card">
-                  <form>
-                    <div className="form-inputs">
-                      <label htmlFor="name"><p>Name:&nbsp;</p>{this.state.modifiedDataValidMessage.name.isValid ? "" : errorMessage("name")}</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={this.state.modifiedData.name}
-                        onChange={this.handleInputChange}
-                        className={this.state.modifiedDataValidMessage.name.isValid ? "" : "red-underline"}
-                      />
-                    </div>
-                    <div className="form-inputs">
-                      <label htmlFor="email"><p>Email:&nbsp;</p>{this.state.modifiedDataValidMessage.email.isValid ? "" : errorMessage("email")}</label>
-                      <input
-                        type="text"
-                        name="email"
-                        value={this.state.modifiedData.email}
-                        onChange={this.handleInputChange}
-                        className={this.state.modifiedDataValidMessage.email.isValid ? "" : "red-underline"}
-                      />
-                    </div>
-                    <div className="form-inputs">
-                      <label htmlFor="message"><p>Message:&nbsp;</p>{this.state.modifiedDataValidMessage.message.isValid ? "" : errorMessage("message")}</label>
-                      <textarea
-                        type="textarea"
-                        name="message"
-                        value={this.state.modifiedData.message}
-                        onChange={this.handleInputChange}
-                        className={this.state.modifiedDataValidMessage.message.isValid ? "" : "red-underline"}
-                      >
-                      </textarea>
-                      <div className="form-submit-container">
-                        {this.state.isSubmitSuccessful === 0
-                          ? <div className="error-message submit-message">Failure! Try again later.</div>
-                          : this.state.isSubmitSuccessful === 1
-                            ? <div className="success-message submit-message">Success! Message sent.</div>
-                            : this.state.isSubmitSuccessful === 0.5
-                              ? <div className="spinner">
+              <StaticQuery
+                query={query}
+                render={data =>
+                  <div className="social-media-icon-container">
+                    {data.allStrapiSocialmedia.nodes.map(media => (
+                      <a href={media.link} key={media.id}>
+                        <img src={media.image} alt={media.name} />
+                      </a>
+                    ))}
+                  </div>
+                }
+              />
+            </div>
+            <div className="contact-right">
+              <div className="contact-form-card">
+                <form>
+                  <div className="form-inputs">
+                    <label htmlFor="name"><p>Name:&nbsp;</p>{this.state.modifiedDataValidMessage.name.isValid ? "" : errorMessage("name")}</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={this.state.modifiedData.name}
+                      onChange={this.handleInputChange}
+                      className={this.state.modifiedDataValidMessage.name.isValid ? "" : "red-underline"}
+                    />
+                  </div>
+                  <div className="form-inputs">
+                    <label htmlFor="email"><p>Email:&nbsp;</p>{this.state.modifiedDataValidMessage.email.isValid ? "" : errorMessage("email")}</label>
+                    <input
+                      type="text"
+                      name="email"
+                      value={this.state.modifiedData.email}
+                      onChange={this.handleInputChange}
+                      className={this.state.modifiedDataValidMessage.email.isValid ? "" : "red-underline"}
+                    />
+                  </div>
+                  <div className="form-inputs">
+                    <label htmlFor="message"><p>Message:&nbsp;</p>{this.state.modifiedDataValidMessage.message.isValid ? "" : errorMessage("message")}</label>
+                    <textarea
+                      type="textarea"
+                      name="message"
+                      value={this.state.modifiedData.message}
+                      onChange={this.handleInputChange}
+                      className={this.state.modifiedDataValidMessage.message.isValid ? "" : "red-underline"}
+                    >
+                    </textarea>
+                    <div className="form-submit-container">
+                      {(() => {
+                        switch (this.state.isSubmitSuccessful) {
+                          // failure case
+                          case 0:
+                            return <div className="error-message submit-message">Failure! Try again later.</div>
+                          // success case
+                          case 1:
+                            return <div className="success-message submit-message">Success! Message sent.</div>
+                          // pending case
+                          case 0.5:
+                            return (
+                              <div className="spinner">
                                 <div className="bounce1"></div>
                                 <div className="bounce2"></div>
                                 <div className="bounce3"></div>
                               </div>
-                              : ""}
-                        <input
-                          type="button"
-                          name="submitButton"
-                          value="Submit"
-                          onClick={this.handleSubmit}
-                        />
-                      </div>
+                            )
+                          default:
+                            return ""
+                        }
+                      })()}
+                      <input
+                        type="submit"
+                        name="submitButton"
+                        value="Submit"
+                        onClick={this.handleSubmit}
+                      />
                     </div>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

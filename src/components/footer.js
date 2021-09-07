@@ -4,30 +4,27 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
+const ButtonTextLink = [
+  { text: 'Home', link: '/' },
+  { text: 'About', link: '/about' },
+  { text: 'Blog', link: '/blog' },
+  { text: 'Projects', link: '/project' },
+  // { text: 'Photos', link: '/photos' },
+  { text: 'Contact', link: '/contact' },
+];
+
+const DropdownMenuButton = ({ text, link }) => (
+  <Link className="dropdown-link" to={link}>
+    <i className="fa fa-angle-double-right dropdown-icon" />
+    {text}
+  </Link>
+);
+
 const Footer = () => (
   <footer className="footer">
-    <div className="footer-nav-dropdown-container medium-col">
-      <div className="nav-dropdown">
-        <Link className="nav-link" to="/about">
-          <i className="fa fa-angle-double-right nav-icon" />
-          About
-        </Link>
-        <Link className="nav-link" to="/blog">
-          <i className="fa fa-angle-double-right nav-icon" />
-          Blog
-        </Link>
-        <Link className="nav-link" to="/project">
-          <i className="fa fa-angle-double-right nav-icon" />
-          Projects
-        </Link>
-        <Link className="nav-link" to="/photos">
-          <i className="fa fa-angle-double-right nav-icon" />
-          Photos
-        </Link>
-        <Link className="nav-link" to="/contact">
-          <i className="fa fa-angle-double-right nav-icon" />
-          Contact
-        </Link>
+    <div className="footer-dropdown-menu-container medium-col">
+      <div className="dropdown-menu">
+        {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
       </div>
     </div>
     <p className="footer-copyright">

@@ -33,7 +33,7 @@ const Footer = () => (
     <p className="footer-copyright">
       © 2021 Timothy Jabez Newman. All rights reserved.
       Source code can be viewed&nbsp;
-      <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-reactjs">here</a>
+      <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
     </p>
   </footer>
 );

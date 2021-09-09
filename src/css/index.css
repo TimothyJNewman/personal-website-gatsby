@@ -188,7 +188,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .content {
-  min-height: 100vh;
+  min-height: 100vmin;
   margin-right: auto;
   margin-left: auto;
   padding: 1em 0.5em;
@@ -307,7 +307,7 @@ a, a:hover, a:focus, a:active {
 
 .blog-intro {
   min-width: 270px;
-  min-height: 40vh;
+  min-height: 40vmin;
   border-radius: var(--std-border-radius);
   width: inherit;
   background-position: center;

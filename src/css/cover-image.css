@@ -2,7 +2,7 @@
 
 .cover-image-container {
     width: 100%;
-    min-height: 15vh;
+    min-height: 15vmin;
     position: relative;
     display: grid;
     grid-template-columns: 1fr auto 1fr;

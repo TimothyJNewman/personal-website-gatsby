@@ -61,6 +61,7 @@
   
   .card-tag-container {
     display: flex;
+    flex-wrap: wrap;
   }
   
   .card-tag-link {

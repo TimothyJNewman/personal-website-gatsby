@@ -35,7 +35,7 @@ module.exports = {
         apiURL: process.env.GATSBY_API_URL || 'http://localhost:1337',
         collectionTypes: ['projectpost', 'blogpost', 'gallery', 'tag', 'socialMedia'],
         singleTypes: ['welcomenote', 'aboutpagecontent', 'global'],
-        queryLimit: 1000,
+        queryLimit: 200,
         loginData: {
           identifier: process.env.API_USERNAME,
           password: process.env.API_PWD,

@@ -14,7 +14,7 @@ const ButtonTextLink = [
 ];
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="dropdown-link" to={link}>
+  <Link className="dropdown-link" to={link} key={text}>
     <i className="fa fa-angle-double-right dropdown-icon" />
     {text}
   </Link>

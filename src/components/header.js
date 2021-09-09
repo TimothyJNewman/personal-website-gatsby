@@ -16,7 +16,7 @@ const ButtonTextLink = [
 ];
 
 const HeaderButton = ({ text, link }) => (
-  <Link to={link}>
+  <Link to={link} key={text}>
     <button className="header-button-wrapper" type="button">
       <div className="header-button">
         {text}
@@ -26,7 +26,7 @@ const HeaderButton = ({ text, link }) => (
 );
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="dropdown-link" to={link}>
+  <Link className="dropdown-link" to={link} key={text}>
     <i className="fa fa-angle-double-right dropdown-icon" />
     {text}
   </Link>

@@ -18,7 +18,8 @@ const BlogList = ({ pageContext, data }) => {
   else if (currentPage === 1) prevPage = '/blog';
   else prevPage = `/blog/page/${currentPage - 1}`;
   let nextPage;
-  if (currentPage === numPages) nextPage = `/blog/page/${numPages}`;
+  if (currentPage === numPages && currentPage === 1) nextPage = '/blog';
+  else if (currentPage === numPages) nextPage = `/blog/page/${numPages}`;
   else nextPage = `/blog/page/${currentPage + 1}`;
 
   const seo = {

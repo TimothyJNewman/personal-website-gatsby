@@ -26,12 +26,14 @@
     "gatsby-source-filesystem": "^3.10.0",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-sharp": "^3.10.0",
+    "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-showdown": "^2.3.1",
-    "react-smooth-collapse": "^2.1.0"
+    "react-smooth-collapse": "^2.1.0",
+    "stream-browserify": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

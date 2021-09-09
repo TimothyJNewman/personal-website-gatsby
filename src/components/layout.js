@@ -12,7 +12,7 @@ const Layout = ({ children, seo }) => (
   <>
     <Seo seo={seo} />
     <Header />
-    <main>{children}</main>
+    <main id="main">{children}</main>
     <Footer />
   </>
 );

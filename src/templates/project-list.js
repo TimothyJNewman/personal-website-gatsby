@@ -13,10 +13,11 @@ const ProjectList = ({ pageContext, data }) => {
   // variables for page navigation
   const { currentPage, numPages } = pageContext;
   let prevPage;
-  if (currentPage === 2) prevPage = '/project/';
-  else if (currentPage === 1) prevPage = '/project/';
+  if (currentPage === 2) prevPage = '/project';
+  else if (currentPage === 1) prevPage = '/project';
   else prevPage = `/project/page/${currentPage - 1}`;
   let nextPage;
+  if (currentPage === numPages && currentPage === 1) nextPage = '/project';
   if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
   else nextPage = `/project/page/${currentPage + 1}`;
 

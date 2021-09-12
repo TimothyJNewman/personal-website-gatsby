@@ -203,7 +203,7 @@ a, a:hover, a:focus, a:active {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 5px 0 5px 0;
+  margin: 1em 0;
 }
 
 .article-share-button, .article-share-button:active {

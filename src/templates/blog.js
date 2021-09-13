@@ -80,6 +80,14 @@ export const query = graphql`
           metaTitle
           metaDescription
           isArticle
+          shareImage {
+            preventIndexing
+            media {
+              localFile {
+                publicURL
+              }
+            }
+          }
         }
       }
     }

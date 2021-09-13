@@ -34,7 +34,7 @@ const seoQuery = graphql`
     }
   }`;
 
-const SEO = ({ seo }) => {
+const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(seoQuery);
   const { defaultSeo, siteName } = strapiGlobal;
 

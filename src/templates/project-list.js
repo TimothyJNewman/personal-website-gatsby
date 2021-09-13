@@ -113,6 +113,19 @@ export const query = graphql`
           tags {
             Tag
           }
+          seo {
+            metaTitle
+            metaDescription
+            isArticle
+            shareImage {
+              preventIndexing
+              media {
+                localFile {
+                  publicURL
+                }
+              }
+            }
+          }
         }
       }
     }

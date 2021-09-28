@@ -279,16 +279,22 @@ a, a:hover, a:focus, a:active {
 }
 
 .intro-container {
-  background-image: linear-gradient(10deg, var(--primarycolour-l3), var(--primarycolour-l4));
+  background-color: var(--primarycolour-l5);
   max-width: 55%;
   padding: 0.5em 1em;
   border-radius: var(--std-border-radius);
   margin-left: auto;
   height: 100%;
+  font-weight: 800;
   align-self: center;
-  font-size: 1em;
   align-content: center;
-  opacity: 0.92;
+  opacity: 0.82;
+}
+
+@media only screen and (max-width: 425px) {
+  .intro-container {
+    max-width: 100%;
+  }
 }
 
 .welcome-text-and-socials {
@@ -310,7 +316,7 @@ a, a:hover, a:focus, a:active {
   border-radius: var(--std-border-radius);
   width: inherit;
   background-position: center;
-  background-image: url(../images/large_profilepicv3_81bd297485.jpg);
+  background-image: url(../images/rock.jpg);
   background-size: cover;
   padding: min(1em, 3vmin);
   padding-right: min(2em, 3vmin);

@@ -49,7 +49,7 @@
   color: var(--primarycolour-l5);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 769px) {
   .markdown-text>div>blockquote {
     margin-right: 0;
   }

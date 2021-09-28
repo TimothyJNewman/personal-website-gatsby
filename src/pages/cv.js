@@ -11,7 +11,7 @@ const CVPage = () => (
       </div>
       <br />
       <div className="content-wrapper content-text">
-        <embed src="/CV.pdf#view=Fit" type="application/pdf" style={{ width: '100%', height: '100vh' }} />
+        <embed src="/CV.pdf#view=Fit" type="application/pdf" style={{ width: '100%', height: '100vh', borderRadius: 'var(--std-border-radius)' }} />
         <p className="markdown-text">
           If CV does not appear,&nbsp;
           <a href="/CV.pdf">click here</a>

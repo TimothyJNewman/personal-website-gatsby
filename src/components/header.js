@@ -6,9 +6,11 @@ import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
 import logo from '../images/logo.svg';
 
+// Source of truth for navigation
 const ButtonTextLink = [
   { text: 'Home', link: '/' },
   { text: 'About', link: '/about' },
+  { text: 'CV', link: '/cv' },
   { text: 'Blog', link: '/blog' },
   { text: 'Projects', link: '/project' },
   // { text: 'Photos', link: '/photos' },

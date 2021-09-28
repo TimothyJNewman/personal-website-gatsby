@@ -146,6 +146,7 @@ a, a:hover, a:focus, a:active {
 /* Content */
 
 .content-wrapper {
+  height: inherit;
   text-align: left;
   margin-left: auto;
   margin-right: auto;

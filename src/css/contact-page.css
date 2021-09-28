@@ -18,7 +18,6 @@
 
 .contact-container {
   display: grid;
-  grid-gap: 0 min(0.8em, 2vmin);
   align-items: flex-start;
 }
 

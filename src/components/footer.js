@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 const ButtonTextLink = [
   { text: 'Home', link: '/' },
   { text: 'About', link: '/about' },
-  { text: 'CV', link: 'cv' },
+  { text: 'CV', link: '/cv' },
   { text: 'Blog', link: '/blog' },
   { text: 'Projects', link: '/project' },
   // { text: 'Photos', link: '/photos' },

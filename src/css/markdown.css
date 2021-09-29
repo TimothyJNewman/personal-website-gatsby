@@ -36,7 +36,7 @@
 }
 
 .markdown-text a, .markdown-text a:active {
-  color: var(--primarycolour-d2);
+  color: inherit;
   background: linear-gradient(var(--secondarycolour-l0), var(--secondarycolour-l0)), linear-gradient(var(--secondarycolour-l0), var(--secondarycolour-l0));
   background-size: 100% 0.15em, 0 1em;
   background-position: 0% 100%, 0% 100%;

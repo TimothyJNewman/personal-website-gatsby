@@ -316,7 +316,7 @@ a, a:hover, a:focus, a:active {
   border-radius: var(--std-border-radius);
   width: inherit;
   background-position: center;
-  background-image: url(../images/rock.jpg);
+  background-image: url(../images/rockbackground.jpg);
   background-size: cover;
   padding: min(1em, 3vmin);
   padding-right: min(2em, 3vmin);

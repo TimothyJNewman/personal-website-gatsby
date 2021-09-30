@@ -61,7 +61,7 @@ const TagList = ({ pageContext, data }) => {
               <div className="card-container">
                 {data.allStrapiBlogpost.edges.map((posts) => (
                   <Card
-                    title={posts.title}
+                    title={posts.node.title}
                     date={getFormattedDate(posts.node.published_at)}
                     link={getFormattedLink('/blog/', posts.node.slug)}
                     description={posts.summary}

@@ -32,7 +32,7 @@ const TagPage = () => {
           title="Tags"
         />
         <br />
-        <div className="medium-col content-text">
+        <section className="medium-col content-text">
           <h2 className="blog-postlist-title">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.edges
@@ -41,7 +41,7 @@ const TagPage = () => {
               ))
               : <p className="error-message">No tags found</p>}
           </div>
-        </div>
+        </section>
       </LayoutSingleColumn>
     </Layout>
   );

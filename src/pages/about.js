@@ -24,17 +24,15 @@ const About = () => {
   return (
     <Layout seo={data.strapiAboutpagecontent.seo}>
       <LayoutSingleColumn>
-        <div className="medium-col">
-          <CoverImage title={data.strapiAboutpagecontent.title} />
-          <div className="content-wrapper content-text">
-            <div className="markdown-text">
-              <MarkdownView
-                markdown={data.strapiAboutpagecontent.content}
-                options={{ emoji: true, noHeaderId: true, strikethrough: true }}
-              />
-            </div>
+        <CoverImage title={data.strapiAboutpagecontent.title} />
+        <section className="medium-col content-wrapper content-text">
+          <div className="markdown-text">
+            <MarkdownView
+              markdown={data.strapiAboutpagecontent.content}
+              options={{ emoji: true, noHeaderId: true, strikethrough: true }}
+            />
           </div>
-        </div>
+        </section>
       </LayoutSingleColumn>
     </Layout>
   );

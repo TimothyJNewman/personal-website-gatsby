@@ -1,5 +1,5 @@
 /*
-* Articles with tags
+* This is a page to display all blogs and projects with a specified tag
 */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
@@ -28,7 +28,7 @@ const TagList = ({ pageContext, data }) => {
         <br />
         {data.allStrapiProjectpost.edges.length > 0
           ? (
-            <div className="medium-col content-text">
+            <section className="medium-col content-text">
               <h2 className="blog-postlist-title">Recent Projects</h2>
               <div className="card-container">
                 {data.allStrapiProjectpost.edges.map((posts) => (
@@ -51,12 +51,12 @@ const TagList = ({ pageContext, data }) => {
                   <i className="fa fa-arrow-right" />
                 </Link>
               </p>
-            </div>
+            </section>
           )
           : ''}
         {data.allStrapiBlogpost.edges.length > 0
           ? (
-            <div className="medium-col content-text">
+            <section className="medium-col content-text">
               <h2 className="blog-postlist-title">Recent Blog Posts</h2>
               <div className="card-container">
                 {data.allStrapiBlogpost.edges.map((posts) => (
@@ -78,10 +78,10 @@ const TagList = ({ pageContext, data }) => {
                   <i className="fa fa-arrow-right" />
                 </Link>
               </p>
-            </div>
+            </section>
           )
           : ''}
-        <div className="medium-col content-text">
+        <section className="medium-col content-text">
           <h2 className="blog-postlist-title">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.edges
@@ -90,7 +90,7 @@ const TagList = ({ pageContext, data }) => {
               ))
               : <p className="error-message">No tags found</p>}
           </div>
-        </div>
+        </section>
       </LayoutSingleColumn>
     </Layout>
   );

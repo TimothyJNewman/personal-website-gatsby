@@ -63,10 +63,10 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <div className="medium-col content-text">
-          <div className="blog-intro">
-            <div className="intro-container">
-              <div className="welcome-text-and-socials">
+        <section className="medium-col content-text">
+          <div className="site-intro">
+            <div className="site-intro-container">
+              <div className="site-intro-welcome">
                 {data.strapiWelcomenote
                   ? (
                     <MarkdownView
@@ -88,8 +88,8 @@ const IndexPage = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="medium-col content-text">
+        </section>
+        <section className="medium-col content-text">
           <br />
           <div className="blog-postlist-title-share-button">
             <h2 className="blog-postlist-title">Recent Projects</h2>
@@ -120,8 +120,8 @@ const IndexPage = () => {
               <i className="fa fa-arrow-right" />
             </Link>
           </p>
-        </div>
-        <div className="medium-col content-text">
+        </section>
+        <section className="medium-col content-text">
           <h2 className="blog-postlist-title">Recent Blog Posts</h2>
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
@@ -145,8 +145,8 @@ const IndexPage = () => {
               <i className="fa fa-arrow-right" />
             </Link>
           </p>
-        </div>
-        <div className="medium-col content-text">
+        </section>
+        <section className="medium-col content-text">
           <h2 className="blog-postlist-title">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.nodes
@@ -155,7 +155,7 @@ const IndexPage = () => {
               ))
               : <p className="error-message">No tags found</p>}
           </div>
-        </div>
+        </section>
       </LayoutSingleColumn>
     </Layout>
   );

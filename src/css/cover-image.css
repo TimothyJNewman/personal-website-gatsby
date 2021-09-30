@@ -2,12 +2,12 @@
 
 .cover-image-container {
   width: 100%;
-  min-height: 15vmin;
+  min-height: 20vmin;
   position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   grid-template-rows: 1fr auto 1fr;
-  background-image: linear-gradient(90deg, var(--primarycolour-d4), var(--primarycolour-d5));
+  background-image: linear-gradient(90deg, var(--primarycolor-d4), var(--primarycolor-d5));
   border-radius: var(--std-border-radius);
   animation: 0.3s fadeIn both ease-in;
 }
@@ -26,7 +26,7 @@
 
 .cover-image-title-container {
   z-index: 10;
-  background-image: linear-gradient(10deg, var(--primarycolour-l4), var(--primarycolour-l5));
+  background-image: linear-gradient(10deg, var(--primarycolor-l4), var(--primarycolor-l5));
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.56), 0 2px 10px 0 rgba(0, 0, 0, 0.52);
   display: flex;
   flex-direction: row;
@@ -45,7 +45,7 @@
   margin: 0em;
   font-weight: 700;
   font-style: italic;
-  color: var(--primarycolour-d4);
+  color: var(--primarycolor-d4);
   display: flex;
   align-items: center;
   position: relative;
@@ -53,7 +53,7 @@
 }
 
 .cover-image-desc {
-  color: var(--primarycolour-d4);
+  color: var(--primarycolor-d4);
   margin: 0;
   margin-left: 1vw;
   display: flex;

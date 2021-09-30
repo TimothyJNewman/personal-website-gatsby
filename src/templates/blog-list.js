@@ -30,55 +30,53 @@ const BlogList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <div className="medium-col">
-          <CoverImage title="Recent Blog Posts" />
-          <br />
-          <div className="card-container content-text">
-            {data.allStrapiBlogpost.edges.length > 0
-              ? data.allStrapiBlogpost.edges.map((posts) => (
-                <Card
-                  title={posts.node.title}
-                  date={getFormattedDate(posts.node.published_at)}
-                  link={getFormattedLink('/blog/', posts.node.slug)}
-                  description={posts.node.summary}
-                  tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                  tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                  tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                  key={posts.node.id}
-                />
-              ))
-              : <p className="error-message">No blog posts found</p>}
-          </div>
-          <div className="posts-navigation-container">
-            <Link to={prevPage} className="posts-navigation-button">
-              <i className="fa fa-arrow-circle-left" />
-              &nbsp;Prev
-            </Link>
-            {(() => {
-              const items = [];
-              for (let i = 1; i <= numPages; i++) {
-                if (i === 1) {
-                  items.push(
-                    <Link to="/blog/" className="posts-navigation-button" key={i}>
-                      {i}
-                    </Link>,
-                  );
-                } else {
-                  items.push(
-                    <Link to={`/blog/page/${i}`} className="posts-navigation-button" key={i}>
-                      {i}
-                    </Link>,
-                  );
-                }
+        <CoverImage title="Recent Blog Posts" />
+        <br />
+        <section className="medium-col card-container content-text">
+          {data.allStrapiBlogpost.edges.length > 0
+            ? data.allStrapiBlogpost.edges.map((posts) => (
+              <Card
+                title={posts.node.title}
+                date={getFormattedDate(posts.node.published_at)}
+                link={getFormattedLink('/blog/', posts.node.slug)}
+                description={posts.node.summary}
+                tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
+                tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
+                tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
+                key={posts.node.id}
+              />
+            ))
+            : <p className="error-message">No blog posts found</p>}
+        </section>
+        <nav className="medium-col posts-navigation-container">
+          <Link to={prevPage} className="posts-navigation-button">
+            <i className="fa fa-arrow-circle-left" />
+            &nbsp;Prev
+          </Link>
+          {(() => {
+            const items = [];
+            for (let i = 1; i <= numPages; i++) {
+              if (i === 1) {
+                items.push(
+                  <Link to="/blog/" className="posts-navigation-button" key={i}>
+                    {i}
+                  </Link>,
+                );
+              } else {
+                items.push(
+                  <Link to={`/blog/page/${i}`} className="posts-navigation-button" key={i}>
+                    {i}
+                  </Link>,
+                );
               }
-              return items;
-            })()}
-            <Link to={nextPage} className="posts-navigation-button">
-              Next&nbsp;
-              <i className="fa fa-arrow-circle-right" />
-            </Link>
-          </div>
-        </div>
+            }
+            return items;
+          })()}
+          <Link to={nextPage} className="posts-navigation-button">
+            Next&nbsp;
+            <i className="fa fa-arrow-circle-right" />
+          </Link>
+        </nav>
       </LayoutSingleColumn>
     </Layout>
   );

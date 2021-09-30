@@ -50,18 +50,24 @@ const Header = () => {
             <h2 className="subtitle">Personal Website</h2>
           </div>
         </Link>
-        <button
-          className="dropdown-burger"
-          aria-label="Toggle Menu"
-          type="button"
-          onClick={() => {
-            toggleMenuExpansion(!menuExpanded);
-          }}
-        >
-          <i className={`fa dropdown-burger-symbol ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
-        </button>
         <div className="dropdown-header">
           {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
+            <input type="checkbox" className="theme-checkbox" />
+            <span className="theme-checkbox-icon" />
+          </div>
+          <button
+            className="dropdown-burger"
+            aria-label="Toggle Menu"
+            type="button"
+            onClick={() => {
+              toggleMenuExpansion(!menuExpanded);
+            }}
+          >
+            <i className={`fa dropdown-burger-symbol ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
+          </button>
         </div>
       </div>
       <SmoothCollapse expanded={menuExpanded} className="dropdown-menu-container medium-col">

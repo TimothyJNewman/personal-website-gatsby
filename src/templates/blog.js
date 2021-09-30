@@ -12,46 +12,44 @@ import { getFormattedDate } from '../util/common-utils';
 const BlogTemplate = ({ data }) => (
   <Layout seo={data.strapiBlogpost.seo}>
     <LayoutSingleColumn>
-      <div className="medium-col">
-        {data.strapiBlogpost.coverimage
-          ? (
-            <CoverImage
-              img={data.strapiBlogpost.coverimage.localFile}
-              alt={data.strapiBlogpost.coverimage.alternativeText}
-              title={data.strapiBlogpost.title}
-            />
-          )
-          : <CoverImage title={data.strapiBlogpost.title} />}
-        <div className="content-wrapper content-text">
-          <div className="article-date-and-tags">
-            <div className="article-date-share-button">
-              <p className="article-date">
-                Published:&nbsp;
-                {getFormattedDate(data.strapiBlogpost.published_at)}
-              </p>
-              {/* TODO Add share button here */}
-              <div className="article-share-button" />
-            </div>
-            <div className="card-tag-container-tagpage">
-              {data.strapiBlogpost.tags.map((elem) => (
-                <Link className="card-tag-link" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
-              ))}
-            </div>
+      {data.strapiBlogpost.coverimage
+        ? (
+          <CoverImage
+            img={data.strapiBlogpost.coverimage.localFile}
+            alt={data.strapiBlogpost.coverimage.alternativeText}
+            title={data.strapiBlogpost.title}
+          />
+        )
+        : <CoverImage title={data.strapiBlogpost.title} />}
+      <section className="medium-col content-wrapper content-text">
+        <div className="article-date-and-tags">
+          <div className="article-date-share-button">
+            <p className="article-date">
+              Published:&nbsp;
+              {getFormattedDate(data.strapiBlogpost.published_at)}
+            </p>
+            {/* TODO Add share button here */}
+            <div className="article-share-button" />
           </div>
-          <div className="markdown-text">
-            <MarkdownView
-              markdown={data.strapiBlogpost.content}
-              options={{ emoji: true, noHeaderId: true, strikethrough: true }}
-            />
+          <div className="card-tag-container-tagpage">
+            {data.strapiBlogpost.tags.map((elem) => (
+              <Link className="card-tag-link" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
+            ))}
           </div>
         </div>
-        <p className="card-readmore">
-          <Link to="/blog">
-            Read all blog posts&nbsp;
-            <i className="fa fa-arrow-right" />
-          </Link>
-        </p>
-      </div>
+        <div className="markdown-text">
+          <MarkdownView
+            markdown={data.strapiBlogpost.content}
+            options={{ emoji: true, noHeaderId: true, strikethrough: true }}
+          />
+        </div>
+      </section>
+      <p className="card-readmore">
+        <Link to="/blog">
+          Read all blog posts&nbsp;
+          <i className="fa fa-arrow-right" />
+        </Link>
+      </p>
     </LayoutSingleColumn>
   </Layout>
 );

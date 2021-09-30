@@ -135,8 +135,7 @@ class Contact extends React.Component {
       <Layout seo={seo}>
         <LayoutSingleColumn>
           <CoverImage title="Contact Me!" />
-          <br />
-          <div className="contact-container medium-col content-text">
+          <section className="medium-col contact-container content-text">
             <div className="contact-left">
               <div className="markdown-text">
                 <h2>I would love to hear from you! </h2>Please fill up the contact form or contact me via the social media icons below. <br /><br />
@@ -220,7 +219,7 @@ class Contact extends React.Component {
                 </form>
               </div>
             </div>
-          </div>
+          </section>
         </LayoutSingleColumn>
       </Layout>
     );

@@ -6,17 +6,15 @@ import CoverImage from '../components/cover-image';
 const CVPage = () => (
   <Layout>
     <LayoutSingleColumn>
-      <div className="medium-col">
-        <CoverImage title="CV" />
-      </div>
+      <CoverImage title="CV" />
       <br />
-      <div className="content-wrapper content-text">
+      <section className="medium-col content-wrapper content-text">
         <embed src="/CV.pdf#view=FitH" type="application/pdf" style={{ width: '100%', height: '100vh', borderRadius: 'var(--std-border-radius)' }} />
         <p className="markdown-text">
           If CV does not appear,&nbsp;
           <a href="/CV.pdf">click here</a>
         </p>
-      </div>
+      </section>
     </LayoutSingleColumn>
   </Layout>
 );

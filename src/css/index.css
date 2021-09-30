@@ -1,6 +1,13 @@
 /* Global styles */
 
-html {
+:root {
+  --errorcolor: rgba(240, 26, 35, 1);
+  --errorcolorbackground: rgba(240, 26, 35, 0.7);
+  --dategrey: #404040;
+  --std-border-radius: 0.35em;
+}
+
+html[data-theme='light'] {
   --primarycolor-l6: #fffcfa;
   --primarycolor-l5: #fbf3ed;
   --primarycolor-l5background: #fbf4eecc;
@@ -19,28 +26,23 @@ html {
   --secondarycolor-l1: rgba(8, 207, 171, 1);
   --secondarycolorbackground: rgba(5, 153, 126, 0.7);
   --secondarycoloroverlay: rgba(5, 153, 126, 0.1);
-
-  --errorcolor: rgba(240, 26, 35, 1);
-  --errorcolorbackground: rgba(240, 26, 35, 0.7);
-  --dategrey: #404040;
-  --std-border-radius: 0.35em;
 }
 
 html[data-theme='dark'] {
-  --primarycolor-l6: #fffcfa;
-  --primarycolor-l5: #fbf3ed;
-  --primarycolor-l5background: #fbf4eecc;
-  --primarycolor-l4: #f3d8c4;
-  --primarycolor-l3: #e6b189;
-  --primarycolor-l2: #da8b4e;
-  --primarycolor-l1: #b96627;
+  --primarycolor-l6: #ffffff;
+  --primarycolor-l5: #3f230d;
+  --primarycolor-l5background: #3f230dcc;
+  --primarycolor-l4: #4c2a10;
+  --primarycolor-l3: #583113;
+  --primarycolor-l2: #653815;
+  --primarycolor-l1: #723f18;
   --primarycolor-l0: #80461b;
-  --primarycolor-d1: #723f18;
+  --primarycolor-d1: #653815;
   --primarycolor-d2: #653815;
-  --primarycolor-d3: #583113;
-  --primarycolor-d4: #4c2a10;
-  --primarycolor-d5: #3f230d;
-  --primarycolor-d6: #1a0c01;
+  --primarycolor-d3: #e6b189;
+  --primarycolor-d4: #f3d8c4;
+  --primarycolor-d5: #fbf3ed;
+  --primarycolor-d6: #fffcfa;
   --secondarycolor-l0: rgba(5, 153, 126, 1);
   --secondarycolor-l1: rgba(8, 207, 171, 1);
   --secondarycolorbackground: rgba(5, 153, 126, 0.7);
@@ -87,7 +89,6 @@ a, a:hover, a:focus, a:active {
 @import url(./cover-image.css);
 @import url(./card.css);
 @import url(./contact-page.css);
-
 /* Status messages */
 
 .error-message {

@@ -34,8 +34,15 @@ const DropdownMenuButton = ({ text, link }) => (
   </Link>
 );
 
+const ChangeDataTheme = (isDarkTheme) => {
+  const targetTheme = isDarkTheme ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', targetTheme);
+  localStorage.setItem('theme', targetTheme);
+};
+
 const Header = () => {
   const [menuExpanded, toggleMenuExpansion] = useState(false);
+  const [isDarkTheme, toggleTheme] = useState(false);
   return (
     <header className="header-dropdownmenu-container">
       <div className="header-wrapper large-col">
@@ -54,10 +61,17 @@ const Header = () => {
           {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div>
-            <input type="checkbox" className="theme-checkbox" />
-            <span className="theme-checkbox-icon" />
-          </div>
+          <button
+            className="theme-button"
+            aria-label="Theme Toggle"
+            type="button"
+            onClick={() => {
+              toggleTheme(!isDarkTheme);
+              ChangeDataTheme(!isDarkTheme);
+            }}
+          >
+            <i className={`fa dropdown-burger-symbol ${!isDarkTheme ? 'fa-moon' : 'fa-sun'}`} />
+          </button>
           <button
             className="dropdown-burger"
             aria-label="Toggle Menu"

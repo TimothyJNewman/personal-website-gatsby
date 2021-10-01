@@ -115,7 +115,7 @@ const IndexPage = () => {
               : <p className="error-message">No projects found</p>}
           </div>
           <p className="card-readmore">
-            <Link to="/project">
+            <Link to="/project" className="read-more-link">
               Explore all projects&nbsp;
               <i className="fa fa-arrow-right" />
             </Link>
@@ -140,7 +140,7 @@ const IndexPage = () => {
               : <p className="error-message">No blog posts found</p>}
           </div>
           <p className="card-readmore">
-            <Link to="/blog">
+            <Link to="/blog" className="read-more-link">
               Read all blog posts&nbsp;
               <i className="fa fa-arrow-right" />
             </Link>

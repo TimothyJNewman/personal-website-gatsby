@@ -45,7 +45,7 @@ const BlogTemplate = ({ data }) => (
         </div>
       </section>
       <p className="card-readmore">
-        <Link to="/blog">
+        <Link to="/blog" className="read-more-link">
           Read all blog posts&nbsp;
           <i className="fa fa-arrow-right" />
         </Link>

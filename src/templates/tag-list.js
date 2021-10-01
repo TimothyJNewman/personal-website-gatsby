@@ -46,7 +46,7 @@ const TagList = ({ pageContext, data }) => {
                 ))}
               </div>
               <p className="card-readmore">
-                <Link to="/project">
+                <Link to="/project" className="read-more-link">
                   Explore all projects&nbsp;
                   <i className="fa fa-arrow-right" />
                 </Link>
@@ -73,7 +73,7 @@ const TagList = ({ pageContext, data }) => {
                 ))}
               </div>
               <p className="card-readmore">
-                <Link to="/blog">
+                <Link to="/blog" className="read-more-link">
                   Read all blog posts&nbsp;
                   <i className="fa fa-arrow-right" />
                 </Link>

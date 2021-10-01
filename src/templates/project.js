@@ -45,7 +45,7 @@ const ProjectTemplate = ({ data }) => (
         </div>
       </section>
       <p className="card-readmore">
-        <Link to="/project">
+        <Link to="/project" className="read-more-link">
           Explore all projects&nbsp;
           <i className="fa fa-arrow-right" />
         </Link>

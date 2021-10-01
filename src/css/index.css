@@ -3,7 +3,6 @@
 :root {
   --errorcolor: rgba(240, 26, 35, 1);
   --errorcolorbackground: rgba(240, 26, 35, 0.7);
-  --dategrey: #404040;
   --std-border-radius: 0.35em;
 }
 
@@ -22,10 +21,11 @@ html[data-theme='light'] {
   --primarycolor-d4: #4c2a10;
   --primarycolor-d5: #3f230d;
   --primarycolor-d6: #1a0c01;
-  --secondarycolor-l0: rgba(5, 153, 126, 1);
-  --secondarycolor-l1: rgba(8, 207, 171, 1);
-  --secondarycolorbackground: rgba(5, 153, 126, 0.7);
-  --secondarycoloroverlay: rgba(5, 153, 126, 0.1);
+  --secondarycolor-l0: #05997e;
+  --secondarycolor-l1: #08cfab;
+  --secondarycolorbackground: #05997eb3;
+  --secondarycoloroverlay: #05997e1a;
+  --dategrey: #404040;
 }
 
 html[data-theme='dark'] {
@@ -43,10 +43,11 @@ html[data-theme='dark'] {
   --primarycolor-d4: #f3d8c4;
   --primarycolor-d5: #fbf3ed;
   --primarycolor-d6: #fffcfa;
-  --secondarycolor-l0: rgba(5, 153, 126, 1);
-  --secondarycolor-l1: rgba(8, 207, 171, 1);
-  --secondarycolorbackground: rgba(5, 153, 126, 0.7);
-  --secondarycoloroverlay: rgba(5, 153, 126, 0.1);
+  --secondarycolor-l0: #05997e;
+  --secondarycolor-l1: #08cfab;
+  --secondarycolorbackground: #05997eb3;
+  --secondarycoloroverlay: #05997e1a;
+  --dategrey: #d3d3d3;
 }
 
 body, div, section, button {
@@ -358,7 +359,7 @@ a, a:hover, a:focus, a:active {
   color: var(--primarycolor-d4);
 }
 
-.card-readmore a {
+.read-more-link {
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
   background-size: 0 0.15em, 0 0.15em;
   background-position: 0% 100%, 0% 100%;
@@ -366,8 +367,17 @@ a, a:hover, a:focus, a:active {
   transition: background-size 400ms;
 }
 
-.card-readmore a:hover, .card-readmore a:focus {
+.read-more-link:hover, .read-more-link:focus {
   background-size: 0 0.15em, 88% 0.15em;
+}
+
+.read-more-link:hover > i {
+  animation: wobble 300ms ease infinite alternate;
+}
+
+@keyframes wobble {
+  0% {transform: translate(0%, 0); }
+  100% {transform: translate(50%, 0); }
 }
 
 /* Tag Page */

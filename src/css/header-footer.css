@@ -128,11 +128,10 @@
   .dropdown-theme-buttons {
     flex-direction: column-reverse;
   }
-  .dropdown-burger{
+  .dropdown-burger {
     margin-left: 0;
     margin-bottom: 0.5em;
   }
-
 }
 
 /* Header button */
@@ -149,6 +148,7 @@
 }
 
 .header-button {
+  font-size: 1em;
   color: var(--primarycolor-l6);
   margin: 0.1em;
   padding: 1.5em 0.2em 0.35em 0.2em;

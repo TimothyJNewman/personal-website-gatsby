@@ -66,7 +66,8 @@
   
   .card-tag-link {
     border-radius: var(--std-border-radius);
-    padding: 3px 10px 6px 10px;
+    padding: 0.1em 0.3em;
+    height: 1.5em;
     color: var(--primarycolor-l6);
     background-color: var(--primarycolor-d1);
     font-size: 1em;

@@ -6,7 +6,7 @@
 
 .contact-form-card {
   background-image: linear-gradient(10deg, var(--primarycolor-l3), var(--primarycolor-l4));
-  padding: 15px;
+  padding: 1em;
   border-radius: var(--std-border-radius);
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   text-align: left;
@@ -29,7 +29,7 @@
 
 @media only screen and (min-width:768px) {
   .contact-container {
-    grid-template-columns: 5fr 4fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -37,12 +37,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: var(--std-border-radius);
 }
 
 .form-inputs input[type=text], .form-inputs textarea {
   border-radius: var(--std-border-radius);
   border: 0;
+  padding: 0.3em;
+  margin-bottom: 0.3em;
+  font-size: 0.9em;
+  font-family: inherit;
   color: var(--primarycolor-d4);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
   background-size: 0 0, 0 0.3em;
@@ -67,27 +70,20 @@
   background-size: 0 0, 100% 0.3em;
 }
 
-.form-inputs input[type=text]:focus {
-  min-height: 2em;
-}
-
 .form-inputs input[type=text] {
-  min-height: 2em;
-  margin-bottom: 0.2em;
+  height: 1.6em;
   background-color: var(--primarycolor-l5);
 }
 
 .form-inputs textarea {
-  min-height: 15em;
-  margin-bottom: 0.2em;
+  min-height: 10em;
   background-color: var(--primarycolor-l5);
   resize: none;
-  font-family: inherit;
 }
 
 .form-inputs label {
   color: var(--primarycolor-d4);
-  margin: 0px 0px;
+  margin: 0 0;
   display: flex;
   align-items: center;
 }
@@ -119,11 +115,12 @@
 }
 
 .form-inputs input[type=submit] {
+  height: 2em;
+  padding: 0.3em;
   margin-left: 1em;
   max-width: 150px;
   border-radius: var(--std-border-radius);
   border: 0;
-  padding: 6px 15px 6px 15px;
   color: var(--primarycolor-l5);
   background-color: var(--primarycolor-d1);
   font-size: 1em;

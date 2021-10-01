@@ -1,7 +1,7 @@
 /*
 * Header
 */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
 import logo from '../images/logo.svg';
@@ -43,6 +43,18 @@ const ChangeDataTheme = (isDarkTheme) => {
 const Header = () => {
   const [menuExpanded, toggleMenuExpansion] = useState(false);
   const [isDarkTheme, toggleTheme] = useState(false);
+  // Source for dark theme: https://lukelowrey.com/css-variable-theme-switcher/
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (storedTheme) {
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      if (storedTheme === 'dark') {
+        ChangeDataTheme(true);
+      } else if (storedTheme === 'light') {
+        ChangeDataTheme(false);
+      }
+    }
+  }, []);
   return (
     <header className="header-dropdownmenu-container">
       <div className="header-wrapper large-col">
@@ -60,7 +72,7 @@ const Header = () => {
         <div className="dropdown-header">
           {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className="dropdown-theme-buttons">
           <button
             className="theme-button"
             aria-label="Theme Toggle"
@@ -70,7 +82,7 @@ const Header = () => {
               ChangeDataTheme(!isDarkTheme);
             }}
           >
-            <i className={`fa dropdown-burger-symbol ${!isDarkTheme ? 'fa-moon' : 'fa-sun'}`} />
+            <i className={`fa dropdown-burger-symbol ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
           </button>
           <button
             className="dropdown-burger"

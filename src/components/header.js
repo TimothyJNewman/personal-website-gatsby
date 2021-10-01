@@ -49,9 +49,9 @@ const Header = () => {
     if (storedTheme) {
       document.documentElement.setAttribute('data-theme', storedTheme);
       if (storedTheme === 'dark') {
-        ChangeDataTheme(true);
+        toggleTheme(true);
       } else if (storedTheme === 'light') {
-        ChangeDataTheme(false);
+        toggleTheme(false);
       }
     }
   }, []);

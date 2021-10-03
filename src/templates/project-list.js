@@ -1,5 +1,6 @@
 /*
-* Projectss list
+* Projects list
+* Adapted from https://nickymeuleman.netlify.app/blog/gatsby-pagination
 */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
@@ -18,7 +19,7 @@ const ProjectList = ({ pageContext, data }) => {
   else prevPage = `/project/page/${currentPage - 1}`;
   let nextPage;
   if (currentPage === numPages && currentPage === 1) nextPage = '/project';
-  if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
+  else if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
   else nextPage = `/project/page/${currentPage + 1}`;
 
   const seo = {

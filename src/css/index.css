@@ -4,6 +4,7 @@
   --errorcolor: rgba(240, 26, 35, 1);
   --errorcolorbackground: rgba(240, 26, 35, 0.7);
   --std-border-radius: 0.35em;
+  --image-background: #653815;
 }
 
 html[data-theme='light'] {
@@ -43,7 +44,7 @@ html[data-theme='dark'] {
   --primarycolor-d4: #f3d8c4;
   --primarycolor-d5: #fbf3ed;
   --primarycolor-d6: #fffcfa;
-  --secondarycolor-l0: #05997e;
+  --secondarycolor-l0: #12b99b;
   --secondarycolor-l1: #08cfab;
   --secondarycolorbackground: #05997eb3;
   --secondarycoloroverlay: #05997e1a;
@@ -233,7 +234,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .article-share-button, .article-share-button:active {
-  color: var(--primarycolor-d2);
+  color: var(--primarycolor-d6);
   padding: 0;
   border: 0;
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));

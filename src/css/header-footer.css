@@ -52,7 +52,7 @@
 .dropdown-burger, .theme-button {
   width: 2em;
   height: 2em;
-  background-color: var(--primarycolor-d2);
+  background-color: inherit;
   align-items: center;
   justify-content: center;
   color: var(--primarycolor-l6);
@@ -64,10 +64,6 @@
 
 .dropdown-burger {
   margin-left: 0.5em;
-}
-
-.dropdown-burger:hover, .theme-button:hover {
-  background-color: var(--primarycolor-l3);
 }
 
 .dropdown-burger-symbol {

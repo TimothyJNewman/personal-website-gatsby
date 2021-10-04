@@ -6,6 +6,7 @@ import { Link, graphql } from 'gatsby';
 import MarkdownView from 'react-showdown';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
+import Share from '../components/share';
 import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
 
@@ -28,8 +29,7 @@ const BlogTemplate = ({ data }) => (
               Published:&nbsp;
               {getFormattedDate(data.strapiBlogpost.published_at)}
             </p>
-            {/* TODO Add share button here */}
-            <div className="article-share-button" />
+            <Share label="Share this!" text={data.strapiBlogpost.summary} title={data.strapiBlogpost.title} />
           </div>
           <div className="card-tag-container-tagpage">
             {data.strapiBlogpost.tags.map((elem) => (
@@ -70,6 +70,7 @@ export const query = graphql`
         }
         title
         content
+        summary
         published_at
         tags {
           Tag

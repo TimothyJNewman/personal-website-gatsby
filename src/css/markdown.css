@@ -27,7 +27,7 @@
   border-radius: var(--std-border-radius);
 }
 
-.markdown-text strong, em, u {
+.markdown-text a, strong, em, u {
   color: var(--primarycolor-d3);
 }
 
@@ -36,7 +36,6 @@
 }
 
 .markdown-text a, .markdown-text a:active {
-  color: inherit;
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
   background-size: 100% 0.15em, 0 1em;
   background-position: 0% 100%, 0% 100%;

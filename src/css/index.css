@@ -5,10 +5,10 @@
   --errorcolorbackground: rgba(240, 26, 35, 0.7);
   --std-border-radius: 0.35em;
   --image-background: #653815;
+  --light-text: #fffcfa;
 }
 
 html[data-theme='light'] {
-  --primarycolor-l6: #fffcfa;
   --primarycolor-l5: #fbf3ed;
   --primarycolor-l5background: #fbf4eecc;
   --primarycolor-l4: #f3d8c4;
@@ -30,7 +30,6 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-  --primarycolor-l6: #ffffff;
   --primarycolor-l5: #3f230d;
   --primarycolor-l5background: #3f230dcc;
   --primarycolor-l4: #4c2a10;

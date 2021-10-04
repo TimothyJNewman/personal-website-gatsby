@@ -15,13 +15,13 @@
   height: 3em;
   padding: 0.2em;
   border-radius: var(--std-border-radius);
-  box-shadow: 0 0 0 0.15em var(--primarycolor-l6);
+  box-shadow: 0 0 0 0.15em var(--light-text);
   margin-right: 1em;
 }
 
 .title {
   display: inline;
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   margin: 0.2em 0;
 }
 
@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(0.5em + 1vmin);
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   margin: 0em 0.3em;
 }
 
@@ -55,11 +55,11 @@
   background-color: inherit;
   align-items: center;
   justify-content: center;
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   padding: 0;
   border: 0;
   border-radius: 0.15em;
-  box-shadow: 0 0 0 0.15em var(--primarycolor-l6);
+  box-shadow: 0 0 0 0.15em var(--light-text);
 }
 
 .dropdown-burger {
@@ -145,7 +145,7 @@
 
 .header-button {
   font-size: 1em;
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   margin: 0.1em;
   padding: 1.5em 0.2em 0.35em 0.2em;
 }
@@ -166,7 +166,7 @@
 .dropdown-menu {
   background-color: var(--primarycolor-d2);
   padding: 0;
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -181,9 +181,9 @@
 
 .dropdown-link {
   background-color: inherit;
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   text-align: left;
-  border: 0.15em solid var(--primarycolor-l6);
+  border: 0.15em solid var(--light-text);
   border-radius: var(--std-border-radius);
   padding: 0.1em 0.4em 0.2em 0.4em;
   margin: 0.1em 0.1em;
@@ -202,7 +202,7 @@
 
 .footer {
   background-color: var(--primarycolor-d2);
-  color: var(--primarycolor-l6);
+  color: var(--light-text);
   padding: 0.5em;
 }
 

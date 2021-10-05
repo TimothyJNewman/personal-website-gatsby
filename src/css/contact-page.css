@@ -21,6 +21,8 @@
   align-items: flex-start;
 }
 
+/* Responsive layout */
+
 @media only screen and (max-width: 768px) {
   .contact-container {
     grid-template-columns: 1fr;

@@ -77,6 +77,8 @@
   margin: 0 auto;
 }
 
+/* Show dropdown menu and burger for smaller screens */
+
 @media only screen and (max-width: 800px) {
   .title {
     margin: 0;
@@ -100,6 +102,8 @@
   }
 }
 
+/* Hide dropdown menu and burger for smaller screens */
+
 @media only screen and (min-width:801px) {
   .dropdown-burger {
     display: none;
@@ -116,6 +120,8 @@
     display: none;
   }
 }
+
+/* Hide middle name for small mobile screens */
 
 @media only screen and (max-width: 450px) {
   .title-middlename {

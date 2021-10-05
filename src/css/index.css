@@ -90,6 +90,7 @@ a, a:hover, a:focus, a:active {
 @import url(./cover-image.css);
 @import url(./card.css);
 @import url(./contact-page.css);
+
 /* Status messages */
 
 .error-message {

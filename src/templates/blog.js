@@ -25,10 +25,16 @@ const BlogTemplate = ({ data }) => (
       <section className="medium-col content-wrapper content-text">
         <div className="article-date-and-tags">
           <div className="article-date-share-button">
-            <p className="article-date">
-              Published:&nbsp;
-              {getFormattedDate(data.strapiBlogpost.published_at)}
-            </p>
+            <div className="article-date-container">
+              <time className="article-date" dateTime={data.strapiBlogpost.published_at}>
+                <strong>Published:&nbsp;</strong>
+                {getFormattedDate(data.strapiBlogpost.published_at)}
+              </time>
+              <time className="article-date" dateTime={data.strapiBlogpost.updated_at}>
+                <strong>Updated:&nbsp;</strong>
+                {getFormattedDate(data.strapiBlogpost.updated_at)}
+              </time>
+            </div>
             <Share label="Share this!" text={data.strapiBlogpost.summary} title={data.strapiBlogpost.title} />
           </div>
           <div className="card-tag-container-tagpage">
@@ -72,6 +78,7 @@ export const query = graphql`
         content
         summary
         published_at
+        updated_at
         tags {
           Tag
         }

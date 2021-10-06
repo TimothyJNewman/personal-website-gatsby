@@ -225,14 +225,16 @@
 
 .footer-link {
   color: inherit;
+  padding: 0.1em;
+  border-radius: var(--std-border-radius);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
-  background-size: 100% 0.15em, 0 1em;
+  background-size: 100% 0.15em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms, color 400ms;
 }
 
 .footer-link:hover, .footer-link:focus {
-  background-size: 0 0.1em, 100% 1.2em;
+  background-size: 0 0.1em, 100% 100%;
   color: var(--primarycolor-l5);
 }

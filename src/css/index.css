@@ -235,25 +235,42 @@ a, a:hover, a:focus, a:active {
 
 .article-share-button, .article-share-button:active {
   color: var(--primarycolor-d6);
-  padding: 0;
+  padding: 0.1em 0.5em;
   border: 0;
+  border-radius: var(--std-border-radius);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
-  background-size: 100% 0.15em, 0 1em;
+  background-size: 100% 0.15em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms, color 400ms;
 }
 
 .article-share-button:hover, .article-share-button:focus {
-  background-size: 0 0.1em, 100% 1.6em;
+  background-size: 0 0.1em, 100% 100%;
   color: var(--primarycolor-l5);
 }
 
-.article-date {
+.article-date-container {
   margin: 0;
   font-size: 0.9em;
   font-style: italic;
   color: var(--dategrey);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.article-date:last-child {
+  margin-left: 0.5em;
+}
+
+@media only screen and (max-width: 500px) {
+  .article-date-container {
+    flex-direction: column;
+  }
+  .article-date:last-child {
+    margin-left: 0;
+  }
 }
 
 /* Page navigation buttons */

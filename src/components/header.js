@@ -43,7 +43,8 @@ const ChangeDataTheme = (isDarkTheme) => {
 const Header = () => {
   const [menuExpanded, toggleMenuExpansion] = useState(false);
   const [isDarkTheme, toggleTheme] = useState(false);
-  // Source for dark theme: https://lukelowrey.com/css-variable-theme-switcher/
+  /*  Credit: Luke Lowry
+      Source for dark theme: https://lukelowrey.com/css-variable-theme-switcher/ */
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     if (storedTheme) {

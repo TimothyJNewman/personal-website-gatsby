@@ -36,7 +36,7 @@
 }
 
 .markdown-text a, .markdown-text a:active {
-  padding: 0.1em;
+  padding: 0 0.1em;
   border: 0;
   border-radius: var(--std-border-radius);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));

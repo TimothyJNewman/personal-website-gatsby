@@ -234,18 +234,18 @@ a, a:hover, a:focus, a:active {
 }
 
 .article-share-button, .article-share-button:active {
-  color: var(--primarycolor-d6);
+  color: var(--primarycolor-d5);
   padding: 0.1em 0.5em;
-  border: 0;
+  border: 2px solid var(--secondarycolor-l0);
   border-radius: var(--std-border-radius);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
-  background-size: 100% 0.15em, 0 100%;
+  background-size: 100% 0em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms, color 400ms;
 }
 
-.article-share-button:hover, .article-share-button:focus {
+.article-share-button:hover {
   background-size: 0 0.1em, 100% 100%;
   color: var(--primarycolor-l5);
 }
@@ -257,11 +257,8 @@ a, a:hover, a:focus, a:active {
   color: var(--dategrey);
   display: flex;
   flex-direction: row;
+  column-gap: 0.7em;
   align-items: flex-start;
-}
-
-.article-date:last-child {
-  margin-left: 0.5em;
 }
 
 @media only screen and (max-width: 500px) {
@@ -356,13 +353,13 @@ a, a:hover, a:focus, a:active {
   justify-content: flex-end;
 }
 
-.blog-postlist-title-share-button {
+.index-share-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.blog-postlist-title {
+.index-subheader {
   margin-left: 5px;
   margin-block-start: 10px;
   margin-block-end: 15px;
@@ -370,7 +367,7 @@ a, a:hover, a:focus, a:active {
   justify-self: start;
 }
 
-.card-readmore {
+.read-more-container {
   margin: 12px 8px 5px 5px;
   display: flex;
   justify-content: flex-end;
@@ -378,19 +375,19 @@ a, a:hover, a:focus, a:active {
 }
 
 .read-more-link {
-  background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
-  background-size: 0 0.15em, 0 0.15em;
-  background-position: 0% 100%, 0% 100%;
+  background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
+  background-size: 0 0.15em;
+  background-position: 0% 100%;
   background-repeat: no-repeat;
-  transition: background-size 400ms;
+  transition: background-size 300ms ease-in;
 }
 
-.read-more-link:hover, .read-more-link:focus {
-  background-size: 0 0.15em, 88% 0.15em;
+.read-more-link:hover {
+  background-size: 88% 0.15em;
 }
 
 .read-more-link:hover > i {
-  animation: wobble 300ms ease infinite alternate;
+  animation: wobble 300ms ease 300ms infinite alternate;
 }
 
 @keyframes wobble {

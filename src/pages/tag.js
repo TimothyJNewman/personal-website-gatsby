@@ -33,7 +33,7 @@ const TagPage = () => {
         />
         <br />
         <section className="medium-col content-text">
-          <h2 className="blog-postlist-title">All Tags</h2>
+          <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.edges
               ? data.allStrapiTag.edges.map((elem) => (

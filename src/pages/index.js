@@ -92,8 +92,8 @@ const IndexPage = () => {
         </section>
         <section className="medium-col content-text">
           <br />
-          <div className="blog-postlist-title-share-button">
-            <h2 className="blog-postlist-title">Recent Projects</h2>
+          <div className="index-share-button">
+            <h2 className="index-subheader">Recent Projects</h2>
             <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
           </div>
           <div className="card-container">
@@ -114,15 +114,15 @@ const IndexPage = () => {
               ))
               : <p className="error-message">No projects found</p>}
           </div>
-          <p className="card-readmore">
+          <div className="read-more-container">
             <Link to="/project" className="read-more-link">
               Explore all projects&nbsp;
               <i className="fa fa-arrow-right" />
             </Link>
-          </p>
+          </div>
         </section>
         <section className="medium-col content-text">
-          <h2 className="blog-postlist-title">Recent Blog Posts</h2>
+          <h2 className="index-subheader">Recent Blog Posts</h2>
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
               ? data.allStrapiBlogpost.nodes.map((posts) => (
@@ -139,15 +139,15 @@ const IndexPage = () => {
               ))
               : <p className="error-message">No blog posts found</p>}
           </div>
-          <p className="card-readmore">
+          <div className="read-more-container">
             <Link to="/blog" className="read-more-link">
               Read all blog posts&nbsp;
               <i className="fa fa-arrow-right" />
             </Link>
-          </p>
+          </div>
         </section>
         <section className="medium-col content-text">
-          <h2 className="blog-postlist-title">All Tags</h2>
+          <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.nodes
               ? data.allStrapiTag.nodes.map((elem) => (

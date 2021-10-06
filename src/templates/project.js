@@ -26,14 +26,14 @@ const ProjectTemplate = ({ data }) => (
         <div className="article-date-and-tags">
           <div className="article-date-share-button">
             <div className="article-date-container">
-              <time className="article-date" dateTime={data.strapiProjectpost.published_at}>
+              <div className="article-date">
                 <strong>Published:&nbsp;</strong>
                 {getFormattedDate(data.strapiProjectpost.published_at)}
-              </time>
-              <time className="article-date" dateTime={data.strapiProjectpost.updated_at}>
+              </div>
+              <div className="article-date">
                 <strong>Updated:&nbsp;</strong>
                 {getFormattedDate(data.strapiProjectpost.updated_at)}
-              </time>
+              </div>
             </div>
             <Share label="Share this!" text={data.strapiProjectpost.summary} title={data.strapiProjectpost.title} />
           </div>
@@ -50,12 +50,12 @@ const ProjectTemplate = ({ data }) => (
           />
         </div>
       </section>
-      <p className="card-readmore">
+      <div className="read-more-container">
         <Link to="/project" className="read-more-link">
           Explore all projects&nbsp;
           <i className="fa fa-arrow-right" />
         </Link>
-      </p>
+      </div>
     </LayoutSingleColumn>
   </Layout>
 );

@@ -29,7 +29,7 @@ const TagList = ({ pageContext, data }) => {
         {data.allStrapiProjectpost.edges.length > 0
           ? (
             <section className="medium-col content-text">
-              <h2 className="blog-postlist-title">Recent Projects</h2>
+              <h2 className="index-subheader">Recent Projects</h2>
               <div className="card-container">
                 {data.allStrapiProjectpost.edges.map((posts) => (
                   <Card
@@ -45,19 +45,19 @@ const TagList = ({ pageContext, data }) => {
                   />
                 ))}
               </div>
-              <p className="card-readmore">
+              <div className="read-more-container">
                 <Link to="/project" className="read-more-link">
                   Explore all projects&nbsp;
                   <i className="fa fa-arrow-right" />
                 </Link>
-              </p>
+              </div>
             </section>
           )
           : ''}
         {data.allStrapiBlogpost.edges.length > 0
           ? (
             <section className="medium-col content-text">
-              <h2 className="blog-postlist-title">Recent Blog Posts</h2>
+              <h2 className="index-subheader">Recent Blog Posts</h2>
               <div className="card-container">
                 {data.allStrapiBlogpost.edges.map((posts) => (
                   <Card
@@ -72,17 +72,17 @@ const TagList = ({ pageContext, data }) => {
                   />
                 ))}
               </div>
-              <p className="card-readmore">
+              <div className="read-more-container">
                 <Link to="/blog" className="read-more-link">
                   Read all blog posts&nbsp;
                   <i className="fa fa-arrow-right" />
                 </Link>
-              </p>
+              </div>
             </section>
           )
           : ''}
         <section className="medium-col content-text">
-          <h2 className="blog-postlist-title">All Tags</h2>
+          <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.edges
               ? data.allStrapiTag.edges.map((elem) => (

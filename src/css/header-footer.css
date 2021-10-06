@@ -139,9 +139,9 @@
 /* Header button */
 
 .header-button-wrapper {
-  background: linear-gradient(var(--secondarycolor-l1), var(--secondarycolor-l1)), linear-gradient(var(--secondarycolor-l1), var(--secondarycolor-l1));
-  background-size: 100% 0em, 0 0.2em;
-  background-position: 100% 100%, 0% 100%;
+  background: linear-gradient(var(--secondarycolor-l1), var(--secondarycolor-l1));
+  background-size: 0 0.2em;
+  background-position: 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms;
   display: flex;
@@ -149,16 +149,16 @@
   padding: 0;
 }
 
+.header-button-wrapper:hover, .header-button-wrapper:focus {
+  background-size: 100% 0.2em;
+  color: var(--secondarycolor-l1);
+}
+
 .header-button {
   font-size: 1em;
   color: var(--light-text);
   margin: 0.1em;
   padding: 1.5em 0.2em 0.35em 0.2em;
-}
-
-.header-button-wrapper:hover, .header-button-wrapper:focus {
-  background-size: 0 0em, 100% 0.2em;
-  color: var(--secondarycolor-l1);
 }
 
 /* Dropdown navigation */

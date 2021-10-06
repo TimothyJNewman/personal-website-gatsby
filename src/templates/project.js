@@ -40,7 +40,7 @@ const ProjectTemplate = ({ data }) => (
         <div className="markdown-text">
           <MarkdownView
             markdown={data.strapiProjectpost.content}
-            options={{ emoji: true, noHeaderId: true, strikethrough: true }}
+            options={{ emoji: true, strikethrough: true }}
           />
         </div>
       </section>

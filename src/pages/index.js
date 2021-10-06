@@ -73,7 +73,7 @@ const IndexPage = () => {
                     <MarkdownView
                       className="markdown-text"
                       markdown={data.strapiWelcomenote.welcometext}
-                      options={{ tables: true, emoji: true, noHeaderId: true }}
+                      options={{ tables: true, emoji: true }}
                     />
                   )
                   : ''}

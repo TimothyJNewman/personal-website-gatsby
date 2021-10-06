@@ -29,7 +29,7 @@ const About = () => {
           <div className="markdown-text">
             <MarkdownView
               markdown={data.strapiAboutpagecontent.content}
-              options={{ emoji: true, noHeaderId: true, strikethrough: true }}
+              options={{ emoji: true, strikethrough: true }}
             />
           </div>
         </section>

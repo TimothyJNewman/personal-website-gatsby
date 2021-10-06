@@ -30,8 +30,8 @@ const Footer = () => (
     </div>
     <p className="footer-copyright">
       © 2021 Timothy Jabez Newman. Source code can be viewed&nbsp;
-      <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here.</a>
-      &nbsp;Google analytics cookies are used in this website.
+      <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
+      .&nbsp;Google analytics cookies are used in this website.
     </p>
   </footer>
 );

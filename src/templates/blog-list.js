@@ -58,7 +58,7 @@ const BlogList = ({ pageContext, data }) => {
             for (let i = 1; i <= numPages; i++) {
               if (i === 1) {
                 items.push(
-                  <Link to="/blog/" className="posts-navigation-button" key={i}>
+                  <Link to="/blog" className="posts-navigation-button" key={i}>
                     {i}
                   </Link>,
                 );

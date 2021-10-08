@@ -60,7 +60,7 @@ const ProjectList = ({ pageContext, data }) => {
             for (let i = 1; i <= numPages; i++) {
               if (i === 1) {
                 items.push(
-                  <Link to="/project/" className="posts-navigation-button" key={i}>
+                  <Link to="/project" className="posts-navigation-button" key={i}>
                     {i}
                   </Link>,
                 );

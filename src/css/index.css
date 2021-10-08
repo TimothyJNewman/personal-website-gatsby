@@ -1,8 +1,8 @@
 /* Global styles */
 
 :root {
-  --errorcolor: rgba(240, 26, 35, 1);
-  --errorcolorbackground: rgba(240, 26, 35, 0.7);
+  --errorcolor: #f01a23;
+  --errorcolorbackground: #f4575f;
   --std-border-radius: 0.35em;
   --image-background: #653815;
   --light-text: #fffcfa;
@@ -95,7 +95,7 @@ a, a:hover, a:focus, a:active {
 /* Status messages */
 
 .error-message {
-  color: var(--primarycolor-l5);
+  color: var(--light-text);
   background-color: var(--errorcolorbackground);
   border: 2px solid var(--errorcolor);
   border-radius: var(--std-border-radius);

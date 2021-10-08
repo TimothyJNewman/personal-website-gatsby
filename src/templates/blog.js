@@ -26,14 +26,10 @@ const BlogTemplate = ({ data }) => (
         <div className="article-date-and-tags">
           <div className="article-date-share-button">
             <div className="article-date-container">
-              <div className="article-date">
-                <strong>Published:&nbsp;</strong>
-                {getFormattedDate(data.strapiBlogpost.published_at)}
-              </div>
-              <div className="article-date">
-                <strong>Updated:&nbsp;</strong>
-                {getFormattedDate(data.strapiBlogpost.updated_at)}
-              </div>
+              <strong>Published:&nbsp;</strong>
+              {getFormattedDate(data.strapiBlogpost.published_at)}
+              <strong>Updated:&nbsp;</strong>
+              {getFormattedDate(data.strapiBlogpost.updated_at)}
             </div>
             <Share label="Share this!" text={data.strapiBlogpost.summary} title={data.strapiBlogpost.title} />
           </div>

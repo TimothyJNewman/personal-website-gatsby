@@ -15,7 +15,7 @@
   height: 3em;
   padding: 0.2em;
   border-radius: var(--std-border-radius);
-  box-shadow: 0 0 0 0.15em var(--light-text);
+  box-shadow: 0 0 0 0.15em var(--header-footer-accent);
   margin-right: 1em;
 }
 
@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(0.5em + 1vmin);
-  color: var(--light-text);
+  color: var(--header-footer-accent);
   margin: 0em 0.3em;
 }
 
@@ -52,22 +52,35 @@
 .dropdown-burger, .theme-button {
   width: 2em;
   height: 2em;
+  margin-left: 0.5em;
   background-color: inherit;
   align-items: center;
   justify-content: center;
-  color: var(--light-text);
   padding: 0;
   border: 0;
   border-radius: 0.15em;
-  box-shadow: 0 0 0 0.15em var(--light-text);
-}
-
-.dropdown-burger {
-  margin-left: 0.5em;
+  color: var(--header-footer-accent);
+  box-shadow: 0 0 0 0.15em var(--header-footer-accent);
 }
 
 .dropdown-burger-symbol {
   font-size: 1.5em;
+}
+
+.theme-button>i {
+  transition: color 2ms;
+}
+
+.theme-button>.fa-sun:hover {
+  color: rgb(255, 221, 30);
+}
+
+.theme-button>.fa-moon:hover {
+  color: rgb(228, 228, 228);
+}
+
+.dropdown-burger>i:hover {
+  color: var(--secondarycolor-l0);
 }
 
 .header-wrapper {
@@ -172,7 +185,6 @@
 .dropdown-menu {
   background-color: var(--primarycolor-d2);
   padding: 0;
-  color: var(--light-text);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -189,7 +201,7 @@
   background-color: inherit;
   color: var(--light-text);
   text-align: left;
-  border: 0.15em solid var(--light-text);
+  border: 0.15em solid var(--header-footer-accent);
   border-radius: var(--std-border-radius);
   padding: 0.1em 0.4em 0.2em 0.4em;
   margin: 0.1em 0.1em;
@@ -216,6 +228,7 @@
   margin: 0;
   padding: 0.5em;
   text-align: center;
+  font-size: 0.9em;
 }
 
 .footer-dropdown-menu-container {
@@ -225,8 +238,6 @@
 
 .footer-link {
   color: inherit;
-  padding: 0.1em;
-  border-radius: var(--std-border-radius);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
   background-size: 100% 0.15em, 0 100%;
   background-position: 0% 100%, 0% 100%;

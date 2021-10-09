@@ -141,9 +141,12 @@ class Contact extends React.Component {
                 query={query}
                 render={data =>
                   <>
-                    <div className="markdown-text">
-                      {data.strapiSmallText.content}
-                    </div>
+                    <MarkdownView
+                      className="markdown-text"
+                      markdown={data.strapiSmallText.content}
+                      options={{ emoji: true }}
+                    />
+                    {data.strapiSmallText.content}
                     <div className="social-media-icon-container">
                       {data.allStrapiSocialmedia.nodes.map(media => (
                         <a href={media.link} key={media.id}>

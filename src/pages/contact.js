@@ -137,19 +137,21 @@ class Contact extends React.Component {
           <CoverImage title="Contact Me!" />
           <section className="medium-col contact-container content-text">
             <div className="contact-left">
-              <div className="markdown-text">
-                <h2>I would love to hear from you! </h2>Please fill up the contact form or contact me via the social media icons below. <br /><br />
-              </div>
               <StaticQuery
                 query={query}
                 render={data =>
-                  <div className="social-media-icon-container">
-                    {data.allStrapiSocialmedia.nodes.map(media => (
-                      <a href={media.link} key={media.id}>
-                        <img src={media.image} alt={media.name} />
-                      </a>
-                    ))}
-                  </div>
+                  <>
+                    <div className="markdown-text">
+                      {data.strapiSmallText.content}
+                    </div>
+                    <div className="social-media-icon-container">
+                      {data.allStrapiSocialmedia.nodes.map(media => (
+                        <a href={media.link} key={media.id}>
+                          <img src={media.image} alt={media.name} />
+                        </a>
+                      ))}
+                    </div>
+                  </>
                 }
               />
             </div>
@@ -221,7 +223,7 @@ class Contact extends React.Component {
             </div>
           </section>
         </LayoutSingleColumn>
-      </Layout>
+      </Layout >
     );
   }
 }
@@ -237,5 +239,8 @@ const query = graphql`
         link
         name
       }
+    }
+    strapiSmallText(label: {eq: "Contact Page"}) {
+      content
     }
   }`;

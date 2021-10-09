@@ -7,7 +7,7 @@ import LayoutSingleColumn from '../components/layout-single-column';
 
 const aboutPageQuery = graphql`
   query aboutPage {
-    strapiAboutpagecontent {
+    strapiSinglePages(title: {eq: "About"}) {
       title
       content
       seo {
@@ -22,13 +22,13 @@ const aboutPageQuery = graphql`
 const About = () => {
   const data = useStaticQuery(aboutPageQuery);
   return (
-    <Layout seo={data.strapiAboutpagecontent.seo}>
+    <Layout seo={data.strapiSinglePages.seo}>
       <LayoutSingleColumn>
-        <CoverImage title={data.strapiAboutpagecontent.title} />
+        <CoverImage title={data.strapiSinglePages.title} />
         <section className="medium-col content-wrapper content-text">
           <div className="markdown-text">
             <MarkdownView
-              markdown={data.strapiAboutpagecontent.content}
+              markdown={data.strapiSinglePages.content}
               options={{ emoji: true, strikethrough: true }}
             />
           </div>

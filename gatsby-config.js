@@ -70,8 +70,8 @@ module.exports = {
       resolve: 'gatsby-source-strapi',
       options: {
         apiURL: process.env.GATSBY_API_URL || 'http://localhost:1337',
-        collectionTypes: ['projectpost', 'blogpost', 'gallery', 'tag', 'socialMedia'],
-        singleTypes: ['welcomenote', 'aboutpagecontent', 'global'],
+        collectionTypes: ['projectpost', 'blogpost', 'gallery', 'tag', 'socialMedia', 'single-pages', 'small-text'],
+        singleTypes: ['global'],
         queryLimit: 200,
         loginData: {
           identifier: process.env.API_USERNAME,

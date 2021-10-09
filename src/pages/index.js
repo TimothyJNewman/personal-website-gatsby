@@ -9,8 +9,8 @@ import Share from '../components/share';
 
 const query = graphql`  
   query HomeQuery {
-    strapiWelcomenote {
-      welcometext
+    strapiSmallText(label: {eq: "Welcome Text"}) {
+      content
     }
     allStrapiSocialmedia(sort: {fields: order, order: ASC}) {
       nodes {
@@ -68,11 +68,11 @@ const IndexPage = () => {
           <div className="site-intro">
             <div className="site-intro-container">
               <div className="site-intro-welcome">
-                {data.strapiWelcomenote
+                {data.strapiSmallText
                   ? (
                     <MarkdownView
                       className="markdown-text"
-                      markdown={data.strapiWelcomenote.welcometext}
+                      markdown={data.strapiSmallText.content}
                       options={{ tables: true, emoji: true }}
                     />
                   )

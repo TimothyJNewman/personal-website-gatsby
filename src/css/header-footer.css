@@ -186,12 +186,6 @@
   justify-content: flex-start;
 }
 
-@media only screen and (min-width: 425px) {
-  .dropdown-menu {
-    justify-content: center;
-  }
-}
-
 .dropdown-link {
   background-color: inherit;
   color: var(--light-text);
@@ -217,12 +211,14 @@
   background-color: var(--primarycolor-d2);
   color: var(--light-text);
   padding: 0.5em;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-copyright {
   margin: 0;
   padding: 0.5em;
-  text-align: center;
+  padding-top: 0;
   font-size: 0.9em;
 }
 

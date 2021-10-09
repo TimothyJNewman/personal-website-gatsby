@@ -248,7 +248,7 @@ a, a:hover, a:focus, a:active {
 
 .article-share-button:hover {
   background-size: 0 0.1em, 100% 100%;
-  color: var(--primarycolor-l5);
+  color: var(--light-text);
 }
 
 .article-date-container {

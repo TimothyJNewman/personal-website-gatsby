@@ -23,16 +23,22 @@ const DropdownMenuButton = ({ text, link }) => (
 
 const Footer = () => (
   <footer className="footer">
-    <div className="footer-dropdown-menu-container medium-col">
-      <div className="dropdown-menu">
-        {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
+    <div className="medium-col">
+      <div className="footer-dropdown-menu-container">
+        <div className="dropdown-menu">
+          {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
+        </div>
       </div>
+      <p className="footer-copyright">
+        © 2021-
+        {new Date().getFullYear()}
+        &nbsp;Timothy Jabez Newman. Source code can be viewed&nbsp;
+        <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
+        .
+        <br />
+        Google analytics cookies are used in this website.
+      </p>
     </div>
-    <p className="footer-copyright">
-      © 2021 Timothy Jabez Newman. Source code can be viewed&nbsp;
-      <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
-      .&nbsp;Google analytics cookies are used in this website.
-    </p>
   </footer>
 );
 

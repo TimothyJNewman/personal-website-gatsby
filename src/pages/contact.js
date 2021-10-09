@@ -7,6 +7,7 @@ import { isEmail, sanitizeKeepUnicode } from "../util/string-validator";
 import CoverImage from '../components/cover-image';
 import Layout from "../components/layout";
 import LayoutSingleColumn from "../components/layout-single-column";
+import MarkdownView from "react-showdown";
 
 // Parses the JSON returned by a network request
 const parseJSON = resp => (resp.json ? resp.json() : resp);

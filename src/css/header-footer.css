@@ -3,6 +3,9 @@
 .header-dropdownmenu-container {
   background-color: var(--primarycolor-d2);
   padding: 0.5em;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .header-logo-container {
@@ -215,6 +218,9 @@
   padding: 0.5em;
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .footer-copyright {

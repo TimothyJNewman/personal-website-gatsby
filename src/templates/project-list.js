@@ -33,19 +33,19 @@ const ProjectList = ({ pageContext, data }) => {
         <CoverImage title="Recent Projects" />
         <br />
         <section className="medium-col card-container content-text">
-          {data.allStrapiProjectpost.edges.length > 0
-            ? data.allStrapiProjectpost.edges.map((posts) => (
+          {data.allStrapiProjectpost.nodes.length > 0
+            ? data.allStrapiProjectpost.nodes.map((posts) => (
               <Card
-                title={posts.node.title}
-                img={posts.node.coverimage.localFile}
-                alt={posts.node.coverimage.alternativeText}
-                date={getFormattedDate(posts.node.published_at)}
-                link={getFormattedLink('/project/', posts.node.slug)}
-                description={posts.node.summary}
-                tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                key={posts.node.id}
+                title={posts.title}
+                img={posts.coverimage ? posts.coverimage.localFile : ''}
+                alt={posts.coverimage.alternativeText}
+                date={getFormattedDate(posts.published_at)}
+                link={getFormattedLink('/project/', posts.slug)}
+                description={posts.summary}
+                tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                key={posts.id}
               />
             ))
             : <p className="error-message">No projects</p>}
@@ -93,35 +93,33 @@ export const query = graphql`
       skip: $skip
       sort: {fields: published_at, order: DESC}
     ) {
-      edges {
-        node {
-          id
-          title
-          slug
-          coverimage {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
+      nodes {
+        id
+        title
+        slug
+        coverimage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
-            alternativeText
           }
-          content
-          summary
-          published_at
-          tags {
-            Tag
-          }
-          seo {
-            metaTitle
-            metaDescription
-            isArticle
-            shareImage {
-              preventIndexing
-              media {
-                localFile {
-                  publicURL
-                }
+          alternativeText
+        }
+        content
+        summary
+        published_at
+        tags {
+          Tag
+        }
+        seo {
+          metaTitle
+          metaDescription
+          isArticle
+          shareImage {
+            preventIndexing
+            media {
+              localFile {
+                publicURL
               }
             }
           }

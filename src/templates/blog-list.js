@@ -33,17 +33,18 @@ const BlogList = ({ pageContext, data }) => {
         <CoverImage title="Recent Blog Posts" />
         <br />
         <section className="medium-col card-container content-text">
-          {data.allStrapiBlogpost.edges.length > 0
-            ? data.allStrapiBlogpost.edges.map((posts) => (
+          {data.allStrapiBlogpost.nodes.length > 0
+            ? data.allStrapiBlogpost.nodes.map((posts) => (
               <Card
-                title={posts.node.title}
-                date={getFormattedDate(posts.node.published_at)}
-                link={getFormattedLink('/blog/', posts.node.slug)}
-                description={posts.node.summary}
-                tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                key={posts.node.id}
+                title={posts.title}
+                img={posts.coverimage.localFile}
+                date={getFormattedDate(posts.published_at)}
+                link={getFormattedLink('/blog/', posts.slug)}
+                description={posts.summary}
+                tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                key={posts.id}
               />
             ))
             : <p className="error-message">No blog posts found</p>}
@@ -91,36 +92,34 @@ export const query = graphql`
       skip: $skip
       sort: {fields: published_at, order: DESC}
     ) {
-      edges {
-        node {
-          id
-          title
-          slug
-          coverimage {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH)
-              }
+      nodes {
+        id
+        title
+        slug
+        coverimage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
             }
-            alternativeText
           }
-          content
-          summary
-          published_at
-          tags {
-            Tag
-          }
-          seo {
-            isArticle
-            metaDescription
-            metaTitle
-            keywords
-            shareImage {
-              preventIndexing
-              media {
-                localFile {
-                  publicURL
-                }
+          alternativeText
+        }
+        content
+        summary
+        published_at
+        tags {
+          Tag
+        }
+        seo {
+          isArticle
+          metaDescription
+          metaTitle
+          keywords
+          shareImage {
+            preventIndexing
+            media {
+              localFile {
+                publicURL
               }
             }
           }

@@ -100,7 +100,6 @@ const IndexPage = () => {
             {data.allStrapiProjectpost.nodes
               ? data.allStrapiProjectpost.nodes.map((posts) => (
                 <Card
-                  img={posts.coverimage ? posts.coverimage.localFile : ''}
                   alt={posts.coverimage.alternativeText}
                   title={posts.title}
                   date={getFormattedDate(posts.published_at)}

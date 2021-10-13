@@ -21,27 +21,27 @@ const TagList = ({ pageContext, data }) => {
         <CoverImage
           title={`Tag: ${queryTag}`}
           desc={`
-           | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.edges.length : 0}
-           | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.edges.length : 0}
+           | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.nodes.length : 0}
+           | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.nodes.length : 0}
            `}
         />
         <br />
-        {data.allStrapiProjectpost.edges.length > 0
+        {data.allStrapiProjectpost.nodes.length > 0
           ? (
             <section className="medium-col content-text">
               <h2 className="index-subheader">Recent Projects</h2>
               <div className="card-container">
-                {data.allStrapiProjectpost.edges.map((posts) => (
+                {data.allStrapiProjectpost.nodes.map((posts) => (
                   <Card
-                    img={posts.node.CoverImage ? posts.node.CoverImage.url : ''}
-                    title={posts.node.title}
-                    date={getFormattedDate(posts.node.published_at)}
-                    link={getFormattedLink('/project/', posts.node.slug)}
-                    description={posts.node.summary}
-                    tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                    tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                    tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                    key={posts.node.id}
+                    img={posts.CoverImage ? posts.CoverImage.url : ''}
+                    title={posts.title}
+                    date={getFormattedDate(posts.published_at)}
+                    link={getFormattedLink('/project/', posts.slug)}
+                    description={posts.summary}
+                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    key={posts.id}
                   />
                 ))}
               </div>
@@ -54,21 +54,21 @@ const TagList = ({ pageContext, data }) => {
             </section>
           )
           : ''}
-        {data.allStrapiBlogpost.edges.length > 0
+        {data.allStrapiBlogpost.nodes.length > 0
           ? (
             <section className="medium-col content-text">
               <h2 className="index-subheader">Recent Blog Posts</h2>
               <div className="card-container">
-                {data.allStrapiBlogpost.edges.map((posts) => (
+                {data.allStrapiBlogpost.nodes.map((posts) => (
                   <Card
-                    title={posts.node.title}
-                    date={getFormattedDate(posts.node.published_at)}
-                    link={getFormattedLink('/blog/', posts.node.slug)}
+                    title={posts.title}
+                    date={getFormattedDate(posts.published_at)}
+                    link={getFormattedLink('/blog/', posts.slug)}
                     description={posts.summary}
-                    tag1={posts.node.tags[0] ? posts.node.tags[0].Tag : false}
-                    tag2={posts.node.tags[1] ? posts.node.tags[1].Tag : false}
-                    tag3={posts.node.tags[2] ? posts.node.tags[2].Tag : false}
-                    key={posts.node.id}
+                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    key={posts.id}
                   />
                 ))}
               </div>
@@ -84,9 +84,9 @@ const TagList = ({ pageContext, data }) => {
         <section className="medium-col content-text">
           <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
-            {data.allStrapiTag.edges
-              ? data.allStrapiTag.edges.map((elem) => (
-                <Link to={`/tag/${elem.node.Tag}`} key={elem.node.Tag} className="card-tag-link">{elem.node.Tag}</Link>
+            {data.allStrapiTag.nodes
+              ? data.allStrapiTag.nodes.map((elem) => (
+                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="card-tag-link">{elem.Tag}</Link>
               ))
               : <p className="error-message">No tags found</p>}
           </div>
@@ -105,51 +105,45 @@ export const query = graphql`
       sort: {fields: published_at, order: DESC}
       filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}}
     ) {
-      edges {
-        node {
-          id
-          slug
-          coverimage {
-            localFile {
-              publicURL
-            }
-          }
-          title
-          published_at
-          summary
-          tags {
-            Tag
+      nodes {
+        id
+        slug
+        coverimage {
+          localFile {
+            publicURL
           }
         }
-      }
+        title
+        published_at
+        summary
+        tags {
+          Tag
+        }
+      } 
     }
     allStrapiProjectpost(
       sort: {fields: published_at, order: DESC}
       filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}}
     ) {
-      edges{
-        node {
-          id
-          slug
-          coverimage {
-            localFile {
-              publicURL
-            }
+      nodes {
+        id
+        slug
+        coverimage {
+          localFile {
+            publicURL
           }
-          title
-          summary
-          published_at
-          tags {
-            Tag
-          }
+        }
+        title
+        summary
+        published_at
+        tags {
+          Tag
         }
       }
     }
     allStrapiTag {
-      edges {
-        node {
-          Tag
-        }
+      nodes {
+        Tag
       }
     }
   }

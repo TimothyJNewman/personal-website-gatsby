@@ -64,7 +64,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="medium-col content-text">
+        <section className="medium-col content-text site-intro-section">
           <div className="site-intro">
             <div className="site-intro-container">
               <div className="site-intro-welcome">

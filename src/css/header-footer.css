@@ -7,22 +7,23 @@
 
 .header-logo-container {
   height: 100%;
-  margin: 0.5em;
+  margin: 0.5em 0em;
 }
 
 .header-logo {
-  width: 3em;
-  height: 3em;
+  width: 2.5em;
+  height: 2.5em;
   padding: 0.2em;
+  margin-right: 0.8em;
   border-radius: var(--std-border-radius);
   box-shadow: 0 0 0 0.15em var(--header-footer-accent);
-  margin-right: 1em;
 }
 
 .title {
   display: inline;
   color: var(--light-text);
   margin: 0.2em 0;
+  line-height: 1.3em;
 }
 
 .title-surname {
@@ -83,6 +84,7 @@
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
+  height: 4em;
 }
 
 /* Show dropdown menu and burger for smaller screens */

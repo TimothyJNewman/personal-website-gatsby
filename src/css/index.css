@@ -11,7 +11,7 @@
 
 html[data-theme='light'] {
   --primarycolor-l5: #fbf3ed;
-  --primarycolor-l5background: #fbf4eecc;
+  --primarycolor-l5background: hsla(28, 62%, 96%, 0.9);
   --primarycolor-l4: #f3d8c4;
   --primarycolor-l3: #e6b189;
   --primarycolor-l2: #da8b4e;
@@ -314,45 +314,39 @@ a, a:hover, a:focus, a:active {
   grid-gap: 1em 1em;
 }
 
-.site-intro-container {
-  background-color: var(--primarycolor-l5background);
-  max-width: 55%;
-  padding: 0.5em 1em;
-  border-radius: var(--std-border-radius);
-  margin-left: auto;
-  height: 100%;
+.site-intro-section {
+  min-height: calc(100vmin - 7em);
+  display: flex;
 }
 
-@media only screen and (max-width: 425px) {
+.site-intro {
+  border-radius: var(--std-border-radius);
+  background: var(--primarycolor-d2) url(../images/rockbackground.jpg) no-repeat center;
+  background-size: cover;
+  padding: min(1em, 3vmin);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: 0.3s fadeIn both ease-in;
+}
+
+.site-intro-container {
+  background-color: var(--primarycolor-l5background);
+  max-width: 70%;
+  padding: 0.5em 1em;
+  border-radius: var(--std-border-radius);
+}
+
+@media only screen and (max-width: 600px) {
   .site-intro-container {
     max-width: 100%;
   }
 }
 
-.site-intro-welcome {
-  text-align: start;
-}
-
-.social-media-icon-container a {
-  width: 1.4em;
-}
-
 .social-media-icon-container img {
-  height: 1.4em;
+  width: 1.6em;
+  height: 1.6em;
   margin: 0.2em;
-}
-
-.site-intro {
-  min-height: 40vmin;
-  border-radius: var(--std-border-radius);
-  background: var(--primarycolor-d2) url(../images/rockbackground.jpg) no-repeat center;
-  background-size: cover;
-  padding: min(1em, 3vmin);
-  padding-right: min(2em, 3vmin);
-  display: flex;
-  animation: 0.3s fadeIn both ease-in;
-  align-items: center;
-  justify-content: flex-end;
 }
 
 .index-share-button {

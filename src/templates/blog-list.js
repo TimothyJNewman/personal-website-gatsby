@@ -37,7 +37,7 @@ const BlogList = ({ pageContext, data }) => {
             ? data.allStrapiBlogpost.nodes.map((posts) => (
               <Card
                 title={posts.title}
-                img={posts.coverimage.localFile}
+                img={posts.coverimage ? posts.coverimage.localFile : ''}
                 date={getFormattedDate(posts.published_at)}
                 link={getFormattedLink('/blog/', posts.slug)}
                 description={posts.summary}

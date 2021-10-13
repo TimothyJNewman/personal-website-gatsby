@@ -16,7 +16,7 @@ const ProjectTemplate = ({ data }) => (
       {data.strapiProjectpost.coverimage
         ? (
           <CoverImage
-            img={data.strapiProjectpost.coverimage.localFile}
+            img={data.strapiProjectpost.coverimage ? data.strapiProjectpost.coverimage.localFile : ''}
             alt={data.strapiProjectpost.coverimage.alternativeText}
             title={data.strapiProjectpost.title}
           />

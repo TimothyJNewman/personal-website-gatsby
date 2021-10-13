@@ -16,7 +16,7 @@ const BlogTemplate = ({ data }) => (
       {data.strapiBlogpost.coverimage
         ? (
           <CoverImage
-            img={data.strapiBlogpost.coverimage.localFile}
+            img={data.strapiBlogpost.coverimage ? data.strapiBlogpost.coverimage.localFile : ''}
             alt={data.strapiBlogpost.coverimage.alternativeText}
             title={data.strapiBlogpost.title}
           />

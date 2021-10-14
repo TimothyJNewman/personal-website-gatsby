@@ -398,23 +398,7 @@ a, a:hover, a:focus, a:active {
   flex-wrap: wrap;
 }
 
-/* Iframe and canvas styling */
-
-.canvas-square {
-  height: 300px;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.canvas-3-2 {
-  height: 200px;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
+/* Iframe styling */
 
 .iframe-square {
   height: 305px;
@@ -425,7 +409,7 @@ a, a:hover, a:focus, a:active {
 }
 
 /*
-* media queries are used to set the canvas and iframe dimensions for different screens sizes
+* media queries are used to set the iframe dimensions for different screens sizes
 */
 
 @media only screen and (min-width: 450px) {
@@ -434,21 +418,5 @@ a, a:hover, a:focus, a:active {
   }
   .iframe-3-2 {
     height: 305px;
-  }
-}
-
-/* 
-* sets dimensions of the canvas inside iframe 
-* this is smaller that the parent document since there is a padding around the iframe
-*/
-
-@media only screen and (min-width: 418px) {
-  .canvas-square {
-    height: 450px;
-    width: 450px;
-  }
-  .canvas-3-2 {
-    height: 300px;
-    width: 450px;
   }
 }

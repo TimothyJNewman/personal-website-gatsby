@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../../../css/canvas.css';
 
 const InsertionSort = () => {
   useEffect(() => {

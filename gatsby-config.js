@@ -2,9 +2,11 @@ require('dotenv').config({
   path: '.env',
 });
 
+// const siteUrl = process.env.GATSBY_ROOT_URL || 'http://localhost:8000';
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.timothynewman.co.uk',
+    siteUrl: process.env.GATSBY_ROOT_URL || 'http://localhost:8000',
     title: 'Personal Website',
   },
   plugins: [
@@ -13,9 +15,64 @@ module.exports = {
       resolve: 'gatsby-plugin-html-attributes',
       options: {
         'data-theme': 'light',
+        lang: 'en',
       },
     },
-    'gatsby-plugin-sitemap',
+    /* {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        // TODO add more pages to exclude
+        excludes: ['/404/'],
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allStrapiBlogpost {
+            nodes {
+              updated_at
+              slug
+            }
+          }
+          allStrapiProjectpost {
+            nodes {
+              updated_at
+              slug
+            }
+          }
+        }
+        `,
+        resolveSiteUrl: ({ site: { siteMetadata: { siteUrl } } }) => siteUrl,
+        resolvePages: ({
+          allSitePage,
+          allStrapiBlogpost,
+          allStrapiProjectpost,
+        }) => {
+          const blogsAndProjects = {};
+          allStrapiBlogpost.nodes.forEach((post) => {
+            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updated_at };
+          });
+          allStrapiProjectpost.nodes.forEach((post) => {
+            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updated_at };
+          });
+          return allSitePage.nodes.map((page) => (
+            { ...page }
+          ));
+        },
+        serialize: ({ path }) => (
+          {
+            url: path,
+          }
+        ),
+      },
+    }, */
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -45,6 +102,64 @@ module.exports = {
         // cookieDomain: "example.com",
         // defaults to false
         // enableWebVitalsTracking: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        // TODO add more pages to exclude
+        excludes: ['/404/'],
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allStrapiBlogpost {
+            nodes {
+              updated_at
+              slug
+            }
+          }
+          allStrapiProjectpost {
+            nodes {
+              updated_at
+              slug
+            }
+          }
+        }
+        `,
+        resolveSiteUrl: ({ site: { siteMetadata: { siteUrl } } }) => siteUrl,
+        resolvePages: ({
+          allSitePage,
+          allStrapiBlogpost,
+          allStrapiProjectpost,
+        }) => {
+          const blogsAndProjects = {};
+          allStrapiBlogpost.nodes.forEach((post) => {
+            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updated_at };
+          });
+          allStrapiProjectpost.nodes.forEach((post) => {
+            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updated_at };
+          });
+          return allSitePage.nodes.map((page) => (
+            { ...page, ...blogsAndProjects[page.path] }
+          ));
+        },
+        serialize: ({ path, updatedAt }) => (
+          {
+            url: path,
+            lastmod: updatedAt,
+            changefreq: 'daily',
+            priority: 0.7,
+          }
+        ),
       },
     },
     {

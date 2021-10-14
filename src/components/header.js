@@ -29,7 +29,7 @@ const HeaderButton = ({ text, link }) => (
 
 const DropdownMenuButton = ({ text, link }) => (
   <Link className="dropdown-link" to={link} key={text}>
-    <i className="fa fa-angle-double-right dropdown-icon" />
+    <i className="fas fa-angle-double-right dropdown-icon" />
     {text}
   </Link>
 );
@@ -83,7 +83,7 @@ const Header = () => {
               ChangeDataTheme(!isDarkTheme);
             }}
           >
-            <i className={`fa dropdown-burger-symbol ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
+            <i className={`far dropdown-burger-symbol ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
           </button>
           <button
             className="dropdown-burger"

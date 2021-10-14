@@ -51,7 +51,7 @@ const BlogList = ({ pageContext, data }) => {
         </section>
         <nav className="medium-col posts-navigation-container">
           <Link to={prevPage} className="posts-navigation-button">
-            <i className="fa fa-arrow-circle-left" />
+            <i className="fas fa-arrow-circle-left" />
             &nbsp;Prev
           </Link>
           {(() => {
@@ -75,7 +75,7 @@ const BlogList = ({ pageContext, data }) => {
           })()}
           <Link to={nextPage} className="posts-navigation-button">
             Next&nbsp;
-            <i className="fa fa-arrow-circle-right" />
+            <i className="fas fa-arrow-circle-right" />
           </Link>
         </nav>
       </LayoutSingleColumn>

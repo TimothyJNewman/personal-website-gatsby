@@ -16,14 +16,14 @@ const ButtonTextLink = [
 
 const DropdownMenuButton = ({ text, link }) => (
   <Link className="dropdown-link" to={link} key={text}>
-    <i className="fa fa-angle-double-right dropdown-icon" />
+    <i className="fas fa-angle-double-right dropdown-icon" />
     {text}
   </Link>
 );
 
 const Footer = () => (
   <footer className="footer">
-    <div className="medium-col">
+    <div className="medium-col" style={{ width: '100%' }}>
       <div className="footer-dropdown-menu-container">
         <div className="dropdown-menu">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
@@ -34,7 +34,9 @@ const Footer = () => (
         {new Date().getFullYear()}
         &nbsp;Timothy Jabez Newman. Source code can be viewed&nbsp;
         <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
-        . Google analytics cookies are used in this website.
+        .
+        <br />
+        Google analytics cookies are used on this website.
       </p>
     </div>
   </footer>

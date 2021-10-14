@@ -49,7 +49,7 @@ const BlogTemplate = ({ data }) => (
       <div className="read-more-container">
         <Link to="/blog" className="read-more-link">
           Read all blog posts&nbsp;
-          <i className="fa fa-arrow-right" />
+          <i className="fas fa-arrow-right" />
         </Link>
       </div>
     </LayoutSingleColumn>

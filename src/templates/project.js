@@ -49,7 +49,7 @@ const ProjectTemplate = ({ data }) => (
       <div className="read-more-container">
         <Link to="/project" className="read-more-link">
           Explore all projects&nbsp;
-          <i className="fa fa-arrow-right" />
+          <i className="fas fa-arrow-right" />
         </Link>
       </div>
     </LayoutSingleColumn>

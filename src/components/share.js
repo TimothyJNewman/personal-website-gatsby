@@ -14,18 +14,16 @@ export default function Share({ label, text, title }) {
       try {
         await navigator
           .share(shareDetails)
-          .then(() =>
-            console.log("Hooray! Your content was shared to tha world"),
-          );
+          .then(() => console.log('Hooray! Your content was shared to tha world'));
       } catch (error) {
         console.log(`Oops! I couldn't share to the world because: ${error}`);
       }
     } else {
       // fallback code
       console.log(
-        "Web share is currently not supported on this browser. Please provide a callback"
+        'Web share is currently not supported on this browser. Please provide a callback'
       );
-      window.alert("Web Share is not supported in your browser. Please try copying the URL.")
+      window.alert('Web Share is not supported in your browser. Please try copying the URL.')
     }
   };
   return (

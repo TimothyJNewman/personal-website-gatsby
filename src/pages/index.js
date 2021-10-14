@@ -80,7 +80,7 @@ const IndexPage = () => {
                 <div className="social-media-icon-container">
                   {data.allStrapiSocialmedia.nodes
                     ? data.allStrapiSocialmedia.nodes.map((media) => (
-                      <a href={media.link} key={media.id}>
+                      <a href={media.link} key={media.id} aria-label={media.name}>
                         <img src={media.image} alt={media.name} />
                       </a>
                     ))

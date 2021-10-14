@@ -4,9 +4,11 @@ const InsertionSort = () => {
   useEffect(() => {
     function clock() {
       const now = new Date();
-      const ctx = document.getElementById('canvas').getContext('2d');
+      const ctx = document.getElementById('insertion-sort-canvas').getContext('2d');
       ctx.save();
-      ctx.clearRect(0, 0, 150, 150);
+      ctx.clearRect(0, 0, 450, 300);
+      ctx.fillStyle = '#fbf3ed';
+      ctx.fillRect(0, 0, 1500, 1000);
       ctx.translate(75, 75);
       ctx.scale(0.4, 0.4);
       ctx.rotate(-Math.PI / 2);
@@ -102,7 +104,7 @@ const InsertionSort = () => {
     window.requestAnimationFrame(clock);
   }, []);
   return (
-    <canvas id="canvas">
+    <canvas id="insertion-sort-canvas" className="canvas-3-2" height="1000px" width="1500px">
       Your browser does not support the HTML canvas tag.
     </canvas>
   );

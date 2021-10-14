@@ -34,9 +34,7 @@ const Footer = () => (
         {new Date().getFullYear()}
         &nbsp;Timothy Jabez Newman. Source code can be viewed&nbsp;
         <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
-        .
-        <br />
-        Google analytics cookies are used in this website.
+        . Google analytics cookies are used in this website.
       </p>
     </div>
   </footer>

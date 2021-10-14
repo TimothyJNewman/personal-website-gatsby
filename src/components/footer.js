@@ -29,7 +29,7 @@ const Footer = () => (
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>
       </div>
-      <p className="footer-copyright">
+      <p className="footer-copyright markdown-text">
         © 2021-
         {new Date().getFullYear()}
         &nbsp;Timothy Jabez Newman. Source code can be viewed&nbsp;

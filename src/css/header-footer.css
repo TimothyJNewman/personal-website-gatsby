@@ -74,12 +74,19 @@
   font-size: 1.5em;
 }
 
+.theme-button>.fa-sun, .theme-button>.fa-moon {
+  transition: color 300ms, transform 500ms;
+  transform: scaleX(-1);
+}
+
 .theme-button>.fa-sun:hover {
   color: rgb(255, 221, 30);
+  transform: rotate(50deg) scaleX(-1);
 }
 
 .theme-button>.fa-moon:hover {
-  color: rgb(177, 177, 177);
+  color: rgb(204, 204, 204);
+  transform: rotate(-30deg) scaleX(-1);
 }
 
 .header-wrapper {

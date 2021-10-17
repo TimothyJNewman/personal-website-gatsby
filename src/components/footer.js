@@ -2,7 +2,7 @@
 * Footer
 */
 import React from 'react';
-import { Link } from 'gatsby';
+import { StaticQuery, graphql, Link } from 'gatsby';
 
 const ButtonTextLink = [
   { text: 'Home', link: '/' },
@@ -36,7 +36,21 @@ const Footer = () => (
         <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
         .
         <br />
-        Google analytics cookies are used on this website.
+        Google analytics cookies are used on this website. Last gatsby build on&nbsp;
+        <StaticQuery
+          query={graphql`
+            query BuildDateQuery {
+              site {
+                buildTime(formatString: "DD MMMM, YYYY")
+              }
+            }
+          `}
+          render={(data) => (
+            <>
+              {data.site.buildTime}
+            </>
+          )}
+        />
       </p>
     </div>
   </footer>

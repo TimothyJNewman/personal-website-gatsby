@@ -7,7 +7,6 @@
 // You can delete this file if you're not using it
 
 const path = require('path');
-const webpack = require('webpack');
 
 const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
   // Query for article nodes to use in creating pages.

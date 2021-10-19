@@ -18,66 +18,11 @@ module.exports = {
         lang: 'en',
       },
     },
-    /* {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        // TODO add more pages to exclude
-        excludes: ['/404/'],
-        query: `
-        {
-          site {
-            siteMetadata {
-              siteUrl
-            }
-          }
-          allSitePage {
-            nodes {
-              path
-            }
-          }
-          allStrapiBlogpost {
-            nodes {
-              updated_at
-              slug
-            }
-          }
-          allStrapiProjectpost {
-            nodes {
-              updated_at
-              slug
-            }
-          }
-        }
-        `,
-        resolveSiteUrl: ({ site: { siteMetadata: { siteUrl } } }) => siteUrl,
-        resolvePages: ({
-          allSitePage,
-          allStrapiBlogpost,
-          allStrapiProjectpost,
-        }) => {
-          const blogsAndProjects = {};
-          allStrapiBlogpost.nodes.forEach((post) => {
-            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updated_at };
-          });
-          allStrapiProjectpost.nodes.forEach((post) => {
-            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updated_at };
-          });
-          return allSitePage.nodes.map((page) => (
-            { ...page }
-          ));
-        },
-        serialize: ({ path }) => (
-          {
-            url: path,
-          }
-        ),
-      },
-    }, */
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: 'UA-207541314-1',
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
         // Defines where to place the tracking script - `true` in the head and `false` in the body
         head: true,
         // Setting this parameter is optional
@@ -107,8 +52,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        // TODO add more pages to exclude
-        excludes: ['/404/'],
+        excludes: ['/showcase/*'],
         query: `
         {
           site {
@@ -204,6 +148,58 @@ module.exports = {
         background_color: '#653815',
         display: 'standalone',
         icon: './src/images/icons/android-chrome-512x512.png',
+      },
+    },
+    {
+      // Code adapted from https://github.com/LekoArts/gatsby-starter-minimal-blog/blob/master/gatsby-config.js
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+                description
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allStrapiBlogpost } }) => allStrapiBlogpost.nodes.map(
+              (post) => {
+                const url = `${site.siteMetadata.siteUrl}/blog/${post.slug}`;
+                const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /> <br />`;
+                const categoryArray = post.tags.map((tag) => ({ category: tag.Tag }));
+                return {
+                  title: post.title,
+                  date: post.published_at,
+                  description: post.summary,
+                  url,
+                  custom_elements: [{ 'content:encoded': content }, ...categoryArray],
+                };
+              },
+            ),
+            query: `
+              {
+                allStrapiBlogpost(sort: {order: DESC, fields: published_at}) {
+                  nodes {
+                    title
+                    slug
+                    summary
+                    published_at(formatString: "MMMM DD, YYYY")
+                    tags {
+                      Tag
+                    }
+                  }
+                }
+              }
+            `,
+            output: 'rss.xml',
+            title: 'Timothy Newman Blog Feed',
+            description: 'Blog mainly about technology and university experience',
+          },
+        ],
       },
     },
     'gatsby-plugin-offline',

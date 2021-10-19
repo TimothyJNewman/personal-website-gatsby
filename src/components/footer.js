@@ -32,8 +32,10 @@ const Footer = () => (
       <p className="footer-copyright markdown-text">
         © 2021-
         {new Date().getFullYear()}
-        &nbsp;Timothy Jabez Newman. Source code can be viewed&nbsp;
-        <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">here</a>
+        &nbsp;Timothy Jabez Newman.&nbsp;
+        <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">Source code</a>
+        .&nbsp;
+        <a className="footer-link" href="/rss.xml">RSS Feed</a>
         .
         <br />
         Google analytics cookies are used on this website. Last gatsby build on&nbsp;

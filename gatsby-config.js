@@ -169,7 +169,7 @@ module.exports = {
             serialize: ({ query: { site, allStrapiBlogpost } }) => allStrapiBlogpost.nodes.map(
               (post) => {
                 const url = `${site.siteMetadata.siteUrl}/blog/${post.slug}`;
-                const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /> <br />`;
+                const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /><br />`;
                 const categoryArray = post.tags.map((tag) => ({ category: tag.Tag }));
                 return {
                   title: post.title,

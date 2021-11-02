@@ -60,7 +60,10 @@ export default ProjectTemplate;
 
 export const query = graphql`
   query ProjectTemplate ($slug: String!){
-    strapiProjectpost( slug: {eq: $slug }) {
+    strapiProjectpost( 
+      slug: {eq: $slug }
+      published_at: {gt: "1970-01-01T00:00:00Z"}
+      ) {
         id
         coverimage {
           localFile {

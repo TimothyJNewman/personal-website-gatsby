@@ -20,7 +20,11 @@ const query = graphql`
         name
       }
     }
-    allStrapiProjectpost(limit: 4, sort: {fields: published_at, order: DESC}) {
+    allStrapiProjectpost(
+      limit: 4
+      sort: {fields: published_at, order: DESC}
+      filter: {published_at: {gt: "1970-01-01T00:00:00Z"}}
+      ) {
       nodes {
         id
         title
@@ -40,7 +44,11 @@ const query = graphql`
         }
       }
     }
-    allStrapiBlogpost(limit: 4, sort: {fields: published_at, order: DESC}) {
+    allStrapiBlogpost(
+      limit: 4
+      sort: {fields: published_at, order: DESC}
+      filter: {published_at: {gt: "1970-01-01T00:00:00Z"}}
+      ) {
       nodes {
         id
         title

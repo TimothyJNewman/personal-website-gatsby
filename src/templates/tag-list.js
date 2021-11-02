@@ -103,7 +103,7 @@ export const query = graphql`
   query TagList($queryTag: String!) {
     allStrapiBlogpost(
       sort: {fields: published_at, order: DESC}
-      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}}
+      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, published_at: {gt: "1970-01-01T00:00:00Z"}}
     ) {
       nodes {
         id
@@ -123,7 +123,7 @@ export const query = graphql`
     }
     allStrapiProjectpost(
       sort: {fields: published_at, order: DESC}
-      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}}
+      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, published_at: {gt: "1970-01-01T00:00:00Z"}}
     ) {
       nodes {
         id

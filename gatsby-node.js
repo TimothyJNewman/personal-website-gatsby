@@ -27,7 +27,9 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getBlogsAndBlogsList = makeRequest(graphql, `
     {
-      allStrapiBlogpost {
+      allStrapiBlogpost(
+        filter: {published_at: {ne: null}}
+      ) {
         edges {
           node {
             slug
@@ -67,7 +69,9 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getProjectsAndProjectsList = makeRequest(graphql, `
     {
-      allStrapiProjectpost {
+      allStrapiProjectpost(
+        filter: {published_at: {ne: null}}
+      ) {
         edges {
           node {
             slug

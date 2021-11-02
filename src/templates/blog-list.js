@@ -91,7 +91,7 @@ export const query = graphql`
       limit: $limit
       skip: $skip
       sort: {fields: published_at, order: DESC}
-      filter: {published_at: {gt: "1970-01-01T00:00:00Z"}}
+      filter: {published_at: {ne: null}}
     ) {
       nodes {
         id

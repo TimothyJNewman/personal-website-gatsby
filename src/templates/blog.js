@@ -62,7 +62,6 @@ export const query = graphql`
   query BlogTemplate ($slug: String!){
     strapiBlogpost( 
       slug: {eq: $slug }
-      published_at: {gt: "1970-01-01T00:00:00Z"}
       ) {
         id
         coverimage {

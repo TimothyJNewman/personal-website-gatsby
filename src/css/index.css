@@ -1,8 +1,10 @@
 /* Global styles */
 
 :root {
-  --errorcolor: #f01a23;
-  --errorcolorbackground: #f4575f;
+  --errorcolor: hsl(357, 88%, 52%);
+  --errorcolorbackground: hsl(357, 88%, 65%);
+  --successcolor: hsl(169, 88%, 52%);
+  --successcolorbackground: hsl(169, 88%, 35%);
   --std-border-radius: 0.35em;
   --image-background: #653815;
   --light-text: #fffcfa;
@@ -25,7 +27,6 @@ html[data-theme='light'] {
   --primarycolor-d6: #1a0c01;
   --secondarycolor-l0: #05997e;
   --secondarycolor-l1: #08cfab;
-  --secondarycolorbackground: #05997eb3;
   --secondarycoloroverlay: #05997e1a;
   --dategrey: #404040;
 }
@@ -46,7 +47,6 @@ html[data-theme='dark'] {
   --primarycolor-d6: #fffcfa;
   --secondarycolor-l0: #12b99b;
   --secondarycolor-l1: #08cfab;
-  --secondarycolorbackground: #05997eb3;
   --secondarycoloroverlay: #05997e1a;
   --dategrey: #d3d3d3;
 }
@@ -103,9 +103,9 @@ a, a:hover, a:focus, a:active {
 }
 
 .success-message {
-  color: var(--primarycolor-l5);
-  background-color: var(--secondarycolorbackground);
-  border: 2px solid var(--secondarycolor-l0);
+  color: var(--light-text);
+  background-color: var(--successcolorbackground);
+  border: 2px solid var(--successcolor);
   border-radius: var(--std-border-radius);
   padding: 2px 8px;
 }

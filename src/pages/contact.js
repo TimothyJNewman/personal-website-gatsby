@@ -136,7 +136,7 @@ class Contact extends React.Component {
       <Layout seo={seo}>
         <LayoutSingleColumn>
           <CoverImage title="Contact Me!" />
-          <section className="medium-col contact-container content-text">
+          <section className="max-w-3xl contact-container py-0 px-2">
             <div className="contact-left">
               <StaticQuery
                 query={query}
@@ -147,10 +147,10 @@ class Contact extends React.Component {
                       markdown={data.strapiSmallText.content}
                       options={{ emoji: true }}
                     />
-                    <div className="social-media-icon-container">
+                    <div className="flex">
                       {data.allStrapiSocialmedia.nodes.map(media => (
                         <a href={media.link} key={media.id}>
-                          <img src={media.image} alt={media.name} />
+                          <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
                         </a>
                       ))}
                     </div>

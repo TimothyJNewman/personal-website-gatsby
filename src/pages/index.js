@@ -72,9 +72,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="medium-col content-text site-intro-section">
+        <section className="max-w-3xl py-0 px-2 site-intro-section">
           <div className="site-intro">
-            <div className="site-intro-container">
+            <div className="p-4 site-intro-container">
               <div className="site-intro-welcome">
                 {data.strapiSmallText
                   ? (
@@ -85,11 +85,11 @@ const IndexPage = () => {
                     />
                   )
                   : ''}
-                <div className="social-media-icon-container">
+                <div className="flex">
                   {data.allStrapiSocialmedia.nodes
                     ? data.allStrapiSocialmedia.nodes.map((media) => (
                       <a href={media.link} key={media.id} aria-label={media.name}>
-                        <img src={media.image} alt={media.name} />
+                        <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
                       </a>
                     ))
                     : ''}
@@ -98,7 +98,7 @@ const IndexPage = () => {
             </div>
           </div>
         </section>
-        <section className="medium-col content-text">
+        <section className="max-w-3xl py-0 px-2">
           <br />
           <div className="index-share-button">
             <h2 className="index-subheader">Recent Projects</h2>
@@ -128,7 +128,7 @@ const IndexPage = () => {
             </Link>
           </div>
         </section>
-        <section className="medium-col content-text">
+        <section className="max-w-3xl py-0 px-2">
           <h2 className="index-subheader">Recent Blog Posts</h2>
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
@@ -153,7 +153,7 @@ const IndexPage = () => {
             </Link>
           </div>
         </section>
-        <section className="medium-col content-text">
+        <section className="max-w-3xl py-0 px-2">
           <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.nodes

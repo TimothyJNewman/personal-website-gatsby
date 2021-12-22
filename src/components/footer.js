@@ -23,7 +23,7 @@ const DropdownMenuButton = ({ text, link }) => (
 
 const Footer = () => (
   <footer className="footer">
-    <div className="medium-col" style={{ width: '100%' }}>
+    <div className="max-w-3xl" style={{ width: '100%' }}>
       <div className="footer-dropdown-menu-container">
         <div className="dropdown-menu">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}

@@ -32,7 +32,7 @@ const TagPage = () => {
           title="Tags"
         />
         <br />
-        <section className="medium-col content-text">
+        <section className="max-w-3xl py-0 px-2">
           <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.edges

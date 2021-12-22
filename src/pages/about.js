@@ -25,7 +25,7 @@ const About = () => {
     <Layout seo={data.strapiSinglePages.seo}>
       <LayoutSingleColumn>
         <CoverImage title={data.strapiSinglePages.title} />
-        <section className="medium-col content-wrapper content-text">
+        <section className="max-w-3xl mx-auto text-left py-0 px-2">
           <div className="markdown-text">
             <MarkdownView
               markdown={data.strapiSinglePages.content}

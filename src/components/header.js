@@ -58,7 +58,7 @@ const Header = () => {
   }, []);
   return (
     <header className="header-dropdownmenu-container">
-      <div className="header-wrapper large-col">
+      <div className="header-wrapper max-w-5xl">
         <Link to="/">
           <div className="title-and-subtitle">
             <div className="header-logo-container"><img className="header-logo" src={logo} alt="logo" /></div>
@@ -97,7 +97,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <SmoothCollapse expanded={menuExpanded} className="dropdown-menu-container medium-col">
+      <SmoothCollapse expanded={menuExpanded} className="dropdown-menu-container max-w-3xl">
         <div className="dropdown-menu">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>

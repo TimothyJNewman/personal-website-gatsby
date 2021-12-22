@@ -27,7 +27,7 @@ export default function Share({ label, text, title }) {
     }
   };
   return (
-    <button className="article-share-button" onClick={handleSharing}>
+    <button className="py-0.5 px-2 article-share-button" type="button" onClick={handleSharing}>
       {label}
     </button>
   );

@@ -28,7 +28,7 @@ const TagList = ({ pageContext, data }) => {
         <br />
         {data.allStrapiProjectpost.nodes.length > 0
           ? (
-            <section className="medium-col content-text">
+            <section className="max-w-3xl py-0 px-2">
               <h2 className="index-subheader">Recent Projects</h2>
               <div className="card-container">
                 {data.allStrapiProjectpost.nodes.map((posts) => (
@@ -56,7 +56,7 @@ const TagList = ({ pageContext, data }) => {
           : ''}
         {data.allStrapiBlogpost.nodes.length > 0
           ? (
-            <section className="medium-col content-text">
+            <section className="max-w-3xl py-0 px-2">
               <h2 className="index-subheader">Recent Blog Posts</h2>
               <div className="card-container">
                 {data.allStrapiBlogpost.nodes.map((posts) => (
@@ -81,7 +81,7 @@ const TagList = ({ pageContext, data }) => {
             </section>
           )
           : ''}
-        <section className="medium-col content-text">
+        <section className="max-w-3xl py-0 px-2">
           <h2 className="index-subheader">All Tags</h2>
           <div className="card-tag-container-tagpage">
             {data.allStrapiTag.nodes

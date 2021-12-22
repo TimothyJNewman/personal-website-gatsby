@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Global styles */
 
 :root {
@@ -172,17 +176,6 @@ a, a:hover, a:focus, a:active {
 
 /* Content */
 
-.content-wrapper {
-  height: inherit;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.content-text {
-  padding: 0 0.5em;
-}
-
 .card-container-gallery {
   width: inherit;
   margin-left: auto;
@@ -190,16 +183,6 @@ a, a:hover, a:focus, a:active {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   grid-gap: min(1em, 3vmin) min(1em, 3vmin);
-}
-
-/* Responsive Layouts */
-
-.medium-col {
-  max-width: 740px;
-}
-
-.large-col {
-  max-width: 900px;
 }
 
 /* Single-column layout */
@@ -223,10 +206,6 @@ a, a:hover, a:focus, a:active {
 
 /* Article formatting */
 
-.article-date-and-tags {
-  padding: 5px 0px;
-}
-
 .article-date-share-button {
   display: flex;
   flex-direction: row;
@@ -236,7 +215,6 @@ a, a:hover, a:focus, a:active {
 
 .article-share-button, .article-share-button:active {
   color: var(--primarycolor-d5);
-  padding: 0.1em 0.5em;
   border: 2px solid var(--secondarycolor-l0);
   border-radius: var(--std-border-radius);
   background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
@@ -333,7 +311,6 @@ a, a:hover, a:focus, a:active {
 .site-intro-container {
   background-color: var(--primarycolor-l5background);
   max-width: 70%;
-  padding: 0.5em 1em;
   border-radius: var(--std-border-radius);
 }
 
@@ -341,12 +318,6 @@ a, a:hover, a:focus, a:active {
   .site-intro-container {
     max-width: 100%;
   }
-}
-
-.social-media-icon-container img {
-  width: 1.6em;
-  height: 1.6em;
-  margin: 0.2em;
 }
 
 .index-share-button {

@@ -22,8 +22,8 @@ const BlogTemplate = ({ data }) => (
           />
         )
         : <CoverImage title={data.strapiBlogpost.title} />}
-      <section className="medium-col content-wrapper content-text">
-        <div className="article-date-and-tags">
+      <section className="max-w-3xl mx-auto text-left py-0 px-2">
+        <div className="px-0 py-1">
           <div className="article-date-share-button">
             <div className="article-date-container">
               <strong>Published:&nbsp;</strong>

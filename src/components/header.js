@@ -4,11 +4,10 @@
 import React, { useEffect, useState } from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
-import logo from '../images/logo.svg';
+import logo from '../images/logowithtext.svg';
 
 // Source of truth for navigation
 const ButtonTextLink = [
-  { text: 'Home', link: '/' },
   { text: 'About', link: '/about' },
   { text: 'CV', link: '/cv' },
   { text: 'Blog', link: '/blog' },
@@ -18,18 +17,16 @@ const ButtonTextLink = [
 ];
 
 const HeaderButton = ({ text, link }) => (
-  <Link to={link} key={text}>
-    <button className="header-button-wrapper" type="button">
-      <div className="header-button">
-        {text}
-      </div>
+  <Link to={link} key={text} className="header-button-wrapper p-1 m-1">
+    <button type="button">
+      {text}
     </button>
   </Link>
 );
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="dropdown-link" to={link} key={text}>
-    <i className="fas fa-angle-double-right dropdown-icon" />
+  <Link className="pr-2 whitespace-nowrap hover:text-blue" to={link} key={text}>
+    <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>
 );
@@ -57,51 +54,52 @@ const Header = () => {
     }
   }, []);
   return (
-    <header className="header-dropdownmenu-container">
-      <div className="header-wrapper max-w-5xl">
-        <Link to="/">
-          <div className="title-and-subtitle">
-            <div className="header-logo-container"><img className="header-logo" src={logo} alt="logo" /></div>
-            <h1 className="title">
-              Timothy
-              <span className="title-middlename"> Jabez </span>
-              <span className="title-surname"> Newman </span>
-            </h1>
-            <h2 className="subtitle">Personal Website</h2>
+    <header className="bg-white text-primary p-4 flex justify-center">
+      <div className="min-w-full">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex justify-between items-center">
+            <div className="flex">
+              <Link to="/">
+                <div className="bg-secondary-light p-2 rounded-full">
+                  <div className=""><img className="" src={logo} alt="logo" /></div>
+                </div>
+              </Link>
+              <div className="items-center sm:flex hidden px-2">
+                {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
+              </div>
+            </div>
+            <div className="text-secondary bg-secondary-light rounded">
+              <button
+                className="px-2 py-0.5 text-lg hover:bg-primary-dark rounded-l sm:rounded"
+                aria-label="Theme Toggle"
+                type="button"
+                onClick={() => {
+                  toggleTheme(!isDarkTheme);
+                  ChangeDataTheme(!isDarkTheme);
+                }}
+              >
+                <i className={`far ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
+                <span className="hidden sm:inline">&nbsp;{isDarkTheme ? 'light' : 'dark'}</span>
+              </button>
+              <button
+                className="px-2 py-0.5 text-lg hover:bg-primary-dark rounded-r sm:hidden"
+                aria-label="Toggle Menu"
+                type="button"
+                onClick={() => {
+                  toggleMenuExpansion(!menuExpanded);
+                }}
+              >
+                <i className={`fa ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
+              </button>
+            </div>
           </div>
-        </Link>
-        <div className="dropdown-header">
-          {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
-        </div>
-        <div className="dropdown-theme-buttons">
-          <button
-            className="theme-button"
-            aria-label="Theme Toggle"
-            type="button"
-            onClick={() => {
-              toggleTheme(!isDarkTheme);
-              ChangeDataTheme(!isDarkTheme);
-            }}
-          >
-            <i className={`far dropdown-burger-symbol ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
-          </button>
-          <button
-            className="dropdown-burger"
-            aria-label="Toggle Menu"
-            type="button"
-            onClick={() => {
-              toggleMenuExpansion(!menuExpanded);
-            }}
-          >
-            <i className={`fa dropdown-burger-symbol ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
-          </button>
+          <SmoothCollapse expanded={menuExpanded} className="max-w-3xl flex justify-center">
+            <div className="my-2">
+              {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
+            </div>
+          </SmoothCollapse>
         </div>
       </div>
-      <SmoothCollapse expanded={menuExpanded} className="dropdown-menu-container max-w-3xl">
-        <div className="dropdown-menu">
-          {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
-        </div>
-      </SmoothCollapse>
     </header>
   );
 };

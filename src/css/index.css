@@ -16,6 +16,14 @@
 }
 
 html[data-theme='light'] {
+  --color-text-primary: #000;
+  --color-text-secondary: #fff;
+  --color-text-blue: #2d6da6;
+  --color-bg-primary-light: #5e9abf;
+  --color-bg-primary-dark: #2d6da6;
+  --color-bg-secondary-light: #a6432d;
+  --color-bg-secondary-dark: #733e22;
+  --color-bg-white: #fbf3ed;
   --primarycolor-l5: #fbf3ed;
   --primarycolor-l5background: hsla(28, 62%, 96%, 0.9);
   --primarycolor-l4: #f3d8c4;
@@ -36,6 +44,13 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
+  --color-text-primary: #000;
+  --color-text-secondary: #fff;
+  --color-bg-primary-light: #5e9abf;
+  --color-bg-primary-dark: #2d6da6;
+  --color-bg-secondary-light: #a6432d;
+  --color-bg-secondary-dark: #733e22;
+  --color-bg-white: #fbf3ed;
   --primarycolor-l5: #3f230d;
   --primarycolor-l5background: #3f230dcc;
   --primarycolor-l4: #4c2a10;
@@ -201,7 +216,6 @@ a, a:hover, a:focus, a:active {
   margin-right: auto;
   margin-left: auto;
   padding: 1em 0.5em;
-  width: min(740px, calc(100% - 1em));
 }
 
 /* Article formatting */

@@ -32,7 +32,7 @@ const ProjectList = ({ pageContext, data }) => {
       <LayoutSingleColumn>
         <CoverImage title="Recent Projects" />
         <br />
-        <section className="medium-col card-container content-text">
+        <section className="max-w-3xl card-container py-0 px-2">
           {data.allStrapiProjectpost.nodes.length > 0
             ? data.allStrapiProjectpost.nodes.map((posts) => (
               <Card
@@ -50,7 +50,7 @@ const ProjectList = ({ pageContext, data }) => {
             ))
             : <p className="error-message">No projects</p>}
         </section>
-        <nav className="medium-col posts-navigation-container">
+        <nav className="max-w-3xl posts-navigation-container">
           <Link to={prevPage} className="posts-navigation-button">
             <i className="fas fa-arrow-circle-left" />
             &nbsp;Prev

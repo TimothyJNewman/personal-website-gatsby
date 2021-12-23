@@ -135,9 +135,9 @@ class Contact extends React.Component {
     return (
       <Layout seo={seo}>
         <LayoutSingleColumn>
-          <CoverImage title="Contact Me!" />
-          <section className="medium-col contact-container content-text">
-            <div className="contact-left">
+          <section className="max-w-3xl contact-container py-0 px-2">
+            <div className="contact-left p-2">
+            <CoverImage title="Contact Me!" />
               <StaticQuery
                 query={query}
                 render={data =>
@@ -147,10 +147,10 @@ class Contact extends React.Component {
                       markdown={data.strapiSmallText.content}
                       options={{ emoji: true }}
                     />
-                    <div className="social-media-icon-container">
+                    <div className="flex">
                       {data.allStrapiSocialmedia.nodes.map(media => (
                         <a href={media.link} key={media.id}>
-                          <img src={media.image} alt={media.name} />
+                          <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
                         </a>
                       ))}
                     </div>
@@ -159,47 +159,47 @@ class Contact extends React.Component {
               />
             </div>
             <div className="contact-right">
-              <div className="contact-form-card">
+              <div className="border-2 border-primary-dark p-4 rounded shadow-md flex flex-col mt-2 contact-form-card">
                 <form>
-                  <div className="form-inputs">
-                    <label htmlFor="name"><p>Name:&nbsp;</p>{this.state.modifiedDataValidMessage.name.isValid ? "" : errorMessage("name")}</label>
+                  <div className="form-inputs p-2 mb-2 flex flex-col justify-between text-primary">
+                    <label htmlFor="name"><p className="my-1 font-bold text-primary">Name:&nbsp;</p>{this.state.modifiedDataValidMessage.name.isValid ? "" : errorMessage("name")}</label>
                     <input
                       type="text"
                       name="name"
                       value={this.state.modifiedData.name}
                       onChange={this.handleInputChange}
-                      className={this.state.modifiedDataValidMessage.name.isValid ? "" : "red-underline"}
+                      className='border-2 px-1 border-primary-dark rounded ${this.state.modifiedDataValidMessage.name.isValid ? "" : "red-underline"}'
                     />
                   </div>
-                  <div className="form-inputs">
-                    <label htmlFor="email"><p>Email:&nbsp;</p>{this.state.modifiedDataValidMessage.email.isValid ? "" : errorMessage("email")}</label>
+                  <div className="form-inputs p-2 mb-2 flex flex-col justify-between text-primary">
+                    <label htmlFor="email"><p className="my-1 font-bold text-primary">Email:&nbsp;</p>{this.state.modifiedDataValidMessage.email.isValid ? "" : errorMessage("email")}</label>
                     <input
                       type="text"
                       name="email"
                       value={this.state.modifiedData.email}
                       onChange={this.handleInputChange}
-                      className={this.state.modifiedDataValidMessage.email.isValid ? "" : "red-underline"}
+                      className='border-2 px-1 border-primary-dark rounded ${this.state.modifiedDataValidMessage.email.isValid ? "" : "red-underline"}'
                     />
                   </div>
-                  <div className="form-inputs">
-                    <label htmlFor="message"><p>Message:&nbsp;</p>{this.state.modifiedDataValidMessage.message.isValid ? "" : errorMessage("message")}</label>
+                  <div className="form-inputs p-2 flex flex-col justify-between text-primary">
+                    <label htmlFor="message"><p className="my-1 font-bold text-primary">Message:&nbsp;</p>{this.state.modifiedDataValidMessage.message.isValid ? "" : errorMessage("message")}</label>
                     <textarea
                       type="textarea"
                       name="message"
                       value={this.state.modifiedData.message}
                       onChange={this.handleInputChange}
-                      className={this.state.modifiedDataValidMessage.message.isValid ? "" : "red-underline"}
+                      className='border-2 px-1 border-primary-dark min-h-10 rounded ${this.state.modifiedDataValidMessage.message.isValid ? "" : "red-underline"}'
                     >
                     </textarea>
-                    <div className="form-submit-container">
+                    <div className="flex mt-2 justify-end items-center form-submit-container">
                       {(() => {
                         switch (this.state.isSubmitSuccessful) {
                           // failure case
                           case 0:
-                            return <div className="error-message submit-message">Failure! Try again later.</div>
+                            return <div className="error-message text-sm flex items-center">Failure! Try again later.</div>
                           // success case
                           case 1:
-                            return <div className="success-message submit-message">Success! Message sent.</div>
+                            return <div className="success-message text-sm flex items-center">Success! Message sent.</div>
                           // pending case
                           case 0.5:
                             return (
@@ -218,6 +218,7 @@ class Contact extends React.Component {
                         name="submitButton"
                         value="Submit"
                         onClick={this.handleSubmit}
+                        className="h-8 px-2 py-0.5 ml-4 max-w-150 border-0 bg-secondary-light text-std-secondary hover:bg-primary-dark rounded"
                       />
                     </div>
                   </div>

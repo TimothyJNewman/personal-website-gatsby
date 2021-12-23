@@ -72,9 +72,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="medium-col content-text site-intro-section">
+        <section className="max-w-3xl py-0 px-2 site-intro-section">
           <div className="site-intro">
-            <div className="site-intro-container">
+            <div className="p-4 site-intro-container">
               <div className="site-intro-welcome">
                 {data.strapiSmallText
                   ? (
@@ -85,11 +85,11 @@ const IndexPage = () => {
                     />
                   )
                   : ''}
-                <div className="social-media-icon-container">
+                <div className="flex">
                   {data.allStrapiSocialmedia.nodes
                     ? data.allStrapiSocialmedia.nodes.map((media) => (
                       <a href={media.link} key={media.id} aria-label={media.name}>
-                        <img src={media.image} alt={media.name} />
+                        <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
                       </a>
                     ))
                     : ''}
@@ -98,10 +98,9 @@ const IndexPage = () => {
             </div>
           </div>
         </section>
-        <section className="medium-col content-text">
-          <br />
-          <div className="index-share-button">
-            <h2 className="index-subheader">Recent Projects</h2>
+        <section className="max-w-3xl py-0 px-2">
+          <div className="flex justify-between items-center">
+            <h2 className="my-4">Recent Projects</h2>
             <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
           </div>
           <div className="card-container">
@@ -121,15 +120,15 @@ const IndexPage = () => {
               ))
               : <p className="error-message">No projects found</p>}
           </div>
-          <div className="read-more-container">
+          <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
             <Link to="/project" className="read-more-link">
               Explore all projects&nbsp;
               <i className="fas fa-arrow-right" />
             </Link>
           </div>
         </section>
-        <section className="medium-col content-text">
-          <h2 className="index-subheader">Recent Blog Posts</h2>
+        <section className="max-w-3xl py-0 px-2">
+          <h2 className="my-4">Recent Blog Posts</h2>
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
               ? data.allStrapiBlogpost.nodes.map((posts) => (
@@ -146,19 +145,19 @@ const IndexPage = () => {
               ))
               : <p className="error-message">No blog posts found</p>}
           </div>
-          <div className="read-more-container">
+          <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
             <Link to="/blog" className="read-more-link">
               Read all blog posts&nbsp;
               <i className="fas fa-arrow-right" />
             </Link>
           </div>
         </section>
-        <section className="medium-col content-text">
-          <h2 className="index-subheader">All Tags</h2>
-          <div className="card-tag-container-tagpage">
+        <section className="max-w-3xl py-0 px-2">
+          <h2 className="my-4">All Tags</h2>
+          <div className="flex flex-wrap">
             {data.allStrapiTag.nodes
               ? data.allStrapiTag.nodes.map((elem) => (
-                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="card-tag-link">{elem.Tag}</Link>
+                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="text-sm m-0.5 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded">{elem.Tag}</Link>
               ))
               : <p className="error-message">No tags found</p>}
           </div>

@@ -18,18 +18,19 @@ const TagList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <CoverImage
-          title={`Tag: ${queryTag}`}
-          desc={`
+        <section className="max-w-3xl mx-auto text-left py-0 px-2">
+          <CoverImage
+            title={`Tag: ${queryTag}`}
+            desc={`
            | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.nodes.length : 0}
            | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.nodes.length : 0}
            `}
-        />
-        <br />
+          />
+        </section>
         {data.allStrapiProjectpost.nodes.length > 0
           ? (
-            <section className="medium-col content-text">
-              <h2 className="index-subheader">Recent Projects</h2>
+            <section className="max-w-3xl py-0 px-2">
+              <h2 className="my-4">Recent Projects</h2>
               <div className="card-container">
                 {data.allStrapiProjectpost.nodes.map((posts) => (
                   <Card
@@ -45,7 +46,7 @@ const TagList = ({ pageContext, data }) => {
                   />
                 ))}
               </div>
-              <div className="read-more-container">
+              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
                 <Link to="/project" className="read-more-link">
                   Explore all projects&nbsp;
                   <i className="fas fa-arrow-right" />
@@ -56,8 +57,8 @@ const TagList = ({ pageContext, data }) => {
           : ''}
         {data.allStrapiBlogpost.nodes.length > 0
           ? (
-            <section className="medium-col content-text">
-              <h2 className="index-subheader">Recent Blog Posts</h2>
+            <section className="max-w-3xl py-0 px-2">
+              <h2 className="my-4">Recent Blog Posts</h2>
               <div className="card-container">
                 {data.allStrapiBlogpost.nodes.map((posts) => (
                   <Card
@@ -72,7 +73,7 @@ const TagList = ({ pageContext, data }) => {
                   />
                 ))}
               </div>
-              <div className="read-more-container">
+              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
                 <Link to="/blog" className="read-more-link">
                   Read all blog posts&nbsp;
                   <i className="fas fa-arrow-right" />
@@ -81,12 +82,12 @@ const TagList = ({ pageContext, data }) => {
             </section>
           )
           : ''}
-        <section className="medium-col content-text">
-          <h2 className="index-subheader">All Tags</h2>
-          <div className="card-tag-container-tagpage">
+        <section className="max-w-3xl py-0 px-2">
+          <h2 className="my-4">All Tags</h2>
+          <div className="flex flex-wrap">
             {data.allStrapiTag.nodes
               ? data.allStrapiTag.nodes.map((elem) => (
-                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="card-tag-link">{elem.Tag}</Link>
+                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="text-sm m-0.5 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded">{elem.Tag}</Link>
               ))
               : <p className="error-message">No tags found</p>}
           </div>

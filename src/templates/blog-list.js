@@ -32,7 +32,7 @@ const BlogList = ({ pageContext, data }) => {
       <LayoutSingleColumn>
         <CoverImage title="Recent Blog Posts" />
         <br />
-        <section className="medium-col card-container content-text">
+        <section className="max-w-3xl card-container py-0 px-2">
           {data.allStrapiBlogpost.nodes.length > 0
             ? data.allStrapiBlogpost.nodes.map((posts) => (
               <Card
@@ -49,7 +49,7 @@ const BlogList = ({ pageContext, data }) => {
             ))
             : <p className="error-message">No blog posts found</p>}
         </section>
-        <nav className="medium-col posts-navigation-container">
+        <nav className="max-w-3xl posts-navigation-container">
           <Link to={prevPage} className="posts-navigation-button">
             <i className="fas fa-arrow-circle-left" />
             &nbsp;Prev

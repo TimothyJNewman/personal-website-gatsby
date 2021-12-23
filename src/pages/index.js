@@ -74,7 +74,7 @@ const IndexPage = () => {
       <LayoutSingleColumn>
         <section className="max-w-3xl py-0 px-2 site-intro-section">
           <div className="site-intro">
-            <div className="p-4 site-intro-container">
+            <div className="p-4 m-4 site-intro-container">
               <div className="site-intro-welcome">
                 {data.strapiSmallText
                   ? (

@@ -25,9 +25,6 @@ const Footer = () => (
   <footer className="p-5 bg-white text-primary">
     <div className="min-w-full">
       <div className="max-w-3xl mx-auto">
-        <div>
-          {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
-        </div>
         <p className="markdown-text">
           © 2021-
           {new Date().getFullYear()}
@@ -53,6 +50,9 @@ const Footer = () => (
             )}
           />
         </p>
+        <div>
+          {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
+        </div>
       </div>
     </div>
   </footer>

@@ -136,7 +136,7 @@ class Contact extends React.Component {
       <Layout seo={seo}>
         <LayoutSingleColumn>
           <section className="max-w-3xl contact-container py-0 px-2">
-            <div className="contact-left p-2">
+            <div className="contact-left pr-4">
             <CoverImage title="Contact Me!" />
               <StaticQuery
                 query={query}

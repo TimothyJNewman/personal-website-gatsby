@@ -34,7 +34,7 @@ const TagPage = () => {
             title="Tags"
           />
           <h2 className="my-4">All Tags</h2>
-          <div className="card-tag-container-tagpage">
+          <div className="flex flex-wrap">
             {data.allStrapiTag.edges
               ? data.allStrapiTag.edges.map((elem) => (
                 <Link to={`/tag/${elem.node.Tag}`} key={elem.node.Tag} className="text-sm m-0.5 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded">{elem.node.Tag}</Link>

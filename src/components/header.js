@@ -58,16 +58,15 @@ const Header = () => {
       <div className="min-w-full">
         <div className="max-w-3xl mx-auto">
           <div className="flex justify-between items-center">
-            <div className="flex">
               <Link to="/">
                 <div className="bg-secondary-light p-2 rounded-full">
                   <div className=""><img className="" src={logo} alt="logo" /></div>
                 </div>
               </Link>
-              <div className="items-center sm:flex hidden px-2">
+            <div className="flex items-center">
+            <div className="items-center sm:flex hidden px-2">
                 {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
               </div>
-            </div>
             <div className="text-secondary bg-secondary-light rounded">
               <button
                 className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark rounded-l sm:rounded"
@@ -91,6 +90,7 @@ const Header = () => {
               >
                 <i className={`fa ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
               </button>
+            </div>
             </div>
           </div>
           <SmoothCollapse expanded={menuExpanded} className="max-w-3xl flex justify-center">

@@ -13,8 +13,6 @@
   --successcolor: hsl(169, 88%, 52%);
   --successcolorbackground: hsl(169, 88%, 35%);
   --std-border-radius: 0.35em;
-  --image-background: #653815;
-  --light-text: #fffcfa;
   --header-footer-accent: #f3d8c4;
 }
 
@@ -28,23 +26,8 @@ html[data-theme='light'] {
   --color-bg-secondary-light: #a6432d;
   --color-bg-secondary-dark: #733e22;
   --color-bg-white: #fbf3ed;
+  --color-bg-white-overlay: #fbf3edcc;
   --color-dategrey: #404040;
-  --primarycolor-l5: #fbf3ed;
-  --primarycolor-l5background: hsla(28, 62%, 96%, 0.9);
-  --primarycolor-l4: #f3d8c4;
-  --primarycolor-l3: #e6b189;
-  --primarycolor-l2: #da8b4e;
-  --primarycolor-l1: #b96627;
-  --primarycolor-l0: #80461b;
-  --primarycolor-d1: #723f18;
-  --primarycolor-d2: #653815;
-  --primarycolor-d3: #583113;
-  --primarycolor-d4: #4c2a10;
-  --primarycolor-d5: #3f230d;
-  --primarycolor-d6: #1a0c01;
-  --secondarycolor-l0: #05997e;
-  --secondarycolor-l1: #08cfab;
-  --secondarycoloroverlay: #05997e1a;
 }
 
 html[data-theme='dark'] {
@@ -55,25 +38,10 @@ html[data-theme='dark'] {
   --color-bg-primary-light: #1a1b1b;
   --color-bg-primary-dark: #536f8a;
   --color-bg-secondary-light: #271611;
-  --color-bg-secondary-dark: #442a1c;
+  --color-bg-secondary-dark: #413f3e;
   --color-bg-white: #313130;
+  --color-bg-white-overlay: #313130cb;
   --color-dategrey: #d3d3d3;
-  --primarycolor-l5: #3f230d;
-  --primarycolor-l5background: #3f230dcc;
-  --primarycolor-l4: #4c2a10;
-  --primarycolor-l3: #583113;
-  --primarycolor-l2: #653815;
-  --primarycolor-l1: #653815;
-  --primarycolor-l0: #653815;
-  --primarycolor-d1: #653815;
-  --primarycolor-d2: #653815;
-  --primarycolor-d3: #e6b189;
-  --primarycolor-d4: #f3d8c4;
-  --primarycolor-d5: #fbf3ed;
-  --primarycolor-d6: #fffcfa;
-  --secondarycolor-l0: #12b99b;
-  --secondarycolor-l1: #08cfab;
-  --secondarycoloroverlay: #05997e1a;
 }
 
 body, div, section, button {
@@ -113,13 +81,12 @@ a, a:hover, a:focus, a:active {
 
 @import url(./markdown.css);
 @import url(./header-footer.css);
-@import url(./cover-image.css);
 @import url(./contact-page.css);
 
 /* Status messages */
 
 .error-message {
-  color: var(--light-text);
+  color: var(--color-text-secondary-std);
   background-color: var(--errorcolorbackground);
   border: 2px solid var(--errorcolor);
   border-radius: var(--std-border-radius);
@@ -127,7 +94,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .success-message {
-  color: var(--light-text);
+  color: var(--color-text-secondary-std);
   background-color: var(--successcolorbackground);
   border: 2px solid var(--successcolor);
   border-radius: var(--std-border-radius);
@@ -157,7 +124,7 @@ a, a:hover, a:focus, a:active {
 .spinner>div {
   width: 0.5em;
   height: 0.5em;
-  background-color: var(--primarycolor-d4);
+  background-color: var(--color-bg-primary-dark);
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -236,12 +203,6 @@ a, a:hover, a:focus, a:active {
 
 /* Page navigation buttons */
 
-.posts-navigation-container {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1em 1em 0em 1em;
-}
-
 .posts-navigation-button, .posts-navigation-button:active {
   padding: 0.4em 0.8em;
   display: inline;
@@ -282,7 +243,7 @@ a, a:hover, a:focus, a:active {
 
 .site-intro {
   border-radius: var(--std-border-radius);
-  background: var(--primarycolor-d2) url(../images/rockbackground.jpg) no-repeat center;
+  background: var(--color-bg-secondary-dark) url(../images/rockbackground.jpg) no-repeat center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -291,7 +252,7 @@ a, a:hover, a:focus, a:active {
 }
 
 .site-intro-container {
-  background-color: var(--primarycolor-l5background);
+  background-color: var(--color-bg-white-overlay);
   max-width: 70%;
   border-radius: var(--std-border-radius);
 }
@@ -321,13 +282,6 @@ a, a:hover, a:focus, a:active {
 @keyframes wobble {
   0% {transform: translate(0%, 0); }
   100% {transform: translate(50%, 0); }
-}
-
-/* Tag Page */
-
-.card-tag-container-tagpage {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 /* Iframe styling */

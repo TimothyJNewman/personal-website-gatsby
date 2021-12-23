@@ -30,9 +30,10 @@ const BlogList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
+      <div className="max-w-3xl py-0 px-2">
         <CoverImage title="Recent Blog Posts" />
         <br />
-        <section className="max-w-3xl card-container py-0 px-2">
+        <section className="card-container">
           {data.allStrapiBlogpost.nodes.length > 0
             ? data.allStrapiBlogpost.nodes.map((posts) => (
               <Card
@@ -49,7 +50,7 @@ const BlogList = ({ pageContext, data }) => {
             ))
             : <p className="error-message">No blog posts found</p>}
         </section>
-        <nav className="text-sm max-w-3xl posts-navigation-container">
+        <nav className="text-sm max-w-3xl flex justify-end m-4 mb-0">
           <Link to={prevPage} className="posts-navigation-button">
             <i className="fas fa-arrow-circle-left" />
             &nbsp;Prev
@@ -78,6 +79,7 @@ const BlogList = ({ pageContext, data }) => {
             <i className="fas fa-arrow-circle-right" />
           </Link>
         </nav>
+        </div>
       </LayoutSingleColumn>
     </Layout>
   );

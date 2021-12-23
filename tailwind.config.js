@@ -13,6 +13,7 @@ module.exports = {
         'secondary-light': 'var(--color-bg-secondary-light)',
         'secondary-dark': 'var(--color-bg-secondary-dark)',
         white: 'var(--color-bg-white)',
+        'white-overlay': 'var(--color-bg-white-overlay)',
         'std-primary': 'var(--color-text-primary-std)',
         'std-secondary': 'var(--color-text-secondary-std)',
         dategray: 'var(--color-dategrey)',

@@ -30,55 +30,57 @@ const ProjectList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <CoverImage title="Recent Projects" />
-        <br />
-        <section className="max-w-3xl card-container py-0 px-2">
-          {data.allStrapiProjectpost.nodes.length > 0
-            ? data.allStrapiProjectpost.nodes.map((posts) => (
-              <Card
-                title={posts.title}
-                img={posts.coverimage ? posts.coverimage.localFile : ''}
-                alt={posts.coverimage.alternativeText}
-                date={getFormattedDate(posts.published_at)}
-                link={getFormattedLink('/project/', posts.slug)}
-                description={posts.summary}
-                tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                key={posts.id}
-              />
-            ))
-            : <p className="error-message">No projects</p>}
-        </section>
-        <nav className="text-sm max-w-3xl posts-navigation-container">
-          <Link to={prevPage} className="posts-navigation-button">
-            <i className="fas fa-arrow-circle-left" />
-            &nbsp;Prev
-          </Link>
-          {(() => {
-            const items = [];
-            for (let i = 1; i <= numPages; i++) {
-              if (i === 1) {
-                items.push(
-                  <Link to="/project" className="posts-navigation-button" key={i}>
-                    {i}
-                  </Link>,
-                );
-              } else {
-                items.push(
-                  <Link to={`/project/page/${i}`} className="posts-navigation-button" key={i}>
-                    {i}
-                  </Link>,
-                );
+        <div className="max-w-3xl py-0 px-2">
+          <CoverImage title="Recent Projects" />
+          <br />
+          <section className="card-container">
+            {data.allStrapiProjectpost.nodes.length > 0
+              ? data.allStrapiProjectpost.nodes.map((posts) => (
+                <Card
+                  title={posts.title}
+                  img={posts.coverimage ? posts.coverimage.localFile : ''}
+                  alt={posts.coverimage.alternativeText}
+                  date={getFormattedDate(posts.published_at)}
+                  link={getFormattedLink('/project/', posts.slug)}
+                  description={posts.summary}
+                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                  key={posts.id}
+                />
+              ))
+              : <p className="error-message">No projects</p>}
+          </section>
+          <nav className="text-sm max-w-3xl flex justify-end m-4 mb-0">
+            <Link to={prevPage} className="posts-navigation-button">
+              <i className="fas fa-arrow-circle-left" />
+              &nbsp;Prev
+            </Link>
+            {(() => {
+              const items = [];
+              for (let i = 1; i <= numPages; i++) {
+                if (i === 1) {
+                  items.push(
+                    <Link to="/project" className="posts-navigation-button" key={i}>
+                      {i}
+                    </Link>,
+                  );
+                } else {
+                  items.push(
+                    <Link to={`/project/page/${i}`} className="posts-navigation-button" key={i}>
+                      {i}
+                    </Link>,
+                  );
+                }
               }
-            }
-            return items;
-          })()}
-          <Link to={nextPage} className="posts-navigation-button">
-            Next&nbsp;
-            <i className="fas fa-arrow-circle-right" />
-          </Link>
-        </nav>
+              return items;
+            })()}
+            <Link to={nextPage} className="posts-navigation-button">
+              Next&nbsp;
+              <i className="fas fa-arrow-circle-right" />
+            </Link>
+          </nav>
+        </div>
       </LayoutSingleColumn>
     </Layout>
   );

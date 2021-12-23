@@ -93,7 +93,7 @@ const Header = () => {
             </div>
             </div>
           </div>
-          <SmoothCollapse expanded={menuExpanded} className="max-w-3xl flex justify-center">
+          <SmoothCollapse expanded={menuExpanded} className="max-w-3xl flex justify-center sm:hidden">
             <div className="my-2">
               {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
             </div>

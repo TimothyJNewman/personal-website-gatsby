@@ -50,7 +50,7 @@ const ProjectList = ({ pageContext, data }) => {
             ))
             : <p className="error-message">No projects</p>}
         </section>
-        <nav className="max-w-3xl posts-navigation-container">
+        <nav className="text-sm max-w-3xl posts-navigation-container">
           <Link to={prevPage} className="posts-navigation-button">
             <i className="fas fa-arrow-circle-left" />
             &nbsp;Prev

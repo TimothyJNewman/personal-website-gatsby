@@ -245,16 +245,15 @@ a, a:hover, a:focus, a:active {
 .posts-navigation-button, .posts-navigation-button:active {
   padding: 0.4em 0.8em;
   display: inline;
-  color: var(--primarycolor-l5);
-  background-color: var(--secondarycolor-l0);
+  color: var(--color-text-secondary-std);
+  background-color: var(--color-bg-secondary-light);
   border: 0;
-  border-left: 0.15em solid var(--primarycolor-l5);
-  font-size: 0.8em;
+  border-left: 0.15em solid var(--color-bg-white);
 }
 
 .posts-navigation-button:hover, .posts-navigation-button:focus {
-  color: var(--primarycolor-d4);
-  background-color: var(--secondarycoloroverlay);
+  color: var(--color-text-secondary-std);
+  background-color: var(--color-bg-primary-dark);
 }
 
 .posts-navigation-button:first-child {

@@ -30,7 +30,7 @@ const BlogList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-      <div className="max-w-3xl py-0 px-2">
+      <div className="max-w-3xl px-2">
         <CoverImage title="Recent Blog Posts" />
         <br />
         <section className="card-container">

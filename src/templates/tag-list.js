@@ -18,7 +18,7 @@ const TagList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <section className="max-w-3xl mx-auto text-left py-0 px-2">
+        <section className="max-w-3xl mx-auto text-left px-2">
           <CoverImage
             title={`Tag: ${queryTag}`}
             desc={`
@@ -29,7 +29,7 @@ const TagList = ({ pageContext, data }) => {
         </section>
         {data.allStrapiProjectpost.nodes.length > 0
           ? (
-            <section className="max-w-3xl py-0 px-2">
+            <section className="max-w-3xl px-2">
               <h2 className="my-4">Recent Projects</h2>
               <div className="card-container">
                 {data.allStrapiProjectpost.nodes.map((posts) => (
@@ -57,7 +57,7 @@ const TagList = ({ pageContext, data }) => {
           : ''}
         {data.allStrapiBlogpost.nodes.length > 0
           ? (
-            <section className="max-w-3xl py-0 px-2">
+            <section className="max-w-3xl px-2">
               <h2 className="my-4">Recent Blog Posts</h2>
               <div className="card-container">
                 {data.allStrapiBlogpost.nodes.map((posts) => (
@@ -82,7 +82,7 @@ const TagList = ({ pageContext, data }) => {
             </section>
           )
           : ''}
-        <section className="max-w-3xl py-0 px-2">
+        <section className="max-w-3xl px-2">
           <h2 className="my-4">All Tags</h2>
           <div className="flex flex-wrap">
             {data.allStrapiTag.nodes

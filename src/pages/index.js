@@ -72,7 +72,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="max-w-3xl py-0 px-2 site-intro-section">
+        <section className="max-w-3xl px-2 site-intro-section">
           <div className="site-intro">
             <div className="p-4 m-4 site-intro-container">
               <div className="site-intro-welcome">
@@ -98,7 +98,7 @@ const IndexPage = () => {
             </div>
           </div>
         </section>
-        <section className="max-w-3xl py-0 px-2">
+        <section className="max-w-3xl px-2">
           <div className="flex justify-between items-center">
             <h2 className="my-4">Recent Projects</h2>
             <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
@@ -127,7 +127,7 @@ const IndexPage = () => {
             </Link>
           </div>
         </section>
-        <section className="max-w-3xl py-0 px-2">
+        <section className="max-w-3xl px-2">
           <h2 className="my-4">Recent Blog Posts</h2>
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
@@ -152,7 +152,7 @@ const IndexPage = () => {
             </Link>
           </div>
         </section>
-        <section className="max-w-3xl py-0 px-2">
+        <section className="max-w-3xl px-2">
           <h2 className="my-4">All Tags</h2>
           <div className="flex flex-wrap">
             {data.allStrapiTag.nodes

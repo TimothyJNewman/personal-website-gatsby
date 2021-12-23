@@ -13,7 +13,7 @@ import { getFormattedDate } from '../util/common-utils';
 const BlogTemplate = ({ data }) => (
   <Layout seo={data.strapiBlogpost.seo}>
     <LayoutSingleColumn>
-      <section className="max-w-3xl mx-auto text-left py-0 px-2">
+      <section className="max-w-3xl mx-auto text-left px-2">
         {data.strapiBlogpost.coverimage
           ? (
             <CoverImage
@@ -23,7 +23,7 @@ const BlogTemplate = ({ data }) => (
             />
           )
           : <CoverImage title={data.strapiBlogpost.title} />}
-        <div className="px-0 py-1">
+        <div className="py-1">
           <div className="py-2 flex justify-between items-start">
             <div className="m-0 text-sm italic text-dategray article-date-container">
               <strong>Published:&nbsp;</strong>

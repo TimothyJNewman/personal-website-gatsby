@@ -5,6 +5,9 @@
 /* Global styles */
 
 :root {
+  --color-text-primary-std: #000;
+  --color-text-secondary-std: #fff;
+
   --errorcolor: hsl(357, 88%, 52%);
   --errorcolorbackground: hsl(357, 88%, 65%);
   --successcolor: hsl(169, 88%, 52%);
@@ -19,11 +22,13 @@ html[data-theme='light'] {
   --color-text-primary: #000;
   --color-text-secondary: #fff;
   --color-text-blue: #2d6da6;
+  --color-bg-primary-lighter: #ccdfeb;
   --color-bg-primary-light: #5e9abf;
   --color-bg-primary-dark: #2d6da6;
   --color-bg-secondary-light: #a6432d;
   --color-bg-secondary-dark: #733e22;
   --color-bg-white: #fbf3ed;
+  --color-dategrey: #404040;
   --primarycolor-l5: #fbf3ed;
   --primarycolor-l5background: hsla(28, 62%, 96%, 0.9);
   --primarycolor-l4: #f3d8c4;
@@ -40,17 +45,19 @@ html[data-theme='light'] {
   --secondarycolor-l0: #05997e;
   --secondarycolor-l1: #08cfab;
   --secondarycoloroverlay: #05997e1a;
-  --dategrey: #404040;
 }
 
 html[data-theme='dark'] {
-  --color-text-primary: #000;
-  --color-text-secondary: #fff;
-  --color-bg-primary-light: #5e9abf;
-  --color-bg-primary-dark: #2d6da6;
-  --color-bg-secondary-light: #a6432d;
-  --color-bg-secondary-dark: #733e22;
-  --color-bg-white: #fbf3ed;
+  --color-text-primary: #fff;
+  --color-text-secondary: #000;
+  --color-text-blue: #2d6da6;
+  --color-bg-primary-lighter: #1a1b1b;
+  --color-bg-primary-light: #1a1b1b;
+  --color-bg-primary-dark: #536f8a;
+  --color-bg-secondary-light: #271611;
+  --color-bg-secondary-dark: #442a1c;
+  --color-bg-white: #313130;
+  --color-dategrey: #d3d3d3;
   --primarycolor-l5: #3f230d;
   --primarycolor-l5background: #3f230dcc;
   --primarycolor-l4: #4c2a10;
@@ -67,7 +74,6 @@ html[data-theme='dark'] {
   --secondarycolor-l0: #12b99b;
   --secondarycolor-l1: #08cfab;
   --secondarycoloroverlay: #05997e1a;
-  --dategrey: #d3d3d3;
 }
 
 body, div, section, button {
@@ -108,7 +114,6 @@ a, a:hover, a:focus, a:active {
 @import url(./markdown.css);
 @import url(./header-footer.css);
 @import url(./cover-image.css);
-@import url(./card.css);
 @import url(./contact-page.css);
 
 /* Status messages */
@@ -200,38 +205,10 @@ a, a:hover, a:focus, a:active {
   grid-gap: min(1em, 3vmin) min(1em, 3vmin);
 }
 
-/* Single-column layout */
-
-.app-content-wrapper {
-  background-color: var(--primarycolor-l5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--primarycolor-d6);
-}
-
-.content {
-  min-height: 100vh;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 1em 0.5em;
-}
-
 /* Article formatting */
 
-.article-date-share-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 1em 0;
-}
-
 .article-share-button, .article-share-button:active {
-  color: var(--primarycolor-d5);
-  border: 2px solid var(--secondarycolor-l0);
-  border-radius: var(--std-border-radius);
-  background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
+  background: linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark)), linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
   background-size: 100% 0em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
@@ -240,14 +217,7 @@ a, a:hover, a:focus, a:active {
 
 .article-share-button:hover {
   background-size: 0 0.1em, 100% 100%;
-  color: var(--light-text);
-}
-
-.article-date-container {
-  margin: 0;
-  font-size: 0.9em;
-  font-style: italic;
-  color: var(--dategrey);
+  color: var(--color-text-secondary-std);
 }
 
 .article-date-container>*:nth-child(2) {
@@ -315,7 +285,6 @@ a, a:hover, a:focus, a:active {
   border-radius: var(--std-border-radius);
   background: var(--primarycolor-d2) url(../images/rockbackground.jpg) no-repeat center;
   background-size: cover;
-  padding: min(1em, 3vmin);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -334,29 +303,8 @@ a, a:hover, a:focus, a:active {
   }
 }
 
-.index-share-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.index-subheader {
-  margin-left: 5px;
-  margin-block-start: 10px;
-  margin-block-end: 15px;
-  display: flex;
-  justify-self: start;
-}
-
-.read-more-container {
-  margin: 12px 8px 5px 5px;
-  display: flex;
-  justify-content: flex-end;
-  color: var(--primarycolor-d4);
-}
-
 .read-more-link {
-  background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
+  background: linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
   background-size: 0 0.15em;
   background-position: 0% 100%;
   background-repeat: no-repeat;

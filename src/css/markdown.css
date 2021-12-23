@@ -3,6 +3,7 @@
 .markdown-text {
   line-height: 1.6;
   overflow-wrap: break-word;
+  color: var(--color-text-primary);
 }
 
 .markdown-text h2, h3, h4 {
@@ -28,7 +29,7 @@
 }
 
 .markdown-text a, .markdown-text strong, .markdown-text em, .markdown-text u {
-  color: var(--primarycolor-d3);
+  color: var(--color-text-primary);
 }
 
 .markdown-text strong {
@@ -37,7 +38,7 @@
 
 .markdown-text a, .markdown-text a:active {
   border: 0;
-  background: linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0)), linear-gradient(var(--secondarycolor-l0), var(--secondarycolor-l0));
+  background: linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark)), linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
   background-size: 100% 0.15em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
@@ -46,7 +47,7 @@
 
 .markdown-text a:hover, .markdown-text a:focus {
   background-size: 0 0.1em, 100% 100%;
-  color: var(--primarycolor-l5);
+  color: var(--color-text-secondary-std);
 }
 
 .markdown-text>div>blockquote {
@@ -57,15 +58,15 @@
   padding-top: 0.4em;
   padding-bottom: 0.4em;
   padding: 0.4em 1em 0.4em 2em;
-  border-left: 5px solid var(--primarycolor-l3);
-  background-color: var(--secondarycoloroverlay);
+  border-left: 5px solid var(--color-bg-primary-light);
+  background-color: var(--color-bg-primary-lighter);
   border-radius: var(--std-border-radius);
 }
 
 .markdown-text blockquote p {
   font-style: italic;
   font-weight: 500;
-  color: var(--primarycolor-d5);
+  color: var(--color-text-primary);
 }
 
 .markdown-text ol {
@@ -79,7 +80,8 @@
 }
 
 .markdown-text ol>li {
-  margin-bottom: 0.5em;
+  margin-top: 0.3em;
+  margin-bottom: 0.2em;
   display: flex;
   align-items: flex-start;
 }
@@ -87,12 +89,12 @@
 .markdown-text ol>li:before {
   content: counter(li);
   counter-increment: li;
-  background-color: var(--secondarycolor-l0);
+  background-color: var(--color-bg-primary-dark);
   position: relative;
   right: 0.5em;
   padding: 0em 0.5em 0em 0.5em;
   border-radius: 50%;
-  color: var(--light-text);
+  color: var(--color-text-secondary-std);
   font-weight: bold;
   font-size: 1em;
 }
@@ -113,7 +115,7 @@
   content: "\f101";
   position: relative;
   padding: 0em 0.55em;
-  color: var(--secondarycolor-l0);
+  color: var(--color-bg-primary-dark);
   font-weight: bold;
 }
 

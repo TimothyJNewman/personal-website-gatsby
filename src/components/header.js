@@ -25,7 +25,7 @@ const HeaderButton = ({ text, link }) => (
 );
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="pr-2 whitespace-nowrap hover:text-blue" to={link} key={text}>
+  <Link className="pr-3 whitespace-nowrap hover:text-blue" to={link} key={text}>
     <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>
@@ -70,7 +70,7 @@ const Header = () => {
             </div>
             <div className="text-secondary bg-secondary-light rounded">
               <button
-                className="px-2 py-0.5 text-lg hover:bg-primary-dark rounded-l sm:rounded"
+                className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark rounded-l sm:rounded"
                 aria-label="Theme Toggle"
                 type="button"
                 onClick={() => {
@@ -82,7 +82,7 @@ const Header = () => {
                 <span className="hidden sm:inline">&nbsp;{isDarkTheme ? 'light' : 'dark'}</span>
               </button>
               <button
-                className="px-2 py-0.5 text-lg hover:bg-primary-dark rounded-r sm:hidden"
+                className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark rounded-r sm:hidden"
                 aria-label="Toggle Menu"
                 type="button"
                 onClick={() => {

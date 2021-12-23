@@ -15,7 +15,7 @@ const ButtonTextLink = [
 ];
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="pr-2 whitespace-nowrap hover:text-blue" to={link} key={text}>
+  <Link className="pr-3 whitespace-nowrap hover:text-blue" to={link} key={text}>
     <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>

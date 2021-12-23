@@ -3,7 +3,7 @@
 /* Header button */
 
 .header-button-wrapper {
-  background: linear-gradient(var(--color-bg-primary-light), var(--color-bg-primary-light));
+  background: linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
   background-size: 0 0.2em;
   background-position: 0% 100%;
   background-repeat: no-repeat;

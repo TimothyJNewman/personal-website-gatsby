@@ -13,22 +13,18 @@ const Card = ({
   tag2,
   tag3,
 }) => (
-  <div className="card">
-    {img !== undefined && <Link to={link}><GatsbyImage className="card-image" image={getImage(img)} alt={alt} /></Link>}
-    <div className="card-contents">
-      <Link className="card-header-date-body-wrapper" to={link}>
-        <h3 className="card-heading">{title}</h3>
-        <p className="card-date">
-          {date}
-        </p>
-        <p className="card-body">
-          {description}
-        </p>
+  <div className="bg-primary-lighter shadow-md rounded">
+    {img !== undefined && <Link to={link}><GatsbyImage className="rounded-t" image={getImage(img)} alt={alt} /></Link>}
+    <div className="px-4 py-5 pt-3 min-h-full justify-between flex flex-col">
+      <Link className="" to={link}>
+        <h3 className="">{title}</h3>
+        <p className="italic text-dategray text-sm">{date}</p>
+        <p className="">{description}</p>
       </Link>
-      <div className="card-tag-container">
-        {tag1 ? <Link className="card-tag-link" to={`/tag/${tag1}`}>{tag1}</Link> : ''}
-        {tag2 ? <Link className="card-tag-link" to={`/tag/${tag2}`}>{tag2}</Link> : ''}
-        {tag3 ? <Link className="card-tag-link" to={`/tag/${tag3}`}>{tag3}</Link> : ''}
+      <div className="mt-4">
+        {tag1 ? <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${tag1}`}>{tag1}</Link> : ''}
+        {tag2 ? <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${tag2}`}>{tag2}</Link> : ''}
+        {tag3 ? <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${tag3}`}>{tag3}</Link> : ''}
       </div>
     </div>
   </div>

@@ -13,19 +13,19 @@ import { getFormattedDate } from '../util/common-utils';
 const BlogTemplate = ({ data }) => (
   <Layout seo={data.strapiBlogpost.seo}>
     <LayoutSingleColumn>
-      {data.strapiBlogpost.coverimage
-        ? (
-          <CoverImage
-            img={data.strapiBlogpost.coverimage ? data.strapiBlogpost.coverimage.localFile : ''}
-            alt={data.strapiBlogpost.coverimage.alternativeText}
-            title={data.strapiBlogpost.title}
-          />
-        )
-        : <CoverImage title={data.strapiBlogpost.title} />}
       <section className="max-w-3xl mx-auto text-left py-0 px-2">
+        {data.strapiBlogpost.coverimage
+          ? (
+            <CoverImage
+              img={data.strapiBlogpost.coverimage ? data.strapiBlogpost.coverimage.localFile : ''}
+              alt={data.strapiBlogpost.coverimage.alternativeText}
+              title={data.strapiBlogpost.title}
+            />
+          )
+          : <CoverImage title={data.strapiBlogpost.title} />}
         <div className="px-0 py-1">
-          <div className="article-date-share-button">
-            <div className="article-date-container">
+          <div className="py-2 flex justify-between items-start">
+            <div className="m-0 text-sm italic text-dategray article-date-container">
               <strong>Published:&nbsp;</strong>
               {getFormattedDate(data.strapiBlogpost.published_at)}
               <strong>Updated:&nbsp;</strong>
@@ -33,9 +33,9 @@ const BlogTemplate = ({ data }) => (
             </div>
             <Share label="Share this!" text={data.strapiBlogpost.summary} title={data.strapiBlogpost.title} />
           </div>
-          <div className="card-tag-container-tagpage">
+          <div className="">
             {data.strapiBlogpost.tags.map((elem) => (
-              <Link className="card-tag-link" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
+              <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
             ))}
           </div>
         </div>
@@ -46,7 +46,7 @@ const BlogTemplate = ({ data }) => (
           />
         </div>
       </section>
-      <div className="read-more-container">
+      <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
         <Link to="/blog" className="read-more-link">
           Read all blog posts&nbsp;
           <i className="fas fa-arrow-right" />

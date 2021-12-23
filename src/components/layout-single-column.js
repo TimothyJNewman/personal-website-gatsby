@@ -5,8 +5,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const LayoutSingleColumn = ({ children }) => (
-  <div className="app-content-wrapper">
-    <div className="content">
+  <div className="bg-white text-primary flex justify-center">
+    <div className="max-w-3xl min-h-screen mx-auto p-2">
       {children}
     </div>
   </div>

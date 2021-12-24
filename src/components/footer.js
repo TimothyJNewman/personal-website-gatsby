@@ -50,7 +50,7 @@ const Footer = () => (
             )}
           />
         </p>
-        <div>
+        <div className="text-secondary-dark">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>
       </div>

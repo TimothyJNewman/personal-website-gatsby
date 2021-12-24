@@ -20,7 +20,7 @@ html[data-theme='light'] {
   --color-text-primary: #000;
   --color-text-secondary: #f2f2f2;
   --color-text-blue: #2d6da6;
-  --color-bg-primary-lighter: #ccdfeb;
+  --color-bg-primary-lighter: #e0f0fa;
   --color-bg-primary-light: #5e9abf;
   --color-bg-primary-dark: #2d6da6;
   --color-bg-secondary-light: #a6432d;
@@ -38,7 +38,7 @@ html[data-theme='dark'] {
   --color-bg-primary-light: #1a1b1b;
   --color-bg-primary-dark: #536f8a;
   --color-bg-secondary-light: #271611;
-  --color-bg-secondary-dark: #413f3e;
+  --color-bg-secondary-dark: #d89f87;
   --color-bg-white: #313130;
   --color-bg-white-overlay: #313130d7;
   --color-dategrey: #d3d3d3;

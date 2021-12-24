@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
-import logo from '../images/logowithtext.svg';
+import logo from '../images/logo-with-text.svg';
 
 // Source of truth for navigation
 const ButtonTextLink = [
@@ -94,7 +94,7 @@ const Header = () => {
             </div>
           </div>
           <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md flex justify-center sm:hidden">
-            <div className="my-2">
+            <div className="my-2 text-secondary-dark">
               {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
             </div>
           </SmoothCollapse>

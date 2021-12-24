@@ -53,10 +53,6 @@
 .markdown-text>div>blockquote {
   margin-left: 0;
   margin-right: 0;
-  padding-right: 1em;
-  padding-left: 2em;
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
   padding: 0.4em 1em 0.4em 2em;
   border-left: 5px solid var(--color-bg-primary-light);
   background-color: var(--color-bg-primary-lighter);
@@ -69,6 +65,11 @@
   color: var(--color-text-primary);
 }
 
+.markdown-text blockquote ol>li::marker,
+.markdown-text blockquote ul>li::marker {
+  color: var(--color-bg-primary-dark);
+}
+
 .markdown-text ol {
   counter-reset: li;
   /* Initiate a counter */
@@ -76,45 +77,39 @@
   /* Remove default numbering */
   *list-style: decimal;
   /* Keep using default numbering for IE6/7 */
+  padding-left: 1.6em;
 }
 
 .markdown-text ol>li {
   margin-top: 0.3em;
   margin-bottom: 0.2em;
-  padding-left: 1em;
+  counter-increment: li;
+  display: list-item;
 }
 
-.markdown-text ol>li:before {
-  content: counter(li);
-  counter-increment: li;
-  background-color: var(--color-bg-primary-dark);
-  position: relative;
-  padding: 0em 0.5em 0em 0.5em;
-  margin-right: 0.5em;
-  border-radius: 50%;
-  color: var(--color-text-secondary-std);
+.markdown-text ol>li::marker {
+  display: list-item;
+  content: "#" counter(li) " ";
   font-weight: bold;
-  font-size: 1em;
+  color: var(--color-bg-secondary-dark);
 }
 
 .markdown-text ul {
-  padding-left: 0;
+  padding-left: 1.6em;
+  list-style: circle outside none;
+}
+
+.markdown-text ul>li::marker {
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "Font Awesome 5 Free";
+  content: "\f101 \0020 \0020";
+  color: var(--color-bg-secondary-dark);
 }
 
 .markdown-text ul>li {
-  margin-bottom: 0.5em;
-  padding-left: 1em;
-}
-
-.markdown-text ul>li:before {
-  font-family: "Font Awesome 5 Free";
-  font-size: 1em;
-  content: "\f101";
-  position: relative;
-  left: -0.5em;
-  padding: 0em 0.55em;
-  color: var(--color-bg-primary-dark);
-  font-weight: bold;
+  margin-top: 0.3em;
+  margin-bottom: 0.2em;
 }
 
 .markdown-text iframe {

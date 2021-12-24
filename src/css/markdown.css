@@ -76,7 +76,6 @@
   /* Remove default numbering */
   *list-style: decimal;
   /* Keep using default numbering for IE6/7 */
-  padding-left: calc(0.1em + 0.5vw);
 }
 
 .markdown-text ol>li {
@@ -90,8 +89,8 @@
   counter-increment: li;
   background-color: var(--color-bg-primary-dark);
   position: relative;
-  right: 0.5em;
   padding: 0em 0.5em 0em 0.5em;
+  margin-right: 0.5em;
   border-radius: 50%;
   color: var(--color-text-secondary-std);
   font-weight: bold;

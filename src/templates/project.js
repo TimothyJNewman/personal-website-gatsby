@@ -33,7 +33,7 @@ const ProjectTemplate = ({ data }) => (
             </div>
             <Share label="Share this!" text={data.strapiProjectpost.summary} title={data.strapiProjectpost.title} />
           </div>
-          <div className="">
+          <div>
             {data.strapiProjectpost.tags.map((elem) => (
               <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
             ))}

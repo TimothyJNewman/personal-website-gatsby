@@ -33,7 +33,7 @@ const BlogTemplate = ({ data }) => (
             </div>
             <Share label="Share this!" text={data.strapiBlogpost.summary} title={data.strapiBlogpost.title} />
           </div>
-          <div className="">
+          <div>
             {data.strapiBlogpost.tags.map((elem) => (
               <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
             ))}

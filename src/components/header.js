@@ -59,8 +59,8 @@ const Header = () => {
         <div className="max-w-screen-lg mx-auto">
           <div className="flex justify-between items-center">
             <Link to="/">
-              <div className="bg-secondary-light hover:bg-primary-dark p-2 rounded-full">
-                <div className=""><img className="" src={logo} alt="logo" /></div>
+              <div className="bg-secondary-light hover:bg-primary-dark hover:shadow-md p-2 rounded-full">
+                <img src={logo} alt="logo" />
               </div>
             </Link>
             <div className="flex items-center">
@@ -69,7 +69,7 @@ const Header = () => {
               </div>
               <div className="text-secondary bg-secondary-light rounded">
                 <button
-                  className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark hover:shadow rounded-l sm:rounded"
+                  className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark hover:shadow-md rounded-l sm:rounded"
                   aria-label="Theme Toggle"
                   type="button"
                   onClick={() => {
@@ -81,7 +81,7 @@ const Header = () => {
                   <span className="hidden sm:inline">&nbsp;{isDarkTheme ? 'light' : 'dark'}</span>
                 </button>
                 <button
-                  className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark hover:shadow rounded-r sm:hidden"
+                  className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark hover:shadow-md rounded-r sm:hidden"
                   aria-label="Toggle Menu"
                   type="button"
                   onClick={() => {

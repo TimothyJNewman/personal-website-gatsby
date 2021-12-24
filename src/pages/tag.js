@@ -29,7 +29,7 @@ const TagPage = () => {
     <Layout seo={seo}>
       <LayoutSingleColumn>
         <br />
-        <section className="max-w-3xl px-2">
+        <section className="max-w-screen-md px-2">
           <CoverImage
             title="Tags"
           />

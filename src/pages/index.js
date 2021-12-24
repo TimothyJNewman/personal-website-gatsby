@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import MarkdownView from 'react-showdown';
 import { getFormattedDate, getFormattedLink } from '../util/common-utils';
@@ -6,11 +6,21 @@ import Card from '../components/card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Share from '../components/share';
+import { getSrc, getSrcSet } from 'gatsby-plugin-image';
 
 const query = graphql`  
   query HomeQuery {
     strapiSmallText(label: {eq: "Welcome Text"}) {
       content
+    }
+    strapiGallery(strapiId: {eq: 1}) {
+      images {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, width: 1000, aspectRatio: 1.3)
+          }
+        }
+      }
     }
     allStrapiSocialmedia(sort: {fields: order, order: ASC}) {
       nodes {
@@ -69,36 +79,50 @@ const query = graphql`
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
+  const [currentImage, setCurrentImage] = React.useState(0);
+  const imagesSrc = data?.strapiGallery?.images.map((image) => getSrc(image?.localFile));
+  const imagesSrcSet = data?.strapiGallery?.images.map((image) => getSrcSet(image?.localFile));
+  React.useEffect(() => {
+    setTimeout(() => setCurrentImage((currentImage + 1) % imagesSrc.length), 5000);
+  }, [currentImage])
+
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="max-w-3xl px-2 site-intro-section">
-          <div className="site-intro">
-            <div className="p-4 m-4 site-intro-container">
-              <div className="site-intro-welcome">
-                {data.strapiSmallText
-                  ? (
-                    <MarkdownView
-                      className="markdown-text"
-                      markdown={data.strapiSmallText.content}
-                      options={{ tables: true, emoji: true }}
-                    />
-                  )
+        <section className="max-w-screen-lg px-2 site-intro-section">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 site-intro">
+            <div className="p-4 rounded bg-white-overlay">
+              {data.strapiSmallText
+                ? (
+                  <MarkdownView
+                    className="markdown-text"
+                    markdown={data.strapiSmallText.content}
+                    options={{ tables: true, emoji: true }}
+                  />
+                )
+                : ''}
+              <div className="flex">
+                {data.allStrapiSocialmedia.nodes
+                  ? data.allStrapiSocialmedia.nodes.map((media) => (
+                    <a href={media.link} key={media.id} aria-label={media.name}>
+                      <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
+                    </a>
+                  ))
                   : ''}
-                <div className="flex">
-                  {data.allStrapiSocialmedia.nodes
-                    ? data.allStrapiSocialmedia.nodes.map((media) => (
-                      <a href={media.link} key={media.id} aria-label={media.name}>
-                        <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
-                      </a>
-                    ))
-                    : ''}
-                </div>
               </div>
+            </div>
+            <div className="p-4 flex justify-center items-center">
+              <img
+                src={imagesSrc[currentImage]}
+                srcSet={imagesSrcSet[currentImage]}
+                alt="site intro gallery"
+                className="rounded-lg"
+              />
             </div>
           </div>
         </section>
-        <section className="max-w-3xl px-2">
+        <br /><br />
+        <section className="max-w-screen-md px-2">
           <div className="flex justify-between items-center">
             <h2 className="my-4">Recent Projects</h2>
             <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
@@ -127,7 +151,7 @@ const IndexPage = () => {
             </Link>
           </div>
         </section>
-        <section className="max-w-3xl px-2">
+        <section className="max-w-screen-md px-2">
           <h2 className="my-4">Recent Blog Posts</h2>
           <div className="card-container">
             {data.allStrapiBlogpost.nodes
@@ -152,7 +176,7 @@ const IndexPage = () => {
             </Link>
           </div>
         </section>
-        <section className="max-w-3xl px-2">
+        <section className="max-w-screen-md px-2">
           <h2 className="my-4">All Tags</h2>
           <div className="flex flex-wrap">
             {data.allStrapiTag.nodes

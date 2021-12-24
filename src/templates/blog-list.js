@@ -30,7 +30,7 @@ const BlogList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-      <div className="max-w-3xl px-2">
+      <div className="max-w-screen-md px-2">
         <CoverImage title="Recent Blog Posts" />
         <br />
         <section className="card-container">
@@ -50,7 +50,7 @@ const BlogList = ({ pageContext, data }) => {
             ))
             : <p className="error-message">No blog posts found</p>}
         </section>
-        <nav className="text-sm max-w-3xl flex justify-end m-4 mb-0">
+        <nav className="text-sm max-w-screen-md flex justify-end m-4 mb-0">
           <Link to={prevPage} className="posts-navigation-button">
             <i className="fas fa-arrow-circle-left" />
             &nbsp;Prev

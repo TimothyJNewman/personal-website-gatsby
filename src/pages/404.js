@@ -14,7 +14,7 @@ const NotFoundPage = ({ location }) => {
     <Layout seo={seo}>
       <LayoutSingleColumn>
         <CoverImage title="You've reached a dead end!" />
-        <section className="max-w-3xl">
+        <section className="max-w-screen-md">
           <h2>404 Error</h2>
           <p className="markdown-text">
             {pathname === '/404'

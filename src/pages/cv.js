@@ -6,7 +6,7 @@ import CoverImage from '../components/cover-image';
 const CVPage = () => (
   <Layout>
     <LayoutSingleColumn>
-      <div className="max-w-3xl mx-auto px-2">
+      <div className="max-w-screen-md mx-auto px-2">
         <CoverImage title="Curriculum Vitae" />
         <br />
         <embed src="/CV.pdf#view=FitH" type="application/pdf" className="w-full h-screen rounded" />

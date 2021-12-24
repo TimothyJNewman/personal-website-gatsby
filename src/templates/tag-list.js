@@ -18,71 +18,68 @@ const TagList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <section className="max-w-3xl mx-auto text-left px-2">
+        <div className="max-w-screen-md px-2">
           <CoverImage
-            title={`Tag: ${queryTag}`}
-            desc={`
-           | Projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.nodes.length : 0}
-           | Blog: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.nodes.length : 0}
+            title={`Tag: ${queryTag}
+            / projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.nodes.length : 0}
+            / blogs: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.nodes.length : 0}
            `}
           />
-        </section>
-        {data.allStrapiProjectpost.nodes.length > 0
-          ? (
-            <section className="max-w-3xl px-2">
-              <h2 className="my-4">Recent Projects</h2>
-              <div className="card-container">
-                {data.allStrapiProjectpost.nodes.map((posts) => (
-                  <Card
-                    img={posts.CoverImage ? posts.CoverImage.url : ''}
-                    title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
-                    link={getFormattedLink('/project/', posts.slug)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                    key={posts.id}
-                  />
-                ))}
-              </div>
-              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-                <Link to="/project" className="read-more-link">
-                  Explore all projects&nbsp;
-                  <i className="fas fa-arrow-right" />
-                </Link>
-              </div>
-            </section>
-          )
-          : ''}
-        {data.allStrapiBlogpost.nodes.length > 0
-          ? (
-            <section className="max-w-3xl px-2">
-              <h2 className="my-4">Recent Blog Posts</h2>
-              <div className="card-container">
-                {data.allStrapiBlogpost.nodes.map((posts) => (
-                  <Card
-                    title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
-                    link={getFormattedLink('/blog/', posts.slug)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                    key={posts.id}
-                  />
-                ))}
-              </div>
-              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-                <Link to="/blog" className="read-more-link">
-                  Read all blog posts&nbsp;
-                  <i className="fas fa-arrow-right" />
-                </Link>
-              </div>
-            </section>
-          )
-          : ''}
-        <section className="max-w-3xl px-2">
+          {data.allStrapiProjectpost.nodes.length > 0
+            ? (
+              <>
+                <h2 className="my-4">Recent Projects</h2>
+                <div className="card-container">
+                  {data.allStrapiProjectpost.nodes.map((posts) => (
+                    <Card
+                      img={posts.CoverImage ? posts.CoverImage.url : ''}
+                      title={posts.title}
+                      date={getFormattedDate(posts.published_at)}
+                      link={getFormattedLink('/project/', posts.slug)}
+                      description={posts.summary}
+                      tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                      tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                      tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                      key={posts.id}
+                    />
+                  ))}
+                </div>
+                <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+                  <Link to="/project" className="read-more-link">
+                    Explore all projects&nbsp;
+                    <i className="fas fa-arrow-right" />
+                  </Link>
+                </div>
+              </>
+            )
+            : ''}
+          {data.allStrapiBlogpost.nodes.length > 0
+            ? (
+              <>
+                <h2 className="my-4">Recent Blog Posts</h2>
+                <div className="card-container">
+                  {data.allStrapiBlogpost.nodes.map((posts) => (
+                    <Card
+                      title={posts.title}
+                      date={getFormattedDate(posts.published_at)}
+                      link={getFormattedLink('/blog/', posts.slug)}
+                      description={posts.summary}
+                      tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                      tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                      tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                      key={posts.id}
+                    />
+                  ))}
+                </div>
+                <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+                  <Link to="/blog" className="read-more-link">
+                    Read all blog posts&nbsp;
+                    <i className="fas fa-arrow-right" />
+                  </Link>
+                </div>
+              </>
+            )
+            : ''}
           <h2 className="my-4">All Tags</h2>
           <div className="flex flex-wrap">
             {data.allStrapiTag.nodes
@@ -91,7 +88,7 @@ const TagList = ({ pageContext, data }) => {
               ))
               : <p className="error-message">No tags found</p>}
           </div>
-        </section>
+        </div>
       </LayoutSingleColumn>
     </Layout>
   );

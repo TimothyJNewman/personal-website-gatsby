@@ -13,7 +13,7 @@ import { getFormattedDate } from '../util/common-utils';
 const ProjectTemplate = ({ data }) => (
   <Layout seo={data.strapiProjectpost.seo}>
     <LayoutSingleColumn>
-      <section className="max-w-3xl mx-auto text-left px-2">
+      <section className="max-w-screen-md mx-auto text-left px-2">
         {data.strapiProjectpost.coverimage
           ? (
             <CoverImage
@@ -45,13 +45,13 @@ const ProjectTemplate = ({ data }) => (
             options={{ emoji: true, strikethrough: true }}
           />
         </div>
+        <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+          <Link to="/project" className="read-more-link">
+            Explore all projects&nbsp;
+            <i className="fas fa-arrow-right" />
+          </Link>
+        </div>
       </section>
-      <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-        <Link to="/project" className="read-more-link">
-          Explore all projects&nbsp;
-          <i className="fas fa-arrow-right" />
-        </Link>
-      </div>
     </LayoutSingleColumn>
   </Layout>
 );

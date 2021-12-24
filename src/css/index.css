@@ -26,7 +26,7 @@ html[data-theme='light'] {
   --color-bg-secondary-light: #a6432d;
   --color-bg-secondary-dark: #733e22;
   --color-bg-white: #fbf3ed;
-  --color-bg-white-overlay: #fbf3edcc;
+  --color-bg-white-overlay: #fbf3edde;
   --color-dategrey: #404040;
 }
 
@@ -237,30 +237,15 @@ a, a:hover, a:focus, a:active {
 }
 
 .site-intro-section {
-  min-height: calc(100vmin - 7em);
+  min-height: calc(100vmin - 10em);
   display: flex;
 }
 
 .site-intro {
   border-radius: var(--std-border-radius);
-  background: var(--color-bg-secondary-dark) url(../images/rockbackground.jpg) no-repeat center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /*background: var(--color-bg-secondary-dark) url(../images/rockbackground.jpg) no-repeat center;
+  */background-size: cover;
   animation: 0.3s fadeIn both ease-in;
-}
-
-.site-intro-container {
-  background-color: var(--color-bg-white-overlay);
-  max-width: 70%;
-  border-radius: var(--std-border-radius);
-}
-
-@media only screen and (max-width: 600px) {
-  .site-intro-container {
-    max-width: 100%;
-  }
 }
 
 .read-more-link {

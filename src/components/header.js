@@ -54,12 +54,12 @@ const Header = () => {
     }
   }, []);
   return (
-    <header className="bg-white text-primary p-4 flex justify-center">
+    <header className="bg-white text-primary p-5 flex justify-center">
       <div className="min-w-full">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-screen-lg mx-auto">
           <div className="flex justify-between items-center">
               <Link to="/">
-                <div className="bg-secondary-light p-2 rounded-full">
+                <div className="bg-secondary-light hover:bg-primary-dark p-2 rounded-full">
                   <div className=""><img className="" src={logo} alt="logo" /></div>
                 </div>
               </Link>
@@ -93,7 +93,7 @@ const Header = () => {
             </div>
             </div>
           </div>
-          <SmoothCollapse expanded={menuExpanded} className="max-w-3xl flex justify-center sm:hidden">
+          <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md flex justify-center sm:hidden">
             <div className="my-2">
               {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
             </div>

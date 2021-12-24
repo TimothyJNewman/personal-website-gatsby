@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import MarkdownView from 'react-showdown';
+import { getSrc, getSrcSet } from 'gatsby-plugin-image';
 import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Card from '../components/card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Share from '../components/share';
-import { getSrc, getSrcSet } from 'gatsby-plugin-image';
 
 const query = graphql`  
   query HomeQuery {

@@ -22,8 +22,8 @@ const seoQuery = graphql`
         metaDescription
         metaTitle
         keywords
+        preventIndexing
         shareImage {
-          preventIndexing
           media {
             localFile {
               publicURL
@@ -103,6 +103,18 @@ const SEO = ({ seo = {} }) => {
         property: 'og:type',
         content: 'article',
       });
+    }
+    if (fullSeo.preventIndexing) {
+      tags.push(
+        {
+          property: 'robots',
+          content: 'noindex',
+        },
+        {
+          property: 'googlebot',
+          content: 'noindex',
+        }
+      );
     }
     tags.push(
       { name: 'twitter:card', content: 'summary_large_image' },

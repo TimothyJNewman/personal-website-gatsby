@@ -84,8 +84,8 @@ export const query = graphql`
           metaTitle
           metaDescription
           isArticle
+          preventIndexing
           shareImage {
-            preventIndexing
             media {
               localFile {
                 publicURL

@@ -24,7 +24,6 @@ module.exports = {
       textColor: {
         primary: 'var(--color-text-primary)',
         secondary: 'var(--color-text-secondary)',
-        blue: 'var(--color-text-blue)',
         'std-primary': 'var(--color-text-primary-std)',
         'std-secondary': 'var(--color-text-secondary-std)',
         dategray: 'var(--color-dategrey)',

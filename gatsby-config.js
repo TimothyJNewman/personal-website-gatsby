@@ -111,7 +111,7 @@ module.exports = {
       options: {
         defaults: {
           placeholder: 'tracedSVG',
-          tracedSVGOptions: { color: '#653815', background: '#fbf3ed', turdSize: 10 },
+          tracedSVGOptions: { color: '#2d6da6', background: '#e0f0fa', turdSize: 10 },
         },
       },
     },
@@ -144,8 +144,8 @@ module.exports = {
         name: 'Timothy Newman Website',
         short_name: 'Timothy Newman',
         start_url: '/',
-        theme_color: '#653815',
-        background_color: '#653815',
+        theme_color: '#2d6da6',
+        background_color: '#2d6da6',
         display: 'standalone',
         icon: './src/images/icons/android-chrome-512x512.png',
       },

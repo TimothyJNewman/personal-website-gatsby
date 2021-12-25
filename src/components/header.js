@@ -25,7 +25,7 @@ const HeaderButton = ({ text, link }) => (
 );
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="pr-3 whitespace-nowrap hover:text-blue" to={link} key={text}>
+  <Link className="pr-3 whitespace-nowrap hover:text-primary-dark" to={link} key={text}>
     <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>

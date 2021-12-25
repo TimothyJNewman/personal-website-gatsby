@@ -13,9 +13,3 @@
 .header-button-wrapper:hover, .header-button-wrapper:focus {
   background-size: 100% 0.2em;
 }
-
-/* Footer */
-
-a.footer-link {
-  color: inherit;
-}

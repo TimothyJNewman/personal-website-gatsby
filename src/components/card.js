@@ -24,9 +24,9 @@ const Card = ({
         </div>
       </Link>
       <div className="flex flex-wrap p-4 pt-0">
-        {tag1 ? <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${tag1}`}>{tag1}</Link> : ''}
-        {tag2 ? <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${tag2}`}>{tag2}</Link> : ''}
-        {tag3 ? <Link className="text-sm mr-1 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded" to={`/tag/${tag3}`}>{tag3}</Link> : ''}
+        {tag1 ? <Link className="tag-button" to={`/tag/${tag1}`}>{tag1}</Link> : ''}
+        {tag2 ? <Link className="tag-button" to={`/tag/${tag2}`}>{tag2}</Link> : ''}
+        {tag3 ? <Link className="tag-button" to={`/tag/${tag3}`}>{tag3}</Link> : ''}
       </div>
     </div>
   </div>

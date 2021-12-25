@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .error-message {
+    @apply text-sm text-std-secondary border-2 rounded px-2 py-0.5;
+    background-color: theme('colors.error');
+    border-color: theme('colors.error-border');
+  }
+  .success-message {
+    @apply text-sm text-std-secondary border-2 rounded px-2 py-0.5;
+    background-color: theme('colors.success');
+    border-color: theme('colors.success-border');
+  }
+  .tag-button {
+    @apply text-sm m-0.5 px-1 py-0.5 hover:bg-transparent focus:bg-transparent border-2 border-transparent rounded;
+    background-color: theme('backgroundColor.primary-dark');
+    color: theme('textColor.std-secondary');
+  }
+  .tag-button:hover, .tag-button:focus {
+    border-color: theme('colors.primary-dark');
+  }
+  .std-button {
+    @apply px-2 py-1 rounded;
+    background-color: theme('backgroundColor.secondary-light');
+    color: theme('textColor.std-secondary');
+  }
+  .std-button:hover, .std-button:focus {
+    @apply shadow-md;
+    background-color: theme('backgroundColor.primary-dark');
+  } 
+}
+
 /* Global styles */
 
 :root {
@@ -10,10 +40,9 @@
 
   --errorcolor: hsl(357, 88%, 52%);
   --errorcolorbackground: hsl(357, 88%, 65%);
-  --successcolor: hsl(169, 88%, 52%);
+  --successcolor: hsl(169, 80%, 25%);
   --successcolorbackground: hsl(169, 88%, 35%);
   --std-border-radius: 0.35em;
-  --header-footer-accent: #f3d8c4;
 }
 
 html[data-theme='light'] {
@@ -82,35 +111,6 @@ a, a:hover, a:focus, a:active {
 @import url(./markdown.css);
 @import url(./header-footer.css);
 @import url(./contact-page.css);
-
-/* Status messages */
-
-.error-message {
-  color: var(--color-text-secondary-std);
-  background-color: var(--errorcolorbackground);
-  border: 2px solid var(--errorcolor);
-  border-radius: var(--std-border-radius);
-  padding: 2px 8px;
-}
-
-.success-message {
-  color: var(--color-text-secondary-std);
-  background-color: var(--successcolorbackground);
-  border: 2px solid var(--successcolor);
-  border-radius: var(--std-border-radius);
-  padding: 2px 8px;
-}
-
-/* Effect keyframes */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 /* Loader spinner */
 
@@ -239,13 +239,6 @@ a, a:hover, a:focus, a:active {
 .site-intro-section {
   min-height: calc(100vmin - 10em);
   display: flex;
-}
-
-.site-intro {
-  border-radius: var(--std-border-radius);
-  /*background: var(--color-bg-secondary-dark) url(../images/rockbackground.jpg) no-repeat center;
-  */background-size: cover;
-  animation: 0.3s fadeIn both ease-in;
 }
 
 .read-more-link {

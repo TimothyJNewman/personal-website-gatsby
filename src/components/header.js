@@ -67,9 +67,9 @@ const Header = () => {
               <div className="items-center sm:flex hidden px-2">
                 {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
               </div>
-              <div className="text-secondary bg-secondary-light rounded">
+              <div className="rounded">
                 <button
-                  className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark hover:shadow-md rounded-l sm:rounded"
+                  className="std-button py-0.5 text-lg rounded-none rounded-l sm:rounded"
                   aria-label="Theme Toggle"
                   type="button"
                   onClick={() => {
@@ -81,7 +81,7 @@ const Header = () => {
                   <span className="hidden sm:inline">&nbsp;{isDarkTheme ? 'light' : 'dark'}</span>
                 </button>
                 <button
-                  className="px-2 py-0.5 text-lg text-std-secondary hover:bg-primary-dark hover:shadow-md rounded-r sm:hidden"
+                  className="std-button py-0.5 text-lg rounded-none rounded-r sm:hidden"
                   aria-label="Toggle Menu"
                   type="button"
                   onClick={() => {

@@ -29,9 +29,9 @@ const Footer = () => (
           © 2021-
           {new Date().getFullYear()}
           &nbsp;Timothy Jabez Newman.&nbsp;
-          <a className="footer-link" href="https://github.com/TimothyJNewman/personal-website-gatsby">Source code</a>
+          <a href="https://github.com/TimothyJNewman/personal-website-gatsby">Source code</a>
           .&nbsp;
-          <a className="footer-link" href="/rss.xml">RSS Feed</a>
+          <a href="/rss.xml">RSS Feed</a>
           .
           <br />
           Google analytics cookies are used on this website. Last gatsby build on&nbsp;

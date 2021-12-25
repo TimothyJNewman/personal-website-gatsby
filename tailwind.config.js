@@ -16,7 +16,10 @@ module.exports = {
         'white-overlay': 'var(--color-bg-white-overlay)',
         'std-primary': 'var(--color-text-primary-std)',
         'std-secondary': 'var(--color-text-secondary-std)',
-        dategray: 'var(--color-dategrey)',
+        error: 'var(--errorcolorbackground)',
+        'error-border': 'var(--errorcolor)',
+        success: 'var(--successcolorbackground)',
+        'success-border': 'var(--successcolor)',
       },
       textColor: {
         primary: 'var(--color-text-primary)',
@@ -24,6 +27,7 @@ module.exports = {
         blue: 'var(--color-text-blue)',
         'std-primary': 'var(--color-text-primary-std)',
         'std-secondary': 'var(--color-text-secondary-std)',
+        dategray: 'var(--color-dategrey)',
       },
       backgroundColor: {
         'primary-lighter': 'var(--color-bg-primary-lighter)',
@@ -33,6 +37,15 @@ module.exports = {
         'secondary-dark': 'var(--color-bg-secondary-dark)',
         white: 'var(--color-bg-white)',
       },
+      animation: {
+        'fade-in': 'fadeIn 0.3s both ease-in',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+      }
     },
   },
   plugins: [],

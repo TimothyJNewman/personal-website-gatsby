@@ -218,7 +218,7 @@ class Contact extends React.Component {
                         name="submitButton"
                         value="Submit"
                         onClick={this.handleSubmit}
-                        className="h-8 px-2 py-0.5 ml-4 max-w-150 border-0 bg-secondary-light text-std-secondary hover:bg-primary-dark hover:shadow-md rounded"
+                        className="ml-4 max-w-150 std-button"
                       />
                     </div>
                   </div>

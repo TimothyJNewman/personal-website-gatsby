@@ -90,7 +90,7 @@ const IndexPage = () => {
     <Layout>
       <LayoutSingleColumn>
         <section className="max-w-screen-lg px-2 site-intro-section">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 site-intro">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
             <div className="p-4 rounded bg-white-overlay">
               {data.strapiSmallText
                 ? (
@@ -181,7 +181,7 @@ const IndexPage = () => {
           <div className="flex flex-wrap">
             {data.allStrapiTag.nodes
               ? data.allStrapiTag.nodes.map((elem) => (
-                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="text-sm m-0.5 p-1 hover:bg-transparent focus:bg-transparent border-2 border-transparent hover:border-primary-dark focus:border-primary-dark text-std-secondary bg-primary-dark rounded">{elem.Tag}</Link>
+                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="tag-button">{elem.Tag}</Link>
               ))
               : <p className="error-message">No tags found</p>}
           </div>

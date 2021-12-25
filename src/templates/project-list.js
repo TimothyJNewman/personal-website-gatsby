@@ -103,7 +103,7 @@ export const query = graphql`
         coverimage {
           localFile {
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
+              gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.5)
             }
           }
           alternativeText

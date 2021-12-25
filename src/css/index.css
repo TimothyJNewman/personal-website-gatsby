@@ -18,7 +18,7 @@
     background-color: theme('backgroundColor.primary-dark');
     color: theme('textColor.std-secondary');
   }
-  .tag-button:hover {
+  .tag-button:hover, .tag-button:focus {
     border-color: theme('colors.primary-dark');
   }
   .std-button {

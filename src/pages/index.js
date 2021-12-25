@@ -122,70 +122,72 @@ const IndexPage = () => {
           </div>
         </section>
         <br /><br />
-        <section className="max-w-screen-md px-2">
-          <div className="flex justify-between items-center">
-            <h2 className="my-4">Recent Projects</h2>
-            <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
-          </div>
-          <div className="card-container">
-            {data.allStrapiProjectpost.nodes
-              ? data.allStrapiProjectpost.nodes.map((posts) => (
-                <Card
-                  alt={posts.coverimage.alternativeText}
-                  title={posts.title}
-                  date={getFormattedDate(posts.published_at)}
-                  link={getFormattedLink('/project/', posts.slug)}
-                  description={posts.summary}
-                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  key={posts.id}
-                />
-              ))
-              : <p className="error-message">No projects found</p>}
-          </div>
-          <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-            <Link to="/project" className="read-more-link">
-              Explore all projects&nbsp;
-              <i className="fas fa-arrow-right" />
-            </Link>
-          </div>
-        </section>
-        <section className="max-w-screen-md px-2">
-          <h2 className="my-4">Recent Blog Posts</h2>
-          <div className="card-container">
-            {data.allStrapiBlogpost.nodes
-              ? data.allStrapiBlogpost.nodes.map((posts) => (
-                <Card
-                  title={posts.title}
-                  date={getFormattedDate(posts.published_at)}
-                  link={getFormattedLink('/blog/', posts.slug)}
-                  description={posts.summary}
-                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  key={posts.id}
-                />
-              ))
-              : <p className="error-message">No blog posts found</p>}
-          </div>
-          <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-            <Link to="/blog" className="read-more-link">
-              Read all blog posts&nbsp;
-              <i className="fas fa-arrow-right" />
-            </Link>
-          </div>
-        </section>
-        <section className="max-w-screen-md px-2">
-          <h2 className="my-4">All Tags</h2>
-          <div className="flex flex-wrap">
-            {data.allStrapiTag.nodes
-              ? data.allStrapiTag.nodes.map((elem) => (
-                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="tag-button">{elem.Tag}</Link>
-              ))
-              : <p className="error-message">No tags found</p>}
-          </div>
-        </section>
+        <div className="max-w-screen-md">
+          <section className="px-2">
+            <div className="flex justify-between items-center">
+              <h2 className="my-4">Recent Projects</h2>
+              <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
+            </div>
+            <div className="card-container">
+              {data.allStrapiProjectpost.nodes
+                ? data.allStrapiProjectpost.nodes.map((posts) => (
+                  <Card
+                    alt={posts.coverimage.alternativeText}
+                    title={posts.title}
+                    date={getFormattedDate(posts.published_at)}
+                    link={getFormattedLink('/project/', posts.slug)}
+                    description={posts.summary}
+                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    key={posts.id}
+                  />
+                ))
+                : <p className="error-message">No projects found</p>}
+            </div>
+            <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+              <Link to="/project" className="read-more-link">
+                Explore all projects&nbsp;
+                <i className="fas fa-arrow-right" />
+              </Link>
+            </div>
+          </section>
+          <section className="px-2">
+            <h2 className="my-4">Recent Blog Posts</h2>
+            <div className="card-container">
+              {data.allStrapiBlogpost.nodes
+                ? data.allStrapiBlogpost.nodes.map((posts) => (
+                  <Card
+                    title={posts.title}
+                    date={getFormattedDate(posts.published_at)}
+                    link={getFormattedLink('/blog/', posts.slug)}
+                    description={posts.summary}
+                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    key={posts.id}
+                  />
+                ))
+                : <p className="error-message">No blog posts found</p>}
+            </div>
+            <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+              <Link to="/blog" className="read-more-link">
+                Read all blog posts&nbsp;
+                <i className="fas fa-arrow-right" />
+              </Link>
+            </div>
+          </section>
+          <section className="px-2">
+            <h2 className="my-4">All Tags</h2>
+            <div className="flex flex-wrap">
+              {data.allStrapiTag.nodes
+                ? data.allStrapiTag.nodes.map((elem) => (
+                  <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="tag-button">{elem.Tag}</Link>
+                ))
+                : <p className="error-message">No tags found</p>}
+            </div>
+          </section>
+        </div>
       </LayoutSingleColumn>
     </Layout>
   );

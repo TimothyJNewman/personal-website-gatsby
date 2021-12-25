@@ -113,12 +113,12 @@ const SEO = ({ seo = {} }) => {
         {
           property: 'googlebot',
           content: 'noindex',
-        }
+        },
       );
     }
     tags.push(
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'msapplication-TileColor', content: '#00a300' },
+      { name: 'msapplication-TileColor', content: '#da532c' },
       { name: 'msapplication-square70x70logo', content: mstile70x70 },
       { name: 'msapplication-square144x144logo', content: mstile144x144 },
       { name: 'msapplication-square150x150logo', content: mstile150x150 },
@@ -169,7 +169,7 @@ const SEO = ({ seo = {} }) => {
         {
           rel: 'mask-icon',
           href: safariPinnedTab,
-          color: '#05997e',
+          color: '#5bbad5',
         },
         {
           rel: 'shortcut icon',

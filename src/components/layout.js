@@ -9,12 +9,12 @@ import Footer from './footer';
 import '../css/index.css';
 
 const Layout = ({ children, seo }) => (
-  <>
+  <div className="border-8 border-primary-dark">
     <Seo seo={seo} />
     <Header />
     <main id="main">{children}</main>
     <Footer />
-  </>
+  </div>
 );
 
 export default Layout;

@@ -22,9 +22,9 @@ const DropdownMenuButton = ({ text, link }) => (
 );
 
 const Footer = () => (
-  <footer className="p-5 bg-white text-primary">
+  <footer className="bg-white text-primary">
     <div className="min-w-full">
-      <div className="max-w-screen-lg mx-auto">
+      <div className="max-w-screen-lg mx-auto px-5 py-3">
         <p className="markdown-text">
           © 2021-
           {new Date().getFullYear()}

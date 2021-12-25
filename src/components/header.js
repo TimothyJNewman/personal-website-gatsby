@@ -54,9 +54,9 @@ const Header = () => {
     }
   }, []);
   return (
-    <header className="bg-white text-primary p-5 flex justify-center">
+    <header className="bg-white text-primary flex justify-center">
       <div className="min-w-full">
-        <div className="max-w-screen-lg mx-auto">
+        <div className="max-w-screen-lg mx-auto p-5">
           <div className="flex justify-between items-center">
             <Link to="/">
               <div className="bg-secondary-light hover:bg-primary-dark hover:shadow-md p-2 rounded-full">

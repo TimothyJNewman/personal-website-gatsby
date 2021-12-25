@@ -17,7 +17,7 @@ const query = graphql`
       images {
         localFile {
           childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 1000, aspectRatio: 1.3)
+            gatsbyImageData(aspectRatio: 1.3)
           }
         }
       }

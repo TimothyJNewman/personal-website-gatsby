@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import appleTouchIcon from '../images/icons/apple-touch-icon.png';
+/*import appleTouchIcon from '../images/icons/apple-touch-icon.png';
 import icon32x32 from '../images/icons/favicon-32x32.png';
 import icon16x16 from '../images/icons/favicon-16x16.png';
 import safariPinnedTab from '../images/icons/safari-pinned-tab.svg';
@@ -11,7 +11,7 @@ import mstile70x70 from '../images/icons/mstile-70x70.png';
 import mstile144x144 from '../images/icons/mstile-144x144.png';
 import mstile150x150 from '../images/icons/mstile-150x150.png';
 import mstile310x150 from '../images/icons/mstile-310x150.png';
-import mstile310x310 from '../images/icons/mstile-310x310.png';
+import mstile310x310 from '../images/icons/mstile-310x310.png';*/
 
 const seoQuery = graphql`
   query SEOquery {
@@ -119,11 +119,11 @@ const SEO = ({ seo = {} }) => {
     tags.push(
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'msapplication-square70x70logo', content: mstile70x70 },
-      { name: 'msapplication-square144x144logo', content: mstile144x144 },
-      { name: 'msapplication-square150x150logo', content: mstile150x150 },
-      { name: 'msapplication-wide310x150logo', content: mstile310x150 },
-      { name: 'msapplication-square310x310logo', content: mstile310x310 },
+      { name: 'msapplication-square70x70logo', content: '/icons/mstile-70x70.png' },
+      { name: 'msapplication-square144x144logo', content: '/icons/mstile-144x144.png' },
+      { name: 'msapplication-square150x150logo', content: '/icons/mstile-150x150.png' },
+      { name: 'msapplication-wide310x150logo', content: '/icons/mstile-310x150.png' },
+      { name: 'msapplication-square310x310logo', content: '/icons/mstile-310x310.png' },
     );
 
     return tags;
@@ -152,28 +152,28 @@ const SEO = ({ seo = {} }) => {
         {
           rel: 'apple-touch-icon',
           sizes: '180x180',
-          href: appleTouchIcon,
+          href: '/icons/apple-touch-icon.png',
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '32x32',
-          href: icon32x32,
+          href: '/icons/favicon-32x32.png',
         },
         {
           rel: 'icon',
           type: 'image/png',
           sizes: '16x16',
-          href: icon16x16,
+          href: '/icons/favicon-16x16.png',
         },
         {
           rel: 'mask-icon',
-          href: safariPinnedTab,
+          href: '/icons/safari-pinned-tab.svg',
           color: '#5bbad5',
         },
         {
           rel: 'shortcut icon',
-          href: favicon,
+          href: '/icons/favicon.ico',
         },
       ]}
       meta={metaTags}

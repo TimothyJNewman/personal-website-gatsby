@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import MarkdownView from 'react-showdown';
 import { getSrc, getSrcSet } from 'gatsby-plugin-image';
@@ -82,8 +82,8 @@ const IndexPage = () => {
   const [currentImage, setCurrentImage] = React.useState(0);
   const imagesSrc = data?.strapiGallery?.images.map((image) => getSrc(image?.localFile));
   const imagesSrcSet = data?.strapiGallery?.images.map((image) => getSrcSet(image?.localFile));
-  React.useEffect(() => {
-    setTimeout(() => setCurrentImage((currentImage + 1) % imagesSrc.length), 5000);
+  useEffect(() => {
+    setTimeout(() => setCurrentImage((currentImage + 1) % imagesSrc.length), 4000);
   }, [currentImage])
 
   return (

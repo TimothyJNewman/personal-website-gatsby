@@ -13,21 +13,20 @@ export default function Share({ label, text, title }) {
     if (navigator.share) {
       try {
         await navigator
-          .share(shareDetails)
-          .then(() => console.log('Hooray! Your content was shared to tha world'));
+          .share(shareDetails);
       } catch (error) {
-        console.log(`Oops! I couldn't share to the world because: ${error}`);
+        console.error(`Oops! I couldn't share to the world because: ${error}`);
       }
     } else {
       // fallback code
-      console.log(
-        'Web share is currently not supported on this browser. Please provide a callback'
+      console.error(
+        'Web share is currently not supported on this browser'
       );
       window.alert('Web Share is not supported in your browser. Please try copying the URL.')
     }
   };
   return (
-    <button className="py-0.5 px-2 border-2 border-primary-dark rounded article-share-button" type="button" onClick={handleSharing}>
+    <button className="py-0.5 px-2 border-2 border-primary-dark rounded text-sm sm:text-base article-share-button" type="button" onClick={handleSharing}>
       {label}
     </button>
   );

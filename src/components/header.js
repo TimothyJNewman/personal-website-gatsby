@@ -46,13 +46,16 @@ const Header = () => {
     const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     if (storedTheme) {
       document.documentElement.setAttribute('data-theme', storedTheme);
-      if (storedTheme === 'dark') {
-        toggleTheme(true);
-      } else if (storedTheme === 'light') {
-        toggleTheme(false);
+      return () => {
+        if (storedTheme === 'dark') {
+          toggleTheme(true);
+        } else if (storedTheme === 'light') {
+          toggleTheme(false);
+        }
       }
     }
   }, []);
+
   return (
     <header className="bg-white text-primary flex justify-center">
       <div className="min-w-full">

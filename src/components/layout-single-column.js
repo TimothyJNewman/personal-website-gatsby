@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const LayoutSingleColumn = ({ children }) => (
   <div className="bg-white text-primary flex justify-center">
-    <div className="max-w-screen-lg min-h-screen mx-auto p-2 flex flex-col items-center">
+    <div className="max-w-screen-lg min-h-screen mx-auto flex flex-col items-center">
       {children}
     </div>
   </div>

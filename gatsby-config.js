@@ -147,7 +147,7 @@ module.exports = {
         theme_color: '#536f8a',
         background_color: '#536f8a',
         display: 'standalone',
-        icon: './src/images/icons/android-chrome-512x512.png',
+        icon: './static/icons/android-chrome-512x512.png',
       },
     },
     {

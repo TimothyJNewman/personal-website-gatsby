@@ -89,7 +89,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="max-w-screen-lg px-2 site-intro-section">
+        <section className="max-w-screen-lg px-2 flex flex-col site-intro-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
             <div className="p-4 rounded bg-white-overlay">
               {data.strapiSmallText
@@ -120,10 +120,15 @@ const IndexPage = () => {
               />
             </div>
           </div>
+          <div className="h-16 flex justify-center items-center">
+            <a href="#recentprojectssection" className="border-2 border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-std-secondary rounded-full w-8 h-8 flex justify-center items-center">
+              <i className="fa fa-arrow-down" />
+            </a>
+          </div>
         </section>
-        <br /><br />
+        <br />
         <div className="max-w-screen-md">
-          <section className="px-2">
+          <section className="px-2" id="recentprojectssection">
             <div className="flex justify-between items-center">
               <h2 className="my-4">Recent Projects</h2>
               <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />

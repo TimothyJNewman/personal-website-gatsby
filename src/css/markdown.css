@@ -37,7 +37,7 @@
 }
 
 .markdown-text strong {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .markdown-text a, .markdown-text a:active {
@@ -65,7 +65,7 @@
 
 .markdown-text blockquote p {
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-primary);
 }
 

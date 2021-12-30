@@ -20,12 +20,16 @@
   width: 100%;
   height: auto;
   border-radius: var(--std-border-radius);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .markdown-text video {
   width: 100%;
   height: auto;
   border-radius: var(--std-border-radius);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .markdown-text a, .markdown-text strong, .markdown-text em, .markdown-text u {

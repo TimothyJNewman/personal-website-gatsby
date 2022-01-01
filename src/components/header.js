@@ -97,7 +97,7 @@ const Header = () => {
             </div>
           </div>
           <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md flex justify-center sm:hidden">
-            <div className="my-2 text-secondary-dark">
+            <div className="my-2 text-secondary-dark flex flex-wrap">
               {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
             </div>
           </SmoothCollapse>

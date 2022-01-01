@@ -33,6 +33,7 @@ const About = () => {
             />
           </div>
         </section>
+        <a href="/showcase/ballistic/sim-1">😀</a>
       </LayoutSingleColumn>
     </Layout>
   );

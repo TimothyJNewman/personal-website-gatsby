@@ -50,7 +50,7 @@ const Footer = () => (
             )}
           />
         </p>
-        <div className="text-secondary-dark">
+        <div className="text-secondary-dark flex flex-wrap">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>
       </div>

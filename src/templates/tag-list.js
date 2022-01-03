@@ -12,7 +12,7 @@ import Card from '../components/card';
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;
   const seo = {
-    metaTitle: queryTag,
+    metaTitle: `Tag: ${queryTag}`,
     isArticle: false,
   };
   return (

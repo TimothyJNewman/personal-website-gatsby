@@ -26,7 +26,7 @@
     background-color: theme('backgroundColor.secondary-light');
     color: theme('textColor.std-secondary');
   }
-  .std-button:hover {
+  .std-button:hover, .std-button:focus {
     @apply shadow-md;
     background-color: theme('backgroundColor.primary-dark');
   } 
@@ -246,11 +246,11 @@ a, a:hover, a:focus, a:active {
   transition: background-size 300ms ease-in;
 }
 
-.read-more-link:hover {
+.read-more-link:hover, .read-more-link:focus {
   background-size: 88% 0.15em;
 }
 
-.read-more-link:hover > i {
+.read-more-link:hover > i, .read-more-link:focus > i {
   animation: wobble 300ms ease 300ms infinite alternate;
 }
 

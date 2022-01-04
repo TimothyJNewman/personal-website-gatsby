@@ -18,9 +18,7 @@ const ButtonTextLink = [
 
 const HeaderButton = ({ text, link }) => (
   <Link to={link} key={text} className="header-button-wrapper p-1 m-1">
-    <button type="button">
-      {text}
-    </button>
+    {text}
   </Link>
 );
 

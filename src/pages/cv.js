@@ -4,7 +4,11 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import CoverImage from '../components/cover-image';
 
 const CVPage = () => (
-  <Layout>
+  <Layout seo={{
+    metaTitle: 'CV',
+    metaDescription: 'CV Page',
+    isArticle: false,
+  }}>
     <LayoutSingleColumn>
       <div className="max-w-screen-md mx-auto px-2">
         <CoverImage title="Curriculum Vitae" />

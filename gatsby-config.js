@@ -60,7 +60,7 @@ module.exports = {
               siteUrl
             }
           }
-          allSitePage {
+          allSitePage(filter: {path: {regex: "/^(?!/showcase/).*$/"}}) {
             nodes {
               path
             }

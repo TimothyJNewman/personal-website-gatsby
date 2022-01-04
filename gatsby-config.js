@@ -182,7 +182,10 @@ module.exports = {
             ),
             query: `
               {
-                allStrapiBlogpost(sort: {order: DESC, fields: published_at}) {
+                allStrapiBlogpost(
+                  sort: {order: DESC, fields: published_at}
+                  filter: {published_at: {ne: null}}
+                ) {
                   nodes {
                     title
                     slug

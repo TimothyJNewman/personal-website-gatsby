@@ -104,8 +104,8 @@ const IndexPage = () => {
               <div className="flex">
                 {data.allStrapiSocialmedia.nodes
                   ? data.allStrapiSocialmedia.nodes.map((media) => (
-                    <a href={media.link} key={media.id} aria-label={media.name}>
-                      <img className="w-6 h-6 mx-0.5" src={media.image} alt={media.name} />
+                    <a href={media.link} key={media.id} aria-label={media.name} className="mx-0.5">
+                      <img className="w-6 h-6" src={media.image} alt={media.name} />
                     </a>
                   ))
                   : ''}

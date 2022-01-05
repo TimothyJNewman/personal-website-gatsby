@@ -12,7 +12,9 @@ const Layout = ({ children, seo }) => (
   <>
     <Seo seo={seo} />
     <Header />
-    <main id="main">{children}</main>
+    <main id="main" className="bg-white text-primary flex justify-center">
+      {children}
+    </main>
     <Footer />
   </>
 );

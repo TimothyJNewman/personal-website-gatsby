@@ -11,3 +11,97 @@
 .header-button-wrapper:hover, .header-button-wrapper:focus {
   background-size: 100% 0.2em;
 }
+
+#logo-with-text:hover .text-timothy {
+  animation: hideshow 2s ease-in-out infinite;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(1) {
+  animation-delay: -1.2s;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(2) {
+  animation-delay: -1.0s;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(3) {
+  animation-delay: -0.8s;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(4) {
+  animation-delay: -0.6s;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(5) {
+  animation-delay: -0.4s;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(6) {
+  animation-delay: -0.2s;
+}
+
+#logo-with-text:hover .text-timothy:nth-child(7) {
+  animation-delay: 0s;
+}
+
+#logo-with-text:hover .text-newman {
+  animation: hideshow 2s ease-in-out infinite;
+}
+
+#logo-with-text:hover .text-newman:nth-child(1) {
+  animation-delay: -1.2s;
+}
+
+#logo-with-text:hover .text-newman:nth-child(2) {
+  animation-delay: -1.0s;
+}
+
+#logo-with-text:hover .text-newman:nth-child(3) {
+  animation-delay: -0.8s;
+}
+
+#logo-with-text:hover .text-newman:nth-child(4) {
+  animation-delay: -0.6s;
+}
+
+#logo-with-text:hover .text-newman:nth-child(5) {
+  animation-delay: -0.4s;
+}
+
+#logo-with-text:hover .text-newman:nth-child(6) {
+  animation-delay: -0.2s;
+}
+
+@keyframes hideshow {
+  0% {
+    opacity: 0;
+    transform: translateX(-5px) skew(10deg);
+    ;
+  }
+
+  5% {
+    opacity: 0.2;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+    transform: skew(-10deg);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+}

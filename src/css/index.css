@@ -29,7 +29,7 @@
   .std-button:hover, .std-button:focus {
     @apply shadow-md;
     background-color: theme('backgroundColor.primary-dark');
-  } 
+  }
 }
 
 /* Global styles */

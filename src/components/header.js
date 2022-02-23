@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
 // Source of truth for navigation
 const ButtonTextLink = [
@@ -178,6 +179,14 @@ const Header = () => {
                   onClick={() => {
                     toggleTheme(!isDarkTheme);
                     ChangeDataTheme(!isDarkTheme);
+                    trackCustomEvent({
+                      // string - required - The object that was interacted with (e.g.video)
+                      category: 'Theme toggle button',
+                      // string - required - Type of interaction (e.g. 'play')
+                      action: 'Click',
+                      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
+                      label: 'Cosmetic',
+                    })
                   }}
                 >
                   <i className={`far ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />

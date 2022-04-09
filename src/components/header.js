@@ -44,12 +44,10 @@ const Header = () => {
     const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     if (storedTheme) {
       document.documentElement.setAttribute('data-theme', storedTheme);
-      return () => {
-        if (storedTheme === 'dark') {
-          toggleTheme(true);
-        } else if (storedTheme === 'light') {
-          toggleTheme(false);
-        }
+      if (storedTheme === 'dark') {
+        toggleTheme(true);
+      } else if (storedTheme === 'light') {
+        toggleTheme(false);
       }
     }
   }, []);

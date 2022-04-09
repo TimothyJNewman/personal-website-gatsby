@@ -91,6 +91,14 @@ class Contact extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    trackCustomEvent({
+      // string - required - The object that was interacted with (e.g.video)
+      category: "Contact form submit button",
+      // string - required - Type of interaction (e.g. 'play')
+      action: "Click",
+      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
+      label: "Engagement",
+    });
     this.setState({
       modifiedDataValidMessage: {
         name: stringValidation(this.state.modifiedData.name, "Name "),
@@ -119,14 +127,6 @@ class Contact extends React.Component {
         this.setState({ isSubmitSuccessful: -1 });
       }
     });
-    trackCustomEvent({
-      // string - required - The object that was interacted with (e.g.video)
-      category: "Contact form submit button",
-      // string - required - Type of interaction (e.g. 'play')
-      action: "Click",
-      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
-      label: "Engagement",
-    })
   };
 
   render() {

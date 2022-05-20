@@ -54,8 +54,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky h-20 top-[-20px] sm:top-[-12px] items-center bg-white text-primary flex">
-        <div className="sticky h-14 top-0 min-w-full py-3 px-4">
+      <header className="sticky h-20 top-[-24px] sm:top-[-16px] items-center bg-white text-primary flex">
+        <div className="sticky h-14 top-0 min-w-full py-2 px-4">
           <div className="max-w-screen-lg mx-auto flex justify-between items-center">
             <Link to="/">
               <div id="logo-with-text" className="bg-secondary-light hover:bg-primary-dark hover:shadow-md p-1 px-2 sm:p-2 rounded-full">
@@ -205,7 +205,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
+      <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md top-16 w-full fixed flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
         <div className="my-2 mx-4 text-secondary-dark flex flex-wrap">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>

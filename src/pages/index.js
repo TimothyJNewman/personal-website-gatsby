@@ -91,7 +91,7 @@ const IndexPage = () => {
       <LayoutSingleColumn>
         <section className="max-w-screen-lg px-2 flex flex-col site-intro-section">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
-            <div className="p-4 rounded bg-white-overlay">
+            <div className="px-2 sm:px-4 rounded bg-white-overlay">
               {data.strapiSmallText
                 ? (
                   <MarkdownView
@@ -111,7 +111,7 @@ const IndexPage = () => {
                   : ''}
               </div>
             </div>
-            <div className="p-4 flex justify-center items-center">
+            <div className="p-2 sm:p-4 flex justify-center items-center">
               <img
                 src={imagesSrc[currentImage]}
                 srcSet={imagesSrcSet[currentImage]}
@@ -126,7 +126,6 @@ const IndexPage = () => {
             </a>
           </div>
         </section>
-        <br />
         <div className="max-w-screen-md">
           <section className="px-2" id="recentprojectssection">
             <div className="flex justify-between items-center">

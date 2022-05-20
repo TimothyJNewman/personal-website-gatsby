@@ -61,6 +61,7 @@
   border-left: 5px solid var(--color-bg-primary-light);
   background-color: var(--color-bg-primary-lighter);
   border-radius: var(--std-border-radius);
+  overflow-wrap: anywhere;
 }
 
 .markdown-text blockquote p {

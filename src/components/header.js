@@ -53,12 +53,12 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white text-primary flex justify-center">
-      <div className="min-w-full">
-        <div className="max-w-screen-lg mx-auto p-5">
-          <div className="flex justify-between items-center">
+    <>
+      <header className="sticky h-20 top-[-20px] sm:top-[-12px] items-center bg-white text-primary flex">
+        <div className="sticky h-14 top-0 min-w-full py-3 px-4">
+          <div className="max-w-screen-lg mx-auto flex justify-between items-center">
             <Link to="/">
-              <div id="logo-with-text" className="bg-secondary-light hover:bg-primary-dark hover:shadow-md p-2 rounded-full">
+              <div id="logo-with-text" className="bg-secondary-light hover:bg-primary-dark hover:shadow-md p-1 px-2 sm:p-2 rounded-full">
                 <svg
                   width="90"
                   height="30"
@@ -203,14 +203,14 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md flex justify-center sm:hidden">
-            <div className="my-2 text-secondary-dark flex flex-wrap">
-              {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
-            </div>
-          </SmoothCollapse>
         </div>
-      </div>
-    </header>
+      </header>
+      <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
+        <div className="my-2 mx-4 text-secondary-dark flex flex-wrap">
+          {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
+        </div>
+      </SmoothCollapse>
+    </>
   );
 };
 

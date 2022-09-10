@@ -128,14 +128,11 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        apiURL: process.env.GATSBY_API_URL || 'http://localhost:1337',
-        collectionTypes: ['projectpost', 'blogpost', 'gallery', 'tag', 'socialMedia', 'single-pages', 'small-text'],
+        apiURL: process.env.STRAPI_API_URL || 'http://localhost:1337',
+        accessToken: process.env.STRAPI_TOKEN,
+        collectionTypes: ['project-post', 'blog-post', 'gallery', 'tag', 'social-media', 'single-pages', 'small-text'],
         singleTypes: ['global'],
         queryLimit: 200,
-        loginData: {
-          identifier: process.env.API_USERNAME,
-          password: process.env.API_PWD,
-        },
       },
     },
     {

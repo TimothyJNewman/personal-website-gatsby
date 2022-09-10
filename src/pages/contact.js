@@ -113,7 +113,7 @@ class Contact extends React.Component {
           // set to loading state
           this.setState({ isSubmitSuccessful: 0.5 });
           // making fetch request
-          await fetch(process.env.GATSBY_API_URL + '/contactforms', {
+          await fetch(process.env.STRAPI_API_URL + '/contactforms', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(this.state.modifiedData),

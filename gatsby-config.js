@@ -130,7 +130,7 @@ module.exports = {
       options: {
         apiURL: process.env.STRAPI_API_URL || 'http://localhost:1337',
         accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: ['project-post', 'blog-post', 'gallery', 'tag', 'social-media', 'single-pages', 'small-text'],
+        collectionTypes: ['project-post', 'blog-post', 'gallery', 'tag', 'social-media', 'single-page', 'small-text'],
         singleTypes: ['global'],
         queryLimit: 200,
       },

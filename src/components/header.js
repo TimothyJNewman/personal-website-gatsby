@@ -2,7 +2,7 @@
 * Header
 */
 import React, { useEffect, useState } from 'react';
-import SmoothCollapse from 'react-smooth-collapse';
+// import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
@@ -206,11 +206,11 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md top-16 w-full fixed flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
+      {/*TODO <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md top-16 w-full fixed flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
         <div className="my-2 mx-4 text-secondary-dark flex flex-wrap">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>
-      </SmoothCollapse>
+      </SmoothCollapse> */}
     </>
   );
 };

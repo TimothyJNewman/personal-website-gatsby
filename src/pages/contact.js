@@ -157,7 +157,7 @@ class Contact extends React.Component {
                       options={{ emoji: true }}
                     />
                     <div className="flex">
-                      {data.allStrapiSocialmedia.nodes.map(media => (
+                      {data.allStrapiSocialMedia.nodes.map(media => (
                         <a href={media.link} key={media.id} className="mx-0.5">
                           <img className="w-6 h-6" src={media.image} alt={media.name} />
                         </a>
@@ -245,7 +245,7 @@ export default Contact;
 
 const query = graphql`
   query contactQuery {
-    allStrapiSocialmedia(sort: {fields: order, order: ASC}) {
+    allStrapiSocialMedia(sort: {fields: order, order: ASC}) {
       nodes {
         id
         image
@@ -254,6 +254,10 @@ const query = graphql`
       }
     }
     strapiSmallText(label: {eq: "Contact Page"}) {
-      content
+      content {
+        data {
+          content
+        }
+      }
     }
   }`;

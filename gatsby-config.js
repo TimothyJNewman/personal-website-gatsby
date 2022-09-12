@@ -65,13 +65,13 @@ module.exports = {
               path
             }
           }
-          allStrapiBlogpost {
+          allStrapiBlogPost {
             nodes {
               updated_at
               slug
             }
           }
-          allStrapiProjectpost {
+          allStrapiProjectPost {
             nodes {
               updated_at
               slug
@@ -82,14 +82,14 @@ module.exports = {
         resolveSiteUrl: ({ site: { siteMetadata: { siteUrl } } }) => siteUrl,
         resolvePages: ({
           allSitePage,
-          allStrapiBlogpost,
-          allStrapiProjectpost,
+          allStrapiBlogPost,
+          allStrapiProjectPost,
         }) => {
           const blogsAndProjects = {};
-          allStrapiBlogpost.nodes.forEach((post) => {
+          allStrapiBlogPost.nodes.forEach((post) => {
             blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updated_at };
           });
-          allStrapiProjectpost.nodes.forEach((post) => {
+          allStrapiProjectPost.nodes.forEach((post) => {
             blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updated_at };
           });
           return allSitePage.nodes.map((page) => (
@@ -163,14 +163,14 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allStrapiBlogpost } }) => allStrapiBlogpost.nodes.map(
+            serialize: ({ query: { site, allStrapiBlogPost } }) => allStrapiBlogPost.nodes.map(
               (post) => {
                 const url = `${site.siteMetadata.siteUrl}/blog/${post.slug}`;
                 const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /><br />`;
                 const categoryArray = post.tags.map((tag) => ({ category: tag.Tag }));
                 return {
                   title: post.title,
-                  date: post.published_at,
+                  date: post.publishedAt,
                   description: post.summary,
                   url,
                   custom_elements: [{ 'content:encoded': content }, ...categoryArray],
@@ -179,15 +179,15 @@ module.exports = {
             ),
             query: `
               {
-                allStrapiBlogpost(
-                  sort: {order: DESC, fields: published_at}
-                  filter: {published_at: {ne: null}}
+                allStrapiBlogPost(
+                  sort: {order: DESC, fields: publishedAt}
+                  filter: {publishedAt: {ne: null}}
                 ) {
                   nodes {
                     title
                     slug
                     summary
-                    published_at(formatString: "MMMM DD, YYYY")
+                    publishedAt(formatString: "MMMM DD, YYYY")
                     tags {
                       Tag
                     }

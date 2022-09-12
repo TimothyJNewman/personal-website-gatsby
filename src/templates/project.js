@@ -11,37 +11,37 @@ import Share from '../components/share';
 import { getFormattedDate } from '../util/common-utils';
 
 const ProjectTemplate = ({ data }) => (
-  <Layout seo={data.strapiProjectpost.seo}>
+  <Layout seo={data.strapiProjectPost.seo}>
     <LayoutSingleColumn>
       <section className="max-w-screen-md mx-auto text-left px-2">
-        {data.strapiProjectpost.coverimage
+        {data.strapiProjectPost.coverimage
           ? (
             <CoverImage
-              img={data.strapiProjectpost.coverimage ? data.strapiProjectpost.coverimage.localFile : ''}
-              alt={data.strapiProjectpost.coverimage.alternativeText}
-              title={data.strapiProjectpost.title}
+              img={data.strapiProjectPost.coverimage ? data.strapiProjectPost.coverimage.localFile : ''}
+              alt={data.strapiProjectPost.coverimage.alternativeText}
+              title={data.strapiProjectPost.title}
             />
           )
-          : <CoverImage title={data.strapiProjectpost.title} />}
+          : <CoverImage title={data.strapiProjectPost.title} />}
         <div className="py-1">
           <div className="py-2 flex justify-between items-start">
             <div className="m-0 text-sm italic text-dategray article-date-container">
               <strong>Published:&nbsp;</strong>
-              {getFormattedDate(data.strapiProjectpost.published_at)}
+              {getFormattedDate(data.strapiProjectPost.publishedAt)}
               <strong>Updated:&nbsp;</strong>
-              {getFormattedDate(data.strapiProjectpost.updated_at)}
+              {getFormattedDate(data.strapiProjectPost.updatedAt)}
             </div>
-            <Share label="Share this!" text={data.strapiProjectpost.summary} title={data.strapiProjectpost.title} />
+            <Share label="Share this!" text={data.strapiProjectPost.summary} title={data.strapiProjectPost.title} />
           </div>
           <div className="flex">
-            {data.strapiProjectpost.tags.map((elem) => (
+            {data.strapiProjectPost.tags.map((elem) => (
               <Link className="tag-button" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
             ))}
           </div>
         </div>
         <div className="markdown-text">
           <MarkdownView
-            markdown={data.strapiProjectpost.content}
+            markdown={data.strapiProjectPost.content}
             options={{ emoji: true, strikethrough: true }}
           />
         </div>
@@ -60,7 +60,7 @@ export default ProjectTemplate;
 
 export const query = graphql`
   query ProjectTemplate ($slug: String!){
-    strapiProjectpost( 
+    strapiProjectPost( 
       slug: {eq: $slug }
       ) {
         id
@@ -73,10 +73,14 @@ export const query = graphql`
           alternativeText
         }
         title
-        content
+        content {
+          data {
+            content
+          }
+        }
         summary
-        published_at
-        updated_at
+        publishedAt
+        updatedAt
         tags {
           Tag
         }

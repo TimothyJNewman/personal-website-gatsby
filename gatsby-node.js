@@ -27,8 +27,8 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getBlogsAndBlogsList = makeRequest(graphql, `
     {
-      allStrapiBlogpost(
-        filter: {published_at: {ne: null}}
+      allStrapiBlogPost(
+        filter: {publishedAt: {ne: null}}
       ) {
         edges {
           node {
@@ -40,7 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
     `)
     .then((result) => {
       // Create pages for each article.
-      result.data.allStrapiBlogpost.edges.forEach(({ node }) => {
+      result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
         createPage({
           path: `/blog/${node.slug}`,
           component: path.resolve('src/templates/blog.js'),
@@ -50,7 +50,7 @@ exports.createPages = ({ actions, graphql }) => {
         });
       });
       // Create blog-list pages
-      const posts = result.data.allStrapiBlogpost.edges;
+      const posts = result.data.allStrapiBlogPost.edges;
       const postsPerPage = 4;
       const numPages = Math.ceil(posts.length / postsPerPage);
       Array.from({ length: numPages }).forEach((_, i) => {
@@ -69,8 +69,8 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getProjectsAndProjectsList = makeRequest(graphql, `
     {
-      allStrapiProjectpost(
-        filter: {published_at: {ne: null}}
+      allStrapiProjectPost(
+        filter: {publishedAt: {ne: null}}
       ) {
         edges {
           node {
@@ -82,7 +82,7 @@ exports.createPages = ({ actions, graphql }) => {
     `)
     .then((result) => {
       // Create pages for each article.
-      result.data.allStrapiProjectpost.edges.forEach(({ node }) => {
+      result.data.allStrapiProjectPost.edges.forEach(({ node }) => {
         createPage({
           path: `/project/${node.slug}`,
           component: path.resolve('src/templates/project.js'),
@@ -92,7 +92,7 @@ exports.createPages = ({ actions, graphql }) => {
         });
       });
       // Create blog-list pages
-      const posts = result.data.allStrapiProjectpost.edges;
+      const posts = result.data.allStrapiProjectPost.edges;
       const postsPerPage = 4;
       const numPages = Math.ceil(posts.length / postsPerPage);
       Array.from({ length: numPages }).forEach((_, i) => {

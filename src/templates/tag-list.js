@@ -21,20 +21,20 @@ const TagList = ({ pageContext, data }) => {
         <div className="max-w-screen-md px-2">
           <CoverImage
             title={`Tag: ${queryTag}
-            / projects: ${data.allStrapiProjectpost ? data.allStrapiProjectpost.nodes.length : 0}
-            / blogs: ${data.allStrapiBlogpost ? data.allStrapiBlogpost.nodes.length : 0}
+            / projects: ${data.allStrapiProjectPost ? data.allStrapiProjectPost.nodes.length : 0}
+            / blogs: ${data.allStrapiBlogPost ? data.allStrapiBlogPost.nodes.length : 0}
            `}
           />
-          {data.allStrapiProjectpost.nodes.length > 0
+          {data.allStrapiProjectPost.nodes.length > 0
             ? (
               <>
                 <h2 className="my-4">Recent Projects</h2>
                 <div className="card-container">
-                  {data.allStrapiProjectpost.nodes.map((posts) => (
+                  {data.allStrapiProjectPost.nodes.map((posts) => (
                     <Card
                       img={posts.CoverImage ? posts.CoverImage.url : ''}
                       title={posts.title}
-                      date={getFormattedDate(posts.published_at)}
+                      date={getFormattedDate(posts.publishedAt)}
                       link={getFormattedLink('/project/', posts.slug)}
                       description={posts.summary}
                       tag1={posts.tags[0] ? posts.tags[0].Tag : false}
@@ -53,15 +53,15 @@ const TagList = ({ pageContext, data }) => {
               </>
             )
             : ''}
-          {data.allStrapiBlogpost.nodes.length > 0
+          {data.allStrapiBlogPost.nodes.length > 0
             ? (
               <>
                 <h2 className="my-4">Recent Blog Posts</h2>
                 <div className="card-container">
-                  {data.allStrapiBlogpost.nodes.map((posts) => (
+                  {data.allStrapiBlogPost.nodes.map((posts) => (
                     <Card
                       title={posts.title}
-                      date={getFormattedDate(posts.published_at)}
+                      date={getFormattedDate(posts.publishedAt)}
                       link={getFormattedLink('/blog/', posts.slug)}
                       description={posts.summary}
                       tag1={posts.tags[0] ? posts.tags[0].Tag : false}
@@ -99,9 +99,9 @@ export default TagList;
 // TODO work on querying images
 export const query = graphql`
   query TagList($queryTag: String!) {
-    allStrapiBlogpost(
-      sort: {fields: published_at, order: DESC}
-      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, published_at: {ne: null}}
+    allStrapiBlogPost(
+      sort: {fields: publishedAt, order: DESC}
+      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, publishedAt: {ne: null}}
     ) {
       nodes {
         id
@@ -112,16 +112,16 @@ export const query = graphql`
           }
         }
         title
-        published_at
+        publishedAt
         summary
         tags {
           Tag
         }
       } 
     }
-    allStrapiProjectpost(
-      sort: {fields: published_at, order: DESC}
-      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, published_at: {ne: null}}
+    allStrapiProjectPost(
+      sort: {fields: publishedAt, order: DESC}
+      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, publishedAt: {ne: null}}
     ) {
       nodes {
         id
@@ -133,7 +133,7 @@ export const query = graphql`
         }
         title
         summary
-        published_at
+        publishedAt
         tags {
           Tag
         }

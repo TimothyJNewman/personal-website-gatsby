@@ -11,9 +11,13 @@ import Share from '../components/share';
 const query = graphql`  
   query HomeQuery {
     strapiSmallText(label: {eq: "Welcome Text"}) {
-      content
+      content {
+        data {
+          content
+        }
+      }
     }
-    strapiGallery(strapiId: {eq: 1}) {
+    strapiGallery(strapi_id: {eq: 1}) {
       images {
         localFile {
           childImageSharp {
@@ -22,7 +26,7 @@ const query = graphql`
         }
       }
     }
-    allStrapiSocialmedia(sort: {fields: order, order: ASC}) {
+    allStrapiSocialMedia(sort: {fields: order, order: ASC}) {
       nodes {
         id
         image
@@ -30,10 +34,10 @@ const query = graphql`
         name
       }
     }
-    allStrapiProjectpost(
+    allStrapiProjectPost(
       limit: 4
-      sort: {fields: published_at, order: DESC}
-      filter: {published_at: {gt: "1970-01-01T00:00:00Z"}}
+      sort: {fields: publishedAt, order: DESC}
+      filter: {publishedAt: {gt: "1970-01-01T00:00:00Z"}}
       ) {
       nodes {
         id
@@ -46,7 +50,7 @@ const query = graphql`
           }
           alternativeText
         }
-        published_at
+        publishedAt
         slug
         summary
         tags {
@@ -54,15 +58,15 @@ const query = graphql`
         }
       }
     }
-    allStrapiBlogpost(
+    allStrapiBlogPost(
       limit: 4
-      sort: {fields: published_at, order: DESC}
-      filter: {published_at: {gt: "1970-01-01T00:00:00Z"}}
+      sort: {fields: publishedAt, order: DESC}
+      filter: {publishedAt: {gt: "1970-01-01T00:00:00Z"}}
       ) {
       nodes {
         id
         title
-        published_at
+        publishedAt
         slug
         summary
         tags {
@@ -102,8 +106,8 @@ const IndexPage = () => {
                 )
                 : ''}
               <div className="flex">
-                {data.allStrapiSocialmedia.nodes
-                  ? data.allStrapiSocialmedia.nodes.map((media) => (
+                {data.allStrapiSocialMedia.nodes
+                  ? data.allStrapiSocialMedia.nodes.map((media) => (
                     <a href={media.link} key={media.id} aria-label={media.name} className="mx-0.5">
                       <img className="w-6 h-6" src={media.image} alt={media.name} />
                     </a>
@@ -133,12 +137,12 @@ const IndexPage = () => {
               <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
             </div>
             <div className="card-container">
-              {data.allStrapiProjectpost.nodes
-                ? data.allStrapiProjectpost.nodes.map((posts) => (
+              {data.allStrapiProjectPost.nodes
+                ? data.allStrapiProjectPost.nodes.map((posts) => (
                   <Card
                     alt={posts.coverimage.alternativeText}
                     title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
+                    date={getFormattedDate(posts.publishedAt)}
                     link={getFormattedLink('/project/', posts.slug)}
                     description={posts.summary}
                     tag1={posts.tags[0] ? posts.tags[0].Tag : false}
@@ -159,11 +163,11 @@ const IndexPage = () => {
           <section className="px-2">
             <h2 className="my-4">Recent Blog Posts</h2>
             <div className="card-container">
-              {data.allStrapiBlogpost.nodes
-                ? data.allStrapiBlogpost.nodes.map((posts) => (
+              {data.allStrapiBlogPost.nodes
+                ? data.allStrapiBlogPost.nodes.map((posts) => (
                   <Card
                     title={posts.title}
-                    date={getFormattedDate(posts.published_at)}
+                    date={getFormattedDate(posts.publishedAt)}
                     link={getFormattedLink('/blog/', posts.slug)}
                     description={posts.summary}
                     tag1={posts.tags[0] ? posts.tags[0].Tag : false}

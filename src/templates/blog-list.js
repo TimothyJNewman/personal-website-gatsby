@@ -34,12 +34,12 @@ const BlogList = ({ pageContext, data }) => {
         <CoverImage title="Recent Blog Posts" />
         <br />
         <section className="card-container">
-          {data.allStrapiBlogpost.nodes.length > 0
-            ? data.allStrapiBlogpost.nodes.map((posts) => (
+          {data.allStrapiBlogPost.nodes.length > 0
+            ? data.allStrapiBlogPost.nodes.map((posts) => (
               <Card
                 title={posts.title}
                 img={posts.coverimage ? posts.coverimage.localFile : ''}
-                date={getFormattedDate(posts.published_at)}
+                date={getFormattedDate(posts.publishedAt)}
                 link={getFormattedLink('/blog/', posts.slug)}
                 description={posts.summary}
                 tag1={posts.tags[0] ? posts.tags[0].Tag : false}
@@ -89,11 +89,11 @@ export default BlogList;
 
 export const query = graphql`
   query BlogList($limit: Int!, $skip: Int!){
-    allStrapiBlogpost(
+    allStrapiBlogPost(
       limit: $limit
       skip: $skip
-      sort: {fields: published_at, order: DESC}
-      filter: {published_at: {ne: null}}
+      sort: {fields: publishedAt, order: DESC}
+      filter: {publishedAt: {ne: null}}
     ) {
       nodes {
         id
@@ -107,9 +107,13 @@ export const query = graphql`
           }
           alternativeText
         }
-        content
+        content {
+          data {
+            content
+          }
+        }
         summary
-        published_at
+        publishedAt
         tags {
           Tag
         }

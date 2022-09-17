@@ -128,9 +128,10 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
+        skipFileDownloads: true,
         apiURL: process.env.STRAPI_API_URL || 'http://localhost:1337',
         accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: ['project-post', 'blog-post', 'gallery', 'tag', 'social-media', 'single-page', 'small-text'],
+        collectionTypes: [{ singularName: 'project-post', queryParams: { populate: 'deep,10' } }, { singularName: 'blog-post', queryParams: { populate: 'deep,10' } }, 'gallery', 'tag', 'social-media', 'single-page', 'small-text'],
         singleTypes: ['global'],
         queryLimit: 200,
       },

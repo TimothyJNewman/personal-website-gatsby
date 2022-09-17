@@ -124,10 +124,8 @@ export const query = graphql`
           isArticle
           preventIndexing
           shareImage {
-            media {
-              localFile {
-                publicURL
-              }
+            localFile {
+              publicURL
             }
           }
         }

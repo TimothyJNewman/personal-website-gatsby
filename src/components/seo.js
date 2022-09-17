@@ -24,10 +24,8 @@ const seoQuery = graphql`
         keywords
         preventIndexing
         shareImage {
-          media {
-            localFile {
-              publicURL
-            }
+          localFile {
+            publicURL
           }
         }
       }

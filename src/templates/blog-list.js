@@ -30,55 +30,55 @@ const BlogList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-      <div className="max-w-screen-md px-2">
-        <CoverImage title="Recent Blog Posts" />
-        <br />
-        <section className="card-container">
-          {data.allStrapiBlogPost.nodes.length > 0
-            ? data.allStrapiBlogPost.nodes.map((posts) => (
-              <Card
-                title={posts.title}
-                img={posts.coverimage ? posts.coverimage.localFile : ''}
-                date={getFormattedDate(posts.publishedAt)}
-                link={getFormattedLink('/blog/', posts.slug)}
-                description={posts.summary}
-                tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                key={posts.id}
-              />
-            ))
-            : <p className="error-message">No blog posts found</p>}
-        </section>
-        <nav className="text-sm max-w-screen-md flex justify-end m-4 mb-0">
-          <Link to={prevPage} className="posts-navigation-button">
-            <i className="fas fa-arrow-circle-left" />
-            &nbsp;Prev
-          </Link>
-          {(() => {
-            const items = [];
-            for (let i = 1; i <= numPages; i++) {
-              if (i === 1) {
-                items.push(
-                  <Link to="/blog" className="posts-navigation-button" key={i}>
-                    {i}
-                  </Link>,
-                );
-              } else {
-                items.push(
-                  <Link to={`/blog/page/${i}`} className="posts-navigation-button" key={i}>
-                    {i}
-                  </Link>,
-                );
+        <div className="max-w-screen-md px-2">
+          <CoverImage title="Recent Blog Posts" />
+          <br />
+          <section className="card-container">
+            {data.allStrapiBlogPost.nodes.length > 0
+              ? data.allStrapiBlogPost.nodes.map((posts) => (
+                <Card
+                  title={posts.title}
+                  img={posts.coverimage ? posts.coverimage.localFile : ''}
+                  date={getFormattedDate(posts.publishedAt)}
+                  link={getFormattedLink('/blog/', posts.slug)}
+                  description={posts.summary}
+                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                  key={posts.id}
+                />
+              ))
+              : <p className="error-message">No blog posts found</p>}
+          </section>
+          <nav className="text-sm max-w-screen-md flex justify-end m-4 mb-0">
+            <Link to={prevPage} className="posts-navigation-button">
+              <i className="fas fa-arrow-circle-left" />
+              &nbsp;Prev
+            </Link>
+            {(() => {
+              const items = [];
+              for (let i = 1; i <= numPages; i++) {
+                if (i === 1) {
+                  items.push(
+                    <Link to="/blog" className="posts-navigation-button" key={i}>
+                      {i}
+                    </Link>,
+                  );
+                } else {
+                  items.push(
+                    <Link to={`/blog/page/${i}`} className="posts-navigation-button" key={i}>
+                      {i}
+                    </Link>,
+                  );
+                }
               }
-            }
-            return items;
-          })()}
-          <Link to={nextPage} className="posts-navigation-button">
-            Next&nbsp;
-            <i className="fas fa-arrow-circle-right" />
-          </Link>
-        </nav>
+              return items;
+            })()}
+            <Link to={nextPage} className="posts-navigation-button">
+              Next&nbsp;
+              <i className="fas fa-arrow-circle-right" />
+            </Link>
+          </nav>
         </div>
       </LayoutSingleColumn>
     </Layout>
@@ -124,10 +124,8 @@ export const query = graphql`
           keywords
           preventIndexing
           shareImage {
-            media {
-              localFile {
-                publicURL
-              }
+            localFile {
+              publicURL
             }
           }
         }

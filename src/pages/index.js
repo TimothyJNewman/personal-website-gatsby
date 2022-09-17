@@ -100,7 +100,7 @@ const IndexPage = () => {
                 ? (
                   <MarkdownView
                     className="markdown-text"
-                    markdown={data.strapiSmallText.content}
+                    markdown={data.strapiSmallText.content.data.content}
                     options={{ tables: true, emoji: true }}
                   />
                 )

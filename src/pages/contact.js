@@ -153,7 +153,7 @@ class Contact extends React.Component {
                   <>
                     <MarkdownView
                       className="markdown-text"
-                      markdown={data.strapiSmallText.content}
+                      markdown={data.strapiSmallText.content.data.content}
                       options={{ emoji: true }}
                     />
                     <div className="flex">

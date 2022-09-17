@@ -80,7 +80,7 @@ const SEO = ({ seo = {} }) => {
     }
     if (fullSeo.shareImage) {
       const imageUrl = (process.env.GATSBY_ROOT_URL || 'http://localhost:8000')
-        + fullSeo.shareImage.media.localFile.publicURL;
+        + fullSeo.shareImage.localFile.publicURL;
       tags.push(
         {
           name: 'image',

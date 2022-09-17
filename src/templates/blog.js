@@ -41,7 +41,7 @@ const BlogTemplate = ({ data }) => (
         </div>
         <div className="markdown-text">
           <MarkdownView
-            markdown={data.strapiBlogPost.content}
+            markdown={data.strapiBlogPost.content.data.content}
             options={{ emoji: true, strikethrough: true }}
           />
         </div>

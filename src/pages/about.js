@@ -32,7 +32,7 @@ const About = () => {
           <CoverImage title={data.strapiSinglePage.title} />
           <div className="markdown-text">
             <MarkdownView
-              markdown={data.strapiSinglePage.content}
+              markdown={data.strapiSinglePage.content.data.content}
               options={{ emoji: true, strikethrough: true }}
             />
           </div>

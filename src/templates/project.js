@@ -41,7 +41,7 @@ const ProjectTemplate = ({ data }) => (
         </div>
         <div className="markdown-text">
           <MarkdownView
-            markdown={data.strapiProjectPost.content}
+            markdown={data.strapiProjectPost.content.data.content}
             options={{ emoji: true, strikethrough: true }}
           />
         </div>

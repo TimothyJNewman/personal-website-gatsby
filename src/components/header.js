@@ -2,7 +2,7 @@
 * Header
 */
 import React, { useEffect, useState } from 'react';
-// import SmoothCollapse from 'react-smooth-collapse';
+import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 
@@ -54,7 +54,7 @@ const Header = () => {
 
   return (
     <>
-    {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
+      {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
       <header className="sticky h-20 z-10 top-[-24px] sm:top-[-16px] items-center bg-white text-primary flex">
         <div className="sticky h-14 top-0 min-w-full py-2 px-4">
           <div className="max-w-screen-lg mx-auto flex justify-between items-center">
@@ -206,11 +206,11 @@ const Header = () => {
           </div>
         </div>
       </header>
-      {/*TODO <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md top-16 w-full fixed flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
+      <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md top-16 w-full fixed flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
         <div className="my-2 mx-4 text-secondary-dark flex flex-wrap">
           {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
         </div>
-      </SmoothCollapse> */}
+      </SmoothCollapse>
     </>
   );
 };

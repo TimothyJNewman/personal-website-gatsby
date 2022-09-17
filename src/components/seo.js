@@ -175,6 +175,11 @@ const SEO = ({ seo = {} }) => {
         },
       ]}
       meta={metaTags}
+      script={[{
+        "data-goatcounter": "https://timothy-newman.goatcounter.com/count",
+        "async": true,
+        src: "//gc.zgo.at/count.js"
+      }]}
     />
   );
 };

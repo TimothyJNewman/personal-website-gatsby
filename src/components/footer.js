@@ -35,7 +35,7 @@ const Footer = () => (
             <a href="/rss.xml">RSS Feed</a>
             .
             <br />
-            Google analytics cookies are used on this website. Last gatsby build on&nbsp;
+            Last gatsby build on&nbsp;
             <StaticQuery
               query={graphql`
             query BuildDateQuery {

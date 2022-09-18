@@ -8,7 +8,6 @@ import CoverImage from '../components/cover-image';
 import Layout from "../components/layout";
 import LayoutSingleColumn from "../components/layout-single-column";
 import MarkdownView from "react-showdown";
-import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 
 // Parses the JSON returned by a network request
 const parseJSON = resp => (resp.json ? resp.json() : resp);
@@ -91,14 +90,6 @@ class Contact extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    trackCustomEvent({
-      // string - required - The object that was interacted with (e.g.video)
-      category: "Contact form submit button",
-      // string - required - Type of interaction (e.g. 'play')
-      action: "Click",
-      // string - optional - Useful for categorizing events (e.g. 'Spring Campaign')
-      label: "Engagement",
-    });
     this.setState({
       modifiedDataValidMessage: {
         name: stringValidation(this.state.modifiedData.name, "Name "),
@@ -153,11 +144,11 @@ class Contact extends React.Component {
                   <>
                     <MarkdownView
                       className="markdown-text"
-                      markdown={data.strapiSmallText.content}
+                      markdown={data.strapiSmallText.content.data.content}
                       options={{ emoji: true }}
                     />
                     <div className="flex">
-                      {data.allStrapiSocialmedia.nodes.map(media => (
+                      {data.allStrapiSocialMedia.nodes.map(media => (
                         <a href={media.link} key={media.id} className="mx-0.5">
                           <img className="w-6 h-6" src={media.image} alt={media.name} />
                         </a>
@@ -245,7 +236,7 @@ export default Contact;
 
 const query = graphql`
   query contactQuery {
-    allStrapiSocialmedia(sort: {fields: order, order: ASC}) {
+    allStrapiSocialMedia(sort: {fields: order, order: ASC}) {
       nodes {
         id
         image
@@ -254,6 +245,10 @@ const query = graphql`
       }
     }
     strapiSmallText(label: {eq: "Contact Page"}) {
-      content
+      content {
+        data {
+          content
+        }
+      }
     }
   }`;

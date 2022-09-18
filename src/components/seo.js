@@ -24,10 +24,8 @@ const seoQuery = graphql`
         keywords
         preventIndexing
         shareImage {
-          media {
-            localFile {
-              publicURL
-            }
+          localFile {
+            publicURL
           }
         }
       }
@@ -82,7 +80,7 @@ const SEO = ({ seo = {} }) => {
     }
     if (fullSeo.shareImage) {
       const imageUrl = (process.env.GATSBY_ROOT_URL || 'http://localhost:8000')
-        + fullSeo.shareImage.media.localFile.publicURL;
+        + fullSeo.shareImage.localFile.publicURL;
       tags.push(
         {
           name: 'image',
@@ -177,6 +175,11 @@ const SEO = ({ seo = {} }) => {
         },
       ]}
       meta={metaTags}
+      script={[{
+        "data-goatcounter": "https://timothy-newman.goatcounter.com/count",
+        "async": true,
+        src: "//gc.zgo.at/count.js"
+      }]}
     />
   );
 };

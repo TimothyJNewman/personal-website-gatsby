@@ -19,37 +19,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
-        // Setting this parameter is optional
-        anonymize: false,
-        // Setting this parameter is also optional
-        respectDNT: false,
-        // Avoids sending pageview hits from custom paths
-        // exclude: ["/preview/**", "/do-not-track/me/too/"],
-        // Delays sending pageview hits on route update (in milliseconds)
-        // pageTransitionDelay: 0,
-        // Enables Google Optimize using your container Id
-        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
-        // Enables Google Optimize Experiment ID
-        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
-        // Set Variation ID. 0 for original 1,2,3....
-        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
-        // Defers execution of google analytics script after page load
-        // defer: false,
-        // Any additional optional fields
-        // sampleRate: 5,
-        // siteSpeedSampleRate: 10,
-        // cookieDomain: "example.com",
-        // defaults to false
-        // enableWebVitalsTracking: true,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-sitemap',
       options: {
         excludes: ['/showcase/*'],
@@ -65,13 +34,13 @@ module.exports = {
               path
             }
           }
-          allStrapiBlogpost {
+          allStrapiBlogPost {
             nodes {
               updated_at
               slug
             }
           }
-          allStrapiProjectpost {
+          allStrapiProjectPost {
             nodes {
               updated_at
               slug
@@ -82,14 +51,14 @@ module.exports = {
         resolveSiteUrl: ({ site: { siteMetadata: { siteUrl } } }) => siteUrl,
         resolvePages: ({
           allSitePage,
-          allStrapiBlogpost,
-          allStrapiProjectpost,
+          allStrapiBlogPost,
+          allStrapiProjectPost,
         }) => {
           const blogsAndProjects = {};
-          allStrapiBlogpost.nodes.forEach((post) => {
+          allStrapiBlogPost.nodes.forEach((post) => {
             blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updated_at };
           });
-          allStrapiProjectpost.nodes.forEach((post) => {
+          allStrapiProjectPost.nodes.forEach((post) => {
             blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updated_at };
           });
           return allSitePage.nodes.map((page) => (
@@ -128,9 +97,10 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
+        skipFileDownloads: true,
         apiURL: process.env.STRAPI_API_URL || 'http://localhost:1337',
         accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: ['project-post', 'blog-post', 'gallery', 'tag', 'social-media', 'single-page', 'small-text'],
+        collectionTypes: [{ singularName: 'project-post', queryParams: { populate: 'deep,10' } }, { singularName: 'blog-post', queryParams: { populate: 'deep,10' } }, 'gallery', 'tag', 'social-media', 'single-page', 'small-text'],
         singleTypes: ['global'],
         queryLimit: 200,
       },
@@ -163,14 +133,14 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allStrapiBlogpost } }) => allStrapiBlogpost.nodes.map(
+            serialize: ({ query: { site, allStrapiBlogPost } }) => allStrapiBlogPost.nodes.map(
               (post) => {
                 const url = `${site.siteMetadata.siteUrl}/blog/${post.slug}`;
                 const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /><br />`;
                 const categoryArray = post.tags.map((tag) => ({ category: tag.Tag }));
                 return {
                   title: post.title,
-                  date: post.published_at,
+                  date: post.publishedAt,
                   description: post.summary,
                   url,
                   custom_elements: [{ 'content:encoded': content }, ...categoryArray],
@@ -179,15 +149,15 @@ module.exports = {
             ),
             query: `
               {
-                allStrapiBlogpost(
-                  sort: {order: DESC, fields: published_at}
-                  filter: {published_at: {ne: null}}
+                allStrapiBlogPost(
+                  sort: {order: DESC, fields: publishedAt}
+                  filter: {publishedAt: {ne: null}}
                 ) {
                   nodes {
                     title
                     slug
                     summary
-                    published_at(formatString: "MMMM DD, YYYY")
+                    publishedAt(formatString: "MMMM DD, YYYY")
                     tags {
                       Tag
                     }

@@ -34,13 +34,13 @@ const ProjectList = ({ pageContext, data }) => {
           <CoverImage title="Recent Projects" />
           <br />
           <section className="card-container">
-            {data.allStrapiProjectpost.nodes.length > 0
-              ? data.allStrapiProjectpost.nodes.map((posts) => (
+            {data.allStrapiProjectPost.nodes.length > 0
+              ? data.allStrapiProjectPost.nodes.map((posts) => (
                 <Card
                   title={posts.title}
                   img={posts.coverimage ? posts.coverimage.localFile : ''}
                   alt={posts.coverimage.alternativeText}
-                  date={getFormattedDate(posts.published_at)}
+                  date={getFormattedDate(posts.publishedAt)}
                   link={getFormattedLink('/project/', posts.slug)}
                   description={posts.summary}
                   tag1={posts.tags[0] ? posts.tags[0].Tag : false}
@@ -90,11 +90,11 @@ export default ProjectList;
 
 export const query = graphql`
   query ProjectList($limit: Int!, $skip: Int!){
-    allStrapiProjectpost(
+    allStrapiProjectPost(
       limit: $limit
       skip: $skip
-      sort: {fields: published_at, order: DESC}
-      filter: {published_at: {ne: null}}
+      sort: {fields: publishedAt, order: DESC}
+      filter: {publishedAt: {ne: null}}
     ) {
       nodes {
         id
@@ -108,9 +108,13 @@ export const query = graphql`
           }
           alternativeText
         }
-        content
+        content {
+          data {
+            content
+          }
+        }
         summary
-        published_at
+        publishedAt
         tags {
           Tag
         }
@@ -120,10 +124,8 @@ export const query = graphql`
           isArticle
           preventIndexing
           shareImage {
-            media {
-              localFile {
-                publicURL
-              }
+            localFile {
+              publicURL
             }
           }
         }

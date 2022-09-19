@@ -2,11 +2,11 @@ require('dotenv').config({
   path: '.env',
 });
 
-// const siteUrl = process.env.GATSBY_ROOT_URL || 'http://localhost:8000';
+const siteUrl = process.env.GATSBY_ROOT_URL || 'http://localhost:8000';
 
 module.exports = {
   siteMetadata: {
-    siteUrl: process.env.GATSBY_ROOT_URL || 'http://localhost:8000',
+    siteUrl,
     title: 'Personal Website',
   },
   plugins: [
@@ -24,11 +24,6 @@ module.exports = {
         excludes: ['/showcase/*'],
         query: `
         {
-          site {
-            siteMetadata {
-              siteUrl
-            }
-          }
           allSitePage(filter: {path: {regex: "/^(?!/showcase/).*$/"}}) {
             nodes {
               path
@@ -36,19 +31,19 @@ module.exports = {
           }
           allStrapiBlogPost {
             nodes {
-              updated_at
+              updatedAt
               slug
             }
           }
           allStrapiProjectPost {
             nodes {
-              updated_at
+              updatedAt
               slug
             }
           }
         }
         `,
-        resolveSiteUrl: ({ site: { siteMetadata: { siteUrl } } }) => siteUrl,
+        resolveSiteUrl: () => siteUrl,
         resolvePages: ({
           allSitePage,
           allStrapiBlogPost,
@@ -56,10 +51,10 @@ module.exports = {
         }) => {
           const blogsAndProjects = {};
           allStrapiBlogPost.nodes.forEach((post) => {
-            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updated_at };
+            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updatedAt };
           });
           allStrapiProjectPost.nodes.forEach((post) => {
-            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updated_at };
+            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updatedAt };
           });
           return allSitePage.nodes.map((page) => (
             { ...page, ...blogsAndProjects[page.path] }
@@ -121,21 +116,11 @@ module.exports = {
       // Code adapted from https://github.com/LekoArts/gatsby-starter-minimal-blog/blob/master/gatsby-config.js
       resolve: 'gatsby-plugin-feed',
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-                description
-              }
-            }
-          }
-        `,
         feeds: [
           {
-            serialize: ({ query: { site, allStrapiBlogPost } }) => allStrapiBlogPost.nodes.map(
+            serialize: ({ query: { allStrapiBlogPost } }) => allStrapiBlogPost.nodes.map(
               (post) => {
-                const url = `${site.siteMetadata.siteUrl}/blog/${post.slug}`;
+                const url = `${siteUrl}/blog/${post.slug}`;
                 const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /><br />`;
                 const categoryArray = post.tags.map((tag) => ({ category: tag.Tag }));
                 return {

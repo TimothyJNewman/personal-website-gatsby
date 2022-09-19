@@ -51,10 +51,24 @@ const Header = () => {
     }
   }, []);
 
+  const [isAtTop, setIsAtTop] = useState(true);
+  const handleScroll = () => {
+    const isAtTopLocal = window.pageYOffset === 0;
+    if (isAtTop !== isAtTopLocal) setIsAtTop(isAtTopLocal);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isAtTop]);
+
   return (
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
-      <header className="sticky h-20 z-10 top-[-24px] sm:top-[-16px] items-center bg-white text-primary flex">
+      <header className={`sticky h-20 z-10 top-[-24px] sm:top-[-16px] items-center bg-white text-primary flex ${!isAtTop && "shadow-md"}`}>
         <div className="sticky h-14 top-0 min-w-full py-2 px-4">
           <div className="max-w-screen-lg mx-auto flex justify-between items-center">
             <Link to="/">

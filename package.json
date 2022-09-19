@@ -1,6 +1,6 @@
 {
   "name": "personal-website-gatsby",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "Personal Website Gatsby",
   "author": "TimothyJNewman",
@@ -12,9 +12,12 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
+    "autoprefixer": "^10.4.11",
     "dotenv": "^10.0.0",
     "gatsby": "^4.23.0",
     "gatsby-plugin-feed": "^4.23.0",
@@ -30,6 +33,7 @@
     "gatsby-source-strapi": "^2.0.0",
     "gatsby-transformer-remark": "^5.22.0",
     "gatsby-transformer-sharp": "^4.22.0",
+    "postcss": "^8.4.16",
     "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -38,8 +42,6 @@
     "react-showdown": "^2.3.1",
     "react-smooth-collapse": "^2.1.2",
     "stream-browserify": "^3.0.0",
-    "autoprefixer": "^10.4.11",
-    "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
@@ -48,6 +50,11 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13"
+  },
+  "engines": {
+    "node": "^16"
   }
 }

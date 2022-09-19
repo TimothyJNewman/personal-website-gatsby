@@ -1,6 +1,6 @@
 /*
-* This is a page to display all blogs and projects with a specified tag
-*/
+ * This is a page to display all blogs and projects with a specified tag
+ */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import CoverImage from '../components/cover-image';
@@ -21,72 +21,86 @@ const TagList = ({ pageContext, data }) => {
         <div className="max-w-screen-md px-2">
           <CoverImage
             title={`Tag: ${queryTag}
-            / projects: ${data.allStrapiProjectPost ? data.allStrapiProjectPost.nodes.length : 0}
-            / blogs: ${data.allStrapiBlogPost ? data.allStrapiBlogPost.nodes.length : 0}
+            / projects: ${
+              data.allStrapiProjectPost
+                ? data.allStrapiProjectPost.nodes.length
+                : 0
+            }
+            / blogs: ${
+              data.allStrapiBlogPost ? data.allStrapiBlogPost.nodes.length : 0
+            }
            `}
           />
-          {data.allStrapiProjectPost.nodes.length > 0
-            ? (
-              <>
-                <h2 className="my-4">Recent Projects</h2>
-                <div className="card-container">
-                  {data.allStrapiProjectPost.nodes.map((posts) => (
-                    <Card
-                      img={posts.CoverImage ? posts.CoverImage.url : ''}
-                      title={posts.title}
-                      date={getFormattedDate(posts.publishedAt)}
-                      link={getFormattedLink('/project/', posts.slug)}
-                      description={posts.summary}
-                      tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                      tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                      tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                      key={posts.id}
-                    />
-                  ))}
-                </div>
-                <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-                  <Link to="/project" className="read-more-link">
-                    Explore all projects&nbsp;
-                    <i className="fas fa-arrow-right" />
-                  </Link>
-                </div>
-              </>
-            )
-            : ''}
-          {data.allStrapiBlogPost.nodes.length > 0
-            ? (
-              <>
-                <h2 className="my-4">Recent Blog Posts</h2>
-                <div className="card-container">
-                  {data.allStrapiBlogPost.nodes.map((posts) => (
-                    <Card
-                      title={posts.title}
-                      date={getFormattedDate(posts.publishedAt)}
-                      link={getFormattedLink('/blog/', posts.slug)}
-                      description={posts.summary}
-                      tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                      tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                      tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                      key={posts.id}
-                    />
-                  ))}
-                </div>
-                <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
-                  <Link to="/blog" className="read-more-link">
-                    Read all blog posts&nbsp;
-                    <i className="fas fa-arrow-right" />
-                  </Link>
-                </div>
-              </>
-            )
-            : ''}
+          {data.allStrapiProjectPost.nodes.length > 0 ? (
+            <>
+              <h2 className="my-4">Recent Projects</h2>
+              <div className="card-container">
+                {data.allStrapiProjectPost.nodes.map((posts) => (
+                  <Card
+                    img={posts.CoverImage ? posts.CoverImage.url : ''}
+                    title={posts.title}
+                    date={getFormattedDate(posts.publishedAt)}
+                    link={getFormattedLink('/project/', posts.slug)}
+                    description={posts.summary}
+                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    key={posts.id}
+                  />
+                ))}
+              </div>
+              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+                <Link to="/project" className="read-more-link">
+                  Explore all projects&nbsp;
+                  <i className="fas fa-arrow-right" />
+                </Link>
+              </div>
+            </>
+          ) : (
+            ''
+          )}
+          {data.allStrapiBlogPost.nodes.length > 0 ? (
+            <>
+              <h2 className="my-4">Recent Blog Posts</h2>
+              <div className="card-container">
+                {data.allStrapiBlogPost.nodes.map((posts) => (
+                  <Card
+                    title={posts.title}
+                    date={getFormattedDate(posts.publishedAt)}
+                    link={getFormattedLink('/blog/', posts.slug)}
+                    description={posts.summary}
+                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
+                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
+                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
+                    key={posts.id}
+                  />
+                ))}
+              </div>
+              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+                <Link to="/blog" className="read-more-link">
+                  Read all blog posts&nbsp;
+                  <i className="fas fa-arrow-right" />
+                </Link>
+              </div>
+            </>
+          ) : (
+            ''
+          )}
           <h2 className="my-4">All Tags</h2>
           <div className="flex flex-wrap">
-            {data.allStrapiTag.nodes
-              ? data.allStrapiTag.nodes.map((elem) => (
-                <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="tag-button">{elem.Tag}</Link>
+            {data.allStrapiTag.nodes ? (
+              data.allStrapiTag.nodes.map((elem) => (
+                <Link
+                  to={`/tag/${elem.Tag}`}
+                  key={elem.Tag}
+                  className="tag-button"
+                >
+                  {elem.Tag}
+                </Link>
               ))
-              : <p className="error-message">No tags found</p>}
+            ) : (
+              <p className="error-message">No tags found</p>
+            )}
           </div>
         </div>
       </LayoutSingleColumn>
@@ -100,8 +114,11 @@ export default TagList;
 export const query = graphql`
   query TagList($queryTag: String!) {
     allStrapiBlogPost(
-      sort: {fields: publishedAt, order: DESC}
-      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, publishedAt: {ne: null}}
+      sort: { fields: publishedAt, order: DESC }
+      filter: {
+        tags: { elemMatch: { Tag: { eq: $queryTag } } }
+        publishedAt: { ne: null }
+      }
     ) {
       nodes {
         id
@@ -117,11 +134,14 @@ export const query = graphql`
         tags {
           Tag
         }
-      } 
+      }
     }
     allStrapiProjectPost(
-      sort: {fields: publishedAt, order: DESC}
-      filter: {tags: {elemMatch: {Tag: {eq: $queryTag}}}, publishedAt: {ne: null}}
+      sort: { fields: publishedAt, order: DESC }
+      filter: {
+        tags: { elemMatch: { Tag: { eq: $queryTag } } }
+        publishedAt: { ne: null }
+      }
     ) {
       nodes {
         id

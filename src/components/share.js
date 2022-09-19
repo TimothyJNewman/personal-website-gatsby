@@ -1,7 +1,7 @@
 /*
-* Credit: Peter Mbanugo
-* Source: https://www.telerik.com/blogs/using-web-share-api-react
-*/
+ * Credit: Peter Mbanugo
+ * Source: https://www.telerik.com/blogs/using-web-share-api-react
+ */
 import React from 'react';
 import { useLocation } from '@reach/router';
 
@@ -12,21 +12,24 @@ export default function Share({ label, text, title }) {
   const handleSharing = async () => {
     if (navigator.share) {
       try {
-        await navigator
-          .share(shareDetails);
+        await navigator.share(shareDetails);
       } catch (error) {
         console.error(`Oops! I couldn't share to the world because: ${error}`);
       }
     } else {
       // fallback code
-      console.error(
-        'Web share is currently not supported on this browser'
+      console.error('Web share is currently not supported on this browser');
+      window.alert(
+        'Web Share is not supported in your browser. Please try copying the URL.'
       );
-      window.alert('Web Share is not supported in your browser. Please try copying the URL.')
     }
   };
   return (
-    <button className="py-0.5 px-2 border-2 border-primary-dark rounded text-sm sm:text-base article-share-button" type="button" onClick={handleSharing}>
+    <button
+      className="article-share-button rounded border-2 border-primary-dark py-0.5 px-2 text-sm sm:text-base"
+      type="button"
+      onClick={handleSharing}
+    >
       {label}
     </button>
   );

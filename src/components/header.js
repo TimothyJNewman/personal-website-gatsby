@@ -1,6 +1,6 @@
 /*
-* Header
-*/
+ * Header
+ */
 import React, { useEffect, useState } from 'react';
 import SmoothCollapse from 'react-smooth-collapse';
 import { Link } from 'gatsby';
@@ -16,13 +16,17 @@ const ButtonTextLink = [
 ];
 
 const HeaderButton = ({ text, link }) => (
-  <Link to={link} key={text} className="header-button-wrapper p-1 m-1">
+  <Link to={link} key={text} className="header-button-wrapper m-1 p-1">
     {text}
   </Link>
 );
 
 const DropdownMenuButton = ({ text, link }) => (
-  <Link className="pr-3 whitespace-nowrap hover:text-primary-dark" to={link} key={text}>
+  <Link
+    className="whitespace-nowrap pr-3 hover:text-primary-dark"
+    to={link}
+    key={text}
+  >
     <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>
@@ -40,7 +44,11 @@ const Header = () => {
   /*  Credit: Luke Lowry
       Source for dark theme: https://lukelowrey.com/css-variable-theme-switcher/ */
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const storedTheme =
+      localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light');
     if (storedTheme) {
       document.documentElement.setAttribute('data-theme', storedTheme);
       if (storedTheme === 'dark') {
@@ -68,42 +76,78 @@ const Header = () => {
   return (
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
-      <header className={`sticky h-20 z-10 top-[-24px] sm:top-[-16px] items-center bg-white text-primary flex ${!isAtTop && "shadow-md"}`}>
-        <div className="sticky h-14 top-0 min-w-full py-2 px-4">
-          <div className="max-w-screen-lg mx-auto flex justify-between items-center">
+      <header
+        className={`sticky top-[-24px] z-10 flex h-20 items-center bg-white text-primary sm:top-[-16px] ${!isAtTop && 'shadow-md'
+          }`}
+      >
+        <div className="sticky top-0 h-14 min-w-full pt-[0.6rem] sm:pt-2 py-2 px-4">
+          <div className="mx-auto flex max-w-screen-lg items-center justify-between">
             <Link to="/">
-              <div id="logo-with-text" className="bg-secondary-light hover:bg-primary-dark hover:shadow-md p-1 px-2 sm:p-2 rounded-full">
-                <svg
-                  width="90"
-                  height="30"
-                  alt="logo">
+              <div
+                id="logo-with-text"
+                className="rounded-full bg-secondary-light p-1 px-2 hover:bg-primary-dark hover:shadow-md sm:p-2"
+              >
+                <svg width="90" height="30" alt="logo">
                   <g transform="matrix(1.25,0,0,-1.25,0,30)">
                     <g
                       id="penguin"
-                      style={{ fill: "#f2f2f2", fillOpacity: 1 }}>
+                      style={{
+                        fill: '#f2f2f2',
+                        fillOpacity: 1,
+                      }}
+                    >
                       <g
                         clipPath="M 0,24 24,24 24,0 0,0 0,24 z"
-                        style={{ fill: "#f2f2f2", fillOpacity: 1 }}>
+                        style={{
+                          fill: '#f2f2f2',
+                          fillOpacity: 1,
+                        }}
+                      >
                         <g
                           transform="translate(4.4448,6.9648)"
-                          style={{ fill: "#f2f2f2", fillOpacity: 1 }}>
+                          style={{
+                            fill: '#f2f2f2',
+                            fillOpacity: 1,
+                          }}
+                        >
                           <path
                             d="m 0,0 c -0.033,3.313 1.667,5.014 1.697,8.982 0.004,1.922 1.017,3.598 2.53,4.556 C 5.692,13.7 7.377,12.992 7.662,10.544 7.783,9.502 7.685,7.84 7.671,5.912 2.63,2.436 4.705,-2.884 5.324,-2.884 c 0.542,0 0.444,2.028 2.649,3.789 0.275,-1.815 0.793,-3.621 1.734,-5.219 l -8.651,0 C 0.733,-3.851 0.002,-2.545 0,0 m 16.595,-4.505 c -3.474,3.347 -1.688,10.151 -2.95,14.942 l -10e-4,0 c -0.665,3.001 -3.34,5.248 -6.542,5.248 -3.325,0 -6.076,-2.422 -6.605,-5.595 L -1.979,8.991 0.354,8.111 C 0.127,5.208 -1.269,3.49 -1.299,0 c -0.004,-2.063 0.445,-3.45 0.866,-4.314 l -2.168,0 0,-1.3 3.076,0 0.269,0 16.964,0 -1.113,1.109 z"
-                            style={{ fill: "#f2f2f2", fillOpacity: 1, fillRule: "nonzero", stroke: "none" }} />
+                            style={{
+                              fill: '#f2f2f2',
+                              fillOpacity: 1,
+                              fillRule: 'nonzero',
+                              stroke: 'none',
+                            }}
+                          />
                         </g>
                         <g
                           transform="translate(9.4946,17.5088)"
-                          style={{ fill: "#f2f2f2", fillOpacity: 1 }}>
+                          style={{
+                            fill: '#f2f2f2',
+                            fillOpacity: 1,
+                          }}
+                        >
                           <path
                             d="M 0,0 C 0,0.496 -0.4,0.895 -0.896,0.895 -1.389,0.895 -1.79,0.496 -1.79,0 c 0,-0.496 0.401,-0.895 0.894,-0.895 C -0.4,-0.895 0,-0.496 0,0"
-                            style={{ fill: "#f2f2f2", fillOpacity: 1, fillRule: "nonzero", stroke: "none" }} />
+                            style={{
+                              fill: '#f2f2f2',
+                              fillOpacity: 1,
+                              fillRule: 'nonzero',
+                              stroke: 'none',
+                            }}
+                          />
                         </g>
                       </g>
                     </g>
                     <g
                       transform="scale(1,-1)"
                       id="text-timothy"
-                      style={{ fill: "#f2f2f2", fillOpacity: 1, stroke: "none" }}>
+                      style={{
+                        fill: '#f2f2f2',
+                        fillOpacity: 1,
+                        stroke: 'none',
+                      }}
+                    >
                       <path
                         d="m 20.739187,-19.125735 0.197412,-2.340063 6.354321,0 0.19773,2.340063 -0.259937,0 c -0.02773,-0.312088 -0.05375,-0.558271 -0.07808,-0.73855 -0.02434,-0.180268 -0.06597,-0.355304 -0.12489,-0.52511 -0.05893,-0.169793 -0.124791,-0.296323 -0.197571,-0.379589 -0.07279,-0.08325 -0.178481,-0.157786 -0.317065,-0.223597 -0.138597,-0.0658 -0.298028,-0.107374 -0.478296,-0.124731 -0.180279,-0.01734 -0.405621,-0.02602 -0.676025,-0.02603 -0.319081,6e-6 -0.516704,0.0069 -0.592871,0.02063 -0.08316,0.02095 -0.135157,0.06089 -0.155994,0.119813 -0.02085,0.05893 -0.03127,0.150816 -0.03126,0.275646 l 0,5.480567 c -5e-6,0.138802 0.01385,0.235921 0.04158,0.291357 0.02771,0.05544 0.121341,0.103943 0.280884,0.14552 0.159533,0.04158 0.416083,0.06237 0.769653,0.06237 l 0.415771,0 0,0.322461 c -0.284168,-0.02074 -0.942843,-0.0311 -1.976025,-0.0311 -1.025995,0 -1.681179,0.01037 -1.965552,0.0311 l 0,-0.322461 0.416089,0 c 0.353562,0 0.610113,-0.02079 0.769653,-0.06237 0.159535,-0.04158 0.253163,-0.09008 0.280884,-0.14552 0.02772,-0.05544 0.04157,-0.152555 0.04158,-0.291357 l 0,-5.480567 c -3e-6,-0.09711 -0.0035,-0.16646 -0.01047,-0.208044 -0.007,-0.04157 -0.02608,-0.07971 -0.05729,-0.114416 -0.03121,-0.03469 -0.08147,-0.05897 -0.150757,-0.07284 -0.0693,-0.01385 -0.256501,-0.02078 -0.561608,-0.02079 -0.270413,6e-6 -0.495754,0.0087 -0.676026,0.02603 -0.180275,0.01736 -0.33976,0.05893 -0.478454,0.124731 -0.138698,0.06581 -0.244439,0.140343 -0.317225,0.223597 -0.07279,0.08327 -0.138644,0.209796 -0.19757,0.379589 -0.05893,0.169806 -0.100506,0.344842 -0.124732,0.52511 -0.02423,0.180279 -0.0502,0.426462 -0.07792,0.73855 z"
                         id="timothy-0-t"
@@ -143,7 +187,12 @@ const Header = () => {
                     <g
                       transform="scale(1,-1)"
                       id="text-newman"
-                      style={{ fill: "#f2f2f2", fillOpacity: 1, stroke: "none" }}>
+                      style={{
+                        fill: '#f2f2f2',
+                        fillOpacity: 1,
+                        stroke: 'none',
+                      }}
+                    >
                       <path
                         d="m 30.46584,-3.3941131 0,-0.3224609 c 0.249674,3e-7 0.454227,-0.024279 0.61366,-0.072839 0.159431,-0.048559 0.26861,-0.1195999 0.327539,-0.2131226 0.05893,-0.093521 0.09532,-0.1714917 0.10918,-0.2339111 0.01386,-0.062418 0.02079,-0.1456777 0.02079,-0.2497803 l 0,-5.4288328 c -1e-6,-0.096901 -0.01211,-0.1575212 -0.03634,-0.1818602 -0.02423,-0.02433 -0.09527,-0.04337 -0.213123,-0.05713 -0.207992,-0.01396 -0.381283,-0.02094 -0.519873,-0.02095 l -0.301831,0 0,-0.322461 1.76814,0 c 0.09712,8e-6 0.159535,0.007 0.187256,0.02095 0.02772,0.01397 0.0658,0.05206 0.114257,0.114258 l 3.671167,5.3977291 0,-4.4408201 c -6e-6,-0.1038839 -0.0069,-0.1870381 -0.02079,-0.2494629 -0.01387,-0.062412 -0.05026,-0.1404355 -0.10918,-0.2340698 -0.05893,-0.093621 -0.168113,-0.1647153 -0.327539,-0.2132813 -0.159437,-0.04855 -0.363991,-0.07283 -0.61366,-0.07284 l 0,-0.322461 c 0.728071,0.02096 1.133686,0.03143 1.216846,0.03142 0.08315,7e-6 0.488763,-0.01047 1.216846,-0.03142 l 0,0.322461 c -0.249682,7e-6 -0.454235,0.02429 -0.61366,0.07284 -0.159439,0.04857 -0.268618,0.11966 -0.327539,0.2132813 -0.05893,0.093634 -0.09533,0.1716575 -0.10918,0.2340698 -0.01386,0.062425 -0.02079,0.145579 -0.02079,0.2494629 l 0,5.7408201 c -7e-6,0.1108725 -0.0069,0.1836589 -0.02079,0.2183594 -0.01387,0.034701 -0.0555,0.052051 -0.12489,0.052051 -0.04846,0 -0.107387,-0.045068 -0.176782,-0.135205 l -4.243091,-6.2400633 c -0.02772,-0.041465 -0.06242,-0.083042 -0.104101,-0.1247314 l 0,5.4078855 c -2e-6,0.1041026 0.0069,0.1873626 0.02079,0.2497803 0.01386,0.062419 0.05025,0.1403897 0.10918,0.2339111 0.05892,0.093523 0.168105,0.1645634 0.327539,0.2131226 0.159429,0.04856 0.363982,0.07284 0.613659,0.072839 l 0,0.3224609 c -0.728078,-0.020736 -1.133693,-0.031103 -1.216845,-0.031103 -0.08316,10e-8 -0.488771,0.010368 -1.216846,0.031103 z"
                         id="newman-0-n"
@@ -180,12 +229,14 @@ const Header = () => {
               </div>
             </Link>
             <div className="flex items-center">
-              <div className="items-center sm:flex hidden px-2">
-                {ButtonTextLink.map(({ text, link }) => HeaderButton({ text, link }))}
+              <div className="hidden items-center px-2 sm:flex">
+                {ButtonTextLink.map(({ text, link }) =>
+                  HeaderButton({ text, link })
+                )}
               </div>
               <div className="rounded">
                 <button
-                  className="std-button py-0.5 text-lg rounded-none rounded-l sm:rounded"
+                  className="std-button rounded-none rounded-l py-0.5 text-lg sm:rounded"
                   aria-label="Theme Toggle"
                   type="button"
                   onClick={() => {
@@ -194,26 +245,35 @@ const Header = () => {
                   }}
                 >
                   <i className={`far ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
-                  <span className="hidden sm:inline">&nbsp;{isDarkTheme ? 'light' : 'dark'}</span>
+                  <span className="hidden sm:inline">
+                    &nbsp;{isDarkTheme ? 'light' : 'dark'}
+                  </span>
                 </button>
                 <button
-                  className="std-button py-0.5 text-lg rounded-none rounded-r sm:hidden"
+                  className="std-button rounded-none rounded-r py-0.5 text-lg sm:hidden"
                   aria-label="Toggle Menu"
                   type="button"
                   onClick={() => {
                     toggleMenuExpansion(!menuExpanded);
                   }}
                 >
-                  <i className={`fa ${!menuExpanded ? 'fa-bars' : 'fa-times'}`} />
+                  <i
+                    className={`fa ${!menuExpanded ? 'fa-bars' : 'fa-times'}`}
+                  />
                 </button>
               </div>
             </div>
           </div>
         </div>
       </header>
-      <SmoothCollapse expanded={menuExpanded} className="max-w-screen-md top-16 w-full fixed flex bg-white text-primary justify-center sm:hidden border-y-2 border-secondary-dark">
-        <div className="my-2 mx-4 text-secondary-dark flex flex-wrap">
-          {ButtonTextLink.map(({ text, link }) => DropdownMenuButton({ text, link }))}
+      <SmoothCollapse
+        expanded={menuExpanded}
+        className="fixed top-16 flex w-full max-w-screen-md justify-center border-y-2 border-secondary-dark bg-white text-primary sm:hidden"
+      >
+        <div className="my-2 mx-4 flex flex-wrap text-secondary-dark">
+          {ButtonTextLink.map(({ text, link }) =>
+            DropdownMenuButton({ text, link })
+          )}
         </div>
       </SmoothCollapse>
     </>

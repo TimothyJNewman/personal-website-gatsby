@@ -5,7 +5,8 @@ const sanitize = (str) => str.replace(/[^a-zA-Z0-9\s]/g, '');
 
 // Removes special characters except .,?!()
 // eslint-disable-next-line no-useless-escape
-const sanitizeKeepUnicode = (str) => str.replace(/[`~@#$%^&*_|+\-=;:'"<>\{\}\[\]\\\/]/gi, '');
+const sanitizeKeepUnicode = (str) =>
+  str.replace(/[`~@#$%^&*_|+\-=;:'"<>\{\}\[\]\\\/]/gi, '');
 
 // Username & Email
 const isEmail = (str) => {

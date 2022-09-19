@@ -1,34 +1,33 @@
 /* styling for embedded canvases */
 
 .canvas-square {
-    height: 300px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-  
-  .canvas-3-2 {
-    height: 200px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
+  height: 300px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 
-  /* 
+.canvas-3-2 {
+  height: 200px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* 
 * sets dimensions of the canvas inside iframe 
 * this is smaller that the parent document since there is a padding around the iframe
 */
 
 @media only screen and (min-width: 418px) {
-    .canvas-square {
-      height: 450px;
-      width: 450px;
-    }
-    .canvas-3-2 {
-      height: 300px;
-      width: 450px;
-    }
+  .canvas-square {
+    height: 450px;
+    width: 450px;
   }
-  
+  .canvas-3-2 {
+    height: 300px;
+    width: 450px;
+  }
+}

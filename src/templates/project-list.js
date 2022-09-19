@@ -1,7 +1,7 @@
 /*
-* Projects list
-* Adapted from https://nickymeuleman.netlify.app/blog/gatsby-pagination
-*/
+ * Projects list
+ * Adapted from https://nickymeuleman.netlify.app/blog/gatsby-pagination
+ */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import CoverImage from '../components/cover-image';
@@ -34,8 +34,8 @@ const ProjectList = ({ pageContext, data }) => {
           <CoverImage title="Recent Projects" />
           <br />
           <section className="card-container">
-            {data.allStrapiProjectPost.nodes.length > 0
-              ? data.allStrapiProjectPost.nodes.map((posts) => (
+            {data.allStrapiProjectPost.nodes.length > 0 ? (
+              data.allStrapiProjectPost.nodes.map((posts) => (
                 <Card
                   title={posts.title}
                   img={posts.coverimage ? posts.coverimage.localFile : ''}
@@ -49,9 +49,11 @@ const ProjectList = ({ pageContext, data }) => {
                   key={posts.id}
                 />
               ))
-              : <p className="error-message">No projects</p>}
+            ) : (
+              <p className="error-message">No projects</p>
+            )}
           </section>
-          <nav className="text-sm max-w-screen-md flex justify-end m-4 mb-0">
+          <nav className="m-4 mb-0 flex max-w-screen-md justify-end text-sm">
             <Link to={prevPage} className="posts-navigation-button">
               <i className="fas fa-arrow-circle-left" />
               &nbsp;Prev
@@ -61,15 +63,23 @@ const ProjectList = ({ pageContext, data }) => {
               for (let i = 1; i <= numPages; i++) {
                 if (i === 1) {
                   items.push(
-                    <Link to="/project" className="posts-navigation-button" key={i}>
+                    <Link
+                      to="/project"
+                      className="posts-navigation-button"
+                      key={i}
+                    >
                       {i}
-                    </Link>,
+                    </Link>
                   );
                 } else {
                   items.push(
-                    <Link to={`/project/page/${i}`} className="posts-navigation-button" key={i}>
+                    <Link
+                      to={`/project/page/${i}`}
+                      className="posts-navigation-button"
+                      key={i}
+                    >
                       {i}
-                    </Link>,
+                    </Link>
                   );
                 }
               }
@@ -89,12 +99,12 @@ const ProjectList = ({ pageContext, data }) => {
 export default ProjectList;
 
 export const query = graphql`
-  query ProjectList($limit: Int!, $skip: Int!){
+  query ProjectList($limit: Int!, $skip: Int!) {
     allStrapiProjectPost(
       limit: $limit
       skip: $skip
-      sort: {fields: publishedAt, order: DESC}
-      filter: {publishedAt: {ne: null}}
+      sort: { fields: publishedAt, order: DESC }
+      filter: { publishedAt: { ne: null } }
     ) {
       nodes {
         id

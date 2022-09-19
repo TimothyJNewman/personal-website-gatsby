@@ -15,16 +15,7 @@ const BallisticCanvas = () => {
     minY: -100,
     maxY: 100,
   });
-  const {
-    thetha_i,
-    v_i,
-    x_i,
-    y_i,
-    minX,
-    maxX,
-    minY,
-    maxY,
-  } = params;
+  const { thetha_i, v_i, x_i, y_i, minX, maxX, minY, maxY } = params;
   let height;
   let width;
   function coordx(x) {
@@ -69,8 +60,8 @@ const BallisticCanvas = () => {
     if (maxY < 0) {
       extraY = -maxY;
     }
-    const newX = Math.round(coordx((x + extraX) / (maxX - minX) * width));
-    const newY = Math.round(coordy((y + extraY) / (maxY - minY) * height));
+    const newX = Math.round(coordx(((x + extraX) / (maxX - minX)) * width));
+    const newY = Math.round(coordy(((y + extraY) / (maxY - minY)) * height));
     return { newX, newY };
   }
   useEffect(() => {
@@ -104,8 +95,11 @@ const BallisticCanvas = () => {
       ctx.fillStyle = '#653815';
       const { newX, newY } = quadraticCurve(
         x_i + v_i * Math.cos(thetha_i) * t,
-        y_i + v_i * Math.sin(thetha_i) * t + g / 2 * t ** 2, 
-        minX, maxX, minY, maxY
+        y_i + v_i * Math.sin(thetha_i) * t + (g / 2) * t ** 2,
+        minX,
+        maxX,
+        minY,
+        maxY
       );
       ctx.arc(newX, newY, 10, 0, 2 * Math.PI);
       ctx.fill();
@@ -126,27 +120,116 @@ const BallisticCanvas = () => {
   }, [t]);
   return (
     <>
-      <canvas id="ballistic-canvas" ref={canvasRef} className="canvas-3-2" height="1000px" width="1500px" >
+      <canvas
+        id="ballistic-canvas"
+        ref={canvasRef}
+        className="canvas-3-2"
+        height="1000px"
+        width="1500px"
+      >
         Your browser does not support the HTML canvas tag.
       </canvas>
-      <form className='flex flex-col w-80 ml-auto mr-auto'>
-        <input type="button" onClick={reset} id="reset" name="reset" value="Restart Simulation" className='std-button my-2' />
-        <label htmlFor="angle"> Angle: {Math.round(parseFloat(params.thetha_i) / 3.14159 * 180.0)}</label>
-        <input type="range" id="angle" name="angle" value={params.thetha_i} min="0" max="3.14" step="0.05" onChange={e => setParams({ ...params, thetha_i: e.target.value })} /><br />
+      <form className="ml-auto mr-auto flex w-80 flex-col">
+        <input
+          type="button"
+          onClick={reset}
+          id="reset"
+          name="reset"
+          value="Restart Simulation"
+          className="std-button my-2"
+        />
+        <label htmlFor="angle">
+          {' '}
+          Angle: {Math.round((parseFloat(params.thetha_i) / 3.14159) * 180.0)}
+        </label>
+        <input
+          type="range"
+          id="angle"
+          name="angle"
+          value={params.thetha_i}
+          min="0"
+          max="3.14"
+          step="0.05"
+          onChange={(e) => setParams({ ...params, thetha_i: e.target.value })}
+        />
+        <br />
         <label htmlFor="velocity"> Initial Velocity: {params.v_i}</label>
-        <input type="range" id="velocity" name="velocity" value={params.v_i} min="0" max="50" onChange={e => setParams({ ...params, v_i: e.target.value })} /><br />
+        <input
+          type="range"
+          id="velocity"
+          name="velocity"
+          value={params.v_i}
+          min="0"
+          max="50"
+          onChange={(e) => setParams({ ...params, v_i: e.target.value })}
+        />
+        <br />
         <label htmlFor="x_i"> Initial X position: {params.x_i}</label>
-        <input type="range" id="x_i" name="x_i" value={params.x_i} min="0" max="100" onChange={e => setParams({ ...params, x_i: e.target.value })} /><br />
+        <input
+          type="range"
+          id="x_i"
+          name="x_i"
+          value={params.x_i}
+          min="0"
+          max="100"
+          onChange={(e) => setParams({ ...params, x_i: e.target.value })}
+        />
+        <br />
         <label htmlFor="y_i"> Initial Y position: {params.y_i}</label>
-        <input type="range" id="y_i" name="y_i" value={params.y_i} min="0" max="100" onChange={e => setParams({ ...params, y_i: e.target.value })} /><br />
+        <input
+          type="range"
+          id="y_i"
+          name="y_i"
+          value={params.y_i}
+          min="0"
+          max="100"
+          onChange={(e) => setParams({ ...params, y_i: e.target.value })}
+        />
+        <br />
         <label htmlFor="minX"> Viewport Min X: {params.minX}</label>
-        <input type="range" id="minX" name="minX" value={params.minX} min="-1000" max="1000" onChange={e => setParams({ ...params, minX: e.target.value })} /><br />
+        <input
+          type="range"
+          id="minX"
+          name="minX"
+          value={params.minX}
+          min="-1000"
+          max="1000"
+          onChange={(e) => setParams({ ...params, minX: e.target.value })}
+        />
+        <br />
         <label htmlFor="maxX"> Viewport Max X: {params.maxX}</label>
-        <input type="range" id="maxX" name="maxX" value={params.maxX} min="-1000" max="1000" onChange={e => setParams({ ...params, maxX: e.target.value })} /><br />
+        <input
+          type="range"
+          id="maxX"
+          name="maxX"
+          value={params.maxX}
+          min="-1000"
+          max="1000"
+          onChange={(e) => setParams({ ...params, maxX: e.target.value })}
+        />
+        <br />
         <label htmlFor="minY"> Viewport Min Y: {params.minY}</label>
-        <input type="range" id="minY" name="minY" value={params.minY} min="-1000" max="1000" onChange={e => setParams({ ...params, minY: e.target.value })} /><br />
+        <input
+          type="range"
+          id="minY"
+          name="minY"
+          value={params.minY}
+          min="-1000"
+          max="1000"
+          onChange={(e) => setParams({ ...params, minY: e.target.value })}
+        />
+        <br />
         <label htmlFor="maxY"> Viewport Max y: {params.maxY}</label>
-        <input type="range" id="maxY" name="maxY" value={params.maxY} min="-1000" max="1000" onChange={e => setParams({ ...params, maxY: e.target.value })} /><br />
+        <input
+          type="range"
+          id="maxY"
+          name="maxY"
+          value={params.maxY}
+          min="-1000"
+          max="1000"
+          onChange={(e) => setParams({ ...params, maxY: e.target.value })}
+        />
+        <br />
       </form>
     </>
   );

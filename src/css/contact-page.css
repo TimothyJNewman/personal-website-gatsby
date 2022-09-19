@@ -22,26 +22,31 @@
   }
 }
 
-@media only screen and (min-width:768px) {
+@media only screen and (min-width: 768px) {
   .contact-container {
     grid-template-columns: 5fr 4fr;
   }
 }
 
-.form-inputs input[type=text], .form-inputs textarea {
-  background: linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
+.form-inputs input[type='text'],
+.form-inputs textarea {
+  background: linear-gradient(
+    var(--color-bg-primary-dark),
+    var(--color-bg-primary-dark)
+  );
   background-size: 0 0.2em;
   background-position: 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms, color 400ms;
 }
 
-.form-inputs input[type=text]:focus, .form-inputs textarea:focus {
+.form-inputs input[type='text']:focus,
+.form-inputs textarea:focus {
   outline: none;
   background-size: 100% 0.2em;
 }
 
-.form-inputs input[type=text] {
+.form-inputs input[type='text'] {
   height: 2em;
   background-color: var(--color-bg-white);
 }
@@ -64,14 +69,16 @@
   animation: shake 0.5s ease-in infinite alternate-reverse;
 }
 
-.red-underline input[type=text], .red-underline textarea {
+.red-underline input[type='text'],
+.red-underline textarea {
   background: linear-gradient(var(--errorcolor), var(--errorcolor));
   background-size: 100% 0.3em;
   background-position: 0% 100%;
   background-repeat: no-repeat;
 }
 
-.red-underline input[type=text]:focus, .red-underline textarea:focus {
+.red-underline input[type='text']:focus,
+.red-underline textarea:focus {
   background-size: 100% 0.3em !important;
 }
 

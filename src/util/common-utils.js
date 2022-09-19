@@ -1,6 +1,6 @@
 /*
-* File with commonly used utility functions
-*/
+ * File with commonly used utility functions
+ */
 
 const getFormattedDate = (dateString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -9,7 +9,4 @@ const getFormattedDate = (dateString) => {
 
 const getFormattedLink = (hostname, path) => hostname + path;
 
-export {
-  getFormattedDate,
-  getFormattedLink,
-};
+export { getFormattedDate, getFormattedLink };

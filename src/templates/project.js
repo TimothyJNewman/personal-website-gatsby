@@ -1,6 +1,6 @@
 /*
-* Individual project post
-*/
+ * Individual project post
+ */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import MarkdownView from 'react-showdown';
@@ -13,29 +13,43 @@ import { getFormattedDate } from '../util/common-utils';
 const ProjectTemplate = ({ data }) => (
   <Layout seo={data.strapiProjectPost.seo}>
     <LayoutSingleColumn>
-      <section className="max-w-screen-md mx-auto text-left px-2">
-        {data.strapiProjectPost.coverimage
-          ? (
-            <CoverImage
-              img={data.strapiProjectPost.coverimage ? data.strapiProjectPost.coverimage.localFile : ''}
-              alt={data.strapiProjectPost.coverimage.alternativeText}
-              title={data.strapiProjectPost.title}
-            />
-          )
-          : <CoverImage title={data.strapiProjectPost.title} />}
+      <section className="mx-auto max-w-screen-md px-2 text-left">
+        {data.strapiProjectPost.coverimage ? (
+          <CoverImage
+            img={
+              data.strapiProjectPost.coverimage
+                ? data.strapiProjectPost.coverimage.localFile
+                : ''
+            }
+            alt={data.strapiProjectPost.coverimage.alternativeText}
+            title={data.strapiProjectPost.title}
+          />
+        ) : (
+          <CoverImage title={data.strapiProjectPost.title} />
+        )}
         <div className="py-1">
-          <div className="py-2 flex justify-between items-start">
-            <div className="m-0 text-sm italic text-dategray article-date-container">
+          <div className="flex items-start justify-between py-2">
+            <div className="article-date-container m-0 text-sm italic text-dategray">
               <strong>Published:&nbsp;</strong>
               {getFormattedDate(data.strapiProjectPost.publishedAt)}
               <strong>Updated:&nbsp;</strong>
               {getFormattedDate(data.strapiProjectPost.updatedAt)}
             </div>
-            <Share label="Share this!" text={data.strapiProjectPost.summary} title={data.strapiProjectPost.title} />
+            <Share
+              label="Share this!"
+              text={data.strapiProjectPost.summary}
+              title={data.strapiProjectPost.title}
+            />
           </div>
           <div className="flex">
             {data.strapiProjectPost.tags.map((elem) => (
-              <Link className="tag-button" to={`/tag/${elem.Tag}`} key={elem.Tag}>{elem.Tag}</Link>
+              <Link
+                className="tag-button"
+                to={`/tag/${elem.Tag}`}
+                key={elem.Tag}
+              >
+                {elem.Tag}
+              </Link>
             ))}
           </div>
         </div>
@@ -59,42 +73,40 @@ const ProjectTemplate = ({ data }) => (
 export default ProjectTemplate;
 
 export const query = graphql`
-  query ProjectTemplate ($slug: String!){
-    strapiProjectPost( 
-      slug: {eq: $slug }
-      ) {
-        id
-        coverimage {
+  query ProjectTemplate($slug: String!) {
+    strapiProjectPost(slug: { eq: $slug }) {
+      id
+      coverimage {
+        localFile {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+        alternativeText
+      }
+      title
+      content {
+        data {
+          content
+        }
+      }
+      summary
+      publishedAt
+      updatedAt
+      tags {
+        Tag
+      }
+      seo {
+        metaTitle
+        metaDescription
+        isArticle
+        preventIndexing
+        shareImage {
           localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
-          }
-          alternativeText
-        }
-        title
-        content {
-          data {
-            content
-          }
-        }
-        summary
-        publishedAt
-        updatedAt
-        tags {
-          Tag
-        }
-        seo {
-          metaTitle
-          metaDescription
-          isArticle
-          preventIndexing
-          shareImage {
-            localFile {
-              publicURL
-            }
+            publicURL
           }
         }
       }
     }
-  `;
+  }
+`;

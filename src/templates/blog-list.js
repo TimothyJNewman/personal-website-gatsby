@@ -1,7 +1,7 @@
 /*
-* Blogs list
-* Adapted from https://nickymeuleman.netlify.app/blog/gatsby-pagination
-*/
+ * Blogs list
+ * Adapted from https://nickymeuleman.netlify.app/blog/gatsby-pagination
+ */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import CoverImage from '../components/cover-image';
@@ -34,8 +34,8 @@ const BlogList = ({ pageContext, data }) => {
           <CoverImage title="Recent Blog Posts" />
           <br />
           <section className="card-container">
-            {data.allStrapiBlogPost.nodes.length > 0
-              ? data.allStrapiBlogPost.nodes.map((posts) => (
+            {data.allStrapiBlogPost.nodes.length > 0 ? (
+              data.allStrapiBlogPost.nodes.map((posts) => (
                 <Card
                   title={posts.title}
                   img={posts.coverimage ? posts.coverimage.localFile : ''}
@@ -48,9 +48,11 @@ const BlogList = ({ pageContext, data }) => {
                   key={posts.id}
                 />
               ))
-              : <p className="error-message">No blog posts found</p>}
+            ) : (
+              <p className="error-message">No blog posts found</p>
+            )}
           </section>
-          <nav className="text-sm max-w-screen-md flex justify-end m-4 mb-0">
+          <nav className="m-4 mb-0 flex max-w-screen-md justify-end text-sm">
             <Link to={prevPage} className="posts-navigation-button">
               <i className="fas fa-arrow-circle-left" />
               &nbsp;Prev
@@ -60,15 +62,23 @@ const BlogList = ({ pageContext, data }) => {
               for (let i = 1; i <= numPages; i++) {
                 if (i === 1) {
                   items.push(
-                    <Link to="/blog" className="posts-navigation-button" key={i}>
+                    <Link
+                      to="/blog"
+                      className="posts-navigation-button"
+                      key={i}
+                    >
                       {i}
-                    </Link>,
+                    </Link>
                   );
                 } else {
                   items.push(
-                    <Link to={`/blog/page/${i}`} className="posts-navigation-button" key={i}>
+                    <Link
+                      to={`/blog/page/${i}`}
+                      className="posts-navigation-button"
+                      key={i}
+                    >
                       {i}
-                    </Link>,
+                    </Link>
                   );
                 }
               }
@@ -88,12 +98,12 @@ const BlogList = ({ pageContext, data }) => {
 export default BlogList;
 
 export const query = graphql`
-  query BlogList($limit: Int!, $skip: Int!){
+  query BlogList($limit: Int!, $skip: Int!) {
     allStrapiBlogPost(
       limit: $limit
       skip: $skip
-      sort: {fields: publishedAt, order: DESC}
-      filter: {publishedAt: {ne: null}}
+      sort: { fields: publishedAt, order: DESC }
+      filter: { publishedAt: { ne: null } }
     ) {
       nodes {
         id

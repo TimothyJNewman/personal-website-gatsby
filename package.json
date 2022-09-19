@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "format": "prettier --write 'src/**/*.{js,jsx}'"
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
     "autoprefixer": "^10.4.11",

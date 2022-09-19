@@ -77,11 +77,10 @@ const Header = () => {
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
       <header
-        className={`sticky top-[-24px] z-10 flex h-20 items-center bg-white text-primary sm:top-[-16px] ${
-          !isAtTop && 'shadow-md'
-        }`}
+        className={`sticky top-[-24px] z-10 flex h-20 items-center bg-white text-primary sm:top-[-16px] ${!isAtTop && 'shadow-md'
+          }`}
       >
-        <div className="sticky top-0 h-14 min-w-full py-2 px-4">
+        <div className="sticky top-0 h-14 min-w-full pt-[0.6rem] sm:pt-2 py-2 px-4">
           <div className="mx-auto flex max-w-screen-lg items-center justify-between">
             <Link to="/">
               <div

@@ -77,10 +77,11 @@ const Header = () => {
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
       <header
-        className={`sticky top-[-24px] z-10 flex h-20 items-center bg-white text-primary sm:top-[-16px] ${!isAtTop && 'shadow-md'
-          }`}
+        className={`sticky top-[-24px] z-10 flex h-20 items-center bg-white text-primary sm:top-[-16px] ${
+          !isAtTop && 'shadow-md'
+        }`}
       >
-        <div className="sticky top-0 h-14 min-w-full pt-[0.6rem] sm:pt-2 py-2 px-4">
+        <div className="sticky top-0 h-14 min-w-full py-2 px-4 pt-[0.6rem] sm:pt-2">
           <div className="mx-auto flex max-w-screen-lg items-center justify-between">
             <Link to="/">
               <div
@@ -234,9 +235,9 @@ const Header = () => {
                   HeaderButton({ text, link })
                 )}
               </div>
-              <div className="rounded">
+              <div className="flex rounded">
                 <button
-                  className="std-button rounded-none rounded-l py-0.5 text-lg sm:rounded"
+                  className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-l px-0 py-0 text-lg sm:w-fit sm:rounded sm:px-2"
                   aria-label="Theme Toggle"
                   type="button"
                   onClick={() => {
@@ -245,12 +246,12 @@ const Header = () => {
                   }}
                 >
                   <i className={`far ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
-                  <span className="hidden sm:inline">
-                    &nbsp;{isDarkTheme ? 'light' : 'dark'}
+                  <span className="ml-1.5 hidden sm:inline">
+                    {isDarkTheme ? 'light' : 'dark'}
                   </span>
                 </button>
                 <button
-                  className="std-button rounded-none rounded-r py-0.5 text-lg sm:hidden"
+                  className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-r px-0 py-0 text-lg sm:hidden"
                   aria-label="Toggle Menu"
                   type="button"
                   onClick={() => {

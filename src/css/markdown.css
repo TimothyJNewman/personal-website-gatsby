@@ -81,6 +81,16 @@ h4 {
   color: var(--color-text-primary);
 }
 
+.markdown-text pre {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.4em 1em 0.4em 2em;
+  border-left: 5px solid var(--color-bg-primary-light);
+  background-color: var(--color-bg-primary-lighter);
+  border-radius: var(--std-border-radius);
+  overflow-x: auto;
+}
+
 .markdown-text blockquote ol > li::marker,
 .markdown-text blockquote ul > li::marker {
   color: var(--color-bg-primary-dark);

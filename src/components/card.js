@@ -15,7 +15,7 @@ const Card = ({
 }) => (
   <div className="rounded bg-primary-lighter shadow-md hover:shadow">
     <div className="flex min-h-full flex-col justify-between">
-      <Link to={link}>
+      <Link to={link} className="flex-grow">
         {img !== undefined && (
           <GatsbyImage className="rounded-t" image={getImage(img)} alt={alt} />
         )}

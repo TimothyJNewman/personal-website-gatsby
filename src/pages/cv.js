@@ -20,6 +20,7 @@ const CVPage = () => (
           type="application/pdf"
           className="h-screen w-full rounded"
         />
+        I am currently looking for a 6-month summer placement as part of my university course from April to September 2023. I would appreciate any leads!
       </div>
     </LayoutSingleColumn>
   </Layout>

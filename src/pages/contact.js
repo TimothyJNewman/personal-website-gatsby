@@ -164,7 +164,7 @@ class Contact extends React.Component {
                     />
                     <div className="flex">
                       {data.allStrapiSocialMedia.nodes.map((media) => (
-                        <a href={media.link} key={media.id} className="mx-0.5">
+                        <a rel="me" href={media.link} key={media.id} className="mx-0.5">
                           <img
                             className="h-6 w-6"
                             src={media.image}

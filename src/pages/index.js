@@ -117,6 +117,7 @@ const IndexPage = () => {
                 {data.allStrapiSocialMedia.nodes
                   ? data.allStrapiSocialMedia.nodes.map((media) => (
                       <a
+                        rel="me"
                         href={media.link}
                         key={media.id}
                         aria-label={media.name}

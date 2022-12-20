@@ -107,10 +107,10 @@ const IndexPage = () => {
               <h1 className='font-serif text-4xl'>Timothy Newman</h1>
               <span className='italic mb-2'>welcomes you to his website</span>
               <ul className='text-md mt-4'>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>🏫</span> 3rd year MEng Electrical and Electronic Engineering at Imperial College London</li>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>🛰️</span> Interested in Analog and Digital IC Design, Digital Signal Processing, Machine Learning and Software Engineering</li>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>🔭</span> Hobbies include programming, astronomy, photography and exploring the countryside</li>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>📇</span> Contact me on any of the platforms below or through the email in my CV</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🏫</span> 3rd year MEng Electrical and Electronic Engineering at Imperial College London</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🛰️</span> Interested in Analog and Digital IC Design, Digital Signal Processing, Machine Learning and Software Engineering</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🔭</span> Hobbies include programming, astronomy, photography and exploring the countryside</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>📇</span> Contact me on any of the platforms below or through the email in my CV</li>
               </ul>
               <div className='flex my-4'>
                 {data.allStrapiSocialMedia.nodes

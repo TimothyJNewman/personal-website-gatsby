@@ -246,16 +246,6 @@ a:active {
   border-radius: 0px var(--std-border-radius) var(--std-border-radius) 0px;
 }
 
-/* Home Page Style */
-
-.card-container {
-  width: inherit;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  grid-gap: 1em 1em;
-}
-
 .read-more-link {
   background: linear-gradient(
     var(--color-bg-primary-dark),

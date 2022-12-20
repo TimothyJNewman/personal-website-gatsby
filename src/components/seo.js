@@ -160,6 +160,10 @@ const SEO = ({ seo = {} }) => {
         }, */
         {
           rel: 'stylesheet',
+          href: 'https://use.typekit.net/gis6sfu.css'
+        },
+        {
+          rel: 'stylesheet',
           href: '/fontawesome/css/all.min.css',
         },
         {

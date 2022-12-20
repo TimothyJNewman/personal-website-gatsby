@@ -8,6 +8,7 @@ import CoverImage from '../components/cover-image';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import MarkdownView from 'react-showdown';
+import Share from '../components/share';
 
 // Parses the JSON returned by a network request
 const parseJSON = (resp) => (resp.json ? resp.json() : resp);
@@ -119,9 +120,9 @@ class Contact extends React.Component {
               .then((resp) =>
                 resp
                   ? this.setState({
-                      isSubmitSuccessful: 1,
-                      modifiedData: initalInputState,
-                    })
+                    isSubmitSuccessful: 1,
+                    modifiedData: initalInputState,
+                  })
                   : ''
               );
           } catch (error) {
@@ -172,6 +173,11 @@ class Contact extends React.Component {
                           />
                         </a>
                       ))}
+                      <Share
+                        label="Share link!"
+                        text="Personal Website with projects, blog and photos"
+                        title="Timothy Newman Site"
+                      />
                     </div>
                   </>
                 )}

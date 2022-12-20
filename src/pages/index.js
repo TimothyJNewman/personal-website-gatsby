@@ -101,39 +101,43 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="site-intro-section flex max-w-screen-lg flex-col px-2">
-          <div className="grid animate-fade-in grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="rounded bg-white-overlay px-2 sm:px-4">
-              {data.strapiSmallText ? (
-                <MarkdownView
-                  className="markdown-text"
-                  markdown={data.strapiSmallText.content.data.content}
-                  options={{ tables: true, emoji: true }}
-                />
-              ) : (
-                ''
-              )}
-              <div className="flex">
+        <section className="site-intro-section flex lg:w-[64rem] flex-col mx-2">
+          <div className="grid animate-fade-in grid-cols-1 gap-4 md:grid-cols-12">
+            <div className="rounded bg-white-overlay md:col-span-7">
+              <h1 className='font-serif text-4xl'>Timothy Newman</h1>
+              <span className='italic mb-2'>welcomes you to his website</span>
+              <ul className='text-md mt-4'>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>🏫</span> 3rd year MEng Electrical and Electronic Engineering at Imperial College London</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>🛰️</span> Interested in Analog and Digital IC Design, Digital Signal Processing, Machine Learning and Software Engineering</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>🔭</span> Hobbies include programming, astronomy, photography and exploring the countryside</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-1 h-7 w-7 rounded-full bg-primary-lighter'>📇</span> Contact me on any of the platforms below or through the email in my CV</li>
+              </ul>
+              <div className='flex my-4'>
                 {data.allStrapiSocialMedia.nodes
                   ? data.allStrapiSocialMedia.nodes.map((media) => (
-                      <a
-                        rel="me"
-                        href={media.link}
-                        key={media.id}
-                        aria-label={media.name}
-                        className="mx-0.5"
-                      >
-                        <img
-                          className="h-6 w-6"
-                          src={media.image}
-                          alt={media.name}
-                        />
-                      </a>
-                    ))
+                    <a
+                      rel="me"
+                      href={media.link}
+                      key={media.id}
+                      aria-label={media.name}
+                      className="mx-0.5"
+                    >
+                      <img
+                        className="h-6 w-6"
+                        src={media.image}
+                        alt={media.name}
+                      />
+                    </a>
+                  ))
                   : ''}
+                <Share
+                  label="Share link!"
+                  text="Personal Website with projects, blog and photos"
+                  title="Timothy Newman Site"
+                />
               </div>
             </div>
-            <div className="flex items-center justify-center p-2 sm:p-4">
+            <div className="flex items-center justify-center md:col-span-5">
               <img
                 src={imagesSrc[currentImage]}
                 srcSet={imagesSrcSet[currentImage]}
@@ -154,12 +158,7 @@ const IndexPage = () => {
         <div className="max-w-screen-md">
           <section className="px-2" id="recentprojectssection">
             <div className="flex items-center justify-between">
-              <h2 className="my-4">Recent Projects</h2>
-              <Share
-                label="Share this!"
-                text="Personal Website with projects, blog and photos"
-                title="Timothy Newman Site"
-              />
+              <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
             </div>
             <div className="card-container">
               {data.allStrapiProjectPost.nodes ? (
@@ -188,7 +187,7 @@ const IndexPage = () => {
             </div>
           </section>
           <section className="px-2">
-            <h2 className="my-4">Recent Blog Posts</h2>
+            <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
             <div className="card-container">
               {data.allStrapiBlogPost.nodes ? (
                 data.allStrapiBlogPost.nodes.map((posts) => (
@@ -215,7 +214,7 @@ const IndexPage = () => {
             </div>
           </section>
           <section className="px-2">
-            <h2 className="my-4">All Tags</h2>
+            <h2 className="my-4 font-normal font-serif">All Tags</h2>
             <div className="flex flex-wrap">
               {data.allStrapiTag.nodes ? (
                 data.allStrapiTag.nodes.map((elem) => (

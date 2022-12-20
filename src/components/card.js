@@ -20,7 +20,7 @@ const Card = ({
           <GatsbyImage className="rounded-t" image={getImage(img)} alt={alt} />
         )}
         <div className="p-4">
-          <h3>{title}</h3>
+          <h3 className='font-bold'>{title}</h3>
           <p className="text-sm italic text-dategray">{date}</p>
           <p>{description}</p>
         </div>

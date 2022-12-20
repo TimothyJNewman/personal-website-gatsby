@@ -82,7 +82,7 @@ const Header = () => {
         }`}
       >
         <div className="sticky top-0 h-14 min-w-full py-2 px-4 pt-[0.6rem] sm:pt-2">
-          <div className="mx-auto flex max-w-screen-lg items-center justify-between">
+          <div className="mx-auto flex lg:w-[64rem] items-center justify-between">
             <Link to="/">
               <div
                 id="logo-with-text"

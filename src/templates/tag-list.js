@@ -33,8 +33,8 @@ const TagList = ({ pageContext, data }) => {
           />
           {data.allStrapiProjectPost.nodes.length > 0 ? (
             <>
-              <h2 className="my-4">Recent Projects</h2>
-              <div className="card-container">
+              <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
+              <div className="grid-cols-2 grid gap-4">
                 {data.allStrapiProjectPost.nodes.map((posts) => (
                   <Card
                     img={posts.CoverImage ? posts.CoverImage.url : ''}
@@ -61,8 +61,8 @@ const TagList = ({ pageContext, data }) => {
           )}
           {data.allStrapiBlogPost.nodes.length > 0 ? (
             <>
-              <h2 className="my-4">Recent Blog Posts</h2>
-              <div className="card-container">
+              <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
+              <div className="grid-cols-2 grid gap-4">
                 {data.allStrapiBlogPost.nodes.map((posts) => (
                   <Card
                     title={posts.title}
@@ -86,7 +86,7 @@ const TagList = ({ pageContext, data }) => {
           ) : (
             ''
           )}
-          <h2 className="my-4">All Tags</h2>
+          <h2 className="my-4 font-normal font-serif">All Tags</h2>
           <div className="flex flex-wrap">
             {data.allStrapiTag.nodes ? (
               data.allStrapiTag.nodes.map((elem) => (

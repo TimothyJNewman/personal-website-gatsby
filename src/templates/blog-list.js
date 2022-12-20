@@ -33,7 +33,7 @@ const BlogList = ({ pageContext, data }) => {
         <div className="max-w-screen-md px-2">
           <CoverImage title="Recent Blog Posts" />
           <br />
-          <section className="card-container">
+          <section className="grid-cols-2 grid gap-4">
             {data.allStrapiBlogPost.nodes.length > 0 ? (
               data.allStrapiBlogPost.nodes.map((posts) => (
                 <Card

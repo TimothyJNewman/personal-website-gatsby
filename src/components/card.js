@@ -13,7 +13,7 @@ const Card = ({
   tag2,
   tag3,
 }) => (
-  <div className="rounded bg-primary-lighter shadow-md hover:shadow">
+  <div className="rounded bg-primary-lighter shadow-md hover:shadow col-span-1">
     <div className="flex min-h-full flex-col justify-between">
       <Link to={link} className="flex-grow">
         {img !== undefined && (

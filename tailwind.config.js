@@ -36,6 +36,9 @@ module.exports = {
         'secondary-dark': 'var(--color-bg-secondary-dark)',
         white: 'var(--color-bg-white)',
       },
+      fontFamily: {
+        serif: ['source-serif-pro', 'serif'],
+      },
       animation: {
         'fade-in': 'fadeIn 0.3s both ease-in',
       },

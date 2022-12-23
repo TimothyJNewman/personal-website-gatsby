@@ -30,7 +30,8 @@ const seoQuery = graphql`
         }
       }
     }
-  }`;
+  }
+`;
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(seoQuery);
@@ -51,7 +52,7 @@ const SEO = ({ seo = {} }) => {
         {
           name: 'twitter:title',
           content: fullSeo.metaTitle,
-        },
+        }
       );
     }
     if (fullSeo.metaDescription) {
@@ -67,20 +68,19 @@ const SEO = ({ seo = {} }) => {
         {
           name: 'twitter:description',
           content: fullSeo.metaDescription,
-        },
+        }
       );
     }
     if (fullSeo.keywords) {
-      tags.push(
-        {
-          name: 'keywords',
-          content: fullSeo.keywords,
-        },
-      );
+      tags.push({
+        name: 'keywords',
+        content: fullSeo.keywords,
+      });
     }
     if (fullSeo.shareImage) {
-      const imageUrl = (process.env.GATSBY_ROOT_URL || 'http://localhost:8000')
-        + fullSeo.shareImage.localFile.publicURL;
+      const imageUrl =
+        (process.env.GATSBY_ROOT_URL || 'http://localhost:8000') +
+        fullSeo.shareImage.localFile.publicURL;
       tags.push(
         {
           name: 'image',
@@ -93,7 +93,7 @@ const SEO = ({ seo = {} }) => {
         {
           name: 'twitter:image',
           content: imageUrl,
-        },
+        }
       );
     }
     if (fullSeo.isArticle) {
@@ -111,17 +111,32 @@ const SEO = ({ seo = {} }) => {
         {
           property: 'googlebot',
           content: 'noindex',
-        },
+        }
       );
     }
     tags.push(
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'msapplication-TileColor', content: '#da532c' },
-      { name: 'msapplication-square70x70logo', content: '/icons/mstile-70x70.png' },
-      { name: 'msapplication-square144x144logo', content: '/icons/mstile-144x144.png' },
-      { name: 'msapplication-square150x150logo', content: '/icons/mstile-150x150.png' },
-      { name: 'msapplication-wide310x150logo', content: '/icons/mstile-310x150.png' },
-      { name: 'msapplication-square310x310logo', content: '/icons/mstile-310x310.png' },
+      {
+        name: 'msapplication-square70x70logo',
+        content: '/icons/mstile-70x70.png',
+      },
+      {
+        name: 'msapplication-square144x144logo',
+        content: '/icons/mstile-144x144.png',
+      },
+      {
+        name: 'msapplication-square150x150logo',
+        content: '/icons/mstile-150x150.png',
+      },
+      {
+        name: 'msapplication-wide310x150logo',
+        content: '/icons/mstile-310x150.png',
+      },
+      {
+        name: 'msapplication-square310x310logo',
+        content: '/icons/mstile-310x310.png',
+      }
     );
 
     return tags;
@@ -143,6 +158,10 @@ const SEO = ({ seo = {} }) => {
           crossorigin: 'anonymous',
           referrerpolicy: 'no-referrer',
         }, */
+        {
+          rel: 'stylesheet',
+          href: 'https://use.typekit.net/gis6sfu.css'
+        },
         {
           rel: 'stylesheet',
           href: '/fontawesome/css/all.min.css',
@@ -175,11 +194,13 @@ const SEO = ({ seo = {} }) => {
         },
       ]}
       meta={metaTags}
-      script={[{
-        "data-goatcounter": "https://timothy-newman.goatcounter.com/count",
-        "async": true,
-        src: "//gc.zgo.at/count.js"
-      }]}
+      script={[
+        {
+          'data-goatcounter': 'https://timothy-newman.goatcounter.com/count',
+          async: true,
+          src: '//gc.zgo.at/count.js',
+        },
+      ]}
     />
   );
 };

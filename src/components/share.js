@@ -1,7 +1,7 @@
 /*
-* Credit: Peter Mbanugo
-* Source: https://www.telerik.com/blogs/using-web-share-api-react
-*/
+ * Credit: Peter Mbanugo
+ * Source: https://www.telerik.com/blogs/using-web-share-api-react
+ */
 import React from 'react';
 import { useLocation } from '@reach/router';
 
@@ -12,22 +12,29 @@ export default function Share({ label, text, title }) {
   const handleSharing = async () => {
     if (navigator.share) {
       try {
-        await navigator
-          .share(shareDetails);
+        await navigator.share(shareDetails);
       } catch (error) {
         console.error(`Oops! I couldn't share to the world because: ${error}`);
       }
     } else {
       // fallback code
-      console.error(
-        'Web share is currently not supported on this browser'
+      console.error('Web share is currently not supported on this browser');
+      window.alert(
+        'Web Share is not supported in your browser. Please try copying the URL.'
       );
-      window.alert('Web Share is not supported in your browser. Please try copying the URL.')
     }
   };
   return (
-    <button className="py-0.5 px-2 border-2 border-primary-dark rounded text-sm sm:text-base article-share-button" type="button" onClick={handleSharing}>
-      {label}
+    <button
+      className="mx-0.5"
+      type="button"
+      onClick={handleSharing}
+    >
+      <img
+        className="h-6 w-6"
+        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIgogICB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgdmlld0JveD0iMCAwIDQ0OCA0NDgiCiAgIGlkPSJzdmczMDYwIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlua3NjYXBlOnZlcnNpb249IjAuNDguNSByMTAwNDAiCiAgIHdpZHRoPSIxMDAlIgogICBoZWlnaHQ9IjEwMCUiCiAgIHNvZGlwb2RpOmRvY25hbWU9InNxdWFyZS1zaGFyZS1ub2Rlcy1zb2xpZC5zdmciPgogIDxtZXRhZGF0YQogICAgIGlkPSJtZXRhZGF0YTMwNjgiPgogICAgPHJkZjpSREY+CiAgICAgIDxjYzpXb3JrCiAgICAgICAgIHJkZjphYm91dD0iIj4KICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4KICAgICAgICA8ZGM6dHlwZQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+CiAgICAgIDwvY2M6V29yaz4KICAgIDwvcmRmOlJERj4KICA8L21ldGFkYXRhPgogIDxkZWZzCiAgICAgaWQ9ImRlZnMzMDY2IiAvPgogIDxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiM2NjY2NjYiCiAgICAgYm9yZGVyb3BhY2l0eT0iMSIKICAgICBvYmplY3R0b2xlcmFuY2U9IjEwIgogICAgIGdyaWR0b2xlcmFuY2U9IjEwIgogICAgIGd1aWRldG9sZXJhbmNlPSIxMCIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMCIKICAgICBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTI4MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI2NjUiCiAgICAgaWQ9Im5hbWVkdmlldzMwNjQiCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuOTMzNTkzNzUiCiAgICAgaW5rc2NhcGU6Y3g9IjE3OC40ODU5NCIKICAgICBpbmtzY2FwZTpjeT0iMjk3LjgxNTEiCiAgICAgaW5rc2NhcGU6d2luZG93LXg9Ii04IgogICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZzMwNjAiIC8+CiAgPHBhdGgKICAgICBkPSJNIDY2Ljg1NzE0Miw4IEMgMzIuMTg3NDk5LDggNCwzNi4xODc0OTkgNCw3MC44NTcxNDIgTCA0LDM4NS4xNDI4NiBDIDQsNDE5LjgxMjUgMzIuMTg3NDk5LDQ0OCA2Ni44NTcxNDIsNDQ4IGwgMzE0LjI4NTcxOCwwIEMgNDE1LjgxMjUsNDQ4IDQ0NCw0MTkuODEyNSA0NDQsMzg1LjE0Mjg2IEwgNDQ0LDcwLjg1NzE0MiBDIDQ0NCwzNi4xODc0OTkgNDE1LjgxMjUsOCAzODEuMTQyODYsOCB6IgogICAgIGlkPSJwYXRoMzA2Mi0xIgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9ImZpbGw6I2ZmZmZmZjtzdHJva2U6bm9uZSIKICAgICBzb2RpcG9kaTpub2RldHlwZXM9InNzc3Nzc3NzcyIgLz4KICA8IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuMi4xIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIyIEZvbnRpY29ucywgSW5jLiAtLT4KICA8cGF0aAogICAgIGQ9Ik0gNjQsMi45OTk5OTk4ZS03IEMgMjguNywyLjk5OTk5OThlLTcgMCwyOC43IDAsNjQgdiAzMjAgYyAwLDM1LjMgMjguNyw2NCA2NCw2NCBoIDMyMCBjIDM1LjMsMCA2NCwtMjguNyA2NCwtNjQgViA2NCBDIDQ0OCwyOC43IDQxOS4zLDNlLTcgMzg0LDNlLTcgSCA2NCB6IE0gMzg0LDEyOCBjIDAsMzUuMyAtMjguNyw2NCAtNjQsNjQgLTE1LjQsMCAtMjkuNSwtNS40IC00MC42LC0xNC41IGwgLTg1LjMsNDYuNSA4NS4zLDQ2LjUgYyAxMSwtOS4xIDI1LjIsLTE0LjUgNDAuNiwtMTQuNSAzNS4zLDAgNjQsMjguNyA2NCw2NCAwLDM1LjMgLTI4LjcsNjQgLTY0LDY0IC0zNS4zLDAgLTY0LC0yOC43IC02NCwtNjQgMCwtMi41IDAuMSwtNC45IDAuNCwtNy4zIEwgMTc0LjUsMjY4IGMgLTExLjcsMTIuMyAtMjguMiwyMCAtNDYuNSwyMCAtMzUuMywwIC02NCwtMjguNyAtNjQsLTY0IDAsLTM1LjMgMjguNywtNjQgNjQsLTY0IDE4LjMsMCAzNC44LDcuNyA0Ni41LDIwIGwgODEuOSwtNDQuNyBjIC0wLjMsLTIuNCAtMC40LC00LjkgLTAuNCwtNy4zIDAsLTM1LjMgMjguNywtNjQgNjQsLTY0IDM1LjMsMCA2NCwyOC43IDY0LDY0IHoiCiAgICAgaWQ9InBhdGgzMDYyIgogICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiCiAgICAgc3R5bGU9InN0cm9rZTpub25lIiAvPgo8L3N2Zz4K"
+        alt="Link share"
+      />
     </button>
   );
 }

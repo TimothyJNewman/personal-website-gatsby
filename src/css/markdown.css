@@ -6,7 +6,9 @@
   color: var(--color-text-primary);
 }
 
-.markdown-text h2, h3, h4 {
+.markdown-text h2,
+h3,
+h4 {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
 }
@@ -32,7 +34,10 @@
   margin-bottom: 0.5em;
 }
 
-.markdown-text a, .markdown-text strong, .markdown-text em, .markdown-text u {
+.markdown-text a,
+.markdown-text strong,
+.markdown-text em,
+.markdown-text u {
   color: var(--color-text-primary);
 }
 
@@ -40,21 +45,27 @@
   font-weight: 600;
 }
 
-.markdown-text a, .markdown-text a:active {
+.markdown-text a,
+.markdown-text a:active {
   border: 0;
-  background: linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark)), linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
+  background: linear-gradient(
+      var(--color-bg-primary-dark),
+      var(--color-bg-primary-dark)
+    ),
+    linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
   background-size: 100% 0.15em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms, color 400ms;
 }
 
-.markdown-text a:hover, .markdown-text a:focus {
+.markdown-text a:hover,
+.markdown-text a:focus {
   background-size: 0 0.1em, 100% 100%;
   color: var(--color-text-secondary-std);
 }
 
-.markdown-text>div>blockquote {
+.markdown-text > div > blockquote {
   margin-left: 0;
   margin-right: 0;
   padding: 0.4em 1em 0.4em 2em;
@@ -70,8 +81,18 @@
   color: var(--color-text-primary);
 }
 
-.markdown-text blockquote ol>li::marker,
-.markdown-text blockquote ul>li::marker {
+.markdown-text pre {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.4em 1em 0.4em 2em;
+  border-left: 5px solid var(--color-bg-primary-light);
+  background-color: var(--color-bg-primary-lighter);
+  border-radius: var(--std-border-radius);
+  overflow-x: auto;
+}
+
+.markdown-text blockquote ol > li::marker,
+.markdown-text blockquote ul > li::marker {
   color: var(--color-bg-primary-dark);
 }
 
@@ -85,16 +106,16 @@
   padding-left: 1.6em;
 }
 
-.markdown-text ol>li {
+.markdown-text ol > li {
   margin-top: 0.3em;
   margin-bottom: 0.2em;
   counter-increment: li;
   display: list-item;
 }
 
-.markdown-text ol>li::marker {
+.markdown-text ol > li::marker {
   display: list-item;
-  content: "#" counter(li) " ";
+  content: '#' counter(li) ' ';
   font-weight: bold;
   color: var(--color-bg-secondary-dark);
 }
@@ -104,15 +125,15 @@
   list-style: circle outside none;
 }
 
-.markdown-text ul>li::marker {
+.markdown-text ul > li::marker {
   font-size: 1em;
   font-weight: bold;
-  font-family: "Font Awesome 5 Free";
-  content: "\f101 \0020 \0020";
+  font-family: 'Font Awesome 5 Free';
+  content: '\f101 \0020 \0020';
   color: var(--color-bg-secondary-dark);
 }
 
-.markdown-text ul>li {
+.markdown-text ul > li {
   margin-top: 0.3em;
   margin-bottom: 0.2em;
 }

@@ -8,16 +8,16 @@ import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Share from '../components/share';
 
-const query = graphql`  
+const query = graphql`
   query HomeQuery {
-    strapiSmallText(label: {eq: "Welcome Text"}) {
+    strapiSmallText(label: { eq: "Welcome Text" }) {
       content {
         data {
           content
         }
       }
     }
-    strapiGallery(strapi_id: {eq: 1}) {
+    strapiGallery(strapi_id: { eq: 1 }) {
       images {
         localFile {
           childImageSharp {
@@ -26,7 +26,7 @@ const query = graphql`
         }
       }
     }
-    allStrapiSocialMedia(sort: {fields: order, order: ASC}) {
+    allStrapiSocialMedia(sort: { fields: order, order: ASC }) {
       nodes {
         id
         image
@@ -36,9 +36,9 @@ const query = graphql`
     }
     allStrapiProjectPost(
       limit: 4
-      sort: {fields: publishedAt, order: DESC}
-      filter: {publishedAt: {gt: "1970-01-01T00:00:00Z"}}
-      ) {
+      sort: { fields: publishedAt, order: DESC }
+      filter: { publishedAt: { gt: "1970-01-01T00:00:00Z" } }
+    ) {
       nodes {
         id
         title
@@ -60,9 +60,9 @@ const query = graphql`
     }
     allStrapiBlogPost(
       limit: 4
-      sort: {fields: publishedAt, order: DESC}
-      filter: {publishedAt: {gt: "1970-01-01T00:00:00Z"}}
-      ) {
+      sort: { fields: publishedAt, order: DESC }
+      filter: { publishedAt: { gt: "1970-01-01T00:00:00Z" } }
+    ) {
       nodes {
         id
         title
@@ -79,43 +79,65 @@ const query = graphql`
         Tag
       }
     }
-  }`;
+  }
+`;
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
   const [currentImage, setCurrentImage] = React.useState(0);
-  const imagesSrc = data?.strapiGallery?.images.map((image) => getSrc(image?.localFile));
-  const imagesSrcSet = data?.strapiGallery?.images.map((image) => getSrcSet(image?.localFile));
+  const imagesSrc = data?.strapiGallery?.images.map((image) =>
+    getSrc(image?.localFile)
+  );
+  const imagesSrcSet = data?.strapiGallery?.images.map((image) =>
+    getSrcSet(image?.localFile)
+  );
   useEffect(() => {
-    setTimeout(() => setCurrentImage((currentImage + 1) % imagesSrc.length), 4000);
-  }, [currentImage])
+    setTimeout(
+      () => setCurrentImage((currentImage + 1) % imagesSrc.length),
+      4000
+    );
+  }, [currentImage]);
 
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="max-w-screen-lg px-2 flex flex-col site-intro-section">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
-            <div className="px-2 sm:px-4 rounded bg-white-overlay">
-              {data.strapiSmallText
-                ? (
-                  <MarkdownView
-                    className="markdown-text"
-                    markdown={data.strapiSmallText.content.data.content}
-                    options={{ tables: true, emoji: true }}
-                  />
-                )
-                : ''}
-              <div className="flex">
+        <section className="site-intro-section flex lg:w-[64rem] flex-col mx-2">
+          <div className="grid animate-fade-in grid-cols-1 gap-4 md:grid-cols-12">
+            <div className="rounded bg-white-overlay md:col-span-7">
+              <h1 className='font-serif text-4xl'>Timothy Newman</h1>
+              <span className='italic mb-2'>welcomes you to his website</span>
+              <ul className='text-md mt-4'>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🏫</span> 3rd year MEng Electrical and Electronic Engineering at Imperial College London</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🛰️</span> Interested in Analog and Digital IC Design, Digital Signal Processing, Machine Learning and Software Engineering</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🔭</span> Hobbies include programming, astronomy, photography and exploring the countryside</li>
+                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>📇</span> Contact me on any of the platforms below or through the email in my CV</li>
+              </ul>
+              <div className='flex my-4'>
                 {data.allStrapiSocialMedia.nodes
                   ? data.allStrapiSocialMedia.nodes.map((media) => (
-                    <a href={media.link} key={media.id} aria-label={media.name} className="mx-0.5">
-                      <img className="w-6 h-6" src={media.image} alt={media.name} />
+                    <a
+                      rel="me"
+                      href={media.link}
+                      key={media.id}
+                      aria-label={media.name}
+                      className="mx-0.5"
+                    >
+                      <img
+                        className="h-6 w-6"
+                        src={media.image}
+                        alt={media.name}
+                      />
                     </a>
                   ))
                   : ''}
+                <Share
+                  label="Share link!"
+                  text="Personal Website with projects, blog and photos"
+                  title="Timothy Newman Site"
+                />
               </div>
             </div>
-            <div className="p-2 sm:p-4 flex justify-center items-center">
+            <div className="flex items-center justify-center md:col-span-5">
               <img
                 src={imagesSrc[currentImage]}
                 srcSet={imagesSrcSet[currentImage]}
@@ -124,23 +146,24 @@ const IndexPage = () => {
               />
             </div>
           </div>
-          <div className="h-16 flex justify-center items-center">
-            <a href="#recentprojectssection" className="border-2 border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-std-secondary rounded-full w-8 h-8 flex justify-center items-center">
+          <div className="flex h-16 items-center justify-center">
+            <a
+              href="#recentprojectssection"
+              className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-std-secondary"
+            >
               <i className="fa fa-arrow-down" />
             </a>
           </div>
         </section>
         <div className="max-w-screen-md">
           <section className="px-2" id="recentprojectssection">
-            <div className="flex justify-between items-center">
-              <h2 className="my-4">Recent Projects</h2>
-              <Share label="Share this!" text="Personal Website with projects, blog and photos" title="Timothy Newman Site" />
+            <div className="flex items-center justify-between">
+              <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
             </div>
-            <div className="card-container">
-              {data.allStrapiProjectPost.nodes
-                ? data.allStrapiProjectPost.nodes.map((posts) => (
+            <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
+              {data.allStrapiProjectPost.nodes ? (
+                data.allStrapiProjectPost.nodes.map((posts) => (
                   <Card
-                    alt={posts.coverimage.alternativeText}
                     title={posts.title}
                     date={getFormattedDate(posts.publishedAt)}
                     link={getFormattedLink('/project/', posts.slug)}
@@ -151,7 +174,9 @@ const IndexPage = () => {
                     key={posts.id}
                   />
                 ))
-                : <p className="error-message">No projects found</p>}
+              ) : (
+                <p className="error-message">No projects found</p>
+              )}
             </div>
             <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
               <Link to="/project" className="read-more-link">
@@ -161,10 +186,10 @@ const IndexPage = () => {
             </div>
           </section>
           <section className="px-2">
-            <h2 className="my-4">Recent Blog Posts</h2>
-            <div className="card-container">
-              {data.allStrapiBlogPost.nodes
-                ? data.allStrapiBlogPost.nodes.map((posts) => (
+            <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
+            <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
+              {data.allStrapiBlogPost.nodes ? (
+                data.allStrapiBlogPost.nodes.map((posts) => (
                   <Card
                     title={posts.title}
                     date={getFormattedDate(posts.publishedAt)}
@@ -176,7 +201,9 @@ const IndexPage = () => {
                     key={posts.id}
                   />
                 ))
-                : <p className="error-message">No blog posts found</p>}
+              ) : (
+                <p className="error-message">No blog posts found</p>
+              )}
             </div>
             <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
               <Link to="/blog" className="read-more-link">
@@ -186,13 +213,21 @@ const IndexPage = () => {
             </div>
           </section>
           <section className="px-2">
-            <h2 className="my-4">All Tags</h2>
+            <h2 className="my-4 font-normal font-serif">All Tags</h2>
             <div className="flex flex-wrap">
-              {data.allStrapiTag.nodes
-                ? data.allStrapiTag.nodes.map((elem) => (
-                  <Link to={`/tag/${elem.Tag}`} key={elem.Tag} className="tag-button">{elem.Tag}</Link>
+              {data.allStrapiTag.nodes ? (
+                data.allStrapiTag.nodes.map((elem) => (
+                  <Link
+                    to={`/tag/${elem.Tag}`}
+                    key={elem.Tag}
+                    className="tag-button"
+                  >
+                    {elem.Tag}
+                  </Link>
                 ))
-                : <p className="error-message">No tags found</p>}
+              ) : (
+                <p className="error-message">No tags found</p>
+              )}
             </div>
           </section>
         </div>

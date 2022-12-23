@@ -17,17 +17,17 @@ const NotFoundPage = ({ location }) => {
         <section className="max-w-screen-md">
           <h2>404 Error</h2>
           <p className="markdown-text">
-            {pathname === '/404'
-              ? <>The requested url is not available. </>
-              : (
-                <>
-                  The requested url&nbsp;
-                  <Link to={process.env.GATSBY_ROOT_URL + pathname}>
-                    {process.env.GATSBY_ROOT_URL + pathname}
-                  </Link>
-                  &nbsp;is not available.
-                </>
-              )}
+            {pathname === '/404' ? (
+              <>The requested url is not available. </>
+            ) : (
+              <>
+                The requested url&nbsp;
+                <Link to={process.env.GATSBY_ROOT_URL + pathname}>
+                  {process.env.GATSBY_ROOT_URL + pathname}
+                </Link>
+                &nbsp;is not available.
+              </>
+            )}
             &nbsp;Please&nbsp;
             <Link to="/">click here</Link>
             &nbsp;to return to the home page.

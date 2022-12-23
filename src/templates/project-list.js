@@ -33,7 +33,7 @@ const ProjectList = ({ pageContext, data }) => {
         <div className="max-w-screen-md px-2">
           <CoverImage title="Recent Projects" />
           <br />
-          <section className="grid-cols-2 grid gap-4">
+          <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
             {data.allStrapiProjectPost.nodes.length > 0 ? (
               data.allStrapiProjectPost.nodes.map((posts) => (
                 <Card

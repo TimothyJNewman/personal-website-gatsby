@@ -160,11 +160,10 @@ const IndexPage = () => {
             <div className="flex items-center justify-between">
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
             </div>
-            <div className="grid-cols-2 grid gap-4">
+            <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
               {data.allStrapiProjectPost.nodes ? (
                 data.allStrapiProjectPost.nodes.map((posts) => (
                   <Card
-                    alt={posts.coverimage.alternativeText}
                     title={posts.title}
                     date={getFormattedDate(posts.publishedAt)}
                     link={getFormattedLink('/project/', posts.slug)}
@@ -188,7 +187,7 @@ const IndexPage = () => {
           </section>
           <section className="px-2">
             <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
-            <div className="grid-cols-2 grid gap-4">
+            <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
               {data.allStrapiBlogPost.nodes ? (
                 data.allStrapiBlogPost.nodes.map((posts) => (
                   <Card

@@ -34,19 +34,18 @@ const ProjectList = ({ pageContext, data }) => {
           <CoverImage title="Recent Projects" />
           <br />
           <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
-            {data.allStrapiProjectPost.nodes.length > 0 ? (
-              data.allStrapiProjectPost.nodes.map((posts) => (
+            {data.allProjectPost.nodes.length > 0 ? (
+              data.allProjectPost.nodes.map((posts) => (
                 <Card
-                  title={posts.title}
-                  img={posts.coverimage ? posts.coverimage.localFile : ''}
-                  alt={posts.coverimage.alternativeText}
-                  date={getFormattedDate(posts.publishedAt)}
-                  link={getFormattedLink('/project/', posts.slug)}
-                  description={posts.summary}
-                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  key={posts.id}
+                  title={posts.frontmatter.title}
+                  img={posts.frontmatter.coverImage ?? ''}
+                  date={getFormattedDate(posts.frontmatter.publishedAt)}
+                  link={getFormattedLink('/project/', posts.frontmatter.slug)}
+                  description={posts.frontmatter.summary}
+                  tag1={posts.frontmatter.tags[0] ?? false}
+                  tag2={posts.frontmatter.tags[1] ?? false}
+                  tag3={posts.frontmatter.tags[2] ?? false}
+                  key={posts.frontmatter.slug}
                 />
               ))
             ) : (
@@ -100,44 +99,20 @@ export default ProjectList;
 
 export const query = graphql`
   query ProjectList($limit: Int!, $skip: Int!) {
-    allStrapiProjectPost(
+    allProjectPost: allMdx(
       limit: $limit
       skip: $skip
-      sort: { fields: publishedAt, order: DESC }
-      filter: { publishedAt: { ne: null } }
+      sort: {frontmatter: {publishedAt: DESC}}
+      filter: {internal: {contentFilePath: {regex: "/content\/project/"}}}
     ) {
       nodes {
-        id
-        title
-        slug
-        coverimage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.5)
-            }
-          }
-          alternativeText
-        }
-        content {
-          data {
-            content
-          }
-        }
-        summary
-        publishedAt
-        tags {
-          Tag
-        }
-        seo {
-          metaTitle
-          metaDescription
-          isArticle
-          preventIndexing
-          shareImage {
-            localFile {
-              publicURL
-            }
-          }
+        frontmatter {
+          title
+          slug
+          summary
+          publishedAt
+          updatedAt
+          tags
         }
       }
     }

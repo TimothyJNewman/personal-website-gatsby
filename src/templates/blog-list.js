@@ -11,6 +11,7 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
 
 const BlogList = ({ pageContext, data }) => {
+  console.log(data)
   // variables for page navigation
   const { currentPage, numPages } = pageContext;
   let prevPage;
@@ -34,18 +35,18 @@ const BlogList = ({ pageContext, data }) => {
           <CoverImage title="Recent Blog Posts" />
           <br />
           <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
-            {data.allStrapiBlogPost.nodes.length > 0 ? (
-              data.allStrapiBlogPost.nodes.map((posts) => (
+            {data.allBlogPost.nodes.length > 0 ? (
+              data.allBlogPost.nodes.map((posts) => (
                 <Card
-                  title={posts.title}
-                  img={posts.coverimage ? posts.coverimage.localFile : ''}
-                  date={getFormattedDate(posts.publishedAt)}
-                  link={getFormattedLink('/blog/', posts.slug)}
-                  description={posts.summary}
-                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  key={posts.id}
+                  title={posts.frontmatter.title}
+                  img={posts.frontmatter.coverImage ?? ''}
+                  date={getFormattedDate(posts.frontmatter.publishedAt)}
+                  link={getFormattedLink('/blog/', posts.frontmatter.slug)}
+                  description={posts.frontmatter.summary}
+                  tag1={posts.frontmatter.tags[0] ?? false}
+                  tag2={posts.frontmatter.tags[1] ?? false}
+                  tag3={posts.frontmatter.tags[2] ?? false}
+                  key={posts.frontmatter.slug}
                 />
               ))
             ) : (
@@ -99,45 +100,20 @@ export default BlogList;
 
 export const query = graphql`
   query BlogList($limit: Int!, $skip: Int!) {
-    allStrapiBlogPost(
+    allBlogPost: allMdx(
       limit: $limit
       skip: $skip
-      sort: { fields: publishedAt, order: DESC }
-      filter: { publishedAt: { ne: null } }
+      sort: {frontmatter: {publishedAt: DESC}}
+      filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
     ) {
       nodes {
-        id
-        title
-        slug
-        coverimage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.5)
-            }
-          }
-          alternativeText
-        }
-        content {
-          data {
-            content
-          }
-        }
-        summary
-        publishedAt
-        tags {
-          Tag
-        }
-        seo {
-          isArticle
-          metaDescription
-          metaTitle
-          keywords
-          preventIndexing
-          shareImage {
-            localFile {
-              publicURL
-            }
-          }
+        frontmatter {
+          title
+          slug
+          summary
+          publishedAt
+          updatedAt
+          tags
         }
       }
     }

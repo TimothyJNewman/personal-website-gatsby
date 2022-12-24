@@ -27,11 +27,11 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getBlogsAndBlogsList = makeRequest(graphql, `
     {
-      allStrapiBlogPost(
-        filter: {publishedAt: {ne: null}}
-      ) {
-        edges {
-          node {
+      allBlogPost: allMdx(
+        filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
+        ) {
+        nodes {
+          frontmatter {
             slug
           }
         }
@@ -40,17 +40,17 @@ exports.createPages = ({ actions, graphql }) => {
     `)
     .then((result) => {
       // Create pages for each article.
-      result.data.allStrapiBlogPost.edges.forEach(({ node }) => {
+      result.data.allBlogPost.nodes.forEach((node) => {
         createPage({
-          path: `/blog/${node.slug}`,
+          path: `/blog/${node.frontmatter.slug}`,
           component: path.resolve('src/templates/blog.js'),
           context: {
-            slug: node.slug,
+            slug: node.frontmatter.slug,
           },
         });
       });
       // Create blog-list pages
-      const posts = result.data.allStrapiBlogPost.edges;
+      const posts = result.data.allBlogPost.nodes;
       const postsPerPage = 4;
       const numPages = Math.ceil(posts.length / postsPerPage);
       Array.from({ length: numPages }).forEach((_, i) => {
@@ -69,11 +69,11 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getProjectsAndProjectsList = makeRequest(graphql, `
     {
-      allStrapiProjectPost(
-        filter: {publishedAt: {ne: null}}
-      ) {
-        edges {
-          node {
+      allProjectPost: allMdx(
+        filter: {internal: {contentFilePath: {regex: "/content\/project/"}}}
+        ) {
+        nodes {
+          frontmatter {
             slug
           }
         }
@@ -82,17 +82,17 @@ exports.createPages = ({ actions, graphql }) => {
     `)
     .then((result) => {
       // Create pages for each article.
-      result.data.allStrapiProjectPost.edges.forEach(({ node }) => {
+      result.data.allProjectPost.nodes.forEach((node) => {
         createPage({
-          path: `/project/${node.slug}`,
+          path: `/project/${node.frontmatter.slug}`,
           component: path.resolve('src/templates/project.js'),
           context: {
-            slug: node.slug,
+            slug: node.frontmatter.slug,
           },
         });
       });
-      // Create blog-list pages
-      const posts = result.data.allStrapiProjectPost.edges;
+      // Create project-list pages
+      const posts = result.data.allProjectPost.nodes;
       const postsPerPage = 4;
       const numPages = Math.ceil(posts.length / postsPerPage);
       Array.from({ length: numPages }).forEach((_, i) => {
@@ -111,23 +111,30 @@ exports.createPages = ({ actions, graphql }) => {
 
   const getTags = makeRequest(graphql, `
     {
-      allStrapiTag {
-        edges {
-          node {
-            Tag
+      allTag: allMdx(
+        filter: {internal: {contentFilePath: {regex: "/content/"}}, frontmatter: {tags: {ne: null}}}
+      ) {
+        nodes {
+          frontmatter {
+            tags
           }
         }
       }
     }
     `)
     .then((result) => {
+      const allTag = result.data.allTag.nodes.reduce(
+        (acc, { frontmatter: {tags} }) => [...acc,...tags], [],
+      );
+      return allTag;
+    }).then((result) => {
       // Create pages for each article.
-      result.data.allStrapiTag.edges.forEach(({ node }) => {
+      result.forEach((tag) => {
         createPage({
-          path: `/tag/${node.Tag}`,
+          path: `/tag/${tag}`,
           component: path.resolve('src/templates/tag-list.js'),
           context: {
-            queryTag: node.Tag,
+            queryTag: tag,
           },
         });
       });

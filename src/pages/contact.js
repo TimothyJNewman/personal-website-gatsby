@@ -287,7 +287,7 @@ export default Contact;
 
 const query = graphql`
   query contactQuery {
-    allStrapiSocialMedia(sort: { fields: order, order: ASC }) {
+    allStrapiSocialMedia(sort: { order: ASC }) {
       nodes {
         id
         image

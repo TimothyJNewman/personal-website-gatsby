@@ -26,7 +26,7 @@ const query = graphql`
         }
       }
     }
-    allStrapiSocialMedia(sort: { fields: order, order: ASC }) {
+    allStrapiSocialMedia(sort: { order: ASC }) {
       nodes {
         id
         image
@@ -34,49 +34,43 @@ const query = graphql`
         name
       }
     }
-    allStrapiProjectPost(
+    allProjectPost: allMdx(
       limit: 4
-      sort: { fields: publishedAt, order: DESC }
-      filter: { publishedAt: { gt: "1970-01-01T00:00:00Z" } }
+      sort: {frontmatter: {publishedAt: DESC}}
+      filter: {internal: {contentFilePath: {regex: "/content\/project/"}}}
     ) {
       nodes {
-        id
-        title
-        coverimage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
-          }
-          alternativeText
-        }
-        publishedAt
-        slug
-        summary
-        tags {
-          Tag
+        frontmatter {
+          title
+          publishedAt
+          slug
+          summary
+          tags
         }
       }
     }
-    allStrapiBlogPost(
+    allBlogPost: allMdx(
       limit: 4
-      sort: { fields: publishedAt, order: DESC }
-      filter: { publishedAt: { gt: "1970-01-01T00:00:00Z" } }
-    ) {
+      sort: {frontmatter: {publishedAt: DESC}}
+      filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
+      ) {
       nodes {
-        id
-        title
-        publishedAt
-        slug
-        summary
-        tags {
-          Tag
+        frontmatter {
+          title
+          publishedAt
+          slug
+          summary
+          tags
         }
       }
     }
-    allStrapiTag {
+    allTag: allMdx(
+      filter: {internal: {contentFilePath: {regex: "/content/"}}, frontmatter: {tags: {ne: null}}}
+    ) {
       nodes {
-        Tag
+        frontmatter {
+          tags
+        }
       }
     }
   }
@@ -90,6 +84,9 @@ const IndexPage = () => {
   );
   const imagesSrcSet = data?.strapiGallery?.images.map((image) =>
     getSrcSet(image?.localFile)
+  );
+  const allTag = data.allTag.nodes.reduce(
+    (acc, { frontmatter: {tags} }) => [...acc,...tags], [],
   );
   useEffect(() => {
     setTimeout(
@@ -161,17 +158,17 @@ const IndexPage = () => {
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
             </div>
             <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
-              {data.allStrapiProjectPost.nodes ? (
-                data.allStrapiProjectPost.nodes.map((posts) => (
+              {data.allProjectPost.nodes ? (
+                data.allProjectPost.nodes.map((posts) => (
                   <Card
-                    title={posts.title}
-                    date={getFormattedDate(posts.publishedAt)}
-                    link={getFormattedLink('/project/', posts.slug)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                    key={posts.id}
+                    title={posts.frontmatter.title}
+                    date={getFormattedDate(posts.frontmatter.publishedAt)}
+                    link={getFormattedLink('/project/', posts.frontmatter.slug)}
+                    description={posts.frontmatter.summary}
+                    tag1={posts.frontmatter.tags[0] ?? false}
+                    tag2={posts.frontmatter.tags[1] ?? false}
+                    tag3={posts.frontmatter.tags[2] ?? false}
+                    key={posts.frontmatter.slug}
                   />
                 ))
               ) : (
@@ -188,17 +185,17 @@ const IndexPage = () => {
           <section className="px-2">
             <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
             <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
-              {data.allStrapiBlogPost.nodes ? (
-                data.allStrapiBlogPost.nodes.map((posts) => (
+              {data.allBlogPost.nodes ? (
+                data.allBlogPost.nodes.map((posts) => (
                   <Card
-                    title={posts.title}
-                    date={getFormattedDate(posts.publishedAt)}
-                    link={getFormattedLink('/blog/', posts.slug)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                    key={posts.id}
+                    title={posts.frontmatter.title}
+                    date={getFormattedDate(posts.frontmatter.publishedAt)}
+                    link={getFormattedLink('/blog/', posts.frontmatter.slug)}
+                    description={posts.frontmatter.summary}
+                    tag1={posts.frontmatter.tags[0] ?? false}
+                    tag2={posts.frontmatter.tags[1] ?? false}
+                    tag3={posts.frontmatter.tags[2] ?? false}
+                    key={posts.frontmatter.slug}
                   />
                 ))
               ) : (
@@ -215,14 +212,14 @@ const IndexPage = () => {
           <section className="px-2">
             <h2 className="my-4 font-normal font-serif">All Tags</h2>
             <div className="flex flex-wrap">
-              {data.allStrapiTag.nodes ? (
-                data.allStrapiTag.nodes.map((elem) => (
+              {allTag ? (
+                allTag.map((tag) => (
                   <Link
-                    to={`/tag/${elem.Tag}`}
-                    key={elem.Tag}
+                    to={`/tag/${tag}`}
+                    key={tag}
                     className="tag-button"
                   >
-                    {elem.Tag}
+                    {tag}
                   </Link>
                 ))
               ) : (

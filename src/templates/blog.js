@@ -10,52 +10,49 @@ import Share from '../components/share';
 import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
 
-const BlogTemplate = ({ data }) => (
-  <Layout seo={data.strapiBlogPost.seo}>
+const BlogTemplate = ({ data }) => {console.log(data); return(
+  <Layout seo={data.frontmatter}>
     <LayoutSingleColumn>
       <section className="mx-auto max-w-screen-md px-2 text-left w-full">
-        {data.strapiBlogPost.coverimage ? (
+        {data.blogPost.frontmatter.coverImage ? (
           <CoverImage
             img={
-              data.strapiBlogPost.coverimage
-                ? data.strapiBlogPost.coverimage.localFile
-                : ''
+              data.blogPost.frontmatter.coverImage ?? ''
             }
-            alt={data.strapiBlogPost.coverimage.alternativeText}
-            title={data.strapiBlogPost.title}
+            title={data.blogPost.frontmatter.title}
           />
         ) : (
-          <CoverImage title={data.strapiBlogPost.title} />
+          <CoverImage title={data.blogPost.frontmatter.title} />
         )}
         <div className="py-1">
           <div className="flex items-start justify-between py-2">
             <div className="article-date-container m-0 text-sm italic text-dategray">
               <strong>Published:&nbsp;</strong>
-              {getFormattedDate(data.strapiBlogPost.publishedAt)}
+              {getFormattedDate(data.blogPost.frontmatter.publishedAt)}
               <strong>Updated:&nbsp;</strong>
-              {getFormattedDate(data.strapiBlogPost.updatedAt)}
+              {getFormattedDate(data.blogPost.frontmatter.updatedAt)}
             </div>
             <Share
               label="Share this!"
-              text={data.strapiBlogPost.summary}
-              title={data.strapiBlogPost.title}
+              text={data.blogPost.frontmatter.summary}
+              title={data.blogPost.frontmatter.title}
             />
           </div>
           <div className="flex">
-            {data.strapiBlogPost.tags.map((elem) => (
+            {data.blogPost.frontmatter.tags.map((tag) => (
               <Link
                 className="tag-button"
-                to={`/tag/${elem.Tag}`}
-                key={elem.Tag}
+                to={`/tag/${tag}`}
+                key={tag}
               >
-                {elem.Tag}
+                {tag}
               </Link>
             ))}
           </div>
         </div>
         <div className="markdown-text">
           <MarkdownView
-            markdown={data.strapiBlogPost.content.data.content}
+            markdown={data.blogPost.body}
             options={{ emoji: true, strikethrough: true }}
           />
         </div>
@@ -68,45 +65,24 @@ const BlogTemplate = ({ data }) => (
       </section>
     </LayoutSingleColumn>
   </Layout>
-);
+)};
 
 export default BlogTemplate;
 
 export const query = graphql`
   query BlogTemplate($slug: String!) {
-    strapiBlogPost(slug: { eq: $slug }) {
-      id
-      coverimage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
-        }
-        alternativeText
+    blogPost: mdx(
+      internal: {
+        contentFilePath: {regex: "/content\/blog/"}}, 
+        frontmatter: {slug: {eq: $slug}}
+        ) {
+      frontmatter {
+        title
+        summary
+        publishedAt
+        updatedAt
+        tags
       }
-      title
-      content {
-        data {
-          content
-        }
-      }
-      summary
-      publishedAt
-      updatedAt
-      tags {
-        Tag
-      }
-      seo {
-        metaTitle
-        metaDescription
-        isArticle
-        preventIndexing
-        shareImage {
-          localFile {
-            publicURL
-          }
-        }
-      }
+      body
     }
-  }
-`;
+  }`;

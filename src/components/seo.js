@@ -15,27 +15,26 @@ import mstile310x310 from '../images/icons/mstile-310x310.png';*/
 
 const seoQuery = graphql`
   query SEOquery {
-    strapiGlobal {
-      siteName
-      defaultSeo {
-        isArticle
-        metaDescription
-        metaTitle
+    defaultSeo: mdx(
+      internal: {
+        contentFilePath: {regex: "/content\/global/"}}, 
+        ) {
+      frontmatter {
+        siteName
+        title
+        coverImage
+        summary
         keywords
+        isArticle
         preventIndexing
-        shareImage {
-          localFile {
-            publicURL
-          }
-        }
       }
     }
   }
 `;
 
 const SEO = ({ seo = {} }) => {
-  const { strapiGlobal } = useStaticQuery(seoQuery);
-  const { defaultSeo, siteName } = strapiGlobal;
+  const defaultSeoQuery = useStaticQuery(seoQuery);
+  const { frontmatter: { siteName, ...defaultSeo } } = defaultSeoQuery.defaultSeo;
 
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
@@ -43,15 +42,15 @@ const SEO = ({ seo = {} }) => {
   const getMetaTags = () => {
     const tags = [];
 
-    if (fullSeo.metaTitle) {
+    if (fullSeo.title) {
       tags.push(
         {
           property: 'og:title',
-          content: fullSeo.metaTitle,
+          content: fullSeo.title,
         },
         {
           name: 'twitter:title',
-          content: fullSeo.metaTitle,
+          content: fullSeo.title,
         }
       );
     }
@@ -59,15 +58,15 @@ const SEO = ({ seo = {} }) => {
       tags.push(
         {
           name: 'description',
-          content: fullSeo.metaDescription,
+          content: fullSeo.summary,
         },
         {
           property: 'og:description',
-          content: fullSeo.metaDescription,
+          content: fullSeo.summary,
         },
         {
           name: 'twitter:description',
-          content: fullSeo.metaDescription,
+          content: fullSeo.summary,
         }
       );
     }
@@ -80,7 +79,7 @@ const SEO = ({ seo = {} }) => {
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || 'http://localhost:8000') +
-        fullSeo.shareImage.localFile.publicURL;
+        fullSeo.coverImage.publicURL;
       tags.push(
         {
           name: 'image',
@@ -96,7 +95,7 @@ const SEO = ({ seo = {} }) => {
         }
       );
     }
-    if (fullSeo.isArticle) {
+    if (!fullSeo.isArticle === false) {
       tags.push({
         property: 'og:type',
         content: 'article',

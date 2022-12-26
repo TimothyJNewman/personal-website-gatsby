@@ -3,14 +3,14 @@
  */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import MarkdownView from 'react-showdown';
+import { MDXProvider } from '@mdx-js/react';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import CoverImage from '../components/cover-image';
 import Share from '../components/share';
 import { getFormattedDate } from '../util/common-utils';
 
-const ProjectTemplate = ({ data }) => (
+const ProjectTemplate = ({ children, data }) => (
   <Layout seo={data.projectPost.seo}>
     <LayoutSingleColumn>
       <section className="mx-auto max-w-screen-md px-2 text-left w-full">
@@ -49,10 +49,9 @@ const ProjectTemplate = ({ data }) => (
           </div>
         </div>
         <div className="markdown-text">
-          <MarkdownView
-            markdown={data.projectPost.body}
-            options={{ emoji: true, strikethrough: true }}
-          />
+          <MDXProvider>
+            {children}
+          </MDXProvider>
         </div>
         <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
           <Link to="/project" className="read-more-link">
@@ -62,7 +61,7 @@ const ProjectTemplate = ({ data }) => (
         </div>
       </section>
     </LayoutSingleColumn>
-  </Layout>
+  </Layout >
 );
 
 export default ProjectTemplate;
@@ -80,7 +79,12 @@ export const query = graphql`
         publishedAt
         updatedAt
         tags
+        embeddedAssets {
+          childrenImageSharp {
+            gatsbyImageData
+          }
+          publicURL
+        }
       }
-      body
     }
   }`;

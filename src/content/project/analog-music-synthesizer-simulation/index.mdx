@@ -1,12 +1,17 @@
 ---
 slug: "analog-music-synthesizer-simulation"
 title: "Analog Music Synthesizer Simulation"
-coverImage: "./SynthFaceplate.jpg"
+coverImage: "./SynthFaceplate.png"
 summary: "Analog synthesizer built and simulated in LTSpice for our first year project. This design features a low frequency oscillator, voltage controlled filter and amplifier."
 keywords: "Synthesizer, Analog Music, University Project"
 publishedAt: "2021-09-11"
 updatedAt: "2022-09-09"
-tags: ["engineering", "electronics", "university"]
+tags:
+  - engineering
+  - electronics
+  - university
+embeddedAssets: 
+  - ./nevergonnagiveyouupfinal.mp3
 ---
 
 For our summer project at university, we had the opportunity to design an analog synthesizer in the circuit simulator LTSpice. My group, consisting of me, George and Prateek, implemented a modular design with low frequency oscillator, voltage controlled amplifier and filter, both controlled by an ADSR module, to create some awesome sounds. 
@@ -15,9 +20,9 @@ We tested our design and measured its performance characteristics. We created ou
 
 Since this project might be repeated the next year, I will not be able to share the complete report. However, here is some music generated using our synth. I used an Excel spread sheet to key in the notes and note lengths after which I created a formula to convert them to frequencies and then to voltages. Using a small Python program, I converted these voltages to a piecewise voltage directive in LTSpice. The simulation took a very long time to complete but it was definitely worth it.
 
-Can you guess what's the song?
+Can you guess the song?
 
 <audio controls=" ">
-  <source src="https://res.cloudinary.com/ddb1oynra/video/upload/v1633604957/nevergonnagiveyouupfinal_61fd6fb85f.mp3" type="audio/mpeg">
+  <source src={props.data.projectPost.frontmatter.embeddedAssets[0].publicURL} type="audio/mpeg" />
   Your browser does not support the audio tag.
 </audio>

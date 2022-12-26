@@ -11,7 +11,6 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import Card from '../components/card';
 
 const BlogList = ({ pageContext, data }) => {
-  console.log(data)
   // variables for page navigation
   const { currentPage, numPages } = pageContext;
   let prevPage;
@@ -39,7 +38,7 @@ const BlogList = ({ pageContext, data }) => {
               data.allBlogPost.nodes.map((posts) => (
                 <Card
                   title={posts.frontmatter.title}
-                  img={posts.frontmatter.coverImage ?? ''}
+                  img={posts.frontmatter.coverImage.childImageSharp.gatsbyImageData ?? ''}
                   date={getFormattedDate(posts.frontmatter.publishedAt)}
                   link={getFormattedLink('/blog/', posts.frontmatter.slug)}
                   description={posts.frontmatter.summary}
@@ -110,6 +109,11 @@ export const query = graphql`
         frontmatter {
           title
           slug
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
           summary
           publishedAt
           updatedAt

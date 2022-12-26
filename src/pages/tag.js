@@ -28,7 +28,7 @@ const TagPage = () => {
     isArticle: false,
   };
   const allTag = data.allTag.nodes.reduce(
-    (acc, { frontmatter: {tags} }) => [...acc,...tags], [],
+    (acc, { frontmatter: {tags} }) => [...new Set([...acc,...tags])], [],
   );
   return (
     <Layout seo={seo}>

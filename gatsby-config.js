@@ -53,10 +53,10 @@ module.exports = {
         }) => {
           const blogsAndProjects = {};
           allBlogPost.nodes.forEach((post) => {
-            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updatedAt };
+            blogsAndProjects[`/blog/${post.frontmatter.slug}`] = { updatedAt: post.frontmatter.updatedAt };
           });
           allProjectPost.nodes.forEach((post) => {
-            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updatedAt };
+            blogsAndProjects[`/project/${post.frontmatter.slug}`] = { updatedAt: post.frontmatter.updatedAt };
           });
           return allSitePage.nodes.map((page) => (
             { ...page, ...blogsAndProjects[page.path] }
@@ -72,16 +72,15 @@ module.exports = {
         ),
       },
     },
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          placeholder: 'tracedSVG',
-          tracedSVGOptions: { color: '#2d6da6', background: '#e0f0fa', turdSize: 10 },
+          placeholder: 'blurred',
         },
       },
     },
-    'gatsby-transformer-sharp',
     'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-filesystem',
@@ -102,23 +101,46 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        name: 'blog',
-        path: `${__dirname}/src/content`,
+        extensions: [
+          '.mdx',
+        ],
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            require(`remark-gfm`),
+          ],
+        },
+        gatsbyRemarkPlugins: [
+          {
+            options: {
+              maxWidth: 1080,
+            },
+            resolve: 'gatsby-remark-images',
+          }
+        ],
       },
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 1200,
-            },
-          },
-        ],
+        name: 'blog',
+        path: `${__dirname}/src/content/blog`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'project',
+        path: `${__dirname}/src/content/project`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'global',
+        path: `${__dirname}/src/content/global`,
       },
     },
     {
@@ -164,7 +186,7 @@ module.exports = {
                       title
                       slug
                       summary
-                      publishedAt(formatString: "MMMM DD, YYYY")
+                      publishedAt
                       tags
                     }
                   }
@@ -173,7 +195,7 @@ module.exports = {
             `,
             output: 'rss.xml',
             title: 'Timothy Newman Blog Feed',
-            description: 'Blog mainly about technology and university experience',
+            description: 'Blog mainly about technology and my university experience',
           },
         ],
       },

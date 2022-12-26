@@ -3,14 +3,14 @@
  */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import MarkdownView from 'react-showdown';
+import { MDXProvider } from '@mdx-js/react';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Share from '../components/share';
 import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
 
-const BlogTemplate = ({ data }) => {console.log(data); return(
+const BlogTemplate = ({ data, children }) => (
   <Layout seo={data.frontmatter}>
     <LayoutSingleColumn>
       <section className="mx-auto max-w-screen-md px-2 text-left w-full">
@@ -51,10 +51,9 @@ const BlogTemplate = ({ data }) => {console.log(data); return(
           </div>
         </div>
         <div className="markdown-text">
-          <MarkdownView
-            markdown={data.blogPost.body}
-            options={{ emoji: true, strikethrough: true }}
-          />
+          <MDXProvider embeddedAssets={data.blogPost.frontmatter.embeddedAssets}>
+            {children}
+          </MDXProvider>
         </div>
         <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
           <Link to="/blog" className="read-more-link">
@@ -65,7 +64,7 @@ const BlogTemplate = ({ data }) => {console.log(data); return(
       </section>
     </LayoutSingleColumn>
   </Layout>
-)};
+);
 
 export default BlogTemplate;
 
@@ -82,6 +81,12 @@ export const query = graphql`
         publishedAt
         updatedAt
         tags
+        embeddedAssets {
+          childrenImageSharp {
+            gatsbyImageData
+          }
+          publicURL
+        }
       }
       body
     }

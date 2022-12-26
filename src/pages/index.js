@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link, graphql, useStaticQuery } from 'gatsby';
-import MarkdownView from 'react-showdown';
 import { getSrc, getSrcSet } from 'gatsby-plugin-image';
 import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Card from '../components/card';
@@ -86,7 +85,7 @@ const IndexPage = () => {
     getSrcSet(image?.localFile)
   );
   const allTag = data.allTag.nodes.reduce(
-    (acc, { frontmatter: {tags} }) => [...acc,...tags], [],
+    (acc, { frontmatter: { tags } }) => [...new Set([...new Set([...acc, ...tags])])], [],
   );
   useEffect(() => {
     setTimeout(

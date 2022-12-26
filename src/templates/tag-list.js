@@ -16,7 +16,7 @@ const TagList = ({ pageContext, data }) => {
     isArticle: false,
   };
   const allTag = data.allTag.nodes.reduce(
-    (acc, { frontmatter: {tags} }) => [...acc,...tags], [],
+    (acc, { frontmatter: { tags } }) => [...acc, ...tags], [],
   );
   return (
     <Layout seo={seo}>
@@ -24,14 +24,12 @@ const TagList = ({ pageContext, data }) => {
         <div className="max-w-screen-md px-2">
           <CoverImage
             title={`Tag: ${queryTag}
-            / projects: ${
-              data.allProjectPost
+            / projects: ${data.allProjectPost
                 ? data.allProjectPost.nodes.length
                 : 0
-            }
-            / blogs: ${
-              data.allBlogPost ? data.allBlogPost.nodes.length : 0
-            }
+              }
+            / blogs: ${data.allBlogPost ? data.allBlogPost.nodes.length : 0
+              }
            `}
           />
           {data.allProjectPost.nodes.length > 0 ? (
@@ -68,6 +66,7 @@ const TagList = ({ pageContext, data }) => {
               <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
                 {data.allBlogPost.nodes.map((posts) => (
                   <Card
+                    img={posts.frontmatter.coverImage ?? ''}
                     title={posts.frontmatter.title}
                     date={getFormattedDate(posts.frontmatter.publishedAt)}
                     link={getFormattedLink('/blog/', posts.frontmatter.slug)}
@@ -126,9 +125,13 @@ export const query = graphql`
       nodes {
         frontmatter {
           slug
-          coverImage
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
           title
-          publishedAt(formatString: "MMMM DD, YYYY")
+          publishedAt
           summary
           tags
         }
@@ -144,9 +147,13 @@ export const query = graphql`
       nodes {
         frontmatter {
           slug
-          coverImage
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
           title
-          publishedAt(formatString: "MMMM DD, YYYY")
+          publishedAt
           summary
           tags
         }

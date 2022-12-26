@@ -22,7 +22,11 @@ const seoQuery = graphql`
       frontmatter {
         siteName
         title
-        coverImage
+        coverImage{
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
         summary
         keywords
         isArticle

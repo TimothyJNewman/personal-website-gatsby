@@ -23,7 +23,7 @@ const BlogList = ({ pageContext, data }) => {
   else nextPage = `/blog/page/${currentPage + 1}`;
 
   const seo = {
-    metaTitle: 'Blog Page',
+    title: 'Blog Page',
     isArticle: false,
   };
 

@@ -7,7 +7,7 @@ import Layout from '../components/layout';
 const NotFoundPage = ({ location }) => {
   const { pathname } = location;
   const seo = {
-    metaTitle: '404 Page',
+    title: '404 Page',
     isArticle: false,
   };
   return (

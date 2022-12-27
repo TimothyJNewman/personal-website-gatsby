@@ -58,7 +58,7 @@ const SEO = ({ seo = {} }) => {
         }
       );
     }
-    if (fullSeo.metaDescription) {
+    if (fullSeo.summary) {
       tags.push(
         {
           name: 'description',
@@ -149,7 +149,7 @@ const SEO = ({ seo = {} }) => {
 
   return (
     <Helmet
-      title={fullSeo.metaTitle}
+      title={fullSeo.title}
       defer={false}
       titleTemplate={`%s | ${siteName}`}
       link={[
@@ -212,17 +212,17 @@ export default SEO;
 
 /* eslint-disable react/no-unused-prop-types, react/forbid-prop-types */
 SEO.propTypes = {
-  metaTitle: PropTypes.string,
-  metaDescription: PropTypes.string,
-  shareImage: PropTypes.object,
+  title: PropTypes.string,
+  summary: PropTypes.string,
+  coverImage: PropTypes.object,
   keywords: PropTypes.string,
   isArticle: PropTypes.bool,
 };
 
 SEO.defaultProps = {
-  metaTitle: null,
-  metaDescription: null,
-  shareImage: null,
+  title: null,
+  summary: null,
+  coverImage: null,
   keywords: null,
   isArticle: false,
 };

@@ -20,12 +20,12 @@ Over my 2 years of university, I have used Overleaf to generate LaTeX documents.
 
 ## Steps
 
-1.   Download a LaTeX compiler. In my case, I downloaded a distribution named MiKTeX which comes along with the pdfLaTeX compiles. Latex compilers for your operating system can be downloaded at [this link](https://www.latex-project.org/get)
-2.   Add the binary folder path to your PC's path environment variable. In my case, the path was:
-
+1.  Download a LaTeX compiler. In my case, I downloaded a distribution named MiKTeX which comes along with the pdfLaTeX compiles. Latex compilers for your operating system can be downloaded at [this link](https://www.latex-project.org/get)
+2.  Add the binary folder path to your PC's path environment variable. In my case, the path was: 
     ```
     C:\Users\{username}\AppData\Local\Programs\MiKTeX\miktex\bin\x64
     ```
+
 3.  Create a build task to compile your LaTeX document. Firstly, make sure that you have opened the root folder of your project in VSCode. Then, navigate to Terminal > Configure Tasks > "Create tasks.json file from template" > Others. This creates a tasks.json file within the .vscode folder which contains the instructions to build your project. Replace the default task with the following code: 
 
     ```

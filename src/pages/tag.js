@@ -24,7 +24,7 @@ const query = graphql`
 const TagPage = () => {
   const data = useStaticQuery(query);
   const seo = {
-    metaTitle: 'Tag Page',
+    title: 'Tag Page',
     isArticle: false,
   };
   const allTag = data.allTag.nodes.reduce(
@@ -36,7 +36,7 @@ const TagPage = () => {
         <br />
         <section className="max-w-screen-md px-2">
           <CoverImage title="Tags" />
-          <h2 className="my-4">All Tags</h2>
+          <h2 className="my-4 font-normal font-serif">All Tags</h2>
           <div className="flex flex-wrap">
             {allTag ? (
               allTag.map((tag) => (

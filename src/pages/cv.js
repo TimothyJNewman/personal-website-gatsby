@@ -6,8 +6,8 @@ import CoverImage from '../components/cover-image';
 const CVPage = () => (
   <Layout
     seo={{
-      metaTitle: 'CV',
-      metaDescription: 'CV Page',
+      title: 'CV',
+      summary: 'CV Page',
       isArticle: false,
     }}
   >

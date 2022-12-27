@@ -12,13 +12,12 @@ import Card from '../components/card';
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;
   const seo = {
-    metaTitle: `Tag: ${queryTag}`,
+    title: `Tag: ${queryTag}`,
     isArticle: false,
   };
   const allTag = data.allTag.nodes.reduce(
     (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
   ).sort();
-  console.log(data)
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>

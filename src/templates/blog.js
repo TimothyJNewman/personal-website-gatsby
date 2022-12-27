@@ -78,6 +78,7 @@ export const query = graphql`
       frontmatter {
         title
         summary
+        keywords
         publishedAt
         updatedAt
         tags

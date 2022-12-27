@@ -85,7 +85,7 @@ const IndexPage = () => {
     getSrcSet(image?.localFile)
   );
   const allTag = data.allTag.nodes.reduce(
-    (acc, { frontmatter: { tags } }) => [...new Set([...new Set([...acc, ...tags])])], [],
+    (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
   ).sort();
   useEffect(() => {
     setTimeout(

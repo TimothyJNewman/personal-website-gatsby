@@ -145,7 +145,7 @@ class Contact extends React.Component {
       );
     };
     const seo = {
-      metaTitle: 'Contact Page',
+      title: 'Contact Page',
       isArticle: false,
     };
     return (

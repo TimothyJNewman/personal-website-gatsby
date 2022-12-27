@@ -25,8 +25,13 @@ const aboutPageQuery = graphql`
 
 const About = () => {
   const data = useStaticQuery(aboutPageQuery);
+  const extractedSEO = {
+    title: data.strapiSinglePage.seo.metaTitle,
+    summary: data.strapiSinglePage.seo.metaDescription,
+    ...data.strapiSinglePage.seo
+  };
   return (
-    <Layout seo={data.strapiSinglePage.seo}>
+    <Layout seo={extractedSEO}>
       <LayoutSingleColumn>
         <section className="mx-auto max-w-screen-md px-2 text-left w-full">
           <CoverImage title={data.strapiSinglePage.title} />

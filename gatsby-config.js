@@ -29,7 +29,10 @@ module.exports = {
               path
             }
           }
-          allBlogPost: allMdx(internal: {contentFilePath: {regex: "/content\/blog/"}}) {
+          allBlogPost: allMdx(
+            filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
+            sort: {frontmatter: {publishedAt: DESC}}
+            ) {
             nodes {
               frontmatter {
                 updatedAt
@@ -37,10 +40,15 @@ module.exports = {
               }
             }
           }
-          allProjectPost: allMdx(internal: {contentFilePath: {regex: "/content\/project/"}}) {
+          allProjectPost: allMdx(
+            filter: {internal: {contentFilePath: {regex: "/content\/project/"}}}
+            sort: {frontmatter: {publishedAt: DESC}}
+            ) {
             nodes {
-              updatedAt
-              slug
+              frontmatter {
+                updatedAt
+                slug
+              }
             }
           }
         }

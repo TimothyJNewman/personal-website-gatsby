@@ -34,11 +34,12 @@ const BlogList = ({ pageContext, data }) => {
           <CoverImage title="Recent Blog Posts" />
           <br />
           <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
+            {console.log(data.allBlogPost.nodes)}
             {data.allBlogPost.nodes.length > 0 ? (
               data.allBlogPost.nodes.map((posts) => (
                 <Card
                   title={posts.frontmatter.title}
-                  img={posts.frontmatter.coverImage.childImageSharp.gatsbyImageData ?? ''}
+                  img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData ?? ''}
                   date={getFormattedDate(posts.frontmatter.publishedAt)}
                   link={getFormattedLink('/blog/', posts.frontmatter.slug)}
                   description={posts.frontmatter.summary}

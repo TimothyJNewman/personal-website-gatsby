@@ -11,7 +11,7 @@ import Share from '../components/share';
 import { getFormattedDate } from '../util/common-utils';
 
 const ProjectTemplate = ({ children, data }) => (
-  <Layout seo={data.projectPost.seo}>
+  <Layout seo={data.projectPost.frontmatter}>
     <LayoutSingleColumn>
       <section className="mx-auto max-w-screen-md px-2 text-left w-full">
         {data.projectPost.frontmatter.coverImage ? (

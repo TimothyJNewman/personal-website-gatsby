@@ -11,7 +11,7 @@ import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
 
 const BlogTemplate = ({ data, children }) => (
-  <Layout seo={data.frontmatter}>
+  <Layout seo={data.blogPost.frontmatter}>
     <LayoutSingleColumn>
       <section className="mx-auto max-w-screen-md px-2 text-left w-full">
         {data.blogPost.frontmatter.coverImage ? (
@@ -51,7 +51,7 @@ const BlogTemplate = ({ data, children }) => (
           </div>
         </div>
         <div className="markdown-text">
-          <MDXProvider embeddedAssets={data.blogPost.frontmatter.embeddedAssets}>
+          <MDXProvider>
             {children}
           </MDXProvider>
         </div>

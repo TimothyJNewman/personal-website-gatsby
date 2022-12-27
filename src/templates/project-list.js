@@ -38,7 +38,7 @@ const ProjectList = ({ pageContext, data }) => {
               data.allProjectPost.nodes.map((posts) => (
                 <Card
                   title={posts.frontmatter.title}
-                  img={posts.frontmatter.coverImage.childImageSharp.gatsbyImageData ?? ''}
+                  img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData ?? ''}
                   date={getFormattedDate(posts.frontmatter.publishedAt)}
                   link={getFormattedLink('/project/', posts.frontmatter.slug)}
                   description={posts.frontmatter.summary}

@@ -1,0 +1,77 @@
+---
+slug: using-latex-with-vs-code
+title: Using LaTeX with VSCode
+coverImage: ./LaTeX_logo.png
+summary: A short guide to using LaTeX with VSCode
+keywords: LaTex, VSCode, Overleaf
+publishedAt: 2022-09-29
+updatedAt: 2022-10-29
+tags: 
+  - latex
+  - programming
+  - techtips
+---
+
+This is a short guide to using LaTeX with VSCode.
+
+## Motivation
+
+Over my 2 years of university, I have used Overleaf to generate LaTeX documents. Overleaf has amazing features such as multiuser real-time editing and history feature. I have had no issues with Overleaf except that it does not work offline. To solve this, I wanted to compile and edit LaTeX documents locally.
+
+## Steps
+
+1.   Download a LaTeX compiler. In my case, I downloaded a distribution named MiKTeX which comes along with the pdfLaTeX compiles. Latex compilers for your operating system can be downloaded at [this link](https://www.latex-project.org/get)
+2.   Add the binary folder path to your PC's path environment variable. In my case, the path was:
+
+    ```
+    C:\Users\{username}\AppData\Local\Programs\MiKTeX\miktex\bin\x64
+    ```
+3.  Create a build task to compile your LaTeX document. Firstly, make sure that you have opened the root folder of your project in VSCode. Then, navigate to Terminal > Configure Tasks > "Create tasks.json file from template" > Others. This creates a tasks.json file within the .vscode folder which contains the instructions to build your project. Replace the default task with the following code: 
+
+    ```
+    {
+      "version": "2.0.0",
+      "tasks": [
+        {
+          "label": "pdflatex",
+          "type": "shell",
+          "command": "pdflatex",
+          "args": ["-output-directory", "out", "${fileBasename}"]
+        },
+        {
+          "label": "bibtex",
+          "type": "shell",
+          "command": "bibtex",
+          "args": ["out/${fileBasenameNoExtension}"]
+        },
+        {
+          "label": "CompileLatex",
+          "type": "shell",
+          "command": "echo Completed ",
+          "dependsOrder": "sequence",
+          "dependsOn": [
+          "pdflatex",
+          "bibtex",
+          "pdflatex",
+          "pdflatex"
+          ],
+          "group": {
+            "kind": "build",
+            "isDefault": true
+          }
+        }
+      ]
+    }
+    ```
+    In this example, I have used pdfLatex as the LaTeX compiler but this can be replaced with any compiler of your choosing.    
+    This build task uses Bibtex to process .bib files used for bibliographies. As explained in this [article](https://www.andy-roberts.net/writing/latex/bibliographies) in the "Why won't LaTeX generate any output?" section, the LaTeX compiler and bibtex have to be invoked in this order. However if you do not need to use Bibtex, you could remove the bibtex and CompileLatex commands and instead use the pdflatex command alone.
+    
+    To make this command work, you will need to navigate to main.tex file (or whatever your root file is) and Run Build Task in the Terminal section. This will generate a pdf in the out folder. A keyboard shortcut to run the build task is CTRL + SHIFT + B
+4.   [Optional] Install the LaTeX plugin by Mathematic Inc. Although this plugin is not mandatory, it contains a linter, code syntax highlighter and formatter that I have found to be very useful.
+5.   [Optional] To configure the code linter and formatter, you will need to install ChkTeX and latexindent.pl repectively and add them to the environment path. These packages usually come preinstalled if you have downloaded a LaTeX distribution. Note that latexindent requires perl to operate but a .exe version can be downloaded instead if you are using windows. You might also need to add a defaultSettings.yaml file at the download directory of latexindent. More information about latexindent can be found [here](https://ctan.org/tex-archive/support/latexindent).
+
+**Thats it!**
+
+## Conclusion
+
+I hope this brief guide will help you along your LaTeX journey. Cheers!

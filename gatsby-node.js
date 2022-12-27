@@ -117,12 +117,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
-  // // Create about page
-  // createPage({
-  //   path: '/about',
-  //   component: path.resolve('./src/templates/project-list.js'),
-  // });
-
   const tagQuery = await graphql(`
     {
       allTag: allMdx(

@@ -91,16 +91,6 @@ module.exports = {
       __key: 'images',
     },
     {
-      resolve: 'gatsby-source-strapi',
-      options: {
-        skipFileDownloads: true,
-        apiURL: process.env.STRAPI_API_URL || 'http://localhost:1337',
-        accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: ['gallery', 'social-media', 'single-page', 'small-text'],
-        queryLimit: 200,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: [
@@ -109,7 +99,7 @@ module.exports = {
         mdxOptions: {
           remarkPlugins: [
             // Add GitHub Flavored Markdown (GFM) support
-            require(`remark-gfm`),
+            require('remark-gfm'),
           ],
         },
         gatsbyRemarkPlugins: [
@@ -125,22 +115,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'blog',
-        path: `${__dirname}/src/content/blog`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'project',
-        path: `${__dirname}/src/content/project`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'global',
-        path: `${__dirname}/src/content/global`,
+        name: 'content',
+        path: `${__dirname}/src/content`,
       },
     },
     {

@@ -2,13 +2,11 @@
  * Contact form page
  */
 import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
 import { isEmail, sanitizeKeepUnicode } from '../util/string-validator';
 import CoverImage from '../components/cover-image';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
-import MarkdownView from 'react-showdown';
-import Share from '../components/share';
+import SocialMedias from '../components/social-media';
 
 // Parses the JSON returned by a network request
 const parseJSON = (resp) => (resp.json ? resp.json() : resp);
@@ -65,12 +63,8 @@ class Contact extends React.Component {
       modifiedData: initalInputState,
       // State that contains isValid boolean and error message for all inputs
       modifiedDataValidMessage: initalInputValidationState,
-      // Social media icons and links
-      socialMedias: [],
       // Initially -1 Failure 0 Attempting 0.5 Success 1
       isSubmitSuccessful: -1,
-      // Loading Social Media Icons
-      isSocialMediaLoaded: false,
       error: null,
     };
   }
@@ -154,36 +148,13 @@ class Contact extends React.Component {
           <section className="contact-container max-w-screen-md px-2">
             <div className="contact-left pr-4">
               <CoverImage title="Contact Me!" />
-              <StaticQuery
-                query={query}
-                render={(data) => (
-                  <>
-                    <MarkdownView
-                      className="markdown-text"
-                      markdown={data.strapiSmallText.content.data.content}
-                      options={{ emoji: true }}
-                    />
-                    <div className="flex">
-                      {data.allStrapiSocialMedia.nodes.map((media) => (
-                        <a rel="me" href={media.link} key={media.id} className="mx-0.5">
-                          <img
-                            className="h-6 w-6"
-                            src={media.image}
-                            alt={media.name}
-                          />
-                        </a>
-                      ))}
-                      <Share
-                        label="Share link!"
-                        text="Personal Website with projects, blog and photos"
-                        title="Timothy Newman Site"
-                      />
-                    </div>
-                  </>
-                )}
-              />
+              <div className='markdown-text'>
+                <h2>I would love to hear from you!</h2>
+                <p>Please contact me via the social media icons below or through the email in my <a href="/cv">CV</a>.</p>
+              </div>
+              <SocialMedias />
             </div>
-            <div className="contact-right">
+            {/*<div className="contact-right">
               <div className="contact-form-card mt-2 flex flex-col rounded border-2 border-primary-dark p-4 shadow-md">
                 <form>
                   <div className="form-inputs mb-2 flex flex-col justify-between p-2 text-primary">
@@ -275,7 +246,7 @@ class Contact extends React.Component {
                   </div>
                 </form>
               </div>
-            </div>
+                    </div>*/}
           </section>
         </LayoutSingleColumn>
       </Layout>
@@ -284,23 +255,3 @@ class Contact extends React.Component {
 }
 
 export default Contact;
-
-const query = graphql`
-  query contactQuery {
-    allStrapiSocialMedia(sort: { order: ASC }) {
-      nodes {
-        id
-        image
-        link
-        name
-      }
-    }
-    strapiSmallText(label: { eq: "Contact Page" }) {
-      content {
-        data {
-          content
-        }
-      }
-    }
-  }
-`;

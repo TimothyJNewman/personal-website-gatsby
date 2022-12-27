@@ -23,7 +23,7 @@ const ProjectList = ({ pageContext, data }) => {
   else nextPage = `/project/page/${currentPage + 1}`;
 
   const seo = {
-    metaTitle: 'Project Page',
+    title: 'Project Page',
     isArticle: false,
   };
 

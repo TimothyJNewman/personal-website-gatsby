@@ -29,13 +29,15 @@ module.exports = {
               path
             }
           }
-          allStrapiBlogPost {
+          allBlogPost: allMdx(internal: {contentFilePath: {regex: "/content\/blog/"}}) {
             nodes {
-              updatedAt
-              slug
+              frontmatter {
+                updatedAt
+                slug
+              }
             }
           }
-          allStrapiProjectPost {
+          allProjectPost: allMdx(internal: {contentFilePath: {regex: "/content\/project/"}}) {
             nodes {
               updatedAt
               slug
@@ -46,15 +48,15 @@ module.exports = {
         resolveSiteUrl: () => siteUrl,
         resolvePages: ({
           allSitePage,
-          allStrapiBlogPost,
-          allStrapiProjectPost,
+          allBlogPost,
+          allProjectPost,
         }) => {
           const blogsAndProjects = {};
-          allStrapiBlogPost.nodes.forEach((post) => {
-            blogsAndProjects[`/blog/${post.slug}`] = { updatedAt: post.updatedAt };
+          allBlogPost.nodes.forEach((post) => {
+            blogsAndProjects[`/blog/${post.frontmatter.slug}`] = { updatedAt: post.frontmatter.updatedAt };
           });
-          allStrapiProjectPost.nodes.forEach((post) => {
-            blogsAndProjects[`/project/${post.slug}`] = { updatedAt: post.updatedAt };
+          allProjectPost.nodes.forEach((post) => {
+            blogsAndProjects[`/project/${post.frontmatter.slug}`] = { updatedAt: post.frontmatter.updatedAt };
           });
           return allSitePage.nodes.map((page) => (
             { ...page, ...blogsAndProjects[page.path] }
@@ -70,16 +72,15 @@ module.exports = {
         ),
       },
     },
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
         defaults: {
-          placeholder: 'tracedSVG',
-          tracedSVGOptions: { color: '#2d6da6', background: '#e0f0fa', turdSize: 10 },
+          placeholder: 'blurred',
         },
       },
     },
-    'gatsby-transformer-sharp',
     'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-filesystem',
@@ -90,14 +91,32 @@ module.exports = {
       __key: 'images',
     },
     {
-      resolve: 'gatsby-source-strapi',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        skipFileDownloads: true,
-        apiURL: process.env.STRAPI_API_URL || 'http://localhost:1337',
-        accessToken: process.env.STRAPI_TOKEN,
-        collectionTypes: [{ singularName: 'project-post', queryParams: { populate: 'deep,10' } }, { singularName: 'blog-post', queryParams: { populate: 'deep,10' } }, 'gallery', 'tag', 'social-media', 'single-page', 'small-text'],
-        singleTypes: ['global'],
-        queryLimit: 200,
+        extensions: [
+          '.mdx',
+        ],
+        mdxOptions: {
+          remarkPlugins: [
+            // Add GitHub Flavored Markdown (GFM) support
+            require('remark-gfm'),
+          ],
+        },
+        gatsbyRemarkPlugins: [
+          {
+            options: {
+              maxWidth: 1080,
+            },
+            resolve: 'gatsby-remark-images',
+          }
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: `${__dirname}/src/content`,
       },
     },
     {
@@ -118,15 +137,15 @@ module.exports = {
       options: {
         feeds: [
           {
-            serialize: ({ query: { allStrapiBlogPost } }) => allStrapiBlogPost.nodes.map(
+            serialize: ({ query: { allBlogPost } }) => allBlogPost.nodes.map(
               (post) => {
-                const url = `${siteUrl}/blog/${post.slug}`;
-                const content = `<p>${post.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /><br />`;
-                const categoryArray = post.tags.map((tag) => ({ category: tag.Tag }));
+                const url = `${siteUrl}/blog/${post.frontmatter.slug}`;
+                const content = `<p>${post.frontmatter.summary}</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div><br /><br />`;
+                const categoryArray = post.frontmatter.tags.map((tag) => ({ category: tag }));
                 return {
-                  title: post.title,
-                  date: post.publishedAt,
-                  description: post.summary,
+                  title: post.frontmatter.title,
+                  date: post.frontmatter.publishedAt,
+                  description: post.frontmatter.summary,
                   url,
                   custom_elements: [{ 'content:encoded': content }, ...categoryArray],
                 };
@@ -134,17 +153,17 @@ module.exports = {
             ),
             query: `
               {
-                allStrapiBlogPost(
-                  sort: {order: DESC, fields: publishedAt}
-                  filter: {publishedAt: {ne: null}}
-                ) {
+                allBlogPost: allMdx(
+                  sort: {frontmatter: {publishedAt: DESC}}
+                  filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
+                  ) {
                   nodes {
-                    title
-                    slug
-                    summary
-                    publishedAt(formatString: "MMMM DD, YYYY")
-                    tags {
-                      Tag
+                    frontmatter {
+                      title
+                      slug
+                      summary
+                      publishedAt
+                      tags
                     }
                   }
                 }
@@ -152,7 +171,7 @@ module.exports = {
             `,
             output: 'rss.xml',
             title: 'Timothy Newman Blog Feed',
-            description: 'Blog mainly about technology and university experience',
+            description: 'Blog mainly about technology and my university experience',
           },
         ],
       },

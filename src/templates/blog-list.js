@@ -12,18 +12,18 @@ import Card from '../components/card';
 
 const BlogList = ({ pageContext, data }) => {
   // variables for page navigation
-  const { currentPage, numPages } = pageContext;
+  const { currentPage, blogNumPages } = pageContext;
   let prevPage;
   if (currentPage === 2) prevPage = '/blog';
   else if (currentPage === 1) prevPage = '/blog';
   else prevPage = `/blog/page/${currentPage - 1}`;
   let nextPage;
-  if (currentPage === numPages && currentPage === 1) nextPage = '/blog';
-  else if (currentPage === numPages) nextPage = `/blog/page/${numPages}`;
+  if (currentPage === blogNumPages && currentPage === 1) nextPage = '/blog';
+  else if (currentPage === blogNumPages) nextPage = `/blog/page/${blogNumPages}`;
   else nextPage = `/blog/page/${currentPage + 1}`;
 
   const seo = {
-    metaTitle: 'Blog Page',
+    title: 'Blog Page',
     isArticle: false,
   };
 
@@ -34,18 +34,18 @@ const BlogList = ({ pageContext, data }) => {
           <CoverImage title="Recent Blog Posts" />
           <br />
           <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
-            {data.allStrapiBlogPost.nodes.length > 0 ? (
-              data.allStrapiBlogPost.nodes.map((posts) => (
+            {data.allBlogPost.nodes.length > 0 ? (
+              data.allBlogPost.nodes.map((posts) => (
                 <Card
-                  title={posts.title}
-                  img={posts.coverimage ? posts.coverimage.localFile : ''}
-                  date={getFormattedDate(posts.publishedAt)}
-                  link={getFormattedLink('/blog/', posts.slug)}
-                  description={posts.summary}
-                  tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                  tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                  tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                  key={posts.id}
+                  title={posts.frontmatter.title}
+                  img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData ?? ''}
+                  date={getFormattedDate(posts.frontmatter.publishedAt)}
+                  link={getFormattedLink('/blog/', posts.frontmatter.slug)}
+                  description={posts.frontmatter.summary}
+                  tag1={posts.frontmatter.tags[0] ?? false}
+                  tag2={posts.frontmatter.tags[1] ?? false}
+                  tag3={posts.frontmatter.tags[2] ?? false}
+                  key={posts.frontmatter.slug}
                 />
               ))
             ) : (
@@ -59,7 +59,7 @@ const BlogList = ({ pageContext, data }) => {
             </Link>
             {(() => {
               const items = [];
-              for (let i = 1; i <= numPages; i++) {
+              for (let i = 1; i <= blogNumPages; i++) {
                 if (i === 1) {
                   items.push(
                     <Link
@@ -99,45 +99,25 @@ export default BlogList;
 
 export const query = graphql`
   query BlogList($limit: Int!, $skip: Int!) {
-    allStrapiBlogPost(
+    allBlogPost: allMdx(
       limit: $limit
       skip: $skip
-      sort: { fields: publishedAt, order: DESC }
-      filter: { publishedAt: { ne: null } }
+      sort: {frontmatter: {publishedAt: DESC}}
+      filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
     ) {
       nodes {
-        id
-        title
-        slug
-        coverimage {
-          localFile {
+        frontmatter {
+          title
+          slug
+          coverImage{
             childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 1.5)
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
-          alternativeText
-        }
-        content {
-          data {
-            content
-          }
-        }
-        summary
-        publishedAt
-        tags {
-          Tag
-        }
-        seo {
-          isArticle
-          metaDescription
-          metaTitle
-          keywords
-          preventIndexing
-          shareImage {
-            localFile {
-              publicURL
-            }
-          }
+          summary
+          publishedAt
+          updatedAt
+          tags
         }
       }
     }

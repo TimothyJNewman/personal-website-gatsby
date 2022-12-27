@@ -12,40 +12,41 @@ import Card from '../components/card';
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;
   const seo = {
-    metaTitle: `Tag: ${queryTag}`,
+    title: `Tag: ${queryTag}`,
     isArticle: false,
   };
+  const allTag = data.allTag.nodes.reduce(
+    (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
+  ).sort();
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
         <div className="max-w-screen-md px-2">
           <CoverImage
             title={`Tag: ${queryTag}
-            / projects: ${
-              data.allStrapiProjectPost
-                ? data.allStrapiProjectPost.nodes.length
+            / projects: ${data.allProjectPost
+                ? data.allProjectPost.nodes.length
                 : 0
-            }
-            / blogs: ${
-              data.allStrapiBlogPost ? data.allStrapiBlogPost.nodes.length : 0
-            }
+              }
+            / blogs: ${data.allBlogPost ? data.allBlogPost.nodes.length : 0
+              }
            `}
           />
-          {data.allStrapiProjectPost.nodes.length > 0 ? (
+          {data.allProjectPost.nodes.length > 0 ? (
             <>
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
               <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
-                {data.allStrapiProjectPost.nodes.map((posts) => (
+                {data.allProjectPost.nodes.map((posts) => (
                   <Card
-                    img={posts.CoverImage ? posts.CoverImage.url : ''}
-                    title={posts.title}
-                    date={getFormattedDate(posts.publishedAt)}
-                    link={getFormattedLink('/project/', posts.slug)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                    key={posts.id}
+                    img={posts.frontmatter.coverImage ?? ''}
+                    title={posts.frontmatter.title}
+                    date={getFormattedDate(posts.frontmatter.publishedAt)}
+                    link={getFormattedLink('/project/', posts.frontmatter.slug)}
+                    description={posts.frontmatter.summary}
+                    tag1={posts.frontmatter.tags[0] ?? false}
+                    tag2={posts.frontmatter.tags[1] ?? false}
+                    tag3={posts.frontmatter.tags[2] ?? false}
+                    key={posts.frontmatter.slug}
                   />
                 ))}
               </div>
@@ -59,20 +60,21 @@ const TagList = ({ pageContext, data }) => {
           ) : (
             ''
           )}
-          {data.allStrapiBlogPost.nodes.length > 0 ? (
+          {data.allBlogPost.nodes.length > 0 ? (
             <>
               <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
               <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
-                {data.allStrapiBlogPost.nodes.map((posts) => (
+                {data.allBlogPost.nodes.map((posts) => (
                   <Card
-                    title={posts.title}
-                    date={getFormattedDate(posts.publishedAt)}
-                    link={getFormattedLink('/blog/', posts.slug)}
-                    description={posts.summary}
-                    tag1={posts.tags[0] ? posts.tags[0].Tag : false}
-                    tag2={posts.tags[1] ? posts.tags[1].Tag : false}
-                    tag3={posts.tags[2] ? posts.tags[2].Tag : false}
-                    key={posts.id}
+                    img={posts.frontmatter.coverImage ?? ''}
+                    title={posts.frontmatter.title}
+                    date={getFormattedDate(posts.frontmatter.publishedAt)}
+                    link={getFormattedLink('/blog/', posts.frontmatter.slug)}
+                    description={posts.frontmatter.summary}
+                    tag1={posts.frontmatter.tags[0] ?? false}
+                    tag2={posts.frontmatter.tags[1] ?? false}
+                    tag3={posts.frontmatter.tags[2] ?? false}
+                    key={posts.frontmatter.slug}
                   />
                 ))}
               </div>
@@ -88,14 +90,14 @@ const TagList = ({ pageContext, data }) => {
           )}
           <h2 className="my-4 font-normal font-serif">All Tags</h2>
           <div className="flex flex-wrap">
-            {data.allStrapiTag.nodes ? (
-              data.allStrapiTag.nodes.map((elem) => (
+            {allTag ? (
+              allTag.map((tag) => (
                 <Link
-                  to={`/tag/${elem.Tag}`}
-                  key={elem.Tag}
+                  to={`/tag/${tag}`}
+                  key={tag}
                   className="tag-button"
                 >
-                  {elem.Tag}
+                  {tag}
                 </Link>
               ))
             ) : (
@@ -113,55 +115,57 @@ export default TagList;
 // TODO work on querying images
 export const query = graphql`
   query TagList($queryTag: String!) {
-    allStrapiBlogPost(
-      sort: { fields: publishedAt, order: DESC }
+    allBlogPost: allMdx(
       filter: {
-        tags: { elemMatch: { Tag: { eq: $queryTag } } }
-        publishedAt: { ne: null }
+        internal: {contentFilePath: {regex: "/content\/blog/"}}
+        frontmatter: {tags: { in: [$queryTag] }}
       }
+      sort: {frontmatter: {publishedAt: DESC}}
     ) {
       nodes {
-        id
-        slug
-        coverimage {
-          localFile {
-            publicURL
+        frontmatter {
+          slug
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
           }
-        }
-        title
-        publishedAt
-        summary
-        tags {
-          Tag
+          title
+          publishedAt
+          summary
+          tags
         }
       }
     }
-    allStrapiProjectPost(
-      sort: { fields: publishedAt, order: DESC }
+    allProjectPost: allMdx(
       filter: {
-        tags: { elemMatch: { Tag: { eq: $queryTag } } }
-        publishedAt: { ne: null }
+        internal: {contentFilePath: {regex: "/content\/project/"}}
+        frontmatter: {tags: { in: [$queryTag] }}
       }
+      sort: {frontmatter: {publishedAt: DESC}}
     ) {
       nodes {
-        id
-        slug
-        coverimage {
-          localFile {
-            publicURL
+        frontmatter {
+          slug
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
           }
-        }
-        title
-        summary
-        publishedAt
-        tags {
-          Tag
+          title
+          publishedAt
+          summary
+          tags
         }
       }
     }
-    allStrapiTag {
+    allTag: allMdx(
+      filter: {internal: {contentFilePath: {regex: "/content/"}}, frontmatter: {tags: {ne: null}}}
+    ) {
       nodes {
-        Tag
+        frontmatter {
+          tags
+        }
       }
     }
   }

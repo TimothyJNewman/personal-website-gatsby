@@ -65,7 +65,7 @@ h4 {
   color: var(--color-text-secondary-std);
 }
 
-.markdown-text > div > blockquote {
+.markdown-text blockquote {
   margin-left: 0;
   margin-right: 0;
   padding: 0.4em 1em 0.4em 2em;
@@ -141,4 +141,16 @@ h4 {
 .markdown-text iframe {
   width: 100%;
   border: 0;
+}
+
+/* Adding margin to bottom of image to provide separation*/
+.markdown-text .gatsby-resp-image-wrapper {
+  margin-bottom: 1rem;
+}
+
+.markdown-text a:hover.gatsby-resp-image-link,
+.markdown-text a.gatsby-resp-image-link,
+.markdown-text a:active.gatsby-resp-image-link,
+.markdown-text a:focus.gatsby-resp-image-link {
+  background-size: 0;
 }

@@ -15,27 +15,30 @@ import mstile310x310 from '../images/icons/mstile-310x310.png';*/
 
 const seoQuery = graphql`
   query SEOquery {
-    strapiGlobal {
-      siteName
-      defaultSeo {
-        isArticle
-        metaDescription
-        metaTitle
-        keywords
-        preventIndexing
-        shareImage {
-          localFile {
-            publicURL
+    defaultSeo: mdx(
+      internal: {
+        contentFilePath: {regex: "/content\/global/"}}, 
+        ) {
+      frontmatter {
+        siteName
+        title
+        coverImage{
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
+        summary
+        keywords
+        isArticle
+        preventIndexing
       }
     }
   }
 `;
 
 const SEO = ({ seo = {} }) => {
-  const { strapiGlobal } = useStaticQuery(seoQuery);
-  const { defaultSeo, siteName } = strapiGlobal;
+  const defaultSeoQuery = useStaticQuery(seoQuery);
+  const { frontmatter: { siteName, ...defaultSeo } } = defaultSeoQuery.defaultSeo;
 
   // Merge default and page-specific SEO values
   const fullSeo = { ...defaultSeo, ...seo };
@@ -43,31 +46,31 @@ const SEO = ({ seo = {} }) => {
   const getMetaTags = () => {
     const tags = [];
 
-    if (fullSeo.metaTitle) {
+    if (fullSeo.title) {
       tags.push(
         {
           property: 'og:title',
-          content: fullSeo.metaTitle,
+          content: fullSeo.title,
         },
         {
           name: 'twitter:title',
-          content: fullSeo.metaTitle,
+          content: fullSeo.title,
         }
       );
     }
-    if (fullSeo.metaDescription) {
+    if (fullSeo.summary) {
       tags.push(
         {
           name: 'description',
-          content: fullSeo.metaDescription,
+          content: fullSeo.summary,
         },
         {
           property: 'og:description',
-          content: fullSeo.metaDescription,
+          content: fullSeo.summary,
         },
         {
           name: 'twitter:description',
-          content: fullSeo.metaDescription,
+          content: fullSeo.summary,
         }
       );
     }
@@ -80,7 +83,7 @@ const SEO = ({ seo = {} }) => {
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || 'http://localhost:8000') +
-        fullSeo.shareImage.localFile.publicURL;
+        fullSeo.coverImage.publicURL;
       tags.push(
         {
           name: 'image',
@@ -96,7 +99,7 @@ const SEO = ({ seo = {} }) => {
         }
       );
     }
-    if (fullSeo.isArticle) {
+    if (!fullSeo.isArticle === false) {
       tags.push({
         property: 'og:type',
         content: 'article',
@@ -146,7 +149,7 @@ const SEO = ({ seo = {} }) => {
 
   return (
     <Helmet
-      title={fullSeo.metaTitle}
+      title={fullSeo.title}
       defer={false}
       titleTemplate={`%s | ${siteName}`}
       link={[
@@ -209,17 +212,17 @@ export default SEO;
 
 /* eslint-disable react/no-unused-prop-types, react/forbid-prop-types */
 SEO.propTypes = {
-  metaTitle: PropTypes.string,
-  metaDescription: PropTypes.string,
-  shareImage: PropTypes.object,
+  title: PropTypes.string,
+  summary: PropTypes.string,
+  coverImage: PropTypes.object,
   keywords: PropTypes.string,
   isArticle: PropTypes.bool,
 };
 
 SEO.defaultProps = {
-  metaTitle: null,
-  metaDescription: null,
-  shareImage: null,
+  title: null,
+  summary: null,
+  coverImage: null,
   keywords: null,
   isArticle: false,
 };

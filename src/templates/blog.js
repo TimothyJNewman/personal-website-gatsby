@@ -3,61 +3,57 @@
  */
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import MarkdownView from 'react-showdown';
+import { MDXProvider } from '@mdx-js/react';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Share from '../components/share';
 import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
 
-const BlogTemplate = ({ data }) => (
-  <Layout seo={data.strapiBlogPost.seo}>
+const BlogTemplate = ({ data, children }) => (
+  <Layout seo={data.blogPost.frontmatter}>
     <LayoutSingleColumn>
       <section className="mx-auto max-w-screen-md px-2 text-left w-full">
-        {data.strapiBlogPost.coverimage ? (
+        {data.blogPost.frontmatter.coverImage ? (
           <CoverImage
             img={
-              data.strapiBlogPost.coverimage
-                ? data.strapiBlogPost.coverimage.localFile
-                : ''
+              data.blogPost.frontmatter.coverImage ?? ''
             }
-            alt={data.strapiBlogPost.coverimage.alternativeText}
-            title={data.strapiBlogPost.title}
+            title={data.blogPost.frontmatter.title}
           />
         ) : (
-          <CoverImage title={data.strapiBlogPost.title} />
+          <CoverImage title={data.blogPost.frontmatter.title} />
         )}
         <div className="py-1">
           <div className="flex items-start justify-between py-2">
             <div className="article-date-container m-0 text-sm italic text-dategray">
               <strong>Published:&nbsp;</strong>
-              {getFormattedDate(data.strapiBlogPost.publishedAt)}
+              {getFormattedDate(data.blogPost.frontmatter.publishedAt)}
               <strong>Updated:&nbsp;</strong>
-              {getFormattedDate(data.strapiBlogPost.updatedAt)}
+              {getFormattedDate(data.blogPost.frontmatter.updatedAt)}
             </div>
             <Share
               label="Share this!"
-              text={data.strapiBlogPost.summary}
-              title={data.strapiBlogPost.title}
+              text={data.blogPost.frontmatter.summary}
+              title={data.blogPost.frontmatter.title}
             />
           </div>
           <div className="flex">
-            {data.strapiBlogPost.tags.map((elem) => (
+            {data.blogPost.frontmatter.tags.map((tag) => (
               <Link
                 className="tag-button"
-                to={`/tag/${elem.Tag}`}
-                key={elem.Tag}
+                to={`/tag/${tag}`}
+                key={tag}
               >
-                {elem.Tag}
+                {tag}
               </Link>
             ))}
           </div>
         </div>
         <div className="markdown-text">
-          <MarkdownView
-            markdown={data.strapiBlogPost.content.data.content}
-            options={{ emoji: true, strikethrough: true }}
-          />
+          <MDXProvider>
+            {children}
+          </MDXProvider>
         </div>
         <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
           <Link to="/blog" className="read-more-link">
@@ -74,39 +70,25 @@ export default BlogTemplate;
 
 export const query = graphql`
   query BlogTemplate($slug: String!) {
-    strapiBlogPost(slug: { eq: $slug }) {
-      id
-      coverimage {
-        localFile {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+    blogPost: mdx(
+      internal: {
+        contentFilePath: {regex: "/content\/blog/"}}, 
+        frontmatter: {slug: {eq: $slug}}
+        ) {
+      frontmatter {
+        title
+        summary
+        keywords
+        publishedAt
+        updatedAt
+        tags
+        embeddedAssets {
+          childrenImageSharp {
+            gatsbyImageData
           }
-        }
-        alternativeText
-      }
-      title
-      content {
-        data {
-          content
+          publicURL
         }
       }
-      summary
-      publishedAt
-      updatedAt
-      tags {
-        Tag
-      }
-      seo {
-        metaTitle
-        metaDescription
-        isArticle
-        preventIndexing
-        shareImage {
-          localFile {
-            publicURL
-          }
-        }
-      }
+      body
     }
-  }
-`;
+  }`;

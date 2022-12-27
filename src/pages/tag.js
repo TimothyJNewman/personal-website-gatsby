@@ -9,10 +9,12 @@ import LayoutSingleColumn from '../components/layout-single-column';
 
 const query = graphql`
   query Tag {
-    allStrapiTag {
-      edges {
-        node {
-          Tag
+    allTag: allMdx(
+      filter: {internal: {contentFilePath: {regex: "/content/"}}, frontmatter: {tags: {ne: null}}}
+    ) {
+      nodes {
+        frontmatter {
+          tags
         }
       }
     }
@@ -22,25 +24,28 @@ const query = graphql`
 const TagPage = () => {
   const data = useStaticQuery(query);
   const seo = {
-    metaTitle: 'Tag Page',
+    title: 'Tag Page',
     isArticle: false,
   };
+  const allTag = data.allTag.nodes.reduce(
+    (acc, { frontmatter: {tags} }) => [...new Set([...acc,...tags])], [],
+  ).sort();
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
         <br />
         <section className="max-w-screen-md px-2">
           <CoverImage title="Tags" />
-          <h2 className="my-4">All Tags</h2>
+          <h2 className="my-4 font-normal font-serif">All Tags</h2>
           <div className="flex flex-wrap">
-            {data.allStrapiTag.edges ? (
-              data.allStrapiTag.edges.map((elem) => (
+            {allTag ? (
+              allTag.map((tag) => (
                 <Link
-                  to={`/tag/${elem.node.Tag}`}
-                  key={elem.node.Tag}
+                  to={`/tag/${tag}`}
+                  key={tag}
                   className="tag-button"
                 >
-                  {elem.node.Tag}
+                  {tag}
                 </Link>
               ))
             ) : (

@@ -86,7 +86,7 @@ const IndexPage = () => {
   );
   const allTag = data.allTag.nodes.reduce(
     (acc, { frontmatter: { tags } }) => [...new Set([...new Set([...acc, ...tags])])], [],
-  );
+  ).sort();
   useEffect(() => {
     setTimeout(
       () => setCurrentImage((currentImage + 1) % imagesSrc.length),

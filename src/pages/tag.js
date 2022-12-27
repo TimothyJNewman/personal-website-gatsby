@@ -29,7 +29,7 @@ const TagPage = () => {
   };
   const allTag = data.allTag.nodes.reduce(
     (acc, { frontmatter: {tags} }) => [...new Set([...acc,...tags])], [],
-  );
+  ).sort();
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>

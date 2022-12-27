@@ -12,14 +12,14 @@ import Card from '../components/card';
 
 const ProjectList = ({ pageContext, data }) => {
   // variables for page navigation
-  const { currentPage, numPages } = pageContext;
+  const { currentPage, projectNumPages } = pageContext;
   let prevPage;
   if (currentPage === 2) prevPage = '/project';
   else if (currentPage === 1) prevPage = '/project';
   else prevPage = `/project/page/${currentPage - 1}`;
   let nextPage;
-  if (currentPage === numPages && currentPage === 1) nextPage = '/project';
-  else if (currentPage === numPages) nextPage = `/project/page/${numPages}`;
+  if (currentPage === projectNumPages && currentPage === 1) nextPage = '/project';
+  else if (currentPage === projectNumPages) nextPage = `/project/page/${projectNumPages}`;
   else nextPage = `/project/page/${currentPage + 1}`;
 
   const seo = {
@@ -59,7 +59,7 @@ const ProjectList = ({ pageContext, data }) => {
             </Link>
             {(() => {
               const items = [];
-              for (let i = 1; i <= numPages; i++) {
+              for (let i = 1; i <= projectNumPages; i++) {
                 if (i === 1) {
                   items.push(
                     <Link

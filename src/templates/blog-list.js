@@ -12,14 +12,14 @@ import Card from '../components/card';
 
 const BlogList = ({ pageContext, data }) => {
   // variables for page navigation
-  const { currentPage, numPages } = pageContext;
+  const { currentPage, blogNumPages } = pageContext;
   let prevPage;
   if (currentPage === 2) prevPage = '/blog';
   else if (currentPage === 1) prevPage = '/blog';
   else prevPage = `/blog/page/${currentPage - 1}`;
   let nextPage;
-  if (currentPage === numPages && currentPage === 1) nextPage = '/blog';
-  else if (currentPage === numPages) nextPage = `/blog/page/${numPages}`;
+  if (currentPage === blogNumPages && currentPage === 1) nextPage = '/blog';
+  else if (currentPage === blogNumPages) nextPage = `/blog/page/${blogNumPages}`;
   else nextPage = `/blog/page/${currentPage + 1}`;
 
   const seo = {
@@ -34,7 +34,6 @@ const BlogList = ({ pageContext, data }) => {
           <CoverImage title="Recent Blog Posts" />
           <br />
           <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
-            {console.log(data.allBlogPost.nodes)}
             {data.allBlogPost.nodes.length > 0 ? (
               data.allBlogPost.nodes.map((posts) => (
                 <Card
@@ -60,7 +59,7 @@ const BlogList = ({ pageContext, data }) => {
             </Link>
             {(() => {
               const items = [];
-              for (let i = 1; i <= numPages; i++) {
+              for (let i = 1; i <= blogNumPages; i++) {
                 if (i === 1) {
                   items.push(
                     <Link

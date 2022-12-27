@@ -16,8 +16,9 @@ const TagList = ({ pageContext, data }) => {
     isArticle: false,
   };
   const allTag = data.allTag.nodes.reduce(
-    (acc, { frontmatter: { tags } }) => [...acc, ...tags], [],
-  );
+    (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
+  ).sort();
+  console.log(data)
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
@@ -41,7 +42,7 @@ const TagList = ({ pageContext, data }) => {
                     img={posts.frontmatter.coverImage ?? ''}
                     title={posts.frontmatter.title}
                     date={getFormattedDate(posts.frontmatter.publishedAt)}
-                    link={getFormattedLink('/project/', posts.slug)}
+                    link={getFormattedLink('/project/', posts.frontmatter.slug)}
                     description={posts.frontmatter.summary}
                     tag1={posts.frontmatter.tags[0] ?? false}
                     tag2={posts.frontmatter.tags[1] ?? false}

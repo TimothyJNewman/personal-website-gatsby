@@ -17,6 +17,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     query {
       allBlogPost: allMdx(
         filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
+        sort: {frontmatter: {publishedAt: DESC}}
         ) {
         nodes {
           frontmatter {
@@ -68,6 +69,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     query {
       allProjectPost: allMdx(
         filter: {internal: {contentFilePath: {regex: "/content\/project/"}}}
+        sort: {frontmatter: {publishedAt: DESC}}
         ) {
         nodes {
           frontmatter {
@@ -141,7 +143,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const allTag = tagQuery.data.allTag.nodes.reduce(
     (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
-  );
+  ).sort();
 
   // Create pages for each article.
   allTag.forEach((tag) => {

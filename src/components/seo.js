@@ -119,6 +119,7 @@ const SEO = ({ seo = {} }) => {
     }
     tags.push(
       { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'google-site-verification', content: 'uATk-Uc5iaxxDP1Q__bcemrMdePQPYhuO3g0FSYIBjg' },
       { name: 'msapplication-TileColor', content: '#da532c' },
       {
         name: 'msapplication-square70x70logo',

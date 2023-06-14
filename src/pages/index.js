@@ -17,7 +17,7 @@ const query = graphql`
       }
     }
     allProjectPost: allMdx(
-      limit: 4
+      limit: 8
       sort: {frontmatter: {publishedAt: DESC}}
       filter: {internal: {contentFilePath: {regex: "/content\/project/"}}}
     ) {
@@ -32,7 +32,7 @@ const query = graphql`
       }
     }
     allBlogPost: allMdx(
-      limit: 4
+      limit: 8
       sort: {frontmatter: {publishedAt: DESC}}
       filter: {internal: {contentFilePath: {regex: "/content\/blog/"}}}
       ) {
@@ -80,17 +80,13 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="site-intro-section flex lg:w-[64rem] flex-col mx-2">
+        <section className="site-intro-section flex lg:w-[48rem] flex-col mx-2">
           <div className="grid animate-fade-in grid-cols-1 gap-4 md:grid-cols-12">
-            <div className="rounded bg-white-overlay md:col-span-7">
-              <h1 className='font-serif text-4xl'>Timothy Newman</h1>
-              <span className='italic mb-2'>welcomes you to his website</span>
-              <ul className='text-md mt-4'>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🏫</span> 3rd year MEng Electrical and Electronic Engineering at Imperial College London</li>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🛰️</span> Interested in Analog and Digital IC Design, Digital Signal Processing, Machine Learning and Software Engineering</li>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>🔭</span> Hobbies include programming, astronomy, photography and exploring the countryside</li>
-                <li className='mb-2'><span className='inline-flex justify-center items-center pb-0.5 h-7 w-7 rounded-full bg-primary-lighter'>📇</span> Contact me on any of the platforms below or through the email in my CV</li>
-              </ul>
+            <div className="rounded bg-white-overlay md:col-span-7 flex flex-col justify-between">
+              <div><h1 className='hidden font-serif text-4xl'>Timothy Newman</h1>
+                <span className='hidden italic mb-2'>welcomes you to his website</span>
+                <div className='text-dategray' id="summary">I am an Electrical and Electronic Engineering undergraduate at Imperial College London. At the moment, I am interning at Mediatek UK in the radio-frequency division. My interests lay in analog & digital IC design, PCB design, machine learning and software engineering. My hobbies are programming, astronomy, photography and exploring the countryside.</div>
+              </div>
               <SocialMedias />
             </div>
             <div className="flex items-center justify-center md:col-span-5">
@@ -111,25 +107,27 @@ const IndexPage = () => {
             </a>
           </div>
         </section>
-        <div className="max-w-screen-md">
-          <section className="px-2" id="recentprojectssection">
+        <div className="lg:w-[48rem]">
+          <section className="px-2 md:px-0" id="recentprojectssection">
             <div className="flex items-center justify-between">
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
             </div>
-            <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
+            <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
               {data.allProjectPost.nodes ? (
-                data.allProjectPost.nodes.map((posts) => (
-                  <Card
-                    title={posts.frontmatter.title}
-                    date={getFormattedDate(posts.frontmatter.publishedAt)}
-                    link={getFormattedLink('/project/', posts.frontmatter.slug)}
-                    description={posts.frontmatter.summary}
-                    tag1={posts.frontmatter.tags[0] ?? false}
-                    tag2={posts.frontmatter.tags[1] ?? false}
-                    tag3={posts.frontmatter.tags[2] ?? false}
-                    key={posts.frontmatter.slug}
-                  />
-                ))
+                data.allProjectPost.nodes
+                  .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
+                  .map((posts) => (
+                    <Card
+                      title={posts.frontmatter.title}
+                      date={getFormattedDate(posts.frontmatter.publishedAt)}
+                      link={getFormattedLink('/project/', posts.frontmatter.slug)}
+                      description={posts.frontmatter.summary}
+                      tag1={posts.frontmatter.tags[0] ?? false}
+                      tag2={posts.frontmatter.tags[1] ?? false}
+                      tag3={posts.frontmatter.tags[2] ?? false}
+                      key={posts.frontmatter.slug}
+                    />
+                  ))
               ) : (
                 <p className="error-message">No projects found</p>
               )}
@@ -141,22 +139,24 @@ const IndexPage = () => {
               </Link>
             </div>
           </section>
-          <section className="px-2">
+          <section className="px-2 md:px-0">
             <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
-            <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
+            <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
               {data.allBlogPost.nodes ? (
-                data.allBlogPost.nodes.map((posts) => (
-                  <Card
-                    title={posts.frontmatter.title}
-                    date={getFormattedDate(posts.frontmatter.publishedAt)}
-                    link={getFormattedLink('/blog/', posts.frontmatter.slug)}
-                    description={posts.frontmatter.summary}
-                    tag1={posts.frontmatter.tags[0] ?? false}
-                    tag2={posts.frontmatter.tags[1] ?? false}
-                    tag3={posts.frontmatter.tags[2] ?? false}
-                    key={posts.frontmatter.slug}
-                  />
-                ))
+                data.allBlogPost.nodes
+                  .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
+                  .map((posts) => (
+                    <Card
+                      title={posts.frontmatter.title}
+                      date={getFormattedDate(posts.frontmatter.publishedAt)}
+                      link={getFormattedLink('/blog/', posts.frontmatter.slug)}
+                      description={posts.frontmatter.summary}
+                      tag1={posts.frontmatter.tags[0] ?? false}
+                      tag2={posts.frontmatter.tags[1] ?? false}
+                      tag3={posts.frontmatter.tags[2] ?? false}
+                      key={posts.frontmatter.slug}
+                    />
+                  ))
               ) : (
                 <p className="error-message">No blog posts found</p>
               )}
@@ -168,7 +168,7 @@ const IndexPage = () => {
               </Link>
             </div>
           </section>
-          <section className="px-2">
+          <section className="px-2 md:px-0">
             <h2 className="my-4 font-normal font-serif">All Tags</h2>
             <div className="flex flex-wrap">
               {allTag ? (

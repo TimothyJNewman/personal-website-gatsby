@@ -30,24 +30,26 @@ const ProjectList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <div className="max-w-screen-md px-2">
+        <div className="lg:w-[48rem] px-2 lg:px-0">
           <CoverImage title="Recent Projects" />
           <br />
           <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
             {data.allProjectPost.nodes.length > 0 ? (
-              data.allProjectPost.nodes.map((posts) => (
-                <Card
-                  title={posts.frontmatter.title}
-                  img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData ?? ''}
-                  date={getFormattedDate(posts.frontmatter.publishedAt)}
-                  link={getFormattedLink('/project/', posts.frontmatter.slug)}
-                  description={posts.frontmatter.summary}
-                  tag1={posts.frontmatter.tags[0] ?? false}
-                  tag2={posts.frontmatter.tags[1] ?? false}
-                  tag3={posts.frontmatter.tags[2] ?? false}
-                  key={posts.frontmatter.slug}
-                />
-              ))
+              data.allProjectPost.nodes
+                .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
+                .map((posts) => (
+                  <Card
+                    title={posts.frontmatter.title}
+                    img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData ?? ''}
+                    date={getFormattedDate(posts.frontmatter.publishedAt)}
+                    link={getFormattedLink('/project/', posts.frontmatter.slug)}
+                    description={posts.frontmatter.summary}
+                    tag1={posts.frontmatter.tags[0] ?? false}
+                    tag2={posts.frontmatter.tags[1] ?? false}
+                    tag3={posts.frontmatter.tags[2] ?? false}
+                    key={posts.frontmatter.slug}
+                  />
+                ))
             ) : (
               <p className="error-message">No projects</p>
             )}

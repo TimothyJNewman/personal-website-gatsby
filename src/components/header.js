@@ -77,13 +77,12 @@ const Header = () => {
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
       <header
-        className={`sticky top-[-24px] z-10 flex h-20 items-center bg-white text-primary sm:top-[-16px] ${
-          !isAtTop && 'shadow-md'
-        }`}
+        className={`sticky top-[-24px] z-10 flex items-end bg-white text-primary sm:top-[-16px] ${!isAtTop ? 'h-20 shadow-md'
+          : 'h-24'}`}
       >
-        <div className="sticky top-0 h-14 min-w-full py-2 px-4 pt-[0.6rem] sm:pt-2">
-          <div className="mx-auto flex lg:w-[64rem] items-center justify-between">
-            <Link to="/">
+        <div className="sticky top-0 h-15 min-w-full  py-2 px-4 pt-[0.6rem] sm:pt-2">
+          <div className="mx-auto flex lg:w-[48rem] justify-between">
+            {/* <Link to="/" className='hidden'>
               <div
                 id="logo-with-text"
                 className="rounded-full bg-secondary-light p-1 px-2 hover:bg-primary-dark hover:shadow-md sm:p-2"
@@ -228,40 +227,61 @@ const Header = () => {
                   </g>
                 </svg>
               </div>
+            </Link> */}
+            <Link to="/">
+              <h1 className='font-serif sm:text-4xl text-3xl' id="logo-with-text">
+                <span className="text-timothy">T</span>
+                <span className="text-timothy">i</span>
+                <span className="text-timothy">m</span>
+                <span className="text-timothy">o</span>
+                <span className="text-timothy">t</span>
+                <span className="text-timothy">h</span>
+                <span className="text-timothy">y</span>
+                &nbsp;
+                <span className="text-timothy">N</span>
+                <span className="text-timothy">e</span>
+                <span className="text-timothy">w</span>
+                <span className="text-timothy">m</span>
+                <span className="text-timothy">a</span>
+                <span className="text-timothy">n</span>
+              </h1>
+              {isAtTop && <span className='italic mb-2 ease-in'>welcomes you to his website</span>}
             </Link>
-            <div className="flex items-center">
-              <div className="hidden items-center px-2 sm:flex">
-                {ButtonTextLink.map(({ text, link }) =>
-                  HeaderButton({ text, link })
-                )}
-              </div>
-              <div className="flex rounded">
-                <button
-                  className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-l px-0 py-0 text-lg sm:w-fit sm:rounded sm:px-2"
-                  aria-label="Theme Toggle"
-                  type="button"
-                  onClick={() => {
-                    toggleTheme(!isDarkTheme);
-                    ChangeDataTheme(!isDarkTheme);
-                  }}
-                >
-                  <i className={`far ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
-                  <span className="ml-1.5 hidden sm:inline">
-                    {isDarkTheme ? 'light' : 'dark'}
-                  </span>
-                </button>
-                <button
-                  className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-r px-0 py-0 text-lg sm:hidden"
-                  aria-label="Toggle Menu"
-                  type="button"
-                  onClick={() => {
-                    toggleMenuExpansion(!menuExpanded);
-                  }}
-                >
-                  <i
-                    className={`fa ${!menuExpanded ? 'fa-bars' : 'fa-times'}`}
-                  />
-                </button>
+            <div className='mt-[0.4rem]'>
+              <div className="flex items-center">
+                <div className="hidden px-2 sm:flex">
+                  {ButtonTextLink.map(({ text, link }) =>
+                    HeaderButton({ text, link })
+                  )}
+                </div>
+                <div className="flex rounded">
+                  <button
+                    className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-l px-0 py-0 text-lg sm:w-fit sm:rounded sm:px-2"
+                    aria-label="Theme Toggle"
+                    type="button"
+                    onClick={() => {
+                      toggleTheme(!isDarkTheme);
+                      ChangeDataTheme(!isDarkTheme);
+                    }}
+                  >
+                    <i className={`far ${isDarkTheme ? 'fa-sun' : 'fa-moon'}`} />
+                    <span className="ml-1.5 hidden sm:inline">
+                      {isDarkTheme ? 'light' : 'dark'}
+                    </span>
+                  </button>
+                  <button
+                    className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-r px-0 py-0 text-lg sm:hidden"
+                    aria-label="Toggle Menu"
+                    type="button"
+                    onClick={() => {
+                      toggleMenuExpansion(!menuExpanded);
+                    }}
+                  >
+                    <i
+                      className={`fa ${!menuExpanded ? 'fa-bars' : 'fa-times'}`}
+                    />
+                  </button>
+                </div>
               </div>
             </div>
           </div>

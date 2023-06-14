@@ -13,7 +13,7 @@ import { getFormattedDate } from '../util/common-utils';
 const BlogTemplate = ({ data, children }) => (
   <Layout seo={data.blogPost.frontmatter}>
     <LayoutSingleColumn>
-      <section className="mx-auto max-w-screen-md px-2 text-left w-full">
+      <section className="mx-auto lg:w-[48rem] px-2 lg:px-0 text-left w-full">
         {data.blogPost.frontmatter.coverImage ? (
           <CoverImage
             img={

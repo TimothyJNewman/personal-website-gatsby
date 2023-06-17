@@ -35,7 +35,7 @@ const TagList = ({ pageContext, data }) => {
           {data.allProjectPost.nodes.length > 0 ? (
             <>
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
-              <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
+              <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
                 {data.allProjectPost.nodes
                   .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
                   .map((posts) => (
@@ -65,7 +65,7 @@ const TagList = ({ pageContext, data }) => {
           {data.allBlogPost.nodes.length > 0 ? (
             <>
               <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
-              <div className="grid-cols-1 md:grid-cols-2 grid gap-4">
+              <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
                 {data.allBlogPost.nodes.map((posts) => (
                   <Card
                     img={posts.frontmatter.coverImage ?? ''}
@@ -91,7 +91,7 @@ const TagList = ({ pageContext, data }) => {
             ''
           )}
           <h2 className="my-4 font-normal font-serif">All Tags</h2>
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap gap-1">
             {allTag ? (
               allTag.map((tag) => (
                 <Link

@@ -37,7 +37,7 @@ const TagPage = () => {
         <section className="max-w-screen-md px-2">
           <CoverImage title="Tags" />
           <h2 className="my-4 font-normal font-serif">All Tags</h2>
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap gap-1">
             {allTag ? (
               allTag.map((tag) => (
                 <Link

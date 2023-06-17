@@ -14,7 +14,7 @@
     border-color: theme('colors.success-border');
   }
   .tag-button {
-    @apply m-0.5 rounded border-2 border-transparent px-1 py-0.5 text-sm hover:bg-transparent focus:bg-transparent;
+    @apply rounded border-2 border-transparent px-1 py-0.5 text-sm hover:bg-transparent focus:bg-transparent;
     background-color: theme('backgroundColor.primary-dark');
     color: theme('textColor.std-secondary');
   }

@@ -77,8 +77,7 @@ const Header = () => {
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
       <header
-        className={`sticky top-[-24px] z-10 flex items-end bg-white text-primary sm:top-[-16px] ${!isAtTop ? 'h-20 shadow-md'
-          : 'h-24'}`}
+        className={`sticky top-[-24px] z-10 flex bg-white text-primary sm:top-[-16px] ${isAtTop ? 'h-24 items-end' : 'h-20 shadow-md items-center'}`}
       >
         <div className="sticky top-0 h-15 min-w-full  py-2 px-4 pt-[0.6rem] sm:pt-2">
           <div className="mx-auto flex lg:w-[48rem] justify-between">
@@ -247,8 +246,8 @@ const Header = () => {
               </h1>
               {isAtTop && <span className='italic mb-2 ease-in'>welcomes you to his website</span>}
             </Link>
-            <div className='mt-[0.4rem]'>
-              <div className="flex items-center">
+            <div className={`${isAtTop ? "" : 'sm:mt-[0.4rem]'}`}>
+              <div className={`flex ${isAtTop ? 'items-center' : 'items-start'}`}>
                 <div className="hidden px-2 sm:flex">
                   {ButtonTextLink.map(({ text, link }) =>
                     HeaderButton({ text, link })
@@ -289,7 +288,7 @@ const Header = () => {
       </header>
       <SmoothCollapse
         expanded={menuExpanded}
-        className="fixed top-16 flex w-full max-w-screen-md justify-center border-y-2 border-secondary-dark bg-white text-primary sm:hidden"
+        className={`fixed flex w-full max-w-screen-md justify-center border-y-2 border-secondary-dark bg-white text-primary sm:hidden ${isAtTop ? 'top-22' : 'top-14'}`}
       >
         <div className="my-2 mx-4 flex flex-wrap text-secondary-dark">
           {ButtonTextLink.map(({ text, link }) =>

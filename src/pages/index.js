@@ -28,6 +28,11 @@ const query = graphql`
           slug
           summary
           tags
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
         }
       }
     }
@@ -43,6 +48,11 @@ const query = graphql`
           slug
           summary
           tags
+          coverImage{
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
         }
       }
     }
@@ -85,7 +95,9 @@ const IndexPage = () => {
             <div className="rounded bg-white-overlay md:col-span-7 flex flex-col justify-between">
               <div><h1 className='hidden font-serif text-4xl'>Timothy Newman</h1>
                 <span className='hidden italic mb-2'>welcomes you to his website</span>
-                <div className='text-dategray' id="summary">I am an Electrical and Electronic Engineering undergraduate at Imperial College London. At the moment, I am interning at Mediatek UK in the radio-frequency division. My interests lay in analog & digital IC design, PCB design, machine learning and software engineering. My hobbies are programming, astronomy, photography and exploring the countryside.</div>
+                <div className='text-dategray' id="summary">
+                  Greetings! I am an undergraduate pursuing Electrical and Electronic Engineering at Imperial College London. Currently, I am interning at Mediatek UK, specifically in the radio-frequency division. My interests lie in analog and digital IC design, PCB design, machine learning, and software engineering. Outside of my academic endeavors, I enjoy programming, astronomy, photography (see slideshow), and embarking on adventures in the countryside.
+                </div>
               </div>
               <SocialMedias />
             </div>
@@ -119,6 +131,7 @@ const IndexPage = () => {
                   .map((posts) => (
                     <Card
                       title={posts.frontmatter.title}
+                      img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData}
                       date={getFormattedDate(posts.frontmatter.publishedAt)}
                       link={getFormattedLink('/project/', posts.frontmatter.slug)}
                       description={posts.frontmatter.summary}
@@ -148,6 +161,7 @@ const IndexPage = () => {
                   .map((posts) => (
                     <Card
                       title={posts.frontmatter.title}
+                      img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData}
                       date={getFormattedDate(posts.frontmatter.publishedAt)}
                       link={getFormattedLink('/blog/', posts.frontmatter.slug)}
                       description={posts.frontmatter.summary}
@@ -170,7 +184,7 @@ const IndexPage = () => {
           </section>
           <section className="px-2 md:px-0">
             <h2 className="my-4 font-normal font-serif">All Tags</h2>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap gap-1">
               {allTag ? (
                 allTag.map((tag) => (
                   <Link

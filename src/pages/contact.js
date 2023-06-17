@@ -145,7 +145,7 @@ class Contact extends React.Component {
     return (
       <Layout seo={seo}>
         <LayoutSingleColumn>
-          <section className="contact-container max-w-screen-md px-2">
+          <section className="contact-container lg:w-[48rem] mx-2">
             <div className="contact-left pr-4">
               <CoverImage title="Contact Me!" />
               <div className='markdown-text'>

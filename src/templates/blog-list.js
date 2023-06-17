@@ -33,7 +33,7 @@ const BlogList = ({ pageContext, data }) => {
         <div className="lg:w-[48rem] px-2 lg:px-0">
           <CoverImage title="Recent Blog Posts" />
           <br />
-          <section className="grid-cols-1 md:grid-cols-2 grid gap-4">
+          <section className="grid-cols-1 md:grid-cols-1 grid gap-4">
             {data.allBlogPost.nodes.length > 0 ? (
               data.allBlogPost.nodes
                 .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))

@@ -36,7 +36,7 @@ const ProjectTemplate = ({ children, data }) => (
               title={data.projectPost.frontmatter.title}
             />
           </div>
-          <div className="flex">
+          <div className="flex gap-1">
             {data.projectPost.frontmatter.tags.map((tag) => (
               <Link
                 className="tag-button"

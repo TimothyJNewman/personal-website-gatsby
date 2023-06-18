@@ -20,7 +20,7 @@ const Card = ({
           <p>{description}</p>
         </div>
         <div className="flex flex-wrap gap-1 mt-2">
-          {tags.map((tag) => (
+          {tags && tags.map((tag) => (
             <Link className="tag-button" to={`/tag/${tag}`}>
               {tag}
             </Link>

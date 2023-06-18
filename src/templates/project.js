@@ -9,6 +9,7 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import CoverImage from '../components/cover-image';
 import Share from '../components/share';
 import { getFormattedDate } from '../util/common-utils';
+import 'katex/dist/katex.min.css';
 
 const ProjectTemplate = ({ children, data }) => (
   <Layout seo={data.projectPost.frontmatter}>

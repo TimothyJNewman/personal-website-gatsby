@@ -15,7 +15,8 @@ const About = () => {
           <CoverImage title="About" />
           <div className="markdown-text">
             <div>
-              <p><strong>Hello, welcome to my personal corner of the internet!😀😀😀</strong> At the moment, I am a third year student at Imperial College London working towards a MEng in <strong>Electrical and Electronic Engineering</strong>. Overall, I enjoy the course although the work load can be quite intense.</p>
+              <p><strong>Hello, welcome to my personal corner of the internet!😀😀😀</strong> I am an undergraduate pursuing <strong>Electrical and Electronic Engineering</strong> at Imperial College London. Currently, I am interning at Mediatek UK, specifically in the radio-frequency division. My interests lie in analog and digital IC design, PCB design, machine learning, and software engineering. </p>
+
               <h2 id="cocurricularactivities">Co-Curricular Activities 🔭📈🎻📷</h2>
               <p>Apart from my studies, I am part of a few clubs and societies at my college union.</p>
               <ul>

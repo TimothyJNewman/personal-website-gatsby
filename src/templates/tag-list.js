@@ -45,9 +45,7 @@ const TagList = ({ pageContext, data }) => {
                       date={getFormattedDate(posts.frontmatter.publishedAt)}
                       link={getFormattedLink('/project/', posts.frontmatter.slug)}
                       description={posts.frontmatter.summary}
-                      tag1={posts.frontmatter.tags[0] ?? false}
-                      tag2={posts.frontmatter.tags[1] ?? false}
-                      tag3={posts.frontmatter.tags[2] ?? false}
+                      tags={posts.frontmatter.tags}
                       key={posts.frontmatter.slug}
                     />
                   ))}
@@ -73,9 +71,7 @@ const TagList = ({ pageContext, data }) => {
                     date={getFormattedDate(posts.frontmatter.publishedAt)}
                     link={getFormattedLink('/blog/', posts.frontmatter.slug)}
                     description={posts.frontmatter.summary}
-                    tag1={posts.frontmatter.tags[0] ?? false}
-                    tag2={posts.frontmatter.tags[1] ?? false}
-                    tag3={posts.frontmatter.tags[2] ?? false}
+                    tags={posts.frontmatter.tags}
                     key={posts.frontmatter.slug}
                   />
                 ))}

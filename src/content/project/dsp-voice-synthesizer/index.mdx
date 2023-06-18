@@ -2,17 +2,32 @@
 slug: dsp-voice-synthesizer
 title: DSP Voice Synthesizer
 coverImage: ./dsp_audio.png
-summary: As part of the 3rd year real-time digital signal processing module, we created a voice synthesizer that could change the pitch of the message on the fly.
+summary: As part of the 3rd year Real-Time Digital Signal Processing module, we created a voice synthesizer that could synthesize a message using Linear Predictive Coding (LPC). The hardware used was the TI D2837D LaunchPad and BOOSTXL_AUDIO boards.
 keywords: DSP, university
 publishedAt: 2023-05-15
 updatedAt: 2023-05-15
 tags:
   - DSP
-  - engineering
   - electronics
   - university
+embeddedAssets:
+ - ./hello_world_original.mp3
+ - ./hello_world_simulink.mp3
 ---
 
-In my 3rd year, I took the real-time digital signal processing module.
+In my 3rd year, I took the real-time digital signal processing module. This module applies the theory of Digital Signal Processing in microcontrollers. In a group of 2, we created a voice synthesizer that could synthesize a message using Linear Predictive Coding (LPC). Since this course focussed only on the voice synthesise and not on text-to-speech, we were allowed to record an audio clip, encode this audio and then resynthesize this audio on the DSP board. The advantage of LPC is that the bit rate is greatly reduced which means that it would fit within the memory contraints of the DSP chip.  The hardware used was the TI D2837D LaunchPad and BOOSTXL_AUDIO boards and the software was created using Simulink embedded coder. 
 
-![DSP Spectrogram](./dsp_audio.png)
+The results with the best version of the synthesizer can be seen below:
+![Original Audio Spectrogram](./original_audio.png)
+<audio controls=" ">
+  <source src={props.data.projectPost.frontmatter.embeddedAssets[0].publicURL} type="audio/mpeg" />
+  Your browser does not support the audio tag.
+</audio>
+
+![Synthesized Aduio Spectrogram](./dsp_audio.png)
+<audio controls=" ">
+  <source src={props.data.projectPost.frontmatter.embeddedAssets[1].publicURL} type="audio/mpeg" />
+  Your browser does not support the audio tag.
+</audio>
+The generated audio also demonstrates a pitch shift.
+

@@ -2,17 +2,35 @@
 slug: model-rocket-flight-computer
 title: Model Rocket Flight Computer
 coverImage: ./pcb_screenshot.png
-summary: As part of IC SpaceSoc, we designed a PCB flight computer using an STM32 microcontroller, environment sensor, inertial measurement unit, GPS and radio. 
+summary: As part of IC SpaceSoc, we designed a PCB flight computer using an STM32 microcontroller, environment sensor, inertial measurement unit, GPS, buzzer and radio. The PCB was assembled using a stencil and reflow oven.
 keywords: rocket, university
 publishedAt: 2023-05-16
 updatedAt: 2023-05-16
 tags:
   - PCB
-  - engineering
+  - STM32
   - electronics
   - university
+embeddedAssets: 
+  - ./circuit_board_design_v2_1.pdf
 ---
 
-For the high powered rocketry (HPR) project, we designed a small gun powder powered rocket.
+For the high powered rocketry (HPR) project, we designed a small gun powder powered rocket. We plan on launching the rocket on the 2nd of July at the East Anglian Rocketry Society rocket range at Cambridge. 
 
+I was involved in designing the flight computer for the rocket. The flight computer has the following features:
+
+ - Battery life of at least 20min
+ - GPS for location data
+ - Inertial Measurement Unit
+ - Environment Sensor to measure temperature, humidity and pressure
+ - Flash chip to store data
+ - Radio for communicating GPS coordinates for recovery
+ - Buzzer for aiding in recovery
+ - Board width less than the inner 36mm inner diamter of the rocket tube and weight less than 100g
+
+The current project, including hardware and software, can be found in [this repository](https://github.com/ImperialSpaceSociety/Flight-Computer). The schematic of the PCB can be viewed below.
+<embed src={props.data.projectPost.frontmatter.embeddedAssets[0].publicURL} type="application/pdf" width="100%" height="600px" />
+
+<br />
+The 3D view of the PCB can be viewed below.
 ![PCB of rocket flight computer](./pcb_screenshot.png)

@@ -9,9 +9,7 @@ const Card = ({
   date,
   link,
   description,
-  tag1,
-  tag2,
-  tag3,
+  tags,
 }) => (
   <div className="rounded bg-primary-lighter shadow-md hover:shadow col-span-1">
     <Link to={link} className="grid grid-cols-3 h-full">
@@ -22,27 +20,11 @@ const Card = ({
           <p>{description}</p>
         </div>
         <div className="flex flex-wrap gap-1 mt-2">
-          {tag1 ? (
-            <Link className="tag-button" to={`/tag/${tag1}`}>
-              {tag1}
+          {tags.map((tag) => (
+            <Link className="tag-button" to={`/tag/${tag}`}>
+              {tag}
             </Link>
-          ) : (
-            ''
-          )}
-          {tag2 ? (
-            <Link className="tag-button" to={`/tag/${tag2}`}>
-              {tag2}
-            </Link>
-          ) : (
-            ''
-          )}
-          {tag3 ? (
-            <Link className="tag-button" to={`/tag/${tag3}`}>
-              {tag3}
-            </Link>
-          ) : (
-            ''
-          )}
+          ))}
         </div>
       </div>
       {img !== undefined && (

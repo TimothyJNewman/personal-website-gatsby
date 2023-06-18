@@ -1,10 +1,19 @@
+import { createRequire } from "module";
+import remarkGfm from "remark-gfm";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const require = createRequire(import.meta.url)
+
 require('dotenv').config({
   path: '.env',
 });
 
 const siteUrl = process.env.GATSBY_ROOT_URL || 'http://localhost:8000';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-module.exports = {
+const config = {
   siteMetadata: {
     siteUrl,
     title: 'Personal Website',
@@ -70,9 +79,9 @@ module.exports = {
             { ...page, ...blogsAndProjects[page.path] }
           ));
         },
-        serialize: ({ path, updatedAt }) => (
+        serialize: ({ pathFull, updatedAt }) => (
           {
-            url: path,
+            url: pathFull,
             lastmod: updatedAt,
             changefreq: 'daily',
             priority: 0.7,
@@ -107,7 +116,7 @@ module.exports = {
         mdxOptions: {
           remarkPlugins: [
             // Add GitHub Flavored Markdown (GFM) support
-            require('remark-gfm'),
+            remarkGfm,
           ],
         },
         gatsbyRemarkPlugins: [
@@ -116,7 +125,7 @@ module.exports = {
               maxWidth: 1080,
             },
             resolve: 'gatsby-remark-images',
-          }
+          },
         ],
       },
     },
@@ -187,3 +196,5 @@ module.exports = {
     'gatsby-plugin-offline',
   ],
 };
+
+export default config;

@@ -30,7 +30,7 @@ const ProjectList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <div className="lg:w-[48rem] px-2 lg:px-0">
+        <div className="lg:w-[54rem] px-2 lg:px-0">
           <CoverImage title="Recent Projects" />
           <br />
           <section className="grid-cols-1 md:grid-cols-1 grid gap-4">

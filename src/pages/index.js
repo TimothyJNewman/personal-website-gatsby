@@ -90,7 +90,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="site-intro-section flex lg:w-[48rem] flex-col mx-2">
+        <section className="site-intro-section flex lg:w-[54rem] flex-col mx-2">
           <div className="grid animate-fade-in grid-cols-1 gap-4 md:grid-cols-12">
             <div className="rounded bg-white-overlay md:col-span-7 flex flex-col justify-between">
               <div><h1 className='hidden font-serif text-4xl'>Timothy Newman</h1>
@@ -119,7 +119,7 @@ const IndexPage = () => {
             </a>
           </div>
         </section>
-        <div className="lg:w-[48rem]">
+        <div className="lg:w-[54rem]">
           <section className="px-2 md:px-0" id="recentprojectssection">
             <div className="flex items-center justify-between">
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>

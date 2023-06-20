@@ -7,7 +7,7 @@ import CoverImage from '../components/cover-image';
 import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
-import Card from '../components/card';
+import ArticleCard from '../components/article-card';
 
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;
@@ -39,7 +39,7 @@ const TagList = ({ pageContext, data }) => {
                 {data.allProjectPost.nodes
                   .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
                   .map((posts) => (
-                    <Card
+                    <ArticleCard
                       img={posts.frontmatter.coverImage ?? ''}
                       title={posts.frontmatter.title}
                       date={getFormattedDate(posts.frontmatter.publishedAt)}
@@ -65,7 +65,7 @@ const TagList = ({ pageContext, data }) => {
               <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
               <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
                 {data.allBlogPost.nodes.map((posts) => (
-                  <Card
+                  <ArticleCard
                     img={posts.frontmatter.coverImage ?? ''}
                     title={posts.frontmatter.title}
                     date={getFormattedDate(posts.frontmatter.publishedAt)}

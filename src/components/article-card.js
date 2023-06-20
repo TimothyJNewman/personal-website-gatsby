@@ -2,7 +2,7 @@ import React from 'react';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 
-const Card = ({
+const ArticleCard = ({
   img,
   alt = '',
   title,
@@ -20,7 +20,7 @@ const Card = ({
           <p>{description}</p>
         </div>
         <div className="flex flex-wrap gap-1 mt-2">
-          {tags.map((tag) => (
+          {tags && tags.map((tag) => (
             <Link className="tag-button" to={`/tag/${tag}`}>
               {tag}
             </Link>
@@ -34,4 +34,4 @@ const Card = ({
   </div>
 );
 
-export default Card;
+export default ArticleCard;

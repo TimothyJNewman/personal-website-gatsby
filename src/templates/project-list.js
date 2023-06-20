@@ -8,7 +8,7 @@ import CoverImage from '../components/cover-image';
 import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
-import Card from '../components/card';
+import ArticleCard from '../components/article-card';
 
 const ProjectList = ({ pageContext, data }) => {
   // variables for page navigation
@@ -38,7 +38,7 @@ const ProjectList = ({ pageContext, data }) => {
               data.allProjectPost.nodes
                 .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
                 .map((posts) => (
-                  <Card
+                  <ArticleCard
                     title={posts.frontmatter.title}
                     img={posts.frontmatter?.coverImage?.childImageSharp?.gatsbyImageData ?? ''}
                     date={getFormattedDate(posts.frontmatter.publishedAt)}

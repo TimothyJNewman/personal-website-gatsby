@@ -12,7 +12,7 @@ const CVPage = () => (
     }}
   >
     <LayoutSingleColumn>
-      <div className="lg:w-[48rem] px-2 lg:px-0 ">
+      <div className="lg:w-[54rem] px-2 lg:px-0 ">
         <CoverImage title="Curriculum Vitae" />
         <br />
         <embed

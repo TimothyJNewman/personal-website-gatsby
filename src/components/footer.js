@@ -27,7 +27,7 @@ const DropdownMenuButton = ({ text, link }) => (
 
 const Footer = () => (
   <footer className="bg-white text-primary px-4">
-    <div className="mx-auto lg:w-[48rem] py-3">
+    <div className="mx-auto lg:w-[54rem] py-3">
       <div className="border-y-2 border-secondary-dark py-2">
         <p className="markdown-text">
           © 2021-

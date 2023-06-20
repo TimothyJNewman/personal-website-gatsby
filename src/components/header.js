@@ -80,7 +80,7 @@ const Header = () => {
         className={`sticky top-[-24px] z-10 flex bg-white text-primary sm:top-[-16px] ${isAtTop ? 'h-24 items-end' : 'h-20 shadow-md items-center'}`}
       >
         <div className="sticky top-0 h-15 min-w-full  py-2 px-4 pt-[0.6rem] sm:pt-2">
-          <div className="mx-auto flex lg:w-[48rem] justify-between">
+          <div className="mx-auto flex lg:w-[54rem] justify-between">
             {/* <Link to="/" className='hidden'>
               <div
                 id="logo-with-text"

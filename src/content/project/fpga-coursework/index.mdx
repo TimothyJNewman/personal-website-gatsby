@@ -2,7 +2,7 @@
 slug: digital-systems-design-fpga
 title: FPGA Function Accelerator
 coverImage: ./de1_fpga.jpg
-summary: As part of the 3rd Year Digital Systems Design module, we created a function accelerator using an Altera Cyclone V FPGA. This system was built around the NIOS II embedded processor with custom instructions to a hardware block that calculated Cosine implemented with the CORDIC algorithm.
+summary: As part of the 3rd Year Digital Systems Design module, we created a function accelerator using an Altera Cyclone V FPGA. This system was built around the NIOS II embedded processor with custom instructions to a hardware block that implemented floating point operations and the CORDIC algorithm.
 keywords: FPGA, university
 publishedAt: 2023-05-15
 updatedAt: 2023-05-15
@@ -20,12 +20,17 @@ In my 3rd year, I took the digital systems design module. This module introduced
 
 <BlockMath math={'f(x) = \\sum^N_{i=1} 0.5 \\cdot x_i + {x_i}^2 \\cdot \\cos\\bigg(\\frac{x_i-128}{128}\\bigg)'} />
 
-We implemented the digital system on an Altera Cyclone V FPGA development board using the NIOS II embedded processor. This processor was modified by adding a custom instruction to a hardware block that calculated a single iteration of the summation. To accelerate the computation, we used:
+We implemented the digital system on an Altera Cyclone V FPGA development board using the NIOS II embedded processor programmed using the [Quartus IDE](https://www.intel.co.uk/content/www/uk/en/products/details/fpga/development-tools/quartus-prime.html). This processor was modified by adding a custom instruction to a hardware block that calculated a single iteration of the summation. To accelerate the computation, we used:
 
  - CORDIC algorithm which only uses shifts and adds for computating Cosine
  ![Cordic Algorithm for single iteration](./fullyiterativebitparallel.png)
  - Floating-point operators to replace floating-point emulation in fixed-point operators
  - Parallelism to reduce latency
- - Cache tuning
+ - Data and instruction cache tuning
+ - Word length optimisation to meet error bound with fewest resources.
+
+ The final design achieved a 98.7\% decrease in latency compared to the non-hardware accelerated version.
+
+
 
 

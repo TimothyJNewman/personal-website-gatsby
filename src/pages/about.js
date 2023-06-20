@@ -11,7 +11,7 @@ const About = () => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <section className="mx-auto max-w-screen-md px-2 text-left w-full">
+        <section className="mx-auto lg:w-[54rem] px-2 text-left w-full">
           <CoverImage title="About" />
           <div className="markdown-text">
             <div>

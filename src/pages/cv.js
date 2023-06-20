@@ -20,6 +20,9 @@ const CVPage = () => (
           type="application/pdf"
           className="h-screen w-full rounded"
         />
+        <p>
+            At the moment I am looking for a graduate role when I graduate in 2024.
+            </p>
       </div>
     </LayoutSingleColumn>
   </Layout>

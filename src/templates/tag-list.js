@@ -21,7 +21,7 @@ const TagList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <div className="lg:w-[48rem] px-2 lg:px-0">
+        <div className="lg:w-[54rem] px-2 lg:px-0">
           <CoverImage
             title={`Tag: ${queryTag}
             / projects: ${data.allProjectPost

@@ -21,7 +21,7 @@ const CVPage = () => (
           className="h-screen w-full rounded"
         />
         <p>
-            At the moment I am looking for a graduate role when I graduate in 2024.
+            At the moment I am looking for a graduate role when I graduate in June 2024. I am interested in analog and digital circuit design, data science and digital signal processing.
             </p>
       </div>
     </LayoutSingleColumn>

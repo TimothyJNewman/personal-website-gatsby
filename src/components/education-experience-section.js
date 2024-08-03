@@ -12,7 +12,7 @@ const EducationExperienceSection = () => (
       title={"MEng Electrical and Electronic Engineering"}
       img={ImperialLogo}
       date={"10/2020-06/2024"}
-      description="Achieved 74.31% in year 1, 72.77% in year 2. Relevant Modules: Analog Integrated Circuits, Digital Systems Design, Digital Signal Processing, Instrumentation, Electromagnetics, Machine Learning, Power Electronics, Optoelectronics. Co-curricular activities: Violinist at Sinfonietta Orchestra, AstroSoc, Space Society"
+      description="Achieved 75.34% (First class honours). Relevant Modules: Analog Integrated Circuits, Digital Systems Design, Digital Signal Processing, Instrumentation, Electromagnetics, Digital Electronics and Computer Architecture, Machine Learning, Power Electronics, Optoelectronics, Full-Custom Integrated Circuits, Sensors, Hardware and Software Verification, Digital Image Processing, Computer Vision and Pattern Recognition and Radio-Frequency Subsystems Co-curricular activities: Violinist at Sinfonietta Orchestra, AstroSoc, Space Society"
       company={"Imperial College London"}
       location={"London, United Kingdom"}
     />

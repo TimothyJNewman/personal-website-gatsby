@@ -98,7 +98,7 @@ const IndexPage = () => {
               <div><h1 className='hidden font-serif text-4xl'>Timothy Newman</h1>
                 <span className='hidden italic mb-2'>welcomes you to his website</span>
                 <div className='text-dategray' id="summary">
-                  Greetings! I am an undergraduate pursuing Electrical and Electronic Engineering at Imperial College London. Currently, I am completing my Masters Thesis on Ion-Selective Field Effect Transistors at the Centre for Bio-Inspired Electronics. My interests lie in analog and digital IC design, PCB design, machine learning, and software engineering. Outside of my academic endeavors, I enjoy programming, astronomy, photography (see slideshow), and embarking on adventures in the countryside.
+                  Greetings! My interests lie in analog and digital IC design, PCB design, machine learning, and software engineering. Outside of my work, I enjoy programming, astronomy, photography (see slideshow), and embarking on adventures in the countryside. I created this website in my first year of university to learn web software engineering but now I hope this is a place to showcase my work and an independent platform to publish blog posts.
                 </div>
               </div>
               <SocialMedias />

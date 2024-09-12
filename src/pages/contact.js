@@ -150,7 +150,7 @@ class Contact extends React.Component {
               <CoverImage title="Contact Me!" />
               <div className='markdown-text'>
                 <h2>I would love to hear from you!</h2>
-                <p>Please contact me via the social media icons below or through the email in my <a href="/cv">CV</a>.</p>
+                <p>Please contact me via the social media icons below or <a href="mailto:contact@timothynewman.co.uk">through my email</a>. If that does not work, please try the email in my <a href="/cv">CV</a>.</p>
               </div>
               <SocialMedias />
             </div>

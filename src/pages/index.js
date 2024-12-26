@@ -98,7 +98,7 @@ const IndexPage = () => {
               <div><h1 className='hidden font-serif text-4xl'>Timothy Newman</h1>
                 <span className='hidden italic mb-2'>welcomes you to his website</span>
                 <div className='text-dategray' id="summary">
-                  Greetings! I created this website in my first year of university to learn web software engineering but now I hope this is a place to showcase my work and an independent platform to publish blog posts. My interests lie in analog and digital IC design, PCB design, machine learning, and software engineering. Outside of my work, I enjoy programming, astronomy, photography (see slideshow), and embarking on adventures in the countryside.
+                  Greetings! I created this website in my first year of university to learn web software engineering but now I hope this is a place to showcase my work and an independent platform to publish blog posts. I work in the semiconductor industry with an interest in RF communication. Outside of my work, I enjoy programming, astronomy, photography (see slideshow), embarking on adventures in the countryside and tinkering with my Linux PC.
                 </div>
               </div>
               <SocialMedias />

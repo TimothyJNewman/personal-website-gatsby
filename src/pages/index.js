@@ -6,8 +6,6 @@ import ArticleCard from '../components/article-card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import SocialMedias from '../components/social-media';
-import WorkExperienceSection from '../components/work-experience-section';
-import EducationExperienceSection from '../components/education-experience-section';
 
 const query = graphql`
   query HomeQuery {
@@ -122,8 +120,6 @@ const IndexPage = () => {
           </div>
         </section>
         <div className="lg:w-[54rem]">
-          <WorkExperienceSection />
-          <EducationExperienceSection />
           <section className="px-2 md:px-0" id="recentprojectssection">
             <div className="flex items-center justify-between">
               <h2 className="my-4 font-normal font-serif">Recent Projects</h2>

@@ -28,6 +28,7 @@ const About = () => {
           <div className="markdown-text">
             <div>
               <p><strong>If you are curious to know how I created this website, I have written an <a href="/project/creating-this-personal-website">article explaining it</a>. I love meeting new people so why not head over to the <a href="/contact">contact page</a> and drop me a message?</strong></p>
+              <p>Work in progress projects can be found at <a href="/showcase/">this showcase</a>.</p>
             </div>
           </div>
         </section>

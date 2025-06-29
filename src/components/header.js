@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 
 // Source of truth for navigation
 const ButtonTextLink = [
-  //{ text: 'About', link: '/about' },
+  { text: 'About', link: '/about' },
   { text: 'CV', link: '/cv' },
   { text: 'Blog', link: '/blog' },
   { text: 'Projects', link: '/project' },

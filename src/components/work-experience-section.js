@@ -2,12 +2,21 @@ import React from "react";
 import ExperienceCard from "./experience-card";
 import MediatekLogo from "../images/MediaTek_logo.svg";
 import BuhlerLogo from "../images/Buhler_logo.svg";
+import EnsilicaLogo from "../images/EnSilica_logo.webp";
 
 const WorkExperienceSection = () => (
   <section>
     <div className="flex items-center justify-between">
       <h2 className="my-4 font-normal font-serif">Work Experience</h2>
     </div>
+    <ExperienceCard
+      title={"Graduate Analog Integrated Circuit Engineer"}
+      img={EnsilicaLogo}
+      date={"09/2024-present"}
+      description="Working mainly on RF projects in design, verification and validation roles. Using leading technology nodes and industry tools."
+      company={"EnSilica PLC"}
+      location={"Abingdon, Oxfordshire, United Kingdom"}
+    />
     <ExperienceCard
       title={"Hardware Verification Intern"}
       img={MediatekLogo}

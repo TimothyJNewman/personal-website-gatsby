@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import Plot from "react-plotly.js";
+import React, { useEffect, useState } from 'react';
+// import Plot from "react-plotly.js";
 import CoverImage from '../../../components/cover-image';
 import Layout from '../../../components/layout';
 import LayoutSingleColumn from '../../../components/layout-single-column';
@@ -8,7 +8,15 @@ import { create, all } from 'mathjs'
 const config = {}
 const math = create(all, config)
 
+// Using plotly only on the client side
+// Based on https://www.gatsbyjs.com/docs/using-client-side-only-packages/
+const PlotLazy = React.lazy(() =>
+  import("react-plotly.js").Plot
+)
+
 const SmithCharts = () => {
+  const isSSR = typeof window === "undefined"
+
   const startFreq = 1
   const endFreq = 1e9
   const numPts = 100
@@ -21,6 +29,7 @@ const SmithCharts = () => {
   const tLineLength = 1e-9
 
   const getFrequencyArray = (startFreq, endFreq, numPts, isLog = false) => {
+
     const freq = []
     const logStart = Math.log10(startFreq);
     const logEnd = Math.log10(endFreq);
@@ -50,8 +59,6 @@ const SmithCharts = () => {
   const imagNormalisedImpedanceInductor = impedanceInductor.map(x => x.im / z0);
   const realNormalisedImpedanceTransmissionLine = impedanceTransmissionLine.map(x => x.re / z0);
   const imagNormalisedImpedanceTransmissionLine = impedanceTransmissionLine.map(x => x.im / z0);
-  console.log(impedanceTransmissionLine)
-  console.log(math.i * 1)
 
   const traceScattersmithInductor = {
     type: 'scattersmith',
@@ -125,8 +132,15 @@ const SmithCharts = () => {
       <LayoutSingleColumn>
         <section className="mx-auto lg:w-[54rem] px-2 text-left w-full">
           <CoverImage title="Testing Plotly.js for creating Smith Charts" />
-          <Plot data={[traceScattersmithInductor, traceScattersmithTransmissionLine]} layout={layoutScattersmith} config={{ responsive: true }} />
-          <Plot data={[traceCartesian]} layout={layoutCartesian} config={{ responsive: true }} />
+          {!isSSR && (
+            <React.Suspense fallback={<></>}>
+              <>
+                <PlotLazy data={[traceScattersmithInductor, traceScattersmithTransmissionLine]} layout={layoutScattersmith} config={{ responsive: true }} />
+                <PlotLazy data={[traceCartesian]} layout={layoutCartesian} config={{ responsive: true }} />
+              </>
+            </React.Suspense>
+          )}
+
         </section>
       </LayoutSingleColumn>
     </Layout>

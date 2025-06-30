@@ -11,7 +11,7 @@ const math = create(all, config)
 // Using plotly only on the client side
 // Based on https://www.gatsbyjs.com/docs/using-client-side-only-packages/
 const PlotLazy = React.lazy(() =>
-  import("react-plotly.js").Plot
+  import("react-plotly.js")
 )
 
 const SmithCharts = () => {

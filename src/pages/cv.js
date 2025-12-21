@@ -21,7 +21,7 @@ const CVPage = () => (
           className="h-screen w-full rounded"
         /> */}
 
-        <object data="/CV.pdf#view=FitH" type="application/pdf" className="h-screen w-full rounded">
+        <object data="/CV.pdf#view=FitH" type="application/pdf" className="h-screen w-full rounded markdown-text">
             <p>If the CV is not displayed in the viewer, please open the file with <a href="/CV.pdf#view=FitH">this link</a>.</p>
         </object>
 

@@ -1,0 +1,223 @@
+---
+slug: running-local-llm
+title: "My experience running LLMs on my PC (2025)"
+coverImage: ./ollama_screenshot.png
+summary: During my year-end holidays in 2025, I ran LLMs locally on my PC to explore the viability of self-hosted AI. 
+publishedAt: 2026-01-17
+updatedAt: 2026-01-17
+tags:
+  - LLM
+  - AI 
+  - Homelab
+  - DIY
+---
+
+At the end of 2025, I had a few days off from work and I decided to spend some time working on my homelab.
+
+I chose to work on self-hosting Large-Language Models (LLMs) to explore the capabilities of an independent and local AI running on consumer hardware.
+
+## Motivation
+
+You might wonder, "Why not just use hosted options such as Gemini, ChatGPT or Claude?" There are many reasons to switch to local LLMs:
+
+1) **Privacy**: Cloud LLM providers own your data when you upload them to their servers and this information can be leaked by cleaver manipulative prompts. There are some plans which restrict sharing of data but there is always a risk.
+
+2) **Censorship**: LLMs are generally trained to align with human goals and values. Although this generally is fine and most people will approve of such training, there are questions of *whose goals* and *whose values* are imposed. There are biases in human moderation which result in unpopular but essential thoughts/speech to be suppressed. By running uncensored models, the question of moderation is left to the user who can then align the model to their values. Eric Hartford's essay on [uncensored models](https://erichartford.com/uncensored-models) was quite enlightening.
+
+3) **Cost**: Generally as of 2025, cloud LLMs are rather affordable or free since companies are focussed on gaining market share. At some point, companies will need to recoup costs which will result in higher plan prices.
+
+4) **No Ads**: Similar to the previous point, there are no Ads at the moment but [plans are in place](https://openai.com/index/our-approach-to-advertising-and-expanding-access/). This would harm user experience and would place an incentive for companies to tailor answers favourable towards their advertisers rather than provide neutral information.
+
+5) **Lack of Internet Connectivity**: Although I live in a part of the UK with generally good internet. This is not always the case and running LLMs on local hardware avoids this issue. The limitation would be that the LLM would not be able to access real-time information.
+
+## My hardware
+
+At the moment, my homelab consists of an old 2013 Toshiba laptop running Jellyfin 24/7 and my PC which I only run when needed. These are my PC specs:
+
+## PC Component List
+
+| Part Type | Description |
+|---|---|
+| Motherboard | MSI Pro B760M-A WIFI |
+| Power Supply | Steampunk Gold 750W |
+| Graphics Card | Zotac Gaming GeForce RTX 3060 12GB |
+| CPU Cooler | FUMA 3 CPU Cooler |
+| CPU | 13th Gen Intel® Core™ i7-13700K |
+| Keyboard | HP Elite Keyboard |
+| Mouse | HP Optical Mouse |
+| Hard Drive | 6TB WDC WD6002FFWX-6 |
+| Hard Drive | 6TB WDC WD64PURZ-74B |
+| RAM | MD16GSD5600040MXRGB x2 (32GB total) |
+| Case | Cooler Master Elite 300 |
+| SSD | Crucial P3 Plus PCIe 4.0 NVMe M.2 SSD 1tB |
+
+For hosting LLMs, the most important part is the Graphics Processing Unit (GPU). This is a module that specialises in parallel computation which essentially means doing a large number of calculations all at once. This is as opposed to the Central Proccessing Unit (CPU) which specialises in sequential computation which essentially means does a few calculations very quickly. GPUs can be likened to large bus 🚌 while CPUs can be liken to single-seater race cars 🏎️. The race car will get to the destination quicker but the bus would transport more people at the same time.
+
+## What are LLMs?
+
+LLMs are essentially a very clever next word prediction engine. Text is broken into units called tokens and these tokens are represented by embeddings which are vectors of numbers that represent each token. These tokens are passed though layers within the model until an output is produced. The innovation in present day LLMs are transfomers which use the self-attention mechanism that analyses all input tokens within a context window and adds an additional set of weights for the "attention" each token places on other tokens. 
+
+There are 2 phases in the life of LLMs. Firstly, they are trained using vast amounts of data. This happens in large computing clusters by foundational model researchers. Following this, the models are deployed for inference. Here, models take in user inputs and produce output tokens. Inference requires far fewer computing resources compared to training. I am focussing on inference for this project.
+
+## Running models on Ollama
+
+[Ollama](https://ollama.com/) is an open-source tools for running LLMs directly on local computers. There are also a collection of models on the website that can be easily downloaded and run.
+
+Before running Ollama, it is important to check if the GPU drivers (Nvidia in my case) are properly installed. This can be done with the nvidia-smi command. At first, my GPU could not be recognised but I found a fix by disabling secure boot in my motherboard bios.
+
+```
+watch -n 0.5 nvidia-smi
+```
+I have also included the watch command so that nvidia-smi is called repeatedly for monitoring power and VRAM usage. 
+
+The results are as follows:
+
+```
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.274.02             Driver Version: 535.274.02   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA GeForce RTX 3060        Off | 00000000:01:00.0 Off |                  N/A |
+|  0%   51C    P3              27W / 170W |  10813MiB / 12288MiB |     46%      Default |
+|                                         |                      |                  N/A |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|    0   N/A  N/A      3140      G   /usr/lib/xorg/Xorg                          980MiB |
+|    0   N/A  N/A      3420      G   ...libexec/gnome-remote-desktop-daemon        2MiB |
+|    0   N/A  N/A      3495      G   /usr/bin/gnome-shell                        143MiB |
+|    0   N/A  N/A      4258      G   /usr/libexec/xdg-desktop-portal-gnome         2MiB |
+|    0   N/A  N/A      5313      G   ...irefox/7672/usr/lib/firefox/firefox      237MiB |
+|    0   N/A  N/A      9581      C   /usr/local/bin/python3                      262MiB |
+|    0   N/A  N/A     18676      G   /proc/self/exe                              227MiB |
+|    0   N/A  N/A     27632      G   /usr/bin/nautilus                            12MiB |
+|    0   N/A  N/A    221379      C   /usr/local/bin/ollama                      8912MiB |
++---------------------------------------------------------------------------------------+
+```
+With the 12b Gemini model loaded, 8.912 GiB of VRAM is utilised.
+
+For linux, the installation is simple:
+
+```
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Then, a model can be downloaded and run. It might take a few minutes to download.
+
+```
+ollama run gemma3:12b --verbose
+```
+In this case, I am running the 12 billion parameter version of gemma3 using the verbose option which prints a statistic summary at the end. Now, it is possible to run queries using the command line. However it is more useful to run Ollama with the Open WebUI GUI which is a better interface for interacting with the LLM especially for uploading images and documents required by vision and RAG models. It is also possible to allow external access which is explained in [this guide](https://www.robwillis.info/2025/05/ultimate-local-ai-setup-guide-ubuntu-ollama-open-webui/).
+
+I chose to use docker compose for setting up Open WebUI as follows. Note that authentication is disabled and the image is specifically for Nvidia GPUs.
+```
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:cuda
+    ports:
+      - "3000:8080"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - open-webui:/app/backend/data
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    restart: unless-stopped
+    environment:
+      - WEBUI_AUTH=False
+volumes:
+  open-webui:
+```
+
+Now that we have set up Ollama, let us use some models! 😀😀😀 
+
+Add vram and model size
+
+## Vision
+
+To test the vision capabilities of this model, I tested the gemma3:12b model with images. The file names are replaced with letters so that they do not influence the decision making.
+
+![Starry night](./starry_night.webp)
+
+Source: Starry Night, The Museum of Modern Art, New York City
+
+```
+What is this painting and explain why it is special?
+```
+
+```---Result Start---```
+
+Okay, let's break down this iconic painting!
+
+**The painting is *The Starry Night* by Vincent van Gogh.**
+
+**Why it's so special:**
+
+* **Emotional Intensity:** *The Starry Night* is renowned for its incredibly expressive and emotional quality. Van Gogh painted it while he was a patient at the Saint-Paul-de-Mausole asylum in Saint-Rémy, France, where he was undergoing treatment for mental illness. The swirling brushstrokes and vibrant colors aren't a realistic depiction of the night sky; they're a representation of Van Gogh's inner turmoil, his intense feelings, and his yearning for something beyond his immediate suffering.
+
+* **Unique Style:**  The painting exemplifies Van Gogh’s distinctive Post-Impressionist style, characterized by:
+    * **Impasto:** Thickly applied paint, creating a palpable texture and a sense of movement. You can almost *feel* the brushstrokes.
+    * **Swirling Brushstrokes:**  The dominant feature of the painting. These swirling lines create a powerful sense of energy, movement, and unrest. They’re not merely depicting the stars and moon; they’re conveying an emotional experience.
+    * **Color:** The use of bold colors - yellows, blues, and whites - amplifies the emotional impact. The bright stars against the dark sky create a dramatic contrast.
+
+* **Symbolism:** While Van Gogh didn't explicitly state the painting's symbolism, many interpretations have emerged over time. The cypress tree in the foreground is often seen as a link between earth and heaven, or a symbol of death and mourning (cypress trees were frequently used as funeral markers in the area). The village below represents a sense of order and comfort, while the swirling sky conveys the artist's inner chaos.
+
+* **Iconic Status:** *The Starry Night* has become one of the most recognizable and beloved artworks in the world. Its powerful imagery and emotional depth have captivated viewers for over a century.  It's frequently reproduced and parodied, cementing its place in popular culture.
+
+**In short, *The Starry Night* is special not just for its beautiful depiction of a nightscape, but for the raw emotion, intense personal expression, and revolutionary artistic techniques that it embodies.**
+
+Do you want to know more about:
+
+*   Van Gogh’s life and mental health?
+*   The history of the painting?
+*   Different interpretations of its symbolism?
+
+```---Result End---```
+
+
+
+![Royal Family](./royal_family.jpg)
+
+Here's a description of the image and the people visible:
+
+**What's Happening:**
+
+The image shows members of the British Royal Family standing on the balcony of Buckingham Palace during a public event, likely Trooping the Colour (a ceremony celebrating the monarch's birthday).
+
+**People Visible (and their attire):**
+
+There are 13 people visible in the picture. Here's a breakdown:
+
+1.  **Prince William:** To the left wearing a dark suit and a green top hat.
+2.  **Princess Charlotte:** Standing next to William, wearing a green dress.
+3.  **Prince George:** To the right of Charlotte, wearing a blue suit.
+4.  **Prince Charles:** The senior monarch (King Charles III) wearing a military red jacket with gold trim and decorations.
+5.  **Queen Camilla:** Beside Charles, wearing a red military jacket and a matching hat.
+6.  **Princess Anne:** To the right of Camilla, wearing a military red jacket with gold trim and decorations.
+7.  **Prince Edward:** Next to Anne, wearing a military red jacket with gold trim and decorations.
+8.  **Sophie, Duchess of Edinburgh:** Next to Edward, wearing a military red jacket with gold trim and decorations.
+9.  **Lady Louise Windsor:**  Standing in the middle, wearing a white dress with a red sash.
+10. **James, Earl of Wessex:** Beside Louise, wearing a light colored suit.
+11. **Prince Harry:** To the right, wearing a light brown suit and a hat.
+12. **Duchess Meghan:** Beside Harry, wearing a white hat.
+13. **Prince Richard, Duke of Gloucester** To the right wearing a dark suit and a hat. 
+
+**Total:** There are 13 people in the picture.
+
+Do you want to know anything more about the event or the individuals in the picture?
+
+## RAG
+
+## Conclusion

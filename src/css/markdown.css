@@ -13,6 +13,21 @@ h4 {
   margin-bottom: 0.4em;
 }
 
+.markdown-text h1 {
+  font-weight: 500;
+  font-size: 1.8em;
+}
+
+.markdown-text h2 {
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.markdown-text h3 {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
 .markdown-text p {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -153,4 +168,32 @@ h4 {
 .markdown-text a:active.gatsby-resp-image-link,
 .markdown-text a:focus.gatsby-resp-image-link {
   background-size: 0;
+}
+
+/* Table formatting */
+.markdown-text table {
+  width: 100%; /* Make tables responsive */
+  border-collapse: collapse; /* Remove spacing between cells */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-radius: var(--std-border-radius);
+}
+
+.markdown-text table tr {
+  border: 1px solid var(--color-border-primary-lighter); /* Add borders to cells */
+  padding: 0.4em;
+}
+
+.markdown-text table th,
+.markdown-text table td {
+  padding: 0.4em;
+  text-align: left;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-text-primary)
+}
+
+.markdown-text table th {
+  font-weight: 600;
+  background-color: var(--color-bg-primary-lighter); /* Style header background */
 }

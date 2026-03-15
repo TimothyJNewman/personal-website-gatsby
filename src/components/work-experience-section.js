@@ -10,7 +10,7 @@ const WorkExperienceSection = () => (
       <h2 className="my-4 font-normal font-serif">Work Experience</h2>
     </div>
     <ExperienceCard
-      title={"Graduate Analog Integrated Circuit Engineer"}
+      title={"Analog Integrated Circuit Engineer"}
       img={EnsilicaLogo}
       date={"09/2024-present"}
       description="Working mainly on RF projects in design, verification and validation roles. Using leading technology nodes and industry tools."

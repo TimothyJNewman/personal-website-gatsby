@@ -114,6 +114,7 @@ const IndexPage = () => {
           <div className="flex h-16 items-center justify-center">
             <a
               href="#recentprojectssection"
+              aria-label="Scroll to recent projects"
               className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-std-secondary"
             >
               <i className="fa fa-arrow-down" />

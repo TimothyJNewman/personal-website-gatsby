@@ -17,7 +17,7 @@ const About = () => {
           <CoverImage title="About" />
           <div className="markdown-text">
             <div>
-              <p><strong>Hello, welcome to my personal corner of the internet!😀😀😀</strong> I am an analog design engineer and graduate <strong>Electrical and Electronic Engineering</strong> at Imperial College London. I work in the semiconductor industry with an interest in RF communication. Outside of my work, I enjoy programming, astronomy, photography, hiking and tinkering with my Linux PC. </p>
+              <p><strong>Hello, welcome to my personal corner of the internet!😀😀😀</strong> I am an analog design engineer and graduate in <strong>Electrical and Electronic Engineering</strong> at Imperial College London. I work in the semiconductor industry with an interest in RF communication. Outside of my work, I enjoy programming, astronomy, photography, hiking and tinkering with my Linux PC. </p>
 
               <h2 id="myhopesandwishes">My hopes and wishes 🌠</h2>
               <p>In the coming year, I would like to learn to design more analog blocks and learn RF tools. Outside of work, I would like to gain my driver's license and to travel more around the UK.</p>

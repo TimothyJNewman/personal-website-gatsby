@@ -81,11 +81,12 @@ const IndexPage = () => {
     (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
   ).sort();
   useEffect(() => {
-    setTimeout(
-      () => setCurrentImage((currentImage + 1) % imagesSrc.length),
+    const timer = setTimeout(
+      () => setCurrentImage((prev) => (prev + 1) % imagesSrc.length),
       4000
     );
-  }, [currentImage]);
+    return () => clearTimeout(timer);
+  }, [currentImage, imagesSrc.length]);
 
   return (
     <Layout>

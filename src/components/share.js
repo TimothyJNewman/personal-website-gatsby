@@ -5,7 +5,7 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
 
-export default function Share({ label, text, title }) {
+export default function Share({ text, title }) {
   const url = useLocation().href;
   const shareDetails = { url, title, text };
 
@@ -28,6 +28,7 @@ export default function Share({ label, text, title }) {
     <button
       className="mx-0.5"
       type="button"
+      aria-label="Share this page"
       onClick={handleSharing}
     >
       <img

@@ -15,7 +15,7 @@ embeddedAssets:
   - ./gatsby_plugin_image.gif
 ---
 
-**TLDR:** This website was creating using Gatsby, hosted on Netlify, and Strapi.io, hosted on Heroku. The database is PostgresSql on Heroku and Media storage is hosted on Cloudinary.
+**TLDR:** This website was created using Gatsby, hosted on Netlify, and Strapi.io, hosted on Heroku. The database is PostgresSql on Heroku and Media storage is hosted on Cloudinary.
 
 ## My motivations
 
@@ -49,7 +49,7 @@ I then needed to figure how to deploy my website. My prior experience was with c
 These hosting options all featured free tiers which was useful in my case. Both Netlify and Heroku required a git repository to deploy from. Therefore, I learnt to used GitHub and implemented version controlling. I think version controlling is a fantastic feature to have in my toolkit since I can experiment with new features but roll back if it does not work.
 
 ## Redoing the Front-end in Gatsby
-Heroku has this downside where the server [goes to sleep after 30 min of inactivity](https://hackernoon.com/how-to-prevent-your-free-heroku-dyno-from-sleeping-dggxo3bi2). This means that website visitors might experience load times of up to ~40s when accessing the site. This is completely unacceptable of course and needed a solutions. 
+Heroku has this downside where the server [goes to sleep after 30 min of inactivity](https://hackernoon.com/how-to-prevent-your-free-heroku-dyno-from-sleeping-dggxo3bi2). This means that website visitors might experience load times of up to ~40s when accessing the site. This is completely unacceptable of course and needed a solution. 
 
 Gatsby to the rescue! [Gatsby](https://www.gatsbyjs.com/) is a lightning fast framework to generate static sites. In other words, all pages in the website are created at buildtime without any need to create them at run time. Gatsby has this feature called the [data layer](https://www.gatsbyjs.com/docs/tutorial/part-4/) constructed from data source eg. a CMS which can then be queried using a GraphQL API. This can be confusing at first but there is a GraphQL API playground called GraphiQL in development mode which allows me to make sure that my API requests are legitimate. 
 
@@ -71,7 +71,7 @@ My mode of managing the development process was by initially creating notes on a
 ## Code Editor
 When I began the project, I was using Brackets which is an open source editor previously maintained by Adobe. This editor is really clutter free and minimalist. However, it had its limitations such as indexing large projects. I therefore moved to using VSCode and instantly loved it. It has amazing capabilities such as a git tab and extensions that allow me to prettify my code, add style checks and query todo labels in code. There also exists a terminal within VSCode that allows me to run terminal commands very easily.
 
-## Miscellanous Things
+## Miscellaneous Things
 
 **Dark mode:** Created using CSS variables based on [this tutorial](https://lukelowrey.com/css-variable-theme-switcher/). This mode can be activated by setting the dark mode in the device or by toggling the theme button.
 

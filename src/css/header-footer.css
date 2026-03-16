@@ -29,6 +29,22 @@
   100% { opacity: 0; transform: translateX(0px); }
 }
 
+/* Dropdown/footer button — simple underline on hover */
+
+.nav-link-button {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 200ms;
+}
+
+.nav-link-button:hover,
+.nav-link-button:focus {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.2em;
+}
+
 /* Header button — simple underline on hover, no gradient fill */
 
 .header-button-wrapper {
@@ -40,5 +56,7 @@
 
 .header-button-wrapper:hover,
 .header-button-wrapper:focus {
+  text-decoration: underline;
   text-decoration-color: var(--color-text-primary);
+  text-underline-offset: 0.2em;
 }

@@ -16,7 +16,7 @@ const ButtonTextLink = [
 
 const DropdownMenuButton = ({ text, link }) => (
   <Link
-    className="whitespace-nowrap pr-3 underline underline-offset-2 decoration-transparent hover:decoration-current transition-colors"
+    className="nav-link-button whitespace-nowrap pr-3"
     to={link}
     key={text}
   >

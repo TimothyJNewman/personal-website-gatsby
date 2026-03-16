@@ -23,7 +23,7 @@ const HeaderButton = ({ text, link }) => (
 
 const DropdownMenuButton = ({ text, link }) => (
   <Link
-    className="whitespace-nowrap pr-3 underline underline-offset-2 decoration-transparent hover:decoration-current transition-colors"
+    className="nav-link-button whitespace-nowrap pr-3"
     to={link}
     key={text}
   >
@@ -108,7 +108,7 @@ const Header = () => {
                 </div>
                 <div className="flex rounded">
                   <button
-                    className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-l px-0 py-0 text-lg sm:w-fit sm:rounded sm:px-2"
+                    className="std-button flex h-8 w-8 items-center justify-center px-0 py-0 sm:w-fit sm:px-2"
                     aria-label="Theme Toggle"
                     type="button"
                     onClick={() => {
@@ -122,7 +122,7 @@ const Header = () => {
                     </span>
                   </button>
                   <button
-                    className="std-button flex h-8 w-8 items-center justify-center rounded-none rounded-r px-0 py-0 text-lg sm:hidden"
+                    className="std-button flex h-8 w-8 items-center justify-center px-0 py-0 text-lg sm:hidden"
                     aria-label="Toggle Menu"
                     type="button"
                     onClick={() => {

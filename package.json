@@ -1,6 +1,6 @@
 {
   "name": "personal-website-gatsby",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "description": "Personal Website Gatsby",
   "author": "TimothyJNewman",
@@ -51,7 +51,7 @@
     "react-scripts": "^5.0.1",
     "react-showdown": "^2.3.1",
     "react-smooth-collapse": "^2.1.2",
-    "remark-gfm": "^1.0.0",
+    "remark-gfm": "^2.0.0",
     "stream-browserify": "^3.0.0",
     "tailwindcss": "^3.1.8"
   },

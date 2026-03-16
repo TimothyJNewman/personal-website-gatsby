@@ -30,20 +30,15 @@
 
 .form-inputs input[type='text'],
 .form-inputs textarea {
-  background: linear-gradient(
-    var(--color-bg-primary-dark),
-    var(--color-bg-primary-dark)
-  );
-  background-size: 0 0.2em;
-  background-position: 0% 100%;
-  background-repeat: no-repeat;
-  transition: background-size 400ms, color 400ms;
+  border-bottom: 1px solid var(--color-bg-primary-light);
+  background: transparent;
+  transition: border-color 200ms;
 }
 
 .form-inputs input[type='text']:focus,
 .form-inputs textarea:focus {
   outline: none;
-  background-size: 100% 0.2em;
+  border-bottom: 1px solid var(--color-bg-primary-dark);
 }
 
 .form-inputs input[type='text'] {
@@ -71,15 +66,7 @@
 
 .red-underline input[type='text'],
 .red-underline textarea {
-  background: linear-gradient(var(--errorcolor), var(--errorcolor));
-  background-size: 100% 0.3em;
-  background-position: 0% 100%;
-  background-repeat: no-repeat;
-}
-
-.red-underline input[type='text']:focus,
-.red-underline textarea:focus {
-  background-size: 100% 0.3em !important;
+  border-bottom: 2px solid var(--errorcolor) !important;
 }
 
 @keyframes shake {

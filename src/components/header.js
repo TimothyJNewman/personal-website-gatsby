@@ -23,11 +23,10 @@ const HeaderButton = ({ text, link }) => (
 
 const DropdownMenuButton = ({ text, link }) => (
   <Link
-    className="whitespace-nowrap pr-3 hover:text-primary-dark"
+    className="whitespace-nowrap pr-3 underline underline-offset-2 decoration-transparent hover:decoration-current transition-colors"
     to={link}
     key={text}
   >
-    <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>
 );
@@ -77,10 +76,10 @@ const Header = () => {
     <>
       {/* collapsable sticky header from https://css-tricks.com/how-to-create-a-shrinking-header-on-scroll-without-javascript/ */}
       <header
-        className={`sticky top-[-24px] z-10 flex bg-white text-primary sm:top-[-16px] ${isAtTop ? 'h-24 items-end' : 'h-20 shadow-md items-center'}`}
+        className={`sticky top-[-24px] z-10 flex bg-white text-primary sm:top-[-16px] ${isAtTop ? 'h-24 items-end' : 'h-20 items-center'}`}
       >
-        <div className="sticky top-0 h-15 min-w-full  py-2 px-4 pt-[0.6rem] sm:pt-2">
-          <div className="mx-auto flex lg:w-[54rem] justify-between">
+        <div className="sticky top-0 h-15 min-w-full py-2 px-4 pt-[0.6rem] sm:pt-2">
+          <div className="mx-auto flex lg:max-w-[44rem] justify-between">
             <Link to="/">
               <h1 className='font-serif sm:text-4xl text-3xl' id="logo-with-text">
                 <span className="text-timothy">T</span>
@@ -142,9 +141,9 @@ const Header = () => {
       </header>
       <SmoothCollapse
         expanded={menuExpanded}
-        className={`fixed flex w-full max-w-screen-md justify-center border-y-2 border-secondary-dark bg-white text-primary sm:hidden ${isAtTop ? 'top-22' : 'top-14'}`}
+        className={`fixed flex w-full max-w-screen-md justify-center border-b border-primary bg-white text-primary sm:hidden ${isAtTop ? 'top-22' : 'top-14'}`}
       >
-        <div className="my-2 mx-4 flex flex-wrap text-secondary-dark">
+        <div className="my-2 mx-4 flex flex-wrap">
           {ButtonTextLink.map(({ text, link }) =>
             DropdownMenuButton({ text, link })
           )}

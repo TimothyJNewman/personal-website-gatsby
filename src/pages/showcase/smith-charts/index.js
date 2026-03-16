@@ -231,7 +231,7 @@ const SmithCharts = () => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <section className="mx-auto lg:w-[54rem] px-2 text-left w-full">
+        <section className="mx-auto lg:max-w-[44rem] px-4 lg:px-0 text-left w-full">
           <CoverImage title="Plotly.js Smith Charts" />
           <MDXProvider>
             This is a series of experiments using the Plotly.js library to plot impedances.

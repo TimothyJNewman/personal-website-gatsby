@@ -1,53 +1,74 @@
-/* Markdown formatting */
+/* Markdown formatting – Tufte-inspired typography */
 
 .markdown-text {
-  line-height: 1.6;
+  font-family: 'EB Garamond', Georgia, 'Palatino Linotype', serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
   overflow-wrap: break-word;
   color: var(--color-text-primary);
 }
 
+/* Headings: italic, book-weight, generous vertical spacing */
+
+.markdown-text h1,
 .markdown-text h2,
-h3,
-h4 {
-  margin-top: 0.4em;
-  margin-bottom: 0.4em;
+.markdown-text h3,
+.markdown-text h4 {
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 .markdown-text h1 {
-  font-weight: 500;
-  font-size: 1.8em;
+  font-size: 2em;
 }
 
 .markdown-text h2 {
-  font-weight: 500;
   font-size: 1.5em;
 }
 
 .markdown-text h3 {
-  font-weight: 600;
   font-size: 1.2em;
 }
 
+/* Paragraphs */
+
 .markdown-text p {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 0;
 }
+
+/* Media */
 
 .markdown-text img {
   width: 100%;
   height: auto;
-  border-radius: var(--std-border-radius);
-  margin-top: 0.5em;
+  border-radius: 0;
+  margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
 
 .markdown-text video {
   width: 100%;
   height: auto;
-  border-radius: var(--std-border-radius);
-  margin-top: 0.5em;
+  border-radius: 0;
+  margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
+
+/* Captions: lone italic in its own paragraph, e.g. *Caption text* */
+
+.markdown-text p > em:only-child {
+  display: block;
+  font-size: 0.85em;
+  line-height: 1.4;
+  margin-top: 0.25em;
+  color: var(--color-dategrey);
+}
+
+/* Inline formatting */
 
 .markdown-text a,
 .markdown-text strong,
@@ -60,6 +81,8 @@ h4 {
   font-weight: 600;
 }
 
+/* Links: thin underline that expands to fill on hover */
+
 .markdown-text a,
 .markdown-text a:active {
   border: 0;
@@ -68,7 +91,7 @@ h4 {
       var(--color-bg-primary-dark)
     ),
     linear-gradient(var(--color-bg-primary-dark), var(--color-bg-primary-dark));
-  background-size: 100% 0.15em, 0 100%;
+  background-size: 100% 0.1em, 0 100%;
   background-position: 0% 100%, 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms, color 400ms;
@@ -80,86 +103,79 @@ h4 {
   color: var(--color-text-secondary-std);
 }
 
+/* Blockquotes: Tufte-style – simple left indent, no decorative box */
+
 .markdown-text blockquote {
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0.4em 1em 0.4em 2em;
-  border-left: 5px solid var(--color-bg-primary-light);
-  background-color: var(--color-bg-primary-lighter);
-  border-radius: var(--std-border-radius);
+  margin: 1.5em 0 1.5em 2.5em;
+  padding: 0;
+  border-left: none;
+  background-color: transparent;
   overflow-wrap: anywhere;
 }
 
 .markdown-text blockquote p {
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--color-text-primary);
 }
 
+/* Code blocks */
+
 .markdown-text pre {
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0.4em 1em 0.4em 2em;
-  border-left: 5px solid var(--color-bg-primary-light);
+  margin: 1.5em 0;
+  padding: 0.75em 1em;
+  border-left: 2px solid var(--color-bg-primary-light);
+  background-color: var(--color-bg-primary-lighter);
+  border-radius: 0;
+  overflow-x: auto;
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+/* Inline code */
+
+.markdown-text code:not(pre code) {
+  font-size: 0.85em;
+  padding: 0.1em 0.3em;
   background-color: var(--color-bg-primary-lighter);
   border-radius: var(--std-border-radius);
-  overflow-x: auto;
 }
 
-.markdown-text blockquote ol > li::marker,
-.markdown-text blockquote ul > li::marker {
-  color: var(--color-bg-primary-dark);
-}
+/* Lists: clean browser-default markers */
 
 .markdown-text ol {
-  counter-reset: li;
-  /* Initiate a counter */
-  list-style: none;
-  /* Remove default numbering */
-  *list-style: decimal;
-  /* Keep using default numbering for IE6/7 */
+  list-style: decimal outside;
   padding-left: 1.6em;
+  margin: 1em 0;
 }
 
 .markdown-text ol > li {
-  margin-top: 0.3em;
-  margin-bottom: 0.2em;
-  counter-increment: li;
-  display: list-item;
-}
-
-.markdown-text ol > li::marker {
-  display: list-item;
-  content: '#' counter(li) ' ';
-  font-weight: bold;
-  color: var(--color-bg-secondary-dark);
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
 }
 
 .markdown-text ul {
+  list-style: disc outside;
   padding-left: 1.6em;
-  list-style: circle outside none;
-}
-
-.markdown-text ul > li::marker {
-  font-size: 1em;
-  font-weight: bold;
-  font-family: 'Font Awesome 5 Free';
-  content: '\f101 \0020 \0020';
-  color: var(--color-bg-secondary-dark);
+  margin: 1em 0;
 }
 
 .markdown-text ul > li {
-  margin-top: 0.3em;
-  margin-bottom: 0.2em;
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
 }
+
+/* Iframes */
 
 .markdown-text iframe {
   width: 100%;
   border: 0;
 }
 
-/* Adding margin to bottom of image to provide separation*/
+/* Gatsby image wrappers */
+
 .markdown-text .gatsby-resp-image-wrapper {
+  margin-top: 1.5em;
   margin-bottom: 1rem;
 }
 
@@ -170,30 +186,37 @@ h4 {
   background-size: 0;
 }
 
-/* Table formatting */
+/* Tables: Tufte-style – horizontal rules only, no vertical lines */
+
 .markdown-text table {
-  width: 100%; /* Make tables responsive */
-  border-collapse: collapse; /* Remove spacing between cells */
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  border-radius: var(--std-border-radius);
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
 }
 
 .markdown-text table tr {
-  border: 1px solid var(--color-border-primary-lighter); /* Add borders to cells */
-  padding: 0.4em;
-}
-
-.markdown-text table th,
-.markdown-text table td {
-  padding: 0.4em;
-  text-align: left;
-  border-style: solid;
-  border-width: 1px;
-  border-color: var(--color-text-primary)
+  border: none;
+  padding: 0;
 }
 
 .markdown-text table th {
   font-weight: 600;
-  background-color: var(--color-bg-primary-lighter); /* Style header background */
+  background-color: transparent;
+  padding: 0.5em 0.8em 0.5em 0;
+  text-align: left;
+  border: none;
+  border-top: 1px solid var(--color-text-primary);
+  border-bottom: 1px solid var(--color-text-primary);
+}
+
+.markdown-text table td {
+  padding: 0.4em 0.8em 0.4em 0;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid var(--color-bg-primary-light);
+}
+
+.markdown-text table tr:last-child td {
+  border-bottom: 1px solid var(--color-text-primary);
 }

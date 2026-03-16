@@ -21,7 +21,7 @@ const TagList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <div className="lg:w-[54rem] px-2 lg:px-0">
+        <div className="lg:max-w-[44rem] w-full px-2 lg:px-0">
           <CoverImage
             title={`Tag: ${queryTag}
             / projects: ${data.allProjectPost
@@ -34,8 +34,8 @@ const TagList = ({ pageContext, data }) => {
           />
           {data.allProjectPost.nodes.length > 0 ? (
             <>
-              <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
-              <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
+              <h2 className="my-4">Recent Projects</h2>
+              <div className="grid-cols-1 md:grid-cols-1 grid border-t border-primary">
                 {data.allProjectPost.nodes
                   .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
                   .map((posts) => (
@@ -50,10 +50,9 @@ const TagList = ({ pageContext, data }) => {
                     />
                   ))}
               </div>
-              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+              <div className="mt-2 mb-1 flex justify-end">
                 <Link to="/project" className="read-more-link">
-                  Explore all projects&nbsp;
-                  <i className="fas fa-arrow-right" />
+                  Explore all projects
                 </Link>
               </div>
             </>
@@ -62,8 +61,8 @@ const TagList = ({ pageContext, data }) => {
           )}
           {data.allBlogPost.nodes.length > 0 ? (
             <>
-              <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
-              <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
+              <h2 className="my-4">Recent Blog Posts</h2>
+              <div className="grid-cols-1 md:grid-cols-1 grid border-t border-primary">
                 {data.allBlogPost.nodes.map((posts) => (
                   <ArticleCard
                     img={posts.frontmatter.coverImage ?? ''}
@@ -76,17 +75,16 @@ const TagList = ({ pageContext, data }) => {
                   />
                 ))}
               </div>
-              <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+              <div className="mt-2 mb-1 flex justify-end">
                 <Link to="/blog" className="read-more-link">
-                  Read all blog posts&nbsp;
-                  <i className="fas fa-arrow-right" />
+                  Read all blog posts
                 </Link>
               </div>
             </>
           ) : (
             ''
           )}
-          <h2 className="my-4 font-normal font-serif">All Tags</h2>
+          <h2 className="my-4">All Tags</h2>
           <div className="flex flex-wrap gap-1">
             {allTag ? (
               allTag.map((tag) => (

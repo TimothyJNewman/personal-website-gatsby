@@ -13,7 +13,7 @@ import { getFormattedDate } from '../util/common-utils';
 const BlogTemplate = ({ data, children }) => (
   <Layout seo={data.blogPost.frontmatter}>
     <LayoutSingleColumn>
-      <section className="mx-auto lg:w-[54rem] px-2 lg:px-0 text-left w-full">
+      <section className="mx-auto lg:max-w-[44rem] px-4 lg:px-0 text-left w-full">
         {data.blogPost.frontmatter.coverImage ? (
           <CoverImage
             img={
@@ -55,10 +55,9 @@ const BlogTemplate = ({ data, children }) => (
             {children}
           </MDXProvider>
         </div>
-        <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+        <div className="mt-4 mb-1 flex justify-end">
           <Link to="/blog" className="read-more-link">
-            Read all blog posts&nbsp;
-            <i className="fas fa-arrow-right" />
+            Read all blog posts
           </Link>
         </div>
       </section>

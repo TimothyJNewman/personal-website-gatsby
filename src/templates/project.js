@@ -14,7 +14,7 @@ import 'katex/dist/katex.min.css';
 const ProjectTemplate = ({ children, data }) => (
   <Layout seo={data.projectPost.frontmatter}>
     <LayoutSingleColumn>
-      <section className="mx-auto lg:w-[54rem] px-2 lg:px-0 text-left w-full">
+      <section className="mx-auto lg:max-w-[44rem] px-4 lg:px-0 text-left w-full">
         {data.projectPost.frontmatter.coverImage ? (
           <CoverImage
             img={data.projectPost.frontmatter.coverImage ?? ''}
@@ -54,10 +54,9 @@ const ProjectTemplate = ({ children, data }) => (
             {children}
           </MDXProvider>
         </div>
-        <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+        <div className="mt-4 mb-1 flex justify-end">
           <Link to="/project" className="read-more-link">
-            Explore all projects&nbsp;
-            <i className="fas fa-arrow-right" />
+            Explore all projects
           </Link>
         </div>
       </section>

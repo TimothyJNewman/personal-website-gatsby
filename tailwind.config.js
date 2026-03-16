@@ -37,7 +37,7 @@ module.exports = {
         white: 'var(--color-bg-white)',
       },
       fontFamily: {
-        serif: ['source-serif-pro', 'serif'],
+        serif: ['EB Garamond', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.3s both ease-in',

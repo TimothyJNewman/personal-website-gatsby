@@ -91,42 +91,30 @@ const IndexPage = () => {
   return (
     <Layout>
       <LayoutSingleColumn>
-        <section className="site-intro-section flex lg:w-[54rem] flex-col mx-2">
-          <div className="grid animate-fade-in grid-cols-1 gap-4 md:grid-cols-12">
-            <div className="rounded bg-white-overlay md:col-span-7 flex flex-col justify-between">
-              <div><h1 className='hidden font-serif text-4xl'>Timothy Newman</h1>
-                <span className='hidden italic mb-2'>welcomes you to his website</span>
+        <section className="site-intro-section flex lg:max-w-[44rem] w-full flex-col mx-2">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+            <div className="md:col-span-7 flex flex-col justify-between">
+              <div>
                 <div className='text-dategray' id="summary">
                   Greetings! I created this website in my first year of university to learn web software engineering but now I hope this is a place to showcase my work and an independent platform to publish blog posts. I work in the semiconductor industry with an interest in RF communication. Outside of my work, I enjoy programming, astronomy, photography (see slideshow), embarking on adventures in the countryside and tinkering with my Linux PC.
                 </div>
               </div>
               <SocialMedias />
             </div>
-            <div className="flex items-center justify-center md:col-span-5">
+            <div className="flex items-start justify-center md:col-span-5">
               <img
                 src={imagesSrc[currentImage]}
                 srcSet={imagesSrcSet[currentImage]}
                 alt="site intro gallery"
-                className="rounded-lg"
+                className="w-full"
               />
             </div>
           </div>
-          <div className="flex h-16 items-center justify-center">
-            <a
-              href="#recentprojectssection"
-              aria-label="Scroll to recent projects"
-              className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-std-secondary"
-            >
-              <i className="fa fa-arrow-down" />
-            </a>
-          </div>
         </section>
-        <div className="lg:w-[54rem]">
+        <div className="lg:max-w-[44rem] w-full">
           <section className="px-2 md:px-0" id="recentprojectssection">
-            <div className="flex items-center justify-between">
-              <h2 className="my-4 font-normal font-serif">Recent Projects</h2>
-            </div>
-            <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
+            <h2 className="my-4">Recent Projects</h2>
+            <div className="grid-cols-1 md:grid-cols-1 grid border-t border-primary">
               {data.allProjectPost.nodes ? (
                 data.allProjectPost.nodes
                   .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
@@ -145,16 +133,15 @@ const IndexPage = () => {
                 <p className="error-message">No projects found</p>
               )}
             </div>
-            <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+            <div className="mt-2 mb-1 flex justify-end">
               <Link to="/project" className="read-more-link">
-                Explore all projects&nbsp;
-                <i className="fas fa-arrow-right" />
+                Explore all projects
               </Link>
             </div>
           </section>
           <section className="px-2 md:px-0">
-            <h2 className="my-4 font-normal font-serif">Recent Blog Posts</h2>
-            <div className="grid-cols-1 md:grid-cols-1 grid gap-4">
+            <h2 className="my-4">Recent Blog Posts</h2>
+            <div className="grid-cols-1 md:grid-cols-1 grid border-t border-primary">
               {data.allBlogPost.nodes ? (
                 data.allBlogPost.nodes
                   .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
@@ -173,15 +160,14 @@ const IndexPage = () => {
                 <p className="error-message">No blog posts found</p>
               )}
             </div>
-            <div className="ml-3 mt-2 mr-1 mb-1 flex justify-end text-primary">
+            <div className="mt-2 mb-1 flex justify-end">
               <Link to="/blog" className="read-more-link">
-                Read all blog posts&nbsp;
-                <i className="fas fa-arrow-right" />
+                Read all blog posts
               </Link>
             </div>
           </section>
           <section className="px-2 md:px-0">
-            <h2 className="my-4 font-normal font-serif">All Tags</h2>
+            <h2 className="my-4">All Tags</h2>
             <div className="flex flex-wrap gap-1">
               {allTag ? (
                 allTag.map((tag) => (

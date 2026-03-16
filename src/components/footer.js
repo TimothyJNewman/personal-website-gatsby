@@ -16,19 +16,18 @@ const ButtonTextLink = [
 
 const DropdownMenuButton = ({ text, link }) => (
   <Link
-    className="whitespace-nowrap pr-3 hover:text-primary-dark"
+    className="whitespace-nowrap pr-3 underline underline-offset-2 decoration-transparent hover:decoration-current transition-colors"
     to={link}
     key={text}
   >
-    <i className="fas fa-angle-double-right pr-1" />
     {text}
   </Link>
 );
 
 const Footer = () => (
   <footer className="bg-white text-primary px-4">
-    <div className="mx-auto lg:w-[54rem] py-3">
-      <div className="border-y-2 border-secondary-dark py-2">
+    <div className="mx-auto lg:max-w-[44rem] py-3">
+      <div className="border-t border-primary py-2">
         <p className="markdown-text">
           © 2021-
           {new Date().getFullYear()}

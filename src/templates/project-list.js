@@ -30,10 +30,9 @@ const ProjectList = ({ pageContext, data }) => {
   return (
     <Layout seo={seo}>
       <LayoutSingleColumn>
-        <div className="lg:w-[54rem] px-2 lg:px-0">
+        <div className="lg:max-w-[44rem] w-full px-2 lg:px-0">
           <CoverImage title="Recent Projects" />
-          <br />
-          <section className="grid-cols-1 md:grid-cols-1 grid gap-4">
+          <section className="grid-cols-1 md:grid-cols-1 grid border-t border-primary mt-4">
             {data.allProjectPost.nodes.length > 0 ? (
               data.allProjectPost.nodes
                 .sort((a, b) => (b.frontmatter.publishedAt - a.frontmatter.publishedAt))
@@ -54,8 +53,7 @@ const ProjectList = ({ pageContext, data }) => {
           </section>
           <nav className="m-4 mb-0 flex max-w-screen-md justify-end text-sm">
             <Link to={prevPage} className="posts-navigation-button">
-              <i className="fas fa-arrow-circle-left" />
-              &nbsp;Prev
+              ← Prev
             </Link>
             {(() => {
               const items = [];
@@ -85,8 +83,7 @@ const ProjectList = ({ pageContext, data }) => {
               return items;
             })()}
             <Link to={nextPage} className="posts-navigation-button">
-              Next&nbsp;
-              <i className="fas fa-arrow-circle-right" />
+              Next →
             </Link>
           </nav>
         </div>

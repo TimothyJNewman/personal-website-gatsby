@@ -12,18 +12,18 @@ const CVPage = () => (
     }}
   >
     <LayoutSingleColumn>
-      <div className="lg:w-[54rem] px-2 lg:px-0 ">
+      <div className="lg:max-w-[44rem] w-full px-2 lg:px-0">
         <CoverImage title="Curriculum Vitae" />
         <br />
         <object
           data="/CV.pdf#view=FitH"
           type="application/pdf"
-          className="h-screen w-full rounded"
+          className="h-screen w-full"
         >
           <iframe
             src="/CV.pdf#view=FitH"
             title="Curriculum Vitae"
-            className="h-screen w-full rounded"
+            className="h-screen w-full"
           />
         </object>
         <p className="markdown-text mt-2">

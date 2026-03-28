@@ -1,16 +1,14 @@
 /*
- * Exports a layout function with Seo, Header, Main and Footer
+ * Exports a layout function with Header, Main and Footer
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Seo from './seo';
 import Header from './header';
 import Footer from './footer';
 import '../css/index.css';
 
-const Layout = ({ children, seo }) => (
+const Layout = ({ children }) => (
   <>
-    <Seo seo={seo} />
     <Header />
     <main id="main" className="flex justify-center bg-white text-primary">
       {children}

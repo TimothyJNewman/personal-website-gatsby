@@ -5,16 +5,11 @@ import Layout from '../../../components/layout';
 import LayoutSingleColumn from '../../../components/layout-single-column';
 import { create, all, norm } from 'mathjs'
 import { MDXProvider } from '@mdx-js/react';
+import Seo from '../../../components/seo';
 
 const config = {}
 const math = create(all, config)
 
-const seo = {
-  title: 'Plotly.js Smith Charts',
-  isArticle: false,
-  summary: "This article covers an attempt to test the plotly.js javascript library for the plotting smith charts.",
-  keywords: "Radio-frequency, RF, smith chart"
-};
 
 // Using plotly only on the client side
 // Based on https://www.gatsbyjs.com/docs/using-client-side-only-packages/
@@ -229,7 +224,7 @@ const SmithCharts = () => {
   };
 
   return (
-    <Layout seo={seo}>
+    <Layout>
       <LayoutSingleColumn>
         <section className="mx-auto lg:w-[54rem] px-2 text-left w-full">
           <CoverImage title="Plotly.js Smith Charts" />
@@ -255,3 +250,4 @@ const SmithCharts = () => {
 }
 
 export default SmithCharts;
+export const Head = () => <Seo seo={{ title: 'Plotly.js Smith Charts', isArticle: false, summary: 'An attempt to test the plotly.js javascript library for plotting smith charts.', keywords: 'Radio-frequency, RF, smith chart' }} />;

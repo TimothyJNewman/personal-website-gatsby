@@ -19,7 +19,6 @@ const config = {
     title: 'Personal Website',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-html-attributes',
       options: {

@@ -8,18 +8,15 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import ArticleCard from '../components/article-card';
+import Seo from '../components/seo';
 
 const TagList = ({ pageContext, data }) => {
   const { queryTag } = pageContext;
-  const seo = {
-    title: `Tag: ${queryTag}`,
-    isArticle: false,
-  };
   const allTag = data.allTag.nodes.reduce(
     (acc, { frontmatter: { tags } }) => [...new Set([...acc, ...tags])], [],
   ).sort();
   return (
-    <Layout seo={seo}>
+    <Layout>
       <LayoutSingleColumn>
         <div className="lg:w-[54rem] px-2 lg:px-0">
           <CoverImage
@@ -168,3 +165,5 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ pageContext }) => <Seo seo={{ title: `Tag: ${pageContext.queryTag}`, isArticle: false }} />;

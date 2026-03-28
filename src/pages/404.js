@@ -3,15 +3,12 @@ import { Link } from 'gatsby';
 import CoverImage from '../components/cover-image';
 import LayoutSingleColumn from '../components/layout-single-column';
 import Layout from '../components/layout';
+import Seo from '../components/seo';
 
 const NotFoundPage = ({ location }) => {
   const { pathname } = location;
-  const seo = {
-    title: '404 Page',
-    isArticle: false,
-  };
   return (
-    <Layout seo={seo}>
+    <Layout>
       <LayoutSingleColumn>
         <CoverImage title="You've reached a dead end!" />
         <section className="max-w-screen-md">
@@ -39,3 +36,5 @@ const NotFoundPage = ({ location }) => {
 };
 
 export default NotFoundPage;
+
+export const Head = () => <Seo seo={{ title: '404 Page', isArticle: false }} />;

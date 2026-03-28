@@ -7,6 +7,7 @@ import CoverImage from '../components/cover-image';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import SocialMedias from '../components/social-media';
+import Seo from '../components/seo';
 
 // Parses the JSON returned by a network request
 const parseJSON = (resp) => (resp.json ? resp.json() : resp);
@@ -138,12 +139,8 @@ class Contact extends React.Component {
         </span>
       );
     };
-    const seo = {
-      title: 'Contact Page',
-      isArticle: false,
-    };
     return (
-      <Layout seo={seo}>
+      <Layout>
         <LayoutSingleColumn>
           <section className="contact-container lg:w-[54rem] mx-2">
             <div className="contact-left pr-4">
@@ -256,3 +253,5 @@ class Contact extends React.Component {
 }
 
 export default Contact;
+
+export const Head = () => <Seo seo={{ title: 'Contact', isArticle: false }} />;

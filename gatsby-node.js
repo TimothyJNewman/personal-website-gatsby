@@ -8,7 +8,84 @@
 
 const path = require('path');
 
-// Implement the Gatsby API “createPages”. This is called once the
+/**
+ * Extract EXIF data from photography images and create PhotographyPhoto nodes.
+ */
+exports.onCreateNode = async ({ node, actions, createNodeId, createContentDigest }) => {
+  const { createNode, createParentChildLink } = actions;
+
+  // Only process image files inside src/content/photography/
+  if (
+    node.internal.type !== 'File' ||
+    !/\.(jpg|jpeg|png|tiff?)$/i.test(node.ext || '') ||
+    !node.relativeDirectory?.startsWith('photography/')
+  ) {
+    return;
+  }
+
+  // relativeDirectory is relative to the content source root (src/content/)
+  // e.g. "photography/london-2022" → albumSlug = "london-2022"
+  const parts = node.relativeDirectory.split('/');
+  const albumSlug = parts[1];
+  if (!albumSlug) return;
+
+  let exifData = {};
+  try {
+    const { default: exifr } = await import('exifr');
+    exifData =
+      (await exifr.parse(node.absolutePath, {
+        pick: [
+          'Make',
+          'Model',
+          'LensModel',
+          'FNumber',
+          'ExposureTime',
+          'ISO',
+          'ISOSpeedRatings',
+          'FocalLength',
+          'DateTimeOriginal',
+          'GPSLatitude',
+          'GPSLongitude',
+        ],
+      })) || {};
+  } catch (_) {
+    // Image has no EXIF data or EXIF parsing failed — continue with empty object
+  }
+
+  const camera =
+    [exifData.Make, exifData.Model].filter(Boolean).join(' ').trim() || null;
+  const iso = exifData.ISO ?? exifData.ISOSpeedRatings ?? null;
+
+  const photoNode = {
+    id: createNodeId(`PhotographyPhoto-${node.id}`),
+    parent: node.id,
+    children: [],
+    albumSlug,
+    filename: node.name,
+    camera,
+    lens: exifData.LensModel || null,
+    aperture: exifData.FNumber ?? null,
+    shutterSpeed: exifData.ExposureTime ?? null,
+    iso: iso != null ? Number(iso) : null,
+    focalLength: exifData.FocalLength ?? null,
+    dateTaken: exifData.DateTimeOriginal?.toISOString?.() ?? null,
+    latitude: exifData.GPSLatitude ?? null,
+    longitude: exifData.GPSLongitude ?? null,
+    internal: {
+      type: 'PhotographyPhoto',
+      contentDigest: createContentDigest({
+        albumSlug,
+        filename: node.name,
+        exifData,
+      }),
+    },
+  };
+
+  createNode(photoNode);
+  createParentChildLink({ parent: node, child: photoNode });
+};
+
+// Implement the Gatsby API "createPages". This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
@@ -150,6 +227,66 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     });
   });
 
+  // ── Photography ──────────────────────────────────────────────────────────────
+
+  const photographyQuery = await graphql(`
+    query {
+      allPhotographyAlbum: allMdx(
+        filter: { internal: { contentFilePath: { regex: "/content/photography/" } } }
+        sort: { frontmatter: { publishedAt: DESC } }
+      ) {
+        nodes {
+          frontmatter {
+            slug
+          }
+        }
+      }
+      allPhotographyPhoto {
+        nodes {
+          albumSlug
+          filename
+        }
+      }
+    }
+  `);
+
+  if (photographyQuery.errors) {
+    reporter.panicOnBuild('Error loading photography data', photographyQuery.errors);
+  }
+
+  const albumTemplate = path.resolve('src/templates/photography-album.js');
+  photographyQuery.data.allPhotographyAlbum.nodes.forEach((node) => {
+    createPage({
+      path: `/photography/${node.frontmatter.slug}`,
+      component: albumTemplate,
+      context: { slug: node.frontmatter.slug },
+    });
+  });
+
+  // Group photos by album for prev/next navigation context
+  const photosByAlbum = {};
+  photographyQuery.data.allPhotographyPhoto.nodes.forEach((photo) => {
+    if (!photosByAlbum[photo.albumSlug]) photosByAlbum[photo.albumSlug] = [];
+    photosByAlbum[photo.albumSlug].push(photo);
+  });
+
+  const photoTemplate = path.resolve('src/templates/photography-photo.js');
+  Object.entries(photosByAlbum).forEach(([albumSlug, albumPhotos]) => {
+    albumPhotos.forEach((photo, index) => {
+      createPage({
+        path: `/photography/${albumSlug}/${photo.filename}`,
+        component: photoTemplate,
+        context: {
+          albumSlug,
+          filename: photo.filename,
+          prevPhoto: index > 0 ? albumPhotos[index - 1].filename : null,
+          nextPhoto:
+            index < albumPhotos.length - 1 ? albumPhotos[index + 1].filename : null,
+        },
+      });
+    });
+  });
+
   // Query for articles nodes to use in creating pages.
   return [blogPosts, projectPosts, allTag];
 };
@@ -176,12 +313,26 @@ exports.createSchemaCustomization = ({ actions }) => {
       coverImage: File @fileByRelativePath
       summary: String
       keywords: String
-      publishedAt:  Date
-      updatedAt: Date
+      publishedAt: Date @dateformat
+      updatedAt: Date @dateformat
       tags: [String]
       isArticle: Boolean
       preventIndexing: Boolean
       embeddedAssets: [File] @fileByRelativePath
+      location: String
+    }
+    type PhotographyPhoto implements Node {
+      albumSlug: String!
+      filename: String!
+      camera: String
+      lens: String
+      aperture: Float
+      shutterSpeed: Float
+      iso: Int
+      focalLength: Float
+      dateTaken: Date @dateformat
+      latitude: Float
+      longitude: Float
     }
   `)
 }

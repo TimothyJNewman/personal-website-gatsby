@@ -6,6 +6,7 @@ import ArticleCard from '../components/article-card';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import SocialMedias from '../components/social-media';
+import Seo from '../components/seo';
 
 const query = graphql`
   query HomeQuery {
@@ -205,3 +206,5 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const Head = () => <Seo />;

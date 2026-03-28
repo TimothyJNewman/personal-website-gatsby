@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
+import Seo from '../components/seo';
 
 const PhotographyAlbum = ({ data, pageContext }) => {
   const { slug } = pageContext;
@@ -12,13 +13,7 @@ const PhotographyAlbum = ({ data, pageContext }) => {
   const photos = data.allPhotographyPhoto.nodes;
 
   return (
-    <Layout
-      seo={{
-        title: frontmatter.title,
-        description: frontmatter.summary,
-        isArticle: false,
-      }}
-    >
+    <Layout>
       <LayoutSingleColumn>
         <div className="lg:w-[54rem] w-full px-2 lg:px-0">
           <Link
@@ -125,3 +120,7 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ data }) => (
+  <Seo seo={{ title: data.album.frontmatter.title, summary: data.album.frontmatter.summary }} />
+);

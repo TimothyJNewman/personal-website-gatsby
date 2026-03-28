@@ -9,9 +9,10 @@ import LayoutSingleColumn from '../components/layout-single-column';
 import Share from '../components/share';
 import CoverImage from '../components/cover-image';
 import { getFormattedDate } from '../util/common-utils';
+import Seo from '../components/seo';
 
 const BlogTemplate = ({ data, children }) => (
-  <Layout seo={data.blogPost.frontmatter}>
+  <Layout>
     <LayoutSingleColumn>
       <section className="mx-auto lg:w-[54rem] px-2 lg:px-0 text-left w-full">
         {data.blogPost.frontmatter.coverImage ? (
@@ -92,3 +93,5 @@ export const query = graphql`
       body
     }
   }`;
+
+export const Head = ({ data }) => <Seo seo={data.blogPost.frontmatter} />;

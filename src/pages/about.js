@@ -4,14 +4,11 @@ import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import WorkExperienceSection from '../components/work-experience-section';
 import EducationExperienceSection from '../components/education-experience-section';
+import Seo from '../components/seo';
 
 const About = () => {
-  const seo = {
-    title: 'About',
-    summary: 'Some things about me',
-  };
   return (
-    <Layout seo={seo}>
+    <Layout>
       <LayoutSingleColumn>
         <section className="mx-auto lg:w-[54rem] px-2 text-left w-full">
           <CoverImage title="About" />
@@ -38,3 +35,5 @@ const About = () => {
 };
 
 export default About;
+
+export const Head = () => <Seo seo={{ title: 'About', summary: 'Some things about me' }} />;

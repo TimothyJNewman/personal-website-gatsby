@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import CoverImage from '../components/cover-image';
+import Seo from '../components/seo';
 
 const PhotographyPage = ({ data }) => {
   const albums = data.allMdx.nodes;
@@ -14,7 +15,7 @@ const PhotographyPage = ({ data }) => {
   });
 
   return (
-    <Layout seo={{ title: 'Photography', isArticle: false }}>
+    <Layout>
       <LayoutSingleColumn>
         <div className="lg:w-[54rem] w-full px-2 lg:px-0">
           <CoverImage title="Photography" />
@@ -110,3 +111,5 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => <Seo seo={{ title: 'Photography', isArticle: false }} />;

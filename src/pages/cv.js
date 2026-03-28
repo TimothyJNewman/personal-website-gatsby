@@ -1,16 +1,11 @@
 import React from 'react';
 import Layout from '../components/layout';
+import Seo from '../components/seo';
 import LayoutSingleColumn from '../components/layout-single-column';
 import CoverImage from '../components/cover-image';
 
 const CVPage = () => (
-  <Layout
-    seo={{
-      title: 'CV',
-      summary: 'CV Page',
-      isArticle: false,
-    }}
-  >
+  <Layout>
     <LayoutSingleColumn>
       <div className="lg:w-[54rem] px-2 lg:px-0 ">
         <CoverImage title="Curriculum Vitae" />
@@ -43,3 +38,5 @@ const CVPage = () => (
 );
 
 export default CVPage;
+
+export const Head = () => <Seo seo={{ title: 'CV', summary: 'CV Page', isArticle: false }} />;

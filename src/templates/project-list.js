@@ -9,6 +9,7 @@ import { getFormattedDate, getFormattedLink } from '../util/common-utils';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import ArticleCard from '../components/article-card';
+import Seo from '../components/seo';
 
 const ProjectList = ({ pageContext, data }) => {
   // variables for page navigation
@@ -22,13 +23,9 @@ const ProjectList = ({ pageContext, data }) => {
   else if (currentPage === projectNumPages) nextPage = `/project/page/${projectNumPages}`;
   else nextPage = `/project/page/${currentPage + 1}`;
 
-  const seo = {
-    title: 'Project Page',
-    isArticle: false,
-  };
 
   return (
-    <Layout seo={seo}>
+    <Layout>
       <LayoutSingleColumn>
         <div className="lg:w-[54rem] px-2 lg:px-0">
           <CoverImage title="Recent Projects" />
@@ -123,3 +120,5 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = () => <Seo seo={{ title: 'Projects', isArticle: false }} />;

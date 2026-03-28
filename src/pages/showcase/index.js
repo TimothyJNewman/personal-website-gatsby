@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import CoverImage from '../../components/cover-image';
 import Layout from '../../components/layout';
 import LayoutSingleColumn from '../../components/layout-single-column';
+import Seo from '../../components/seo';
 
 const ShowCase = () => {
     return (
@@ -24,3 +25,4 @@ const ShowCase = () => {
 }
 
 export default ShowCase;
+export const Head = () => <Seo seo={{ title: 'Showcase', isArticle: false }} />;

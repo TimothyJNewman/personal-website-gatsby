@@ -6,6 +6,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 import CoverImage from '../components/cover-image';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
+import Seo from '../components/seo';
 
 const query = graphql`
   query Tag {
@@ -23,15 +24,11 @@ const query = graphql`
 
 const TagPage = () => {
   const data = useStaticQuery(query);
-  const seo = {
-    title: 'Tag Page',
-    isArticle: false,
-  };
   const allTag = data.allTag.nodes.reduce(
     (acc, { frontmatter: {tags} }) => [...new Set([...acc,...tags])], [],
   ).sort();
   return (
-    <Layout seo={seo}>
+    <Layout>
       <LayoutSingleColumn>
         <br />
         <section className="max-w-screen-md px-2">
@@ -59,3 +56,5 @@ const TagPage = () => {
 };
 
 export default TagPage;
+
+export const Head = () => <Seo seo={{ title: 'Tags', isArticle: false }} />;

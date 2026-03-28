@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import LayoutSingleColumn from '../components/layout-single-column';
 import ExifDisplay from '../components/exif-display';
+import Seo from '../components/seo';
 
 const PhotographyPhoto = ({ data, pageContext }) => {
   const { albumSlug, prevPhoto, nextPhoto } = pageContext;
@@ -147,3 +148,7 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ data, pageContext }) => (
+  <Seo seo={{ title: data.photo?.filename ? `${data.photo.filename} — ${data.album?.frontmatter?.title || pageContext.albumSlug}` : pageContext.albumSlug }} />
+);

@@ -10,9 +10,10 @@ import CoverImage from '../components/cover-image';
 import Share from '../components/share';
 import { getFormattedDate } from '../util/common-utils';
 import 'katex/dist/katex.min.css';
+import Seo from '../components/seo';
 
 const ProjectTemplate = ({ children, data }) => (
-  <Layout seo={data.projectPost.frontmatter}>
+  <Layout>
     <LayoutSingleColumn>
       <section className="mx-auto lg:w-[54rem] px-2 lg:px-0 text-left w-full">
         {data.projectPost.frontmatter.coverImage ? (
@@ -90,3 +91,5 @@ export const query = graphql`
       }
     }
   }`;
+
+export const Head = ({ data }) => <Seo seo={data.projectPost.frontmatter} />;

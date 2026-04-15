@@ -19,7 +19,27 @@ const PhotographyPage = ({ data }) => {
       <LayoutSingleColumn>
         <div className="lg:w-[54rem] w-full px-2 lg:px-0">
           <CoverImage title="Photography" />
-          <br />
+          <p className="mt-4 mb-2">
+            Also on
+            {' '}
+            <a
+              href="https://unsplash.com/@newmanphotog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Unsplash
+            </a>
+            {' · '}
+            <a
+              href="https://www.google.com/search?q=%22Timothy+Newman%22+unsplash+OR+%22newmanphotog%22"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              See where my photos have been used
+            </a>
+          </p>
           {albums.length === 0 ? (
             <p className="error-message">No albums found.</p>
           ) : (
@@ -59,7 +79,8 @@ const PhotographyPage = ({ data }) => {
                       {photoCounts[fm.slug] != null && (
                         <p className="text-sm mt-1">
                           <i className="fas fa-images mr-1" />
-                          {photoCounts[fm.slug]}{' '}
+                          {photoCounts[fm.slug]}
+                          {' '}
                           {photoCounts[fm.slug] === 1 ? 'photo' : 'photos'}
                         </p>
                       )}
